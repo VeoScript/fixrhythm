@@ -58,7 +58,7 @@ export default function NavBar() {
             <Fragment>
               <button onClick={() => {setDialogOpen(false)}} type="button" className={`${dialogOpen ? 'z-20 block fixed inset-0 w-full h-full cursor-default focus:outline-none' : 'hidden'}`}></button>
               <div className={`z-40 w-full ${dialogOpen ? 'fixed' : 'hidden'}`}>
-                <div className="fixed top-14 right-8 w-full max-w-[13rem] rounded-md border border-pantone-white border-opacity-10 bg-[#2F3337] text-white">
+                <div className="fixed top-14 right-8 w-full max-w-[13rem] rounded-md border border-pantone-white border-opacity-10 bg-pantone-black text-white">
                   <div className="flex flex-col w-full p-3 border-b border-pantone-white border-opacity-10 cursor-default">
                     <span className="font-light text-sm text-pantone-white text-opacity-80">Signed in as <span className="font-bold">lalalalisa</span></span>
                   </div>
