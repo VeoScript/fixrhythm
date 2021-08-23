@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { Fragment, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function NavBar() {
 
@@ -14,7 +15,7 @@ export default function NavBar() {
         <Link href="/">
           <a className="font-black text-xl text-pantone-red">FIXRHYTHM</a>
         </Link>
-        <div className="flex flex-row items-center w-full max-w-xs px-3 py-2 space-x-3 text-sm rounded-md bg-pantone-white bg-opacity-10 border border-transparent focus-within:border-pantone-white focus-within:border-opacity-30">
+        <div className="flex flex-row items-center w-full max-w-xs px-3 py-2 space-x-2 text-sm rounded-md bg-pantone-white bg-opacity-10 border border-transparent focus-within:border-pantone-white focus-within:border-opacity-30">
           <svg className="w-5 h-5 text-pantone-white text-opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
           </svg>
@@ -41,14 +42,17 @@ export default function NavBar() {
         </div>
       </div>
       <div className="flex justify-end w-full max-w-md">
-        <div className="relative">
-          <div className="flex flex-row items-center">
+        <div className="relative flex justify-end w-full">
+          <div className="flex flex-row items-center justify-end w-full">
             <button
               type="button"
-              className="flex flex-row items-center w-full max-w-sm space-x-1 focus:outline-none"
+              className="flex flex-row items-center justify-end w-full max-w-[4rem] space-x-1 focus:outline-none"
               onClick={() => setDialogOpen(true)}
             >
-              <img className="w-9 h-9 object-cover rounded-full" src="https://pbs.twimg.com/media/E8_pmQTXEAgnN4_?format=jpg&name=small" alt="profile_pic" />
+              <UserAvatar
+                src="https://pbs.twimg.com/media/E9D8F0tXEAYUfOS?format=jpg&name=900x900"
+                alt="user_profile"
+              />
               <svg className="w-5 h-5 text-pantone-white text-opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path>
               </svg>
@@ -60,7 +64,7 @@ export default function NavBar() {
               <div className={`z-40 w-full ${dialogOpen ? 'fixed' : 'hidden'}`}>
                 <div className="fixed top-14 right-8 w-full max-w-[13rem] rounded-md border border-pantone-white border-opacity-10 bg-pantone-black text-white">
                   <div className="flex flex-col w-full p-3 border-b border-pantone-white border-opacity-10 cursor-default">
-                    <span className="font-light text-sm text-pantone-white text-opacity-80">Signed in as <span className="font-bold">lalalalisa</span></span>
+                    <span className="font-light text-sm text-pantone-white text-opacity-50">Signed in as <span className="font-bold">lalalalisa</span></span>
                   </div>
                   <Link href="/">
                     <a className="flex flex-col w-full p-3 border-b border-pantone-white border-opacity-10 hover:bg-pantone-white hover:bg-opacity-10">
@@ -88,6 +92,23 @@ export default function NavBar() {
           )}
         </div>
       </div>
+    </div>
+  )
+}
+
+function UserAvatar({ src, alt }) {
+  return (
+    <div className="flex flex-col w-full max-w-[2rem] rounded-full ring-2 ring-pantone-white ring-opacity-30">
+      <Image
+        src={src}
+        width={1000}
+        height={1000}
+        alt={alt}
+        blurDataURL={src}
+        placeholder="blur"
+        layout="responsive"
+        className="rounded-full bg-pantone-black"
+      />
     </div>
   )
 }
