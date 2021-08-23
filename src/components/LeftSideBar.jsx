@@ -30,24 +30,24 @@ export default function LeftSideBar() {
                 <Link href="/">
                   <a className="flex flex-row items-center space-x-2">
                     <BsPeopleFill className="w-4 h-4 fill-current text-white text-opacity-30" />
-                    <span className="font-light text-xs text-pantone-white text-opacity-50">
-                      <strong className="font-bold text-pantone-white">0</strong> followers
+                    <span className="font-light text-[12px] text-pantone-white text-opacity-50">
+                      <strong className="font-bold text-pantone-white">0</strong>&nbsp;&nbsp;followers
                     </span>
                   </a>
                 </Link>
                 <Link href="/">
                   <a className="flex flex-row items-center space-x-2">
                     <BsPeople className="w-4 h-4 fill-current text-white text-opacity-30" />
-                    <span className="font-light text-xs text-pantone-white text-opacity-50">
-                      <strong className="font-bold text-pantone-white">0</strong> following
+                    <span className="font-light text-[12px] text-pantone-white text-opacity-50">
+                      <strong className="font-bold text-pantone-white">0</strong>&nbsp;&nbsp;following
                     </span>
                   </a>
                 </Link>
                 <Link href="/">
                   <a className="flex flex-row items-center space-x-2">
                     <BsCollectionFill className="w-4 h-4 fill-current text-white text-opacity-30" />
-                    <span className="font-light text-xs text-pantone-white text-opacity-50">
-                      <strong className="font-bold text-pantone-white">0</strong> Posts
+                    <span className="font-light text-[12px] text-pantone-white text-opacity-50">
+                      <strong className="font-bold text-pantone-white">0</strong>&nbsp;&nbsp;Posts
                     </span>
                   </a>
                 </Link>
