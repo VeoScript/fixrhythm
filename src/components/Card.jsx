@@ -6,7 +6,7 @@ import { BiBookmark } from 'react-icons/bi'
 
 export default function Card() {
   return (
-    <div className="flex flex-row items-center justify-center w-full px-3 py-5 border-b border-pantone-white border-opacity-10">
+    <div className="flex flex-row items-center justify-center w-full px-3 py-5 border-b border-pantone-white border-opacity-10 cursor-default">
       <div className="flex flex-row items-center w-full">
         <div className="flex flex-col w-full">
           <div className="flex flex-row items-center justify-between w-full">
