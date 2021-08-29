@@ -1,4 +1,8 @@
 import Image from 'next/image'
+import { AiFillHeart } from 'react-icons/ai'
+import { AiOutlineHeart } from 'react-icons/ai'
+import { AiOutlineEye } from 'react-icons/ai'
+import { BiBookmark } from 'react-icons/bi'
 
 export default function Card() {
   return (
@@ -14,9 +18,15 @@ export default function Card() {
               </div>
             </div>
             <div className="flex flex-row items-center justify-end w-full space-x-2">
-              <span>Heart</span>
-              <span>Read</span>
-              <span>Save</span>
+              <button type="button">
+                <AiOutlineHeart className="w-5 h-5 text-gray-500" />
+              </button>
+              <button type="button">
+                <AiOutlineEye className="w-6 h-6 text-gray-500" />
+              </button>
+              <button type="button">
+                <BiBookmark className="w-5 h-5 text-gray-500" />
+              </button>
             </div>
           </div>
           <div className="flex flex-col w-full mt-3">
@@ -24,7 +34,13 @@ export default function Card() {
             <span className="font-light text-xs text-pantone-white text-opacity-30">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora excepturi laboriosam autem, at quibusdam dicta quam in adipisci vel aliquid quos cum asperiores nostrum eveniet quisquam laborum. Voluptatibus, culpa iusto.
             </span>
-            <span className="mt-3 font-light text-[10px] text-pantone-white text-opacity-20">Just Now</span>
+            <div className="flex flex-row items-center w-full space-x-1 mt-3">
+              <span className="font-light text-[10px] text-pantone-white text-opacity-20">Just Now</span>
+              <span className="font-light text-[10px] text-pantone-white text-opacity-20">&bull;</span>
+              <span className="font-light text-[10px] text-pantone-white text-opacity-20">0 hearts</span>
+              <span className="font-light text-[10px] text-pantone-white text-opacity-20">&bull;</span>
+              <span className="font-light text-[10px] text-pantone-white text-opacity-20">0 comments</span>
+            </div>
           </div>
         </div>
       </div>
