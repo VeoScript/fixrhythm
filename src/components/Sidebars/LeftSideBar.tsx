@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import Link from 'next/link'
-import { RiPushpinFill, RiEye2Fill, RiMusic2Fill, RiBookOpenFill, } from 'react-icons/ri'
+import { RiPushpinFill, RiEye2Fill, RiMusic2Fill, RiBookOpenFill } from 'react-icons/ri'
 
 const LeftSideBar: React.FC = () => {
   return (
@@ -27,19 +27,19 @@ const LeftSideBar: React.FC = () => {
       </div>
       <div className="flex flex-row items-center justify-between w-full px-5 space-x-3">
         <div className="flex items-center w-full space-x-1 font-light text-[11px]">
-          <span className="font-bold text-red-500">25</span>
+          <span className="font-bold text-pantone-white">25</span>
           <Link href="/">
             <a className="transition ease-linear duration-200 hover:text-red-500">followers</a>
           </Link>
         </div>
         <div className="flex items-center w-full space-x-1 font-light text-[11px]">
-          <span className="font-bold text-red-500">190</span>
+          <span className="font-bold text-pantone-white">190</span>
           <Link href="/">
             <a className="transition ease-linear duration-200 hover:text-red-500">following</a>
           </Link>
         </div>
         <div className="flex items-center w-full space-x-1 font-light text-[11px]">
-          <span className="font-bold text-red-500">13</span>
+          <span className="font-bold text-pantone-white">13</span>
           <Link href="/">
             <a className="transition ease-linear duration-200 hover:text-red-500">compositions</a>
           </Link>
@@ -55,7 +55,7 @@ const LeftSideBar: React.FC = () => {
         <div className="flex flex-col w-full p-3 space-y-2 border-b border-pantone-white border-opacity-10">
           <div className="flex flex-row items-center justify-between w-full">
             <div className="flex flex-row items-center w-full space-x-1">
-              <RiMusic2Fill className="w-3.5 h-3.5 text-pantone-white text-opacity-50" />
+              <RiMusic2Fill className="w-3 h-3 text-pantone-white text-opacity-50" />
               <span className="font-bold text-sm text-pantone-white text-opacity-80">Love of My Life</span>
             </div>
             <button>
@@ -69,7 +69,7 @@ const LeftSideBar: React.FC = () => {
         <div className="flex flex-col w-full p-3 space-y-2 border-b border-pantone-white border-opacity-10">
           <div className="flex flex-row items-center justify-between w-full">
             <div className="flex flex-row items-center w-full space-x-1">
-              <RiBookOpenFill className="w-3.5 h-3.5 text-pantone-white text-opacity-50" />
+              <RiBookOpenFill className="w-3 h-3 text-pantone-white text-opacity-50" />
               <span className="font-bold text-sm text-pantone-white text-opacity-80">Asteroids</span>
             </div>
             <button>
