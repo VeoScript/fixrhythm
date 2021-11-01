@@ -1,6 +1,7 @@
 import React from 'react'
 import PostCard from './PostCard'
 import { RiSearchLine } from 'react-icons/ri'
+import { posts } from '~/mock'
 
 const NewsFeed: React.FC = () => {
   return (
@@ -20,13 +21,9 @@ const NewsFeed: React.FC = () => {
         </div>
       </div>
       <div className="flex flex-col w-full h-full overflow-y-auto p-3 pb-20 space-y-3">
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
+        {posts.map((post: any, i: number) => (
+          <PostCard post={post} key={i} />
+        ))}
       </div>
     </div>
   )
