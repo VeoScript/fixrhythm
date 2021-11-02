@@ -9,7 +9,7 @@ const RightSideBar: React.FC = () => {
       <div className="flex flex-col items-center w-full">
         <div className="flex items-center w-full px-3 py-2 space-x-1 border-b border-pantone-white border-opacity-10">
           <div className="flex items-center justify-between w-full space-x-1">
-            <span className="font-normal text-xs">Suggestions For You</span>
+            <span className="font-normal text-sm text-pantone-white text-opacity-50">Suggested Accounts</span>
             <Link href="/">
               <a className="font-extralight text-xs text-pantone-white text-opacity-50 hover:underline">See All</a>
             </Link>
@@ -30,8 +30,8 @@ const RightSideBar: React.FC = () => {
                 </div>
               </a>
             </Link>
-            <button className="font-light text-xs text-pantone-white transition ease-linear duration-200 hover:text-red-500">
-              + Follow
+            <button className="font-light text-[10px] px-2 py-1 rounded-md bg-pantone-red text-pantone-white transition ease-linear duration-200 hover:bg-opacity-80">
+              Follow
             </button>
           </div>
         ))}
