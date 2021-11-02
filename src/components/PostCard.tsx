@@ -35,7 +35,8 @@ const PostCard: React.FC<TypeProps> = ({ post }) => {
           <div className="flex flex-col px-2 space-y-2">
             <Link href="/">
               <a className="flex items-center space-x-1 uppercase font-bold text-sm text-pantone-white">
-                {post.category === 'Song' ? <RiMusic2Fill className="w-3 h-3 text-red-600 text-opacity-50" /> : <RiBookOpenFill className="w-3 h-3 text-red-600 text-opacity-50" />}
+                {post.category === 'Song' && <RiMusic2Fill className="w-3 h-3 text-red-500" />}
+                {post.category === 'Poem' && <RiBookOpenFill className="w-3 h-3 text-red-500" />}
                 <span>{ post.title }</span>
               </a>
             </Link>
