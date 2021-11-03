@@ -3,18 +3,18 @@ import { GetServerSideProps } from 'next'
 import withSession from '~/lib/Session'
 import React from 'react'
 import Head from 'next/head'
-import Layout from '~/layouts/default'
-import NewsFeed from '~/components/NewsFeed'
+import Guard from '~/layouts/guard'
+import LoginForm from '~/components/AuthForms/LoginForm'
 
-const Home: NextPage = () => {
+const Login: NextPage = () => {
   return (
     <React.Fragment>
       <Head>
-        <title>Fixrhythm</title>
+        <title>Login | Fixrhythm</title>
       </Head>
-      <Layout>
-        <NewsFeed />
-      </Layout>
+      <Guard>
+        <LoginForm />
+      </Guard>
     </React.Fragment>
   )
 }
@@ -22,10 +22,10 @@ const Home: NextPage = () => {
 export const getServerSideProps: GetServerSideProps = withSession(async function (context: any) {
   const user = context.req.session.get('user')
 
-  if (!user) {
+  if (user) {
     return {
       redirect: {
-        destination: '/login',
+        destination: '/',
         permanent: false
       }
     }
@@ -36,4 +36,4 @@ export const getServerSideProps: GetServerSideProps = withSession(async function
   }
 })
 
-export default Home
+export default Login
