@@ -2,23 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* width */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background: #353535; 
 }
  
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #4f4f4f; 
   border-radius: 10px;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #767676; 
+}
+
+.preventcopy {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
