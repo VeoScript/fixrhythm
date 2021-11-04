@@ -31,19 +31,19 @@ const LeftSideBar: React.FC<TypeProps> = ({ host }) => {
       </div>
       <div className="flex flex-row items-center justify-between w-full px-5 space-x-3">
         <div className="flex items-center w-full space-x-1 font-light text-[11px]">
-          <span className="font-bold text-pantone-white">25</span>
+          <span className="font-bold text-pantone-white text-sm">0</span>
           <Link href="/">
             <a className="transition ease-linear duration-200 hover:text-red-500">followers</a>
           </Link>
         </div>
         <div className="flex items-center w-full space-x-1 font-light text-[11px]">
-          <span className="font-bold text-pantone-white">190</span>
+          <span className="font-bold text-pantone-white text-sm">0</span>
           <Link href="/">
             <a className="transition ease-linear duration-200 hover:text-red-500">following</a>
           </Link>
         </div>
         <div className="flex items-center w-full space-x-1 font-light text-[11px]">
-          <span className="font-bold text-pantone-white">13</span>
+          <span className="font-bold text-pantone-white text-sm">0</span>
           <Link href="/">
             <a className="transition ease-linear duration-200 hover:text-red-500">compositions</a>
           </Link>
