@@ -8,8 +8,9 @@ const LeftSideBar: React.FC = () => {
     <div className="flex flex-col w-full max-w-xs h-full overflow-y-auto scrollbar-hide pb-20 bg-pantone-gray border-r border-pantone-white border-opacity-10">
       <div className="flex flex-col items-center w-full px-5 py-5 space-y-3">
         <img
-          className="w-40 h-40 rounded-lg bg-pantone-gray"
-          src="https://ui-avatars.com/api/?name=Fix+Rhythm&background=24282B&color=aaa"
+          className="w-40 h-40 rounded-lg bg-pantone-darkblack"
+          // src="https://ui-avatars.com/api/?name=Fix+Rhythm&background=24282B&color=aaa"
+          src="fixrhythm.png"
           alt=""
         />
         <div className="flex flex-col items-center w-full space-y-1">
@@ -20,7 +21,7 @@ const LeftSideBar: React.FC = () => {
           </span>
         </div>
         <div className="flex flex-col items-center w-full space-y-1">
-          <button className="flex justify-center w-full p-3 text-pantone-white bg-pantone-black rounded-lg transition ease-linear duration-200 hover:bg-opacity-50">
+          <button className="flex justify-center w-full p-3 text-pantone-white bg-pantone-darkblack rounded-lg transition ease-linear duration-200 hover:bg-opacity-50">
             <span className="font-light text-xs">View Profile</span>
           </button>
         </div>

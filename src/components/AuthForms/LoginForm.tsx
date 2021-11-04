@@ -33,7 +33,6 @@ const LoginForm: React.FC = () => {
           icon: '🤫',
           style: {
             borderRadius: '10px',
-            padding: '20px',
             fontSize: '14px',
             background: '#0C0C0C',
             color: '#fff',
@@ -55,9 +54,9 @@ const LoginForm: React.FC = () => {
       />
       <form onSubmit={handleSubmit(onSignIn)} className="flex flex-col w-full space-y-2">
         <div className="flex w-full ml-3">
-          <h5 className="font-extralight text-sm"><span className="font-bold">Welcome.</span> Please login.</h5>
+          <h5 className="font-extralight text-xs"><span className="font-bold text-sm">Welcome.</span> Please login.</h5>
         </div>
-        <div className="flex items-center w-full px-1 rounded-md text-pantone-white bg-pantone-darkblack border border-pantone-gray transition ease-linear duration-200 hover:border-pantone-white focus-within:border-pantone-white">
+        <div className="flex items-center w-full px-1 rounded-md text-pantone-white bg-transparent border border-pantone-gray transition ease-linear duration-200 hover:border-pantone-white focus-within:border-pantone-white">
           <div className="px-3 border-r border-pantone-white border-opacity-30">
             <RiShieldUserLine className="w-6 h-6 text-pantone-white text-opacity-50" />
           </div>
@@ -68,7 +67,7 @@ const LoginForm: React.FC = () => {
             {...register("username", { required: true })}
           />
         </div>
-        <div className="flex items-center w-full px-1 rounded-md text-pantone-white bg-pantone-darkblack border border-pantone-gray transition ease-linear duration-200 hover:border-pantone-white focus-within:border-pantone-white">
+        <div className="flex items-center w-full px-1 rounded-md text-pantone-white bg-transparent border border-pantone-gray transition ease-linear duration-200 hover:border-pantone-white focus-within:border-pantone-white">
           <div className="px-3 border-r border-pantone-white border-opacity-30">
             <RiShieldKeyholeLine className="w-6 h-6 text-pantone-white text-opacity-50" />
           </div>
@@ -79,7 +78,7 @@ const LoginForm: React.FC = () => {
             {...register("password", { required: true })}
           />
         </div>
-        <button className="flex justify-center w-full px-3 py-5 text-sm outline-none rounded-md bg-pantone-darkblack border border-pantone-gray transition ease-linear duration-200 hover:border-pantone-white focus:border-pantone-white">
+        <button className="flex justify-center w-full px-3 py-5 text-sm outline-none rounded-md bg-transparent border border-pantone-gray transition ease-linear duration-200 hover:border-pantone-white focus:border-pantone-white">
           Sign In
         </button>
       </form>
