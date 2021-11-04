@@ -34,7 +34,7 @@ const LoginForm: React.FC = () => {
           style: {
             borderRadius: '10px',
             fontSize: '14px',
-            background: '#0C0C0C',
+            background: '#24282B',
             color: '#fff',
           }
         }
