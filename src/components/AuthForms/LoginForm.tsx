@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Router from 'next/router'
+import FormLoader from '~/utils/FormLoader'
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
 import { RiShieldUserLine, RiShieldKeyholeLine } from 'react-icons/ri'
@@ -78,9 +79,23 @@ const LoginForm: React.FC = () => {
             {...register("password", { required: true })}
           />
         </div>
-        <button className="flex justify-center w-full px-3 py-5 text-sm outline-none rounded-md bg-transparent border border-pantone-gray transition ease-linear duration-200 hover:border-pantone-white focus:border-pantone-white">
-          Sign In
-        </button>
+        {!isSubmitting && (
+          <button
+            className="flex justify-center w-full px-3 py-5 text-sm outline-none rounded-md bg-transparent border border-pantone-gray transition ease-linear duration-200 hover:border-pantone-white focus:border-pantone-white"
+            type="submit"
+          >
+            Sign In
+          </button>
+        )}
+        {isSubmitting && (
+          <div className="flex justify-center w-full px-3 py-4 text-sm outline-none rounded-md bg-transparent border border-pantone-gray">
+            <FormLoader
+              width="28px"
+              height="28px"
+              color="#C71F2D"
+            />
+          </div>
+        )}
       </form>
       <div className="flex flex-row items-center justify-center w-full space-x-2 font-light text-xs text-pantone-white text-opacity-50">
         <Link href="/login">
