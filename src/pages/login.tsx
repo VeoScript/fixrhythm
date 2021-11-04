@@ -3,7 +3,7 @@ import { GetServerSideProps } from 'next'
 import withSession from '~/lib/Session'
 import React from 'react'
 import Head from 'next/head'
-import Guard from '~/layouts/guard'
+import Auth from '~/layouts/auth'
 import LoginForm from '~/components/AuthForms/LoginForm'
 
 const Login: NextPage = () => {
@@ -12,9 +12,9 @@ const Login: NextPage = () => {
       <Head>
         <title>Login | Fixrhythm</title>
       </Head>
-      <Guard>
+      <Auth>
         <LoginForm />
-      </Guard>
+      </Auth>
     </React.Fragment>
   )
 }
