@@ -27,3 +27,8 @@
   -ms-user-select: none;
   user-select: none;
 }
+
+[contenteditable][placeholder]:empty:before {
+  content: attr(placeholder);
+  color: #9CA3AF;
+}
