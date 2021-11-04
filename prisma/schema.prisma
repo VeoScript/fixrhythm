@@ -11,14 +11,15 @@ generator client {
 }
 
 model Users {
-  id                  Int                @unique                    @default(autoincrement())
-  uuid                String             @id                        @default(uuid())
-  profile             String?
-  shortbio            String?
-  verify_email        Boolean                                       @default(false)
-  name                String
-  phone               String
-  username            String
-  email               String
-  password            String
+  id                              Int                @unique                    @default(autoincrement())
+  uuid                            String             @id                        @default(uuid())
+  verify_email                    Boolean                                       @default(false)
+  profile                         String?
+  shortbio                        String?
+  account_type                    String
+  name                            String
+  phone                           String
+  username                        String
+  email                           String
+  password                        String
 }
