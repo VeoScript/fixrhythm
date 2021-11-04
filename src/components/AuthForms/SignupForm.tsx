@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
 import {
   RiUser3Line,
+  RiMusicLine,
   RiSmartphoneLine,
   RiShieldUserLine,
   RiMailLine,
@@ -14,6 +15,7 @@ import {
 
 interface FormData {
   name: string
+  account_type: string
   username: string
   phone: string
   email: string
@@ -36,7 +38,7 @@ const SignupForm: React.FC = () => {
           style: {
             borderRadius: '10px',
             fontSize: '14px',
-            background: '#0C0C0C',
+            background: '#24282B',
             color: '#fff',
           }
         }
@@ -60,7 +62,7 @@ const SignupForm: React.FC = () => {
           style: {
             borderRadius: '10px',
             fontSize: '14px',
-            background: '#0C0C0C',
+            background: '#24282B',
             color: '#fff',
           }
         }
@@ -83,16 +85,32 @@ const SignupForm: React.FC = () => {
           <h5 className="font-extralight text-xs"><span className="font-bold text-sm">Welcome.</span> Create your account.</h5>
         </div>
         <div className="flex flex-col w-full space-y-2">
-          <div className="flex items-center w-full px-1 rounded-md text-pantone-white bg-transparent border border-pantone-gray transition ease-linear duration-200 hover:border-pantone-white focus-within:border-pantone-white">
-            <div className="px-3 border-r border-pantone-white border-opacity-30">
-              <RiUser3Line className="w-6 h-6 text-pantone-white text-opacity-50" />
+          <div className="flex flex-row items-center w-full space-x-2">
+            <div className="flex items-center w-full px-1 rounded-md text-pantone-white bg-transparent border border-pantone-gray transition ease-linear duration-200 hover:border-pantone-white focus-within:border-pantone-white">
+              <div className="px-3 border-r border-pantone-white border-opacity-30">
+                <RiUser3Line className="w-6 h-6 text-pantone-white text-opacity-50" />
+              </div>
+              <input
+                className="w-full px-3 py-5 text-sm bg-transparent outline-none"
+                type="text"
+                placeholder="Name"
+                {...register("name", { required: true })}
+              />
             </div>
-            <input
-              className="w-full px-3 py-5 text-sm bg-transparent outline-none"
-              type="text"
-              placeholder="Name"
-              {...register("name", { required: true })}
-            />
+            <div className="flex items-center w-full px-1 rounded-md text-pantone-white text-opacity-60 bg-transparent border border-pantone-gray transition ease-linear duration-200 hover:border-pantone-white focus-within:border-pantone-white">
+              <div className="px-3 border-r border-pantone-white border-opacity-30">
+                <RiMusicLine className="w-6 h-6 text-pantone-white text-opacity-50" />
+              </div>
+              <select
+                className="w-full px-3 py-5 text-sm bg-pantone-black outline-none"
+                {...register("account_type", { required: true })}
+              >
+                <option value="" className="hidden">Account Type</option>
+                <option value="Typical">Typical</option>
+                <option value="Lyricist">Lyricist</option>
+                <option value="Poet">Poet</option>
+              </select>
+            </div>
           </div>
           <div className="flex flex-row items-center w-full space-x-2">
             <div className={`${ errors.phone ? 'hover:border-pantone-red focus-within:border-pantone-red' : 'hover:border-pantone-white focus-within:border-pantone-white' } flex items-center w-full px-1 rounded-md text-pantone-white bg-transparent border border-pantone-gray transition ease-linear duration-200`}>

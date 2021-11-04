@@ -9,6 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const {
       name,
+      account_type,
       username,
       phone,
       email,
@@ -19,17 +20,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const foundUser = await prisma.users.findMany({
       select: {
         id: true,
-        uuid: true,
-        verify_email: true,
         phone: true,
-        email: true,
         username: true,
-        password: true
+        email: true
       }
     })
 
+    const check_phone_exist = foundUser.some((user: { phone: string }) => user.phone === phone)
+    const check_username_exist = foundUser.some((user: { username: string }) => user.username === username)
+    const check_email_exist = foundUser.some((user: { email: string }) => user.email === email)
+
     // check phone number if exist
-    if (foundUser[0].phone === phone) {
+    if (check_phone_exist) {
       return res
         .status(401)
         .json({
@@ -38,7 +40,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     // check username if exist
-    if (foundUser[0].username === username) {
+    if (check_username_exist) {
       return res
         .status(401)
         .json({
@@ -47,7 +49,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     // check email if exist
-    if (foundUser[0].email === email) {
+    if (check_email_exist) {
       return res
         .status(401)
         .json({
@@ -63,6 +65,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const signup = await prisma.users.create({
       data: {
         name: name,
+        account_type: account_type,
         username: username,
         phone: phone,
         email: email,

@@ -3,21 +3,24 @@ import React from 'react'
 import Link from 'next/link'
 import { RiPushpinFill, RiEye2Fill, RiMusic2Fill, RiBookOpenFill } from 'react-icons/ri'
 
-const LeftSideBar: React.FC = () => {
+interface TypeProps {
+  host: any
+}
+
+const LeftSideBar: React.FC<TypeProps> = ({ host }) => {
   return (
     <div className="flex flex-col w-full max-w-xs h-full overflow-y-auto scrollbar-hide pb-20 bg-pantone-gray border-r border-pantone-white border-opacity-10">
       <div className="flex flex-col items-center w-full px-5 py-5 space-y-3">
         <img
           className="w-40 h-40 rounded-lg bg-pantone-darkblack"
-          // src="https://ui-avatars.com/api/?name=Fix+Rhythm&background=24282B&color=aaa"
-          src="fixrhythm.png"
+          src={`${ host.profile ? host.profile : `https://ui-avatars.com/api/?name=${ host.name }&background=24282B&color=aaa` }`}
           alt=""
         />
-        <div className="flex flex-col items-center w-full space-y-1">
-          <span className="font-bold text-xl text-pantone-white">Fixrhythm</span>
-          <span className="font-light text-sm text-pantone-white">Lyricist</span>
+        <div className="flex flex-col items-center w-full space-y-2">
+          <span className="font-bold text-xl text-pantone-white">{ host.name }</span>
+          <span className="font-light text-sm text-pantone-white">{ host.account_type }</span>
           <span className="font-light text-xs text-pantone-white text-opacity-30 text-center">
-            Social media for people who wants to share their thoughts through song lyrics and poems to the world. To inspire other music artists and lyricists.
+            {`${ host.shortbio ? host.shortbio : 'Welcome to Fixrhythm' }`}
           </span>
         </div>
         <div className="flex flex-col items-center w-full space-y-1">
