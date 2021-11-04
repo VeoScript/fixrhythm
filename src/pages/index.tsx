@@ -5,8 +5,13 @@ import useUser from '~/lib/useUser'
 import Layout from '~/layouts/default'
 import Guard from '~/layouts/guard'
 import NewsFeed from '~/components/NewsFeed'
+import prisma from '~/lib/Prisma'
 
-const Home: NextPage = () => {
+interface TypeProps {
+  compositions: any
+}
+
+const Home: NextPage<TypeProps> = ({ compositions }) => {
 
   const { user: host } = useUser()
 
@@ -27,10 +32,52 @@ const Home: NextPage = () => {
         <title>Fixrhythm</title>
       </Head>
       <Layout host={host}>
-        <NewsFeed />
+        <NewsFeed
+          host={host}
+          compositions={compositions}
+        />
       </Layout>
     </React.Fragment>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+
+  const compositions = await prisma.compositions.findMany({
+    orderBy: [
+      {
+        id: 'desc'
+      }
+    ],
+    select: {
+      id: true,
+      uuid: true,
+      title: true,
+      description: true,
+      content: true,
+      status: true,
+      date: true,
+      likes: true,
+      comments: true,
+      bookmarks: true,
+      user: {
+        select: {
+          id: true,
+          uuid: true,
+          profile: true,
+          account_type: true,
+          name: true,
+          username: true
+        }
+      }
+    }
+  })
+
+  return {
+    props: {
+      compositions
+    }
+  }
 }
 
 export default Home

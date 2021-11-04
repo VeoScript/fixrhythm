@@ -11,9 +11,9 @@ generator client {
 }
 
 model Users {
-  id                              Int                @unique                    @default(autoincrement())
-  uuid                            String             @id                        @default(uuid())
-  verify_email                    Boolean                                       @default(false)
+  id                              Int                         @unique                    @default(autoincrement())
+  uuid                            String                      @id                        @default(uuid())
+  verify_email                    Boolean                                                @default(false)
   profile                         String?
   shortbio                        String?
   account_type                    String
@@ -22,4 +22,51 @@ model Users {
   username                        String
   email                           String
   password                        String
+  composition                     Compositions[]
+  likes                           Likes[]
+  comments                        Comments[]
+  bookmarks                       Bookmarks[]
+}
+
+model Compositions {
+  id                              Int                         @unique                    @default(autoincrement())
+  uuid                            String                      @id                        @default(uuid())
+  title                           String
+  description                     String
+  content                         String
+  status                          String
+  date                            String
+  likes                           Likes[]
+  comments                        Comments[]
+  bookmarks                       Bookmarks[]
+  user                            Users                                                  @relation(fields: [userId], references: [uuid])
+  userId                          String
+}
+
+model Likes {
+  id                              Int                         @unique                    @default(autoincrement())
+  uuid                            String                      @id                        @default(uuid())
+  user                            Users                                                  @relation(fields: [userId], references: [uuid])
+  userId                          String
+  composition                     Compositions                                           @relation(fields: [compositionId], references: [uuid])
+  compositionId                   String
+}
+
+model Comments {
+  id                              Int                         @unique                    @default(autoincrement())
+  uuid                            String                      @id                        @default(uuid())
+  content                         String
+  user                            Users                                                  @relation(fields: [userId], references: [uuid])
+  userId                          String
+  composition                     Compositions                                           @relation(fields: [compositionId], references: [uuid])
+  compositionId                   String
+}
+
+model Bookmarks {
+  id                              Int                         @unique                    @default(autoincrement())
+  uuid                            String                      @id                        @default(uuid())
+  user                            Users                                                  @relation(fields: [userId], references: [uuid])
+  userId                          String
+  composition                     Compositions                                           @relation(fields: [compositionId], references: [uuid])
+  compositionId                   String
 }
