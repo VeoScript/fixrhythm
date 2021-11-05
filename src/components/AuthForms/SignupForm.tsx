@@ -103,13 +103,13 @@ const SignupForm: React.FC = () => {
                 <RiMusicLine className="w-6 h-6 text-pantone-white text-opacity-50" />
               </div>
               <select
-                className="w-full px-3 py-5 text-sm bg-pantone-black outline-none"
+                className="w-full px-3 py-5 text-sm bg-transparent outline-none"
                 {...register("account_type", { required: true })}
               >
                 <option value="" className="hidden">Account Type</option>
-                <option value="Typical">Typical</option>
-                <option value="Lyricist">Lyricist</option>
-                <option value="Poet">Poet</option>
+                <option value="Typical" className="bg-pantone-darkblack">Typical</option>
+                <option value="Lyricist" className="bg-pantone-darkblack">Lyricist</option>
+                <option value="Poet" className="bg-pantone-darkblack">Poet</option>
               </select>
             </div>
           </div>

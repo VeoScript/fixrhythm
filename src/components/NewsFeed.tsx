@@ -15,14 +15,14 @@ const fetcher = async (
 
 interface TypeProps {
   host: any
-  compositions: any
+  published_compositions: any
 }
 
-const NewsFeed: React.FC<TypeProps> = ({ host, compositions }) => {
+const NewsFeed: React.FC<TypeProps> = ({ host, published_compositions }) => {
 
-  const { data: fetchCompositions } = useSWR('/api/compositions', fetcher, {
+  const { data: fetchPublishedCompositions } = useSWR('/api/compositions/publish', fetcher, {
     refreshInterval: 1000,
-    fallbackData: compositions
+    fallbackData: published_compositions
   })
 
   return (
@@ -40,8 +40,12 @@ const NewsFeed: React.FC<TypeProps> = ({ host, compositions }) => {
         </div>
       </div>
       <div className="flex flex-col w-full h-full overflow-y-auto p-3 pb-20 space-y-3">
-        {fetchCompositions.map((composition: any, i: number) => (
-          <PostCard composition={composition} key={i} />
+        {fetchPublishedCompositions.map((composition: any, i: number) => (
+          <PostCard
+            key={i}
+            host={host}
+            composition={composition}
+          />
         ))}
       </div>
     </div>

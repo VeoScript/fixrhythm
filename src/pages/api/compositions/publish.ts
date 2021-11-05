@@ -5,7 +5,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method !== 'GET') {
     res.status(500).json('GET Method Only')
   } else {
-    const get_compositions = await prisma.compositions.findMany({
+    const get_published_compositions = await prisma.compositions.findMany({
+      where: {
+        status: 'Published'
+      },
       orderBy: [
         {
           id: 'desc'
@@ -17,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         title: true,
         description: true,
         content: true,
-        status: true,
+        category: true,
         date: true,
         likes: true,
         comments: true,
@@ -34,6 +37,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
       }
     })
-    res.status(200).json(get_compositions)
+    res.status(200).json(get_published_compositions)
   }
 }
