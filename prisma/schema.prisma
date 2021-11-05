@@ -34,21 +34,22 @@ model Compositions {
   title                           String
   description                     String
   content                         String
+  category                        String
   status                          String
   date                            String
   likes                           Likes[]
   comments                        Comments[]
   bookmarks                       Bookmarks[]
-  user                            Users                                                  @relation(fields: [userId], references: [uuid])
+  user                            Users                                                  @relation(fields: [userId], references: [uuid], onDelete: Cascade)
   userId                          String
 }
 
 model Likes {
   id                              Int                         @unique                    @default(autoincrement())
   uuid                            String                      @id                        @default(uuid())
-  user                            Users                                                  @relation(fields: [userId], references: [uuid])
+  user                            Users                                                  @relation(fields: [userId], references: [uuid], onDelete: Cascade)
   userId                          String
-  composition                     Compositions                                           @relation(fields: [compositionId], references: [uuid])
+  composition                     Compositions                                           @relation(fields: [compositionId], references: [uuid], onDelete: Cascade)
   compositionId                   String
 }
 
@@ -56,17 +57,17 @@ model Comments {
   id                              Int                         @unique                    @default(autoincrement())
   uuid                            String                      @id                        @default(uuid())
   content                         String
-  user                            Users                                                  @relation(fields: [userId], references: [uuid])
+  user                            Users                                                  @relation(fields: [userId], references: [uuid], onDelete: Cascade)
   userId                          String
-  composition                     Compositions                                           @relation(fields: [compositionId], references: [uuid])
+  composition                     Compositions                                           @relation(fields: [compositionId], references: [uuid], onDelete: Cascade)
   compositionId                   String
 }
 
 model Bookmarks {
   id                              Int                         @unique                    @default(autoincrement())
   uuid                            String                      @id                        @default(uuid())
-  user                            Users                                                  @relation(fields: [userId], references: [uuid])
+  user                            Users                                                  @relation(fields: [userId], references: [uuid], onDelete: Cascade)
   userId                          String
-  composition                     Compositions                                           @relation(fields: [compositionId], references: [uuid])
+  composition                     Compositions                                           @relation(fields: [compositionId], references: [uuid], onDelete: Cascade)
   compositionId                   String
 }
