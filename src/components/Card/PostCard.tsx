@@ -2,8 +2,9 @@
 import React from 'react'
 import Link from 'next/link'
 import Moment from 'react-moment'
-import BookmarkButton from './Interactions/BookmarkButton'
-import ReactionButton from './Interactions/ReactionButton'
+import MenuDropdown from './MenuDropdown'
+import BookmarkButton from '../Interactions/BookmarkButton'
+import ReactionButton from '../Interactions/ReactionButton'
 import {
   RiMoreFill,
   RiEye2Fill,
@@ -56,9 +57,10 @@ const PostCard: React.FC<TypeProps> = ({ host, composition }) => {
         </div>
       </div>
       <div className="flex flex-col w-full max-w-[3rem] space-y-2">
-        <button>
-          <RiMoreFill className="w-5 h-5 transition ease-linear duration-100 hover:scale-90" />
-        </button>
+        <MenuDropdown
+          host={host}
+          composition={composition}
+        />
         <button>
           <RiEye2Fill className="w-5 h-5 transition ease-linear duration-100 hover:scale-90" />
         </button>
