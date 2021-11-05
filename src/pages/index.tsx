@@ -8,10 +8,10 @@ import NewsFeed from '~/components/NewsFeed'
 import prisma from '~/lib/Prisma'
 
 interface TypeProps {
-  compositions: any
+  published_compositions: any
 }
 
-const Home: NextPage<TypeProps> = ({ compositions }) => {
+const Home: NextPage<TypeProps> = ({ published_compositions }) => {
 
   const { user: host } = useUser()
 
@@ -19,7 +19,7 @@ const Home: NextPage<TypeProps> = ({ compositions }) => {
     return (
       <React.Fragment>
         <Head>
-          <title>FixRhythm</title>
+          <title>Fixrhythm</title>
         </Head>
         <Guard />
       </React.Fragment>
@@ -34,7 +34,7 @@ const Home: NextPage<TypeProps> = ({ compositions }) => {
       <Layout host={host}>
         <NewsFeed
           host={host}
-          compositions={compositions}
+          published_compositions={published_compositions}
         />
       </Layout>
     </React.Fragment>
@@ -43,7 +43,10 @@ const Home: NextPage<TypeProps> = ({ compositions }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
 
-  const compositions = await prisma.compositions.findMany({
+  const published_compositions = await prisma.compositions.findMany({
+    where: {
+      status: 'Published'
+    },
     orderBy: [
       {
         id: 'desc'
@@ -55,7 +58,7 @@ export const getStaticProps: GetStaticProps = async () => {
       title: true,
       description: true,
       content: true,
-      status: true,
+      category: true,
       date: true,
       likes: true,
       comments: true,
@@ -75,7 +78,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      compositions
+      published_compositions
     }
   }
 }
