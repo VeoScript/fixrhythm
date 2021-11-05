@@ -1,6 +1,6 @@
-import { prisma } from '@prisma/client'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import FormLoader from '~/utils/FormLoader'
 import { RiMeteorFill, RiMusic2Fill, RiBookOpenFill } from 'react-icons/ri'
 
 interface TypeProps {
@@ -11,7 +11,7 @@ interface TypeProps {
 interface FormData {
   title: string
   description: string
-  composition_status: string
+  composition_category: string
   content_editor: string
 }
 
@@ -22,24 +22,24 @@ const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
   const defaultValues = {
     title: "",
     description: "",
-    composition_status: "",
+    composition_category: "",
     content_editor: ""
   }
 
-  const { register, handleSubmit, reset, setValue, formState: { errors, isSubmitting } } = useForm({ defaultValues })
+  const { register, handleSubmit, reset, setValue, formState: { isSubmitting } } = useForm({ defaultValues })
 
   React.useEffect(() => {
     register('content_editor', { required: true })
   }, [register])
 
-  async function onPublish(formData: FormData) {
+  async function onDraft(formData: FormData) {
     const userId = host.uuid
     const title = formData.title
     const description = formData.description
-    const composition_status = formData.composition_status
+    const composition_category = formData.composition_category
     const content_editor = formData.content_editor
 
-    await fetch('/api/compositions/create', {
+    await fetch('/api/compositions/create/draft', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
       body: JSON.stringify({
         title,
         description,
-        composition_status,
+        composition_category,
         content_editor,
         userId
       })
@@ -55,6 +55,37 @@ const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
 
     reset()
     closeModal()
+  }
+
+  async function onPublish(formData: FormData) {
+    const userId = host.uuid
+    const title = formData.title
+    const description = formData.description
+    const composition_category = formData.composition_category
+    const content_editor = formData.content_editor
+
+    await fetch('/api/compositions/create/publish', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title,
+        description,
+        composition_category,
+        content_editor,
+        userId
+      })
+    })
+
+    reset()
+    closeModal()
+  }
+
+  function handleLineBreak(e: any) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault()
+    }
   }
 
   return (
@@ -79,10 +110,10 @@ const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
               {...register("title", { required: true })}
             />
           </div>
-          <div className="flex items-center w-full px-1 text-pantone-white bg-transparent border-t border-r border-pantone-white border-opacity-10">
+          <div className="flex items-center w-full px-1 text-pantone-white bg-transparent rounded-tr-md border-t border-r border-pantone-white border-opacity-10">
             <select
               className="w-full px-3 py-[1.2rem] text-sm text-pantone-white text-opacity-50 bg-transparent outline-none cursor-pointer"
-              {...register("composition_status", { required: true })}
+              {...register("composition_category", { required: true })}
               onInput={(e: any) => {
                 switch(e.currentTarget.value) {
                   case 'Song':
@@ -110,33 +141,47 @@ const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
             {...register("description", { required: true })}
           />
         </div>
-        <div className="flex items-center w-full px-1 rounded-b-md text-pantone-white bg-transparent border-t border-b border-l border-r border-pantone-white border-opacity-10">
+        <div className="flex items-center w-full px-1 whitespace-pre-wrap rounded-b-md text-pantone-white bg-transparent border-t border-b border-l border-r border-pantone-white border-opacity-10">
           <div
             contentEditable
-            id="chatbox"
-            className="w-full h-full max-h-[20rem] overflow-y-auto px-3 py-5 text-sm bg-transparent whitespace-pre-wrap outline-none"
-            placeholder="Type your lyrics here..."
+            className="flex w-full h-full max-h-[20rem] overflow-y-auto px-3 py-5 text-sm bg-transparent whitespace-pre-wrap outline-none"
+            placeholder="Type your lyrics here, shift+enter for new line."
             onInput={(e: any) => setValue('content_editor', e.currentTarget.textContent, { shouldValidate: true })}
+            onKeyPress={handleLineBreak}
           />
         </div>
       </div>
       {/* {errors.title && <span></span>} */}
       <div className="flex flex-row items-center justify-center w-full px-3 py-2 bg-pantone-darkblack">
+        {!isSubmitting && (
+          <React.Fragment>
+            <button
+              className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-sm text-pantone-white bg-pantone-gray rounded-l-lg border-r border-pantone-white border-opacity-10 transition ease-linear duration-200 hover:bg-opacity-50"
+              type="button"
+              onClick={handleSubmit(onDraft)}
+            >
+              Draft
+            </button>
+            <button
+              className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-sm text-pantone-white bg-pantone-gray transition ease-linear duration-200 hover:bg-opacity-50"
+              type="button"
+              onClick={handleSubmit(onPublish)}
+            >
+              Publish
+            </button>
+          </React.Fragment>
+        )}
+        {isSubmitting && (
+          <div className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-sm text-pantone-white bg-pantone-gray rounded-l-lg border-r border-pantone-white border-opacity-10">
+            <FormLoader
+              width="20px"
+              height="20px"
+              color="#C71F2D"
+            />
+          </div>
+        )}
         <button
-          className="flex justify-center w-full max-w-[5rem] px-3 py-2 text-sm text-pantone-white bg-pantone-gray rounded-l-lg border-r border-pantone-white border-opacity-10 transition ease-linear duration-200 hover:bg-opacity-50"
-          type="button"
-        >
-          Draft
-        </button>
-        <button
-          className="flex justify-center w-full max-w-[5rem] px-3 py-2 text-sm text-pantone-white bg-pantone-gray transition ease-linear duration-200 hover:bg-opacity-50"
-          type="button"
-          onClick={handleSubmit(onPublish)}
-        >
-          Publish
-        </button>
-        <button
-          className="flex justify-center w-full max-w-[5rem] px-3 py-2 text-sm text-pantone-white bg-pantone-gray rounded-r-lg border-l border-pantone-white border-opacity-10 transition ease-linear duration-200 hover:bg-opacity-50"
+          className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-sm text-pantone-white bg-pantone-gray rounded-r-lg border-l border-pantone-white border-opacity-10 transition ease-linear duration-200 hover:bg-opacity-50"
           type="button"
           onClick={() => closeModal()}
         >
