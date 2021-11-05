@@ -1,6 +1,6 @@
 import React from 'react'
 import ComposeCard from './Compose/ComposeCard'
-import PostCard from './PostCard'
+import PostCard from './Card/PostCard'
 import useSWR from 'swr'
 import { RiSearchLine } from 'react-icons/ri'
 
