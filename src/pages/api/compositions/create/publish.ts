@@ -6,16 +6,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     res.status(500).json('POST Method Only')
   } else {
     const date = new Date()
-    const compose = await prisma.compositions.create({
+    const publish = await prisma.compositions.create({
       data: {
         title: req.body.title,
         description: req.body.description,
         content: req.body.content_editor,
-        status: req.body.composition_status,
+        category: req.body.composition_category,
+        status: String('Published'),
         date: String(date),
         userId: req.body.userId
       }
     })
-    res.status(200).json(compose)
+    res.status(200).json(publish)
   }
 }
