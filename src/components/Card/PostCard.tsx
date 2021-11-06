@@ -5,12 +5,7 @@ import Moment from 'react-moment'
 import MenuDropdown from './MenuDropdown'
 import BookmarkButton from '../Interactions/BookmarkButton'
 import ReactionButton from '../Interactions/ReactionButton'
-import {
-  RiMoreFill,
-  RiEye2Fill,
-  RiMusic2Fill,
-  RiBookOpenFill
-} from 'react-icons/ri'
+import { RiEye2Fill, RiMusic2Fill, RiBookOpenFill } from 'react-icons/ri'
 
 interface TypeProps {
   host: any
@@ -49,21 +44,37 @@ const PostCard: React.FC<TypeProps> = ({ host, composition }) => {
             </div>
             <span className="font-normal text-[12px] text-pantone-white text-opacity-50 h-full">{ composition.description }</span>
             <div className="flex flex-row items-center w-full space-x-1 pt-3 font-light text-[10px] text-pantone-white text-opacity-40">
-              <span>Published</span>
-              <span className="font-light text-xs text-pantone-white text-opacity-30">&bull;</span>
-              <Moment date={ composition.date } fromNow />
+              <div className="flex space-x-1">
+                <span>Published</span>
+                <Moment date={ composition.datePublished } fromNow />
+              </div>
+              {composition.dateEdited && (
+                <React.Fragment>
+                  <span className="font-light text-xs text-pantone-white text-opacity-30">&bull;</span>
+                  <div className="flex space-x-1">
+                    <span>Edited</span>
+                    <Moment date={ composition.dateEdited } fromNow />
+                  </div>
+                </React.Fragment>
+              )}
             </div>
           </div>
         </div>
       </div>
       <div className="flex flex-col w-full max-w-[3rem] space-y-2">
-        <MenuDropdown
-          host={host}
-          composition={composition}
-        />
-        <button>
-          <RiEye2Fill className="w-5 h-5 transition ease-linear duration-100 hover:scale-90" />
-        </button>
+        <div className="relative flex">
+          {host.username === composition.user.username && (
+            <MenuDropdown
+              host={host}
+              composition={composition}
+            />
+          )}
+        </div>
+        <div className="flex">
+          <button>
+            <RiEye2Fill className="w-5 h-5 transition ease-linear duration-100 hover:scale-90" />
+          </button>
+        </div>
         <div className="flex flex-row items-center space-x-1">
           <BookmarkButton
             host={host}
