@@ -6,17 +6,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     res.status(500).json('POST Method Only')
   } else {
     const date = new Date()
-    const publish = await prisma.compositions.create({
+    const update_as_published = await prisma.compositions.updateMany({
+      where: {
+        uuid: req.body.compositionId,
+        userId: req.body.userId
+      },
       data: {
         title: req.body.title,
         description: req.body.description,
         content: req.body.content_editor,
         category: req.body.composition_category,
         status: String('Published'),
-        datePublished: String(date),
+        dateEdited: String(date),
         userId: req.body.userId
       }
     })
-    res.status(200).json(publish)
+    res.status(200).json(update_as_published)
   }
 }

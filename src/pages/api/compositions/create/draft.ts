@@ -13,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         content: req.body.content_editor,
         category: req.body.composition_category,
         status: String('Draft'),
-        date: String(date),
+        datePublished: String(date),
         userId: req.body.userId
       }
     })

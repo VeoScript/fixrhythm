@@ -8,10 +8,12 @@ import NewsFeed from '~/components/NewsFeed'
 import prisma from '~/lib/Prisma'
 
 interface TypeProps {
+  accounts: any
+  artists: any
   published_compositions: any
 }
 
-const Home: NextPage<TypeProps> = ({ published_compositions }) => {
+const Home: NextPage<TypeProps> = ({ artists, published_compositions }) => {
 
   const { user: host } = useUser()
 
@@ -31,7 +33,10 @@ const Home: NextPage<TypeProps> = ({ published_compositions }) => {
       <Head>
         <title>Fixrhythm</title>
       </Head>
-      <Layout host={host}>
+      <Layout
+        host={host}
+        artists={artists}
+      >
         <NewsFeed
           host={host}
           published_compositions={published_compositions}
@@ -42,6 +47,16 @@ const Home: NextPage<TypeProps> = ({ published_compositions }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+
+  const artists = await prisma.users.findMany({
+    select: {
+      id: true,
+      uuid: true,
+      account_type: true,
+      name: true,
+      username: true
+    }
+  })
 
   const published_compositions = await prisma.compositions.findMany({
     where: {
@@ -59,7 +74,8 @@ export const getStaticProps: GetStaticProps = async () => {
       description: true,
       content: true,
       category: true,
-      date: true,
+      datePublished: true,
+      dateEdited: true,
       likes: true,
       comments: true,
       bookmarks: true,
@@ -78,6 +94,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
+      artists,
       published_compositions
     }
   }

@@ -1,6 +1,6 @@
 import React from 'react'
-// import EditPost from '../../PostsCard/Edit/EditPost'
-// import DeletePost from '../../PostsCard/Delete/DeletePost'
+import EditCard from './Edit/EditCard'
+import DeleteCard from './Delete/DeleteCard'
 import { RiMoreFill } from 'react-icons/ri'
 
 interface TypeProps {
@@ -31,21 +31,19 @@ const MenuDropdown: React.FC<TypeProps> = ({ host, composition }) => {
               setIsDropdown(false)
             }} 
           />
-          <div className="absolute w-full">
-            <div className="absolute w-full max-w-[5rem] -left-24 top-0 z-10">
-              <div className="flex w-full overflow-hidden shadow-sm rounded-md bg-pantone-darkblack border border-pantone-white border-opacity-10">
-                <div className="flex flex-col w-full">
-                  <button
-                    className="w-full px-3 py-2 font-light text-xs text-left transition ease-linear duration-200 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-10"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="w-full px-3 py-2 border-t border-pantone-white border-opacity-10 font-light text-xs text-left transition ease-linear duration-200 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-10"
-                  >
-                    Delete
-                  </button>
-                </div>
+          <div className="absolute w-[5rem] -left-14 top-7 z-10">
+            <div className="flex w-full overflow-hidden shadow-sm rounded-md bg-pantone-black border border-pantone-white border-opacity-10">
+              <div className="flex flex-col w-full">
+                <EditCard
+                  host={host}
+                  composition={composition}
+                  setIsDropdown={setIsDropdown}
+                />
+                <DeleteCard
+                  host={host}
+                  composition={composition}
+                  setIsDropdown={setIsDropdown}
+                />
               </div>
             </div>
           </div>

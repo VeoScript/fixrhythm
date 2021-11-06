@@ -39,6 +39,10 @@ const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
     const composition_category = formData.composition_category
     const content_editor = formData.content_editor
 
+    if(document.getElementById('content_editor')!.innerText.trim().length === 0 || content_editor === ''){
+      return
+    }
+
     await fetch('/api/compositions/create/draft', {
       method: 'POST',
       headers: {
@@ -63,6 +67,10 @@ const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
     const description = formData.description
     const composition_category = formData.composition_category
     const content_editor = formData.content_editor
+
+    if(document.getElementById('content_editor')!.innerText.trim().length === 0 || content_editor === ''){
+      return
+    }
 
     await fetch('/api/compositions/create/publish', {
       method: 'POST',
@@ -143,15 +151,16 @@ const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
         </div>
         <div className="flex items-center w-full px-1 whitespace-pre-wrap rounded-b-md text-pantone-white bg-transparent border-t border-b border-l border-r border-pantone-white border-opacity-10">
           <div
-            contentEditable
-            className="flex w-full h-full max-h-[20rem] overflow-y-auto px-3 py-5 text-sm bg-transparent whitespace-pre-wrap outline-none"
+            id="content_editor"
+            className="w-full h-full max-h-[20rem] overflow-y-auto p-5 text-sm bg-transparent whitespace-pre-wrap outline-none"
             placeholder="Type your lyrics here, shift+enter for new line."
+            contentEditable
+            spellCheck={false}
             onInput={(e: any) => setValue('content_editor', e.currentTarget.textContent, { shouldValidate: true })}
             onKeyPress={handleLineBreak}
           />
         </div>
       </div>
-      {/* {errors.title && <span></span>} */}
       <div className="flex flex-row items-center justify-center w-full px-3 py-2 bg-pantone-darkblack">
         {!isSubmitting && (
           <React.Fragment>
