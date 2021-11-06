@@ -36,7 +36,8 @@ model Compositions {
   content                         String
   category                        String
   status                          String
-  date                            String
+  datePublished                   String
+  dateEdited                      String?
   likes                           Likes[]
   comments                        Comments[]
   bookmarks                       Bookmarks[]
