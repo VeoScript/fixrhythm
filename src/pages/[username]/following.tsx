@@ -29,7 +29,7 @@ const Following: NextPage<TypeProps> = ({ profile, artists, following }) => {
       </React.Fragment>
     )
   }
-
+  
   return (
     <React.Fragment>
       <Head>
