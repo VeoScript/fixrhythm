@@ -35,9 +35,9 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
   }, [host.uuid, get_profile])
 
   return (
-    <div className="flex flex-col items-center w-full h-full overflow-x-hidden overflow-y-auto">
-      <div className="flex w-full h-full max-h-[12rem] bg-pantone-gray" />
-      <div className="relative w-full">
+    <div className={`flex flex-col items-center w-full h-full overflow-x-hidden overflow-y-auto`}>
+      <div className={`${!host || host.isLoggedIn === false ? 'max-w-5xl rounded-b-xl' : 'max-w-full'} flex w-full h-full max-h-[12rem] bg-pantone-gray`} />
+      <div className={`${!host || host.isLoggedIn === false ? 'max-w-5xl' : 'max-w-full'} relative w-full`}>
         <div className="absolute -top-20 flex flex-col w-full px-20 space-y-5">
           <div className="flex items-center w-full">
             <img
@@ -55,43 +55,57 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
               </div>
               <div className="flex flex-row items-center w-full space-x-5">
                 <div className="flex items-center justify-end w-full space-x-3">
-                  <div className="flex items-center space-x-1 font-light text-[11px]">
-                    <span className="font-bold text-pantone-white text-sm">{ get_profile.followedBy.length }</span>
-                    <Link href={`/${get_profile.username}/followers`}>
-                      <a className="transition ease-linear duration-200 text-pantone-white text-opacity-40 hover:text-red-500">followers</a>
-                    </Link>
+                  <div className="flex items-center space-x-1 font-light text-[14px]">
+                    <span className="font-bold text-pantone-white text-[16px]">{ get_profile.followedBy.length }</span>
+                    {!host || host.isLoggedIn === true && (
+                      <Link href={`/${get_profile.username}/followers`}>
+                        <a className="transition ease-linear duration-200 text-pantone-white text-opacity-40 hover:text-pantone-red">followers</a>
+                      </Link>
+                    )}
+                    {!host || host.isLoggedIn === false && (
+                      <span className="transition ease-linear duration-200 text-pantone-white text-opacity-40">followers</span>
+                    )}
                   </div>
-                  <div className="flex items-center space-x-1 font-light text-[11px]">
-                    <span className="font-bold text-pantone-white text-sm">{ get_profile.following.length }</span>
-                    <Link href={`/${get_profile.username}/following`}>
-                      <a className="transition ease-linear duration-20 text-pantone-white text-opacity-40 hover:text-red-500">following</a>
-                    </Link>
+                  <div className="flex items-center space-x-1 font-light text-[14px]">
+                    <span className="font-bold text-pantone-white text-[16px]">{ get_profile.following.length }</span>
+                    {!host || host.isLoggedIn === true && (
+                      <Link href={`/${get_profile.username}/following`}>
+                        <a className="transition ease-linear duration-20 text-pantone-white text-opacity-40 hover:text-pantone-red">following</a>
+                      </Link>
+                    )}
+                    {!host || host.isLoggedIn === false && (
+                      <span className="transition ease-linear duration-200 text-pantone-white text-opacity-40">following</span>
+                    )}
                   </div>
                 </div>
-                {/* if you are logged in Edit Profile button will display instead for Follow and Unfollow button */}
-                {host.username === get_profile.username && (
-                  <button
-                    className="font-normal text-sm w-[10rem] px-5 py-1.5 rounded-lg bg-pantone-darkblack text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10"
-                  >
-                    Edit Profile
-                  </button>
-                )}
-                {/* if you visit users/artist profile Follow and Unfollow button will display instead of Edit Profile button */}
-                {host.username !== get_profile.username && (
+                {!host || host.isLoggedIn === true && (
                   <React.Fragment>
-                    {!isFollow && (
-                      <FollowButton
-                        host={host}
-                        profile={get_profile}
-                        className="follow_button flex justify-center font-normal w-[10rem] text-sm px-5 py-1.5 rounded-lg bg-pantone-darkblack text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10"
-                      />
+                    {/* if you are logged in Edit Profile button will display instead for Follow and Unfollow button */}
+                    {host.username === get_profile.username && (
+                      <button
+                        className="font-normal text-sm w-[10rem] px-5 py-1.5 rounded-lg bg-pantone-darkblack text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10"
+                      >
+                        Edit Profile
+                      </button>
                     )}
-                    {isFollow && (
-                      <UnfollowButton
-                        host={host}
-                        profile={get_profile}
-                        className="unfollow_button flex justify-center font-normal w-[10rem] text-sm px-5 py-1.5 rounded-lg bg-pantone-darkblack text-pantone-white transition ease-linear duration-200 hover:bg-pantone-red"
-                      />
+                    {/* if you visit users/artist profile Follow and Unfollow button will display instead of Edit Profile button */}
+                    {host.username !== get_profile.username && (
+                      <React.Fragment>
+                        {!isFollow && (
+                          <FollowButton
+                            host={host}
+                            profile={get_profile}
+                            className="follow_button flex justify-center font-normal w-[10rem] text-sm px-5 py-1.5 rounded-lg bg-pantone-darkblack text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10"
+                          />
+                        )}
+                        {isFollow && (
+                          <UnfollowButton
+                            host={host}
+                            profile={get_profile}
+                            className="unfollow_button flex justify-center font-normal w-[10rem] text-sm px-5 py-1.5 rounded-lg bg-pantone-darkblack text-pantone-white transition ease-linear duration-200 hover:bg-pantone-red"
+                          />
+                        )}
+                      </React.Fragment>
                     )}
                   </React.Fragment>
                 )}

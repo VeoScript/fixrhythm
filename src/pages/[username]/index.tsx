@@ -14,20 +14,9 @@ interface TypeProps {
 
 const Home: NextPage<TypeProps> = ({ profile, artists }) => {
 
-  const { user: host } = useUser({
-    redirectTo: "/login",
-  })
+  const { user } = useUser()
 
-  if (!host || host.isLoggedIn === false) {
-    return (
-      <React.Fragment>
-        <Head>
-          <title>Fixrhythm</title>
-        </Head>
-        <Guard />
-      </React.Fragment>
-    )
-  }
+  const host = user ? user : ''
 
   return (
     <React.Fragment>

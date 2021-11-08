@@ -39,10 +39,6 @@ const DisplayFollowing: React.FC<TypeProps> = ({ host, profile, following }) => 
           <div className="flex w-full max-w-[10rem]">
             <span className="font-bold text-sm text-pantone-white text-opacity-80">Following</span>
           </div>
-          <div className="flex flex-row items-center w-full max-w-[20rem] px-3 space-x-3 bg-pantone-gray rounded-lg border border-pantone-black focus-within:border-pantone-white focus-within:border-opacity-30">
-            <RiSearchLine className="text-white text-opacity-60" />
-            <input type="text" className="w-full py-1.5 text-xs bg-transparent outline-none" placeholder="Search name" />
-          </div>
           <div className="flex justify-end w-full max-w-[10rem]">
             <Link href={`/${ profile.username }`}>
               <a className="font-normal text-xs px-5 py-1.5 rounded-lg bg-pantone-black text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10">
@@ -82,14 +78,14 @@ const DisplayFollowing: React.FC<TypeProps> = ({ host, profile, following }) => 
                         <FollowButton
                           host={host}
                           profile={following.follower}
-                          className="follow_button flex justify-center w-[6rem] font-normal text-sm text-center px-3 py-1.5 rounded-lg bg-pantone-black text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10"
+                          className="follow_button flex justify-center w-[6rem] font-normal text-xs text-center px-3 py-1.5 rounded-lg bg-pantone-black text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10"
                         />
                       )}
                       {check_follow && (
                         <UnfollowButton
                           host={host}
                           profile={following.follower}
-                          className="unfollow_button flex justify-center w-[7rem] font-normal text-sm text-center px-3 py-1.5 rounded-lg bg-pantone-black text-pantone-white transition ease-linear duration-200 hover:bg-pantone-red"
+                          className="unfollow_button flex justify-center w-[7rem] font-normal text-xs text-center px-3 py-1.5 rounded-lg bg-pantone-black text-pantone-white transition ease-linear duration-200 hover:bg-pantone-red"
                         />
                       )}
                     </React.Fragment>

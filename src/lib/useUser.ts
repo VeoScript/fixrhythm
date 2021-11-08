@@ -12,7 +12,7 @@ const fetcher = async (
 }
 
 export default function useUser({
-  redirectTo = "/",
+  redirectTo = "",
   redirectIfFound = false
 } = {}) {
 
