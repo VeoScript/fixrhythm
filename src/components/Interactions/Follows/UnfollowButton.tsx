@@ -5,13 +5,10 @@ import { useForm } from 'react-hook-form'
 interface TypeProps {
   host: any
   profile: any
-  width: string
-  fontSize: string
-  paddingX: string
-  paddingY: string
+  className: string
 }
 
-const UnfollowButton: React.FC<TypeProps> = ({ host, profile, width, fontSize, paddingX, paddingY }) => {
+const UnfollowButton: React.FC<TypeProps> = ({ host, profile, className }) => {
 
   const { handleSubmit, formState: { isSubmitting } } = useForm()
 
@@ -32,7 +29,7 @@ const UnfollowButton: React.FC<TypeProps> = ({ host, profile, width, fontSize, p
     <React.Fragment>
       {!isSubmitting && (
         <button
-          className={`unfollow_button font-normal ${ width } ${ fontSize } ${ paddingX } ${ paddingY } rounded-lg bg-pantone-darkblack text-pantone-white transition ease-linear duration-200 hover:bg-pantone-red`}
+          className={ className }
           type="button"
           onClick={handleSubmit(onUnfollow)}
         >
@@ -41,7 +38,7 @@ const UnfollowButton: React.FC<TypeProps> = ({ host, profile, width, fontSize, p
       )}
       {isSubmitting && (
         <div
-          className={`flex items-center justify-center font-normal ${ width } ${ fontSize } ${ paddingX } ${ paddingY } rounded-lg bg-pantone-red text-pantone-white`}
+          className={ className }
         >
           <FormLoader
             width="20px"

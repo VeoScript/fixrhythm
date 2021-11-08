@@ -5,13 +5,10 @@ import { useForm } from 'react-hook-form'
 interface TypeProps {
   host: any
   profile: any
-  width: string
-  fontSize: string
-  paddingX: string
-  paddingY: string
+  className: string
 }
 
-const FollowButton: React.FC<TypeProps> = ({ host, profile, width, fontSize, paddingX, paddingY }) => {
+const FollowButton: React.FC<TypeProps> = ({ host, profile, className }) => {
 
   const { handleSubmit, formState: { isSubmitting } } = useForm()
 
@@ -32,7 +29,7 @@ const FollowButton: React.FC<TypeProps> = ({ host, profile, width, fontSize, pad
     <React.Fragment>
       {!isSubmitting && (
         <button
-          className={`follow_button font-normal ${ width } ${ fontSize } ${ paddingX } ${ paddingY } rounded-lg bg-pantone-darkblack text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10`}
+          className={ className }
           type="button"
           onClick={handleSubmit(onFollow)}
         >
@@ -41,7 +38,7 @@ const FollowButton: React.FC<TypeProps> = ({ host, profile, width, fontSize, pad
       )}
       {isSubmitting && (
         <div
-          className={`flex items-center justify-center font-normal ${ width } ${ fontSize } ${ paddingX } ${ paddingY } rounded-lg bg-pantone-darkblack text-pantone-white`}
+          className={ className }
         >
           <FormLoader
             width="20px"
