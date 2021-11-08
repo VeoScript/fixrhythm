@@ -70,10 +70,7 @@ const RightSideBar: React.FC<TypeProps> = ({ host, artists }) => {
                             <FollowButton
                               host={host}
                               profile={artist}
-                              width=""
-                              fontSize="text-[10px]"
-                              paddingX="px-2"
-                              paddingY="py-1"
+                              className="follow_button flex justify-center font-normal text-[10px] text-center px-2 py-1 rounded-lg bg-pantone-darkblack text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10"
                             />
                           )}
                         </React.Fragment>

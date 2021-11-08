@@ -44,12 +44,12 @@ const LeftSideBar: React.FC<TypeProps> = ({ host }) => {
         </div>
         <div className="flex items-center w-full space-x-1 font-light text-[11px]">
           <span className="font-bold text-pantone-white text-sm">{ host.following.length }</span>
-          <Link href="/">
+          <Link href={`/${host.username}/following`}>
             <a className="transition ease-linear duration-200 hover:text-red-500">following</a>
           </Link>
         </div>
         <div className="flex items-center w-full space-x-1 font-light text-[11px]">
-          <span className="font-bold text-pantone-white text-sm">0</span>
+          <span className="font-bold text-pantone-white text-sm">{ host.composition.length }</span>
           <Link href="/">
             <a className="transition ease-linear duration-200 hover:text-red-500">compositions</a>
           </Link>

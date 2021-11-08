@@ -11,9 +11,9 @@ generator client {
 }
 
 model Users {
-  id                              Int                         @unique                    @default(autoincrement())
-  uuid                            String                      @id                        @default(uuid())
-  verify_email                    Boolean                                                @default(false)
+  id                              Int                         @unique                   @default(autoincrement())
+  uuid                            String                      @id                       @default(uuid())
+  verify_email                    Boolean                                               @default(false)
   profile                         String?
   shortbio                        String?
   account_type                    String
@@ -26,8 +26,8 @@ model Users {
   likes                           Likes[]
   comments                        Comments[]
   bookmarks                       Bookmarks[]
-  followedBy                      Follows[]                                            @relation("follower")
-  following                       Follows[]                                            @relation("following")
+  followedBy                      Follows[]                                             @relation("follower")
+  following                       Follows[]                                             @relation("following")
 }
 
 model Compositions {

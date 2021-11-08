@@ -4,16 +4,16 @@ import Head from 'next/head'
 import useUser from '~/lib/useUser'
 import Layout from '~/layouts/default'
 import Guard from '~/layouts/guard'
-import DisplayFollowers from '~/components/DisplayFollowers'
+import DisplayFollowing from '~/components/DisplayFollowing'
 import prisma from '~/lib/Prisma'
 
 interface TypeProps {
   profile: any
   artists: any
-  followers: any
+  following: any
 }
 
-const Followers: NextPage<TypeProps> = ({ profile, artists, followers }) => {
+const Following: NextPage<TypeProps> = ({ profile, artists, following }) => {
 
   const { user: host } = useUser({
     redirectTo: "/login",
@@ -39,10 +39,10 @@ const Followers: NextPage<TypeProps> = ({ profile, artists, followers }) => {
         host={host}
         artists={artists}
       >
-        <DisplayFollowers
+        <DisplayFollowing
           host={host}
           profile={profile}
-          followers={followers}
+          following={following}
         />
       </Layout>
     </React.Fragment>
@@ -100,15 +100,15 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
     }
   })
 
-  const followers = await prisma.users.findFirst({
+  const following = await prisma.users.findFirst({
     where: {
       username: String(params?.username)
     },
     select: {
       username: true,
-      followedBy: {
+      following: {
         select: {
-          following: {
+          follower: {
             select: {
               id: true,
               uuid: true,
@@ -116,7 +116,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
               account_type: true,
               name: true,
               username: true,
-              followedBy: true
+              followedBy: true,
             }
           }
         }
@@ -128,9 +128,9 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
     props: {
       profile,
       artists,
-      followers
+      following
     }
   }
 }
 
-export default Followers
+export default Following
