@@ -17,7 +17,7 @@ const PostCard: React.FC<TypeProps> = ({ host, composition }) => {
     <div className="flex flex-row items-center justify-between w-full max-w-full p-3 space-x-5 rounded-lg border border-white border-opacity-10">
       <div className="flex flex-col w-full space-y-5">
         <div className="flex">
-          <Link href="/">
+          <Link href={`/${composition.user.username}`}>
             <a className="flex flex-row items-center space-x-2">
               <img
                 className="w-10 h-10 object-cover rounded-full bg-pantone-gray"

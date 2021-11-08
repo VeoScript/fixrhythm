@@ -1,18 +1,18 @@
-import type { GetStaticProps, NextPage } from 'next'
+import type { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next'
 import React from 'react'
 import Head from 'next/head'
 import useUser from '~/lib/useUser'
 import Layout from '~/layouts/default'
 import Guard from '~/layouts/guard'
-import NewsFeed from '~/components/NewsFeed'
+import Profile from '~/components/Profile'
 import prisma from '~/lib/Prisma'
 
 interface TypeProps {
+  profile: any
   artists: any
-  published_compositions: any
 }
 
-const Home: NextPage<TypeProps> = ({ artists, published_compositions }) => {
+const Home: NextPage<TypeProps> = ({ profile, artists }) => {
 
   const { user: host } = useUser({
     redirectTo: "/login",
@@ -38,16 +38,54 @@ const Home: NextPage<TypeProps> = ({ artists, published_compositions }) => {
         host={host}
         artists={artists}
       >
-        <NewsFeed
+        <Profile
           host={host}
-          published_compositions={published_compositions}
+          profile={profile}
         />
       </Layout>
     </React.Fragment>
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const artists = await prisma.users.findMany({
+    select: {
+      username: true,
+    }
+  })
+
+  return {
+    paths: artists.map((artist: any) => ({
+      params: {
+        username: artist.username
+      }
+    })),
+    fallback: false
+  }
+}
+
+export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
+  const { params } = context
+
+  const profile = await prisma.users.findFirst({
+    where: {
+      username: String(params?.username)
+    },
+    select: {
+      id: true,
+      uuid: true,
+      account_type: true,
+      profile: true,
+      name: true,
+      username: true,
+      email: true,
+      phone: true,
+      shortbio: true,
+      verify_email: true,
+      followedBy: true,
+      following: true
+    }
+  })
 
   const artists = await prisma.users.findMany({
     select: {
@@ -56,48 +94,14 @@ export const getStaticProps: GetStaticProps = async () => {
       account_type: true,
       name: true,
       username: true,
-      followedBy: true,
-    }
-  })
-
-  const published_compositions = await prisma.compositions.findMany({
-    where: {
-      status: 'Published'
-    },
-    orderBy: [
-      {
-        id: 'desc'
-      }
-    ],
-    select: {
-      id: true,
-      uuid: true,
-      title: true,
-      description: true,
-      content: true,
-      category: true,
-      datePublished: true,
-      dateEdited: true,
-      likes: true,
-      comments: true,
-      bookmarks: true,
-      user: {
-        select: {
-          id: true,
-          uuid: true,
-          profile: true,
-          account_type: true,
-          name: true,
-          username: true
-        }
-      }
+      followedBy: true
     }
   })
 
   return {
     props: {
-      artists,
-      published_compositions
+      profile,
+      artists
     }
   }
 }

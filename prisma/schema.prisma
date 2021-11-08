@@ -26,11 +26,13 @@ model Users {
   likes                           Likes[]
   comments                        Comments[]
   bookmarks                       Bookmarks[]
+  followedBy                      Follows[]                                            @relation("follower")
+  following                       Follows[]                                            @relation("following")
 }
 
 model Compositions {
-  id                              Int                         @unique                    @default(autoincrement())
-  uuid                            String                      @id                        @default(uuid())
+  id                              Int                         @unique                   @default(autoincrement())
+  uuid                            String                      @id                       @default(uuid())
   title                           String
   description                     String
   content                         String
@@ -41,34 +43,43 @@ model Compositions {
   likes                           Likes[]
   comments                        Comments[]
   bookmarks                       Bookmarks[]
-  user                            Users                                                  @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+  user                            Users                                                 @relation(fields: [userId], references: [uuid], onDelete: Cascade)
   userId                          String
 }
 
 model Likes {
-  id                              Int                         @unique                    @default(autoincrement())
-  uuid                            String                      @id                        @default(uuid())
-  user                            Users                                                  @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+  id                              Int                         @unique                   @default(autoincrement())
+  uuid                            String                      @id                       @default(uuid())
+  user                            Users                                                 @relation(fields: [userId], references: [uuid], onDelete: Cascade)
   userId                          String
-  composition                     Compositions                                           @relation(fields: [compositionId], references: [uuid], onDelete: Cascade)
+  composition                     Compositions                                          @relation(fields: [compositionId], references: [uuid], onDelete: Cascade)
   compositionId                   String
 }
 
 model Comments {
-  id                              Int                         @unique                    @default(autoincrement())
-  uuid                            String                      @id                        @default(uuid())
+  id                              Int                         @unique                   @default(autoincrement())
+  uuid                            String                      @id                       @default(uuid())
   content                         String
-  user                            Users                                                  @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+  user                            Users                                                 @relation(fields: [userId], references: [uuid], onDelete: Cascade)
   userId                          String
-  composition                     Compositions                                           @relation(fields: [compositionId], references: [uuid], onDelete: Cascade)
+  composition                     Compositions                                          @relation(fields: [compositionId], references: [uuid], onDelete: Cascade)
   compositionId                   String
 }
 
 model Bookmarks {
-  id                              Int                         @unique                    @default(autoincrement())
-  uuid                            String                      @id                        @default(uuid())
-  user                            Users                                                  @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+  id                              Int                         @unique                   @default(autoincrement())
+  uuid                            String                      @id                       @default(uuid())
+  user                            Users                                                 @relation(fields: [userId], references: [uuid], onDelete: Cascade)
   userId                          String
-  composition                     Compositions                                           @relation(fields: [compositionId], references: [uuid], onDelete: Cascade)
+  composition                     Compositions                                          @relation(fields: [compositionId], references: [uuid], onDelete: Cascade)
   compositionId                   String
+}
+
+model Follows {
+  follower                        Users?                                                 @relation("follower", fields: [followerId], references: [uuid], onDelete: Cascade)
+  followerId                      String
+  following                       Users?                                                 @relation("following", fields: [followingId], references: [uuid], onDelete: Cascade)
+  followingId                     String
+
+  @@id([followerId, followingId])
 }

@@ -9,9 +9,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'pantone-darkblack': '#232527',
+        'pantone-darkblack': '#1D1F21',
         'pantone-black': '#24282B', //PANTONE 426 XGC
-        'pantone-gray': '#343739',
+        'pantone-gray': '#2B2F31',
         'pantone-white': '#EDF1FF', // PANTONE 11-4001 TCX Brilliant White
         'pantone-red': '#C71F2D', // PANTONE 18-1763 TCX High Risk Red
       },

@@ -14,6 +14,14 @@ async function handler(
     const host = await prisma.users.findFirst({
       where: {
         username: user.username
+      },
+      include: {
+        likes: true,
+        comments: true,
+        bookmarks: true,
+        composition: true,
+        followedBy: true,
+        following: true
       }
     })
     res.json({

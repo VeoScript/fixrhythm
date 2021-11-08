@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import Link from 'next/link'
+import Router from 'next/router'
 import { RiPushpinFill, RiEye2Fill, RiMusic2Fill, RiBookOpenFill } from 'react-icons/ri'
 
 interface TypeProps {
@@ -12,8 +13,8 @@ const LeftSideBar: React.FC<TypeProps> = ({ host }) => {
     <div className="flex flex-col w-full max-w-xs h-full overflow-y-auto scrollbar-hide pb-20 bg-pantone-gray border-r border-pantone-white border-opacity-10">
       <div className="flex flex-col items-center w-full px-5 py-5 space-y-3">
         <img
-          className="w-40 h-40 rounded-lg bg-pantone-darkblack"
-          src={`${ host.profile ? host.profile : `https://ui-avatars.com/api/?name=${ host.name }&background=24282B&color=aaa` }`}
+          className="w-40 h-40 rounded-full bg-[#1D1F21]"
+          src={`${ host.profile ? host.profile : `https://ui-avatars.com/api/?name=${ host.name }&background=1D1F21&color=FF3C3C` }`}
           alt=""
         />
         <div className="flex flex-col items-center w-full space-y-2">
@@ -24,22 +25,27 @@ const LeftSideBar: React.FC<TypeProps> = ({ host }) => {
           </span>
         </div>
         <div className="flex flex-col items-center w-full space-y-1">
-          <button className="flex justify-center w-full p-3 text-pantone-white bg-pantone-darkblack rounded-lg transition ease-linear duration-200 hover:bg-opacity-50">
+          <button
+            className="flex justify-center w-full p-3 text-pantone-white bg-pantone-darkblack rounded-lg transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10"
+            onClick={() => {
+              Router.push(`${`/${ host.username }`}`)
+            }}
+          >
             <span className="font-light text-xs">View Profile</span>
           </button>
         </div>
       </div>
       <div className="flex flex-row items-center justify-between w-full px-5 space-x-3">
         <div className="flex items-center w-full space-x-1 font-light text-[11px]">
-          <span className="font-bold text-pantone-white text-sm">0</span>
-          <Link href="/">
-            <a className="transition ease-linear duration-200 hover:text-red-500">respects</a>
+          <span className="font-bold text-pantone-white text-sm">{ host.followedBy.length }</span>
+          <Link href={`/${host.username}/followers`}>
+            <a className="transition ease-linear duration-200 hover:text-red-500">followers</a>
           </Link>
         </div>
         <div className="flex items-center w-full space-x-1 font-light text-[11px]">
-          <span className="font-bold text-pantone-white text-sm">0</span>
+          <span className="font-bold text-pantone-white text-sm">{ host.following.length }</span>
           <Link href="/">
-            <a className="transition ease-linear duration-200 hover:text-red-500">respected</a>
+            <a className="transition ease-linear duration-200 hover:text-red-500">following</a>
           </Link>
         </div>
         <div className="flex items-center w-full space-x-1 font-light text-[11px]">
