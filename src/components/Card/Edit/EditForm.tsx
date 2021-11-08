@@ -41,9 +41,7 @@ const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
     const composition_category = formData.composition_category
     const content_editor = formData.content_editor
 
-    if(document.getElementById('content_editor')!.innerText.trim().length === 0 || content_editor === ''){
-      return
-    }
+    if(document.getElementById('content_editor')!.innerText.trim().length === 0 || content_editor === '') return
 
     await fetch('/api/compositions/update/draft', {
       method: 'POST',
@@ -72,9 +70,7 @@ const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
     const composition_category = formData.composition_category
     const content_editor = formData.content_editor
 
-    if(document.getElementById('content_editor')!.innerText.trim().length === 0 || content_editor === ''){
-      return
-    }
+    if(document.getElementById('content_editor')!.innerText.trim().length === 0 || content_editor === '') return
 
     await fetch('/api/compositions/update/publish', {
       method: 'POST',

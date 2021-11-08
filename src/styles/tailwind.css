@@ -19,6 +19,14 @@
   background: #767676; 
 }
 
+.unfollow_button:hover span {
+  display: none;
+}
+
+.unfollow_button:hover::before {
+  content: "Unfollow";
+}
+
 .preventcopy {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
