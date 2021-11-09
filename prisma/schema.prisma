@@ -76,9 +76,10 @@ model Bookmarks {
 }
 
 model Follows {
-  follower                        Users?                                                 @relation("follower", fields: [followerId], references: [uuid], onDelete: Cascade)
+  id                              Int                         @unique                   @default(autoincrement())
+  follower                        Users?                                                @relation("follower", fields: [followerId], references: [uuid], onDelete: Cascade)
   followerId                      String
-  following                       Users?                                                 @relation("following", fields: [followingId], references: [uuid], onDelete: Cascade)
+  following                       Users?                                                @relation("following", fields: [followingId], references: [uuid], onDelete: Cascade)
   followingId                     String
 
   @@id([followerId, followingId])
