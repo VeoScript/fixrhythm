@@ -33,7 +33,7 @@ const Following: NextPage<TypeProps> = ({ profile, artists, following }) => {
   return (
     <React.Fragment>
       <Head>
-        <title>Fixrhythm</title>
+        <title>{ profile.name } | Following</title>
       </Head>
       <Layout
         host={host}

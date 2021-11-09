@@ -32,7 +32,7 @@ const Home: NextPage<TypeProps> = ({ artists, published_compositions }) => {
   return (
     <React.Fragment>
       <Head>
-        <title>Fixrhythm</title>
+        <title>Fixrhythm | Home</title>
       </Head>
       <Layout
         host={host}
