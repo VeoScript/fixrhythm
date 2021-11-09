@@ -39,7 +39,7 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
       <div className={`${!host || host.isLoggedIn === false ? 'max-w-5xl rounded-b-xl' : 'max-w-full'} flex w-full h-full max-h-[12rem] bg-pantone-gray`} />
       <div className={`${!host || host.isLoggedIn === false ? 'max-w-5xl' : 'max-w-full'} relative w-full`}>
         <div className="absolute -top-20 flex flex-col w-full px-20 space-y-5">
-          <div className="flex items-center w-full">
+          <div className="flex items-center">
             <img
               className="w-44 h-44 rounded-full bg-[#1D1F21] border-4 border-[#000000]"
               src={`${ get_profile.profile ? get_profile.profile : `https://ui-avatars.com/api/?name=${ get_profile.name }&background=1D1F21&color=FF3C3C` }`}

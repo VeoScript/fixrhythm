@@ -5,7 +5,7 @@ import useSWR from 'swr'
 import ProfileLayout from '~/layouts/profile'
 import FollowButton from './Interactions/Follows/FollowButton'
 import UnfollowButton from './Interactions/Follows/UnfollowButton'
-import { RiSearchLine } from 'react-icons/ri'
+import PaginationButton from './Interactions/Follows/PaginationButton'
 
 const fetcher = async (
   input: RequestInfo,
@@ -29,12 +29,35 @@ const DisplayFollowers: React.FC<TypeProps> = ({ host, profile, followers }) => 
     fallbackData: followers
   })
 
+  const [isFollowers, setIsFollowers] = React.useState([])
+  const [loading, setLoading] = React.useState(false)
+  const [currentPage, setCurrentPage] = React.useState(1)
+  const [followersPerPage] = React.useState(5)
+
+  React.useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true)
+      const res = get_followers
+      setIsFollowers(res.data)
+      setLoading(false)
+    }
+    fetchPosts()
+  }, [get_followers])
+
+  // get current posts
+  const indexOfLastPost = currentPage * followersPerPage
+  const indexOfFirstPost = indexOfLastPost - followersPerPage
+  const currentFollowers = get_followers.followedBy.slice(indexOfFirstPost, indexOfLastPost)
+
+  // change page
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
+
   return (
     <ProfileLayout
       host={host}
       profile={profile}
     >
-      <div className="flex flex-col w-full h-full max-h-[30rem]">
+      <div className="flex flex-col w-full h-full">
         <div className="flex flex-row items-center justify-between w-full max-w-full p-3 px-5">
           <div className="flex w-full max-w-[10rem]">
             <span className="font-bold text-sm text-pantone-white text-opacity-80">Followers</span>
@@ -48,7 +71,7 @@ const DisplayFollowers: React.FC<TypeProps> = ({ host, profile, followers }) => 
           </div>
         </div>
         <div className="flex flex-col w-full h-full overflow-y-auto">
-          {get_followers.followedBy.map((follower: any, i: number) => {
+          {currentFollowers.map((follower: any, i: number) => {
             const check_follow = follower.following.followedBy.some((follow: { followingId: any }) => follow.followingId === host.uuid)
             return (
               <React.Fragment key={i}>
@@ -93,6 +116,14 @@ const DisplayFollowers: React.FC<TypeProps> = ({ host, profile, followers }) => 
               </React.Fragment>
             )
           })}
+        </div>
+        <div className="flex flex-row items-center justify-center w-full max-w-full px-5 py-2 border-t border-pantone-white border-opacity-10">
+          <PaginationButton
+            followerCredential={get_followers}
+            followers_followingPerPage={followersPerPage}
+            totalFollowersFollowing={get_followers.followedBy.length}
+            paginate={paginate}
+          />
         </div>
       </div>
     </ProfileLayout>

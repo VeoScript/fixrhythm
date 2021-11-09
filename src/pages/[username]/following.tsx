@@ -107,6 +107,11 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
     select: {
       username: true,
       following: {
+        orderBy: [
+          {
+            id: 'desc'
+          }
+        ],
         select: {
           follower: {
             select: {
