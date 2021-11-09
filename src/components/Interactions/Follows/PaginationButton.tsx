@@ -1,14 +1,18 @@
 import React from 'react'
 
 interface TypeProps {
-  followerCredential: any
   followers_followingPerPage: any
   totalFollowersFollowing: any
   paginate: any
 }
 
-const PaginationButton: React.FC<TypeProps> = ({ followerCredential, followers_followingPerPage, totalFollowersFollowing, paginate }) => {
+const PaginationButton: React.FC<TypeProps> = ({ followers_followingPerPage, totalFollowersFollowing, paginate }) => {
+
   const [currentPage, setCurrentPage] = React.useState(0)
+
+  React.useEffect(() => {
+    setCurrentPage(1)
+  }, [])
 
   const pageNumbers = []
 
