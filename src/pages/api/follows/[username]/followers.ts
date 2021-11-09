@@ -11,7 +11,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         username: String(username)
       },
       select: {
+        username: true,
         followedBy: {
+          orderBy: [
+            {
+              id: 'desc'
+            }
+          ],
           select: {
             following: {
               select: {
