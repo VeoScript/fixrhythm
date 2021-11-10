@@ -45,6 +45,8 @@ const NewsFeed: React.FC<TypeProps> = ({ host, published_compositions }) => {
             key={i}
             host={host}
             composition={composition}
+            border="border border-white border-opacity-10"
+            backgroundColor="bg-transparent"
           />
         ))}
       </div>

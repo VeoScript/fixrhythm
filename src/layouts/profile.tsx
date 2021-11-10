@@ -4,7 +4,7 @@ import Link from 'next/link'
 import FollowButton from '~/components/Interactions/Follows/FollowButton'
 import UnfollowButton from '~/components/Interactions/Follows/UnfollowButton'
 import useSWR from 'swr'
-import { RiBookOpenFill, RiCloseFill, RiMusicFill, RiMusic2Fill, RiPushpinFill, RiStarFill } from 'react-icons/ri'
+import { RiBookOpenFill, RiMusicFill, RiMusic2Fill, RiPushpinFill, RiCloseFill } from 'react-icons/ri'
 
 const fetcher = async (
   input: RequestInfo,
@@ -39,13 +39,13 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
       <div className={`${!host || host.isLoggedIn === false ? 'max-w-5xl rounded-b-xl' : 'max-w-full'} flex w-full h-full max-h-[12rem] bg-pantone-gray`} />
       <div className={`${!host || host.isLoggedIn === false ? 'max-w-5xl' : 'max-w-full'} relative w-full`}>
         <div className="absolute -top-20 flex flex-col w-full px-20 space-y-5">
-          <div className="flex items-center">
+          <div className="flex items-center w-full">
             <img
-              className="w-44 h-44 rounded-full bg-[#1D1F21] border-4 border-[#000000]"
+              className="flex w-full max-w-[11rem] h-[11rem] rounded-full bg-[#1D1F21] border-4 border-[#000000]"
               src={`${ get_profile.profile ? get_profile.profile : `https://ui-avatars.com/api/?name=${ get_profile.name }&background=1D1F21&color=FF3C3C` }`}
-              alt=""
+              alt={get_profile.username}
             />
-            <div className="flex flex-row items-center justify-between w-full mt-20 mx-5">
+            <div className="flex flex-row items-center justify-between w-full mt-20 ml-5">
               <div className="flex flex-col w-full">
                 <span className="font-bold text-2xl">{ get_profile.name }</span>
                 <div className="flex items-center space-x-2">
@@ -112,7 +112,7 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
               </div>
             </div>
           </div>
-          <div className="flex flex-row items-start w-full space-x-3 pb-5">
+          <div className="sticky flex flex-row items-start w-full space-x-2 pb-5">
             <div className="flex flex-col w-full max-w-xs p-5 space-y-3 rounded-xl bg-pantone-darkblack">
               <div className="flex w-full">
                 <h1>Intro</h1>
@@ -146,7 +146,7 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col w-full max-w-full rounded-xl bg-pantone-darkblack">
+            <div className="flex flex-col w-full max-w-full">
               {children}
             </div>
           </div>
