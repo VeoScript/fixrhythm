@@ -20,7 +20,7 @@ const ComposeCard: React.FC<TypeProps> = ({ host }) => {
   return (
     <>
       <button
-        className="flex p-3 text-pantone-white bg-pantone-red rounded-lg transition ease-linear duration-200 hover:bg-opacity-80"
+        className="flex justify-center w-full px-5 py-2 text-pantone-white bg-pantone-red rounded-lg transition ease-linear duration-200 hover:bg-opacity-80"
         type="button"
         onClick={openModal}
       >

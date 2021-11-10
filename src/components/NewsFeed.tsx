@@ -36,7 +36,9 @@ const NewsFeed: React.FC<TypeProps> = ({ host, published_compositions }) => {
           <input type="text" className="w-full py-3 text-xs bg-transparent outline-none" placeholder="Search title" />
         </div>
         <div className="flex justify-end w-full max-w-[10rem]">
-          <ComposeCard host={host} />
+          <div className="flex justify-end w-full max-w-[5rem]">
+            <ComposeCard host={host} />
+          </div>
         </div>
       </div>
       <div className="flex flex-col w-full h-full overflow-y-auto p-3 pb-20 space-y-3">
