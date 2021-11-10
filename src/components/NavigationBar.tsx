@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -37,11 +38,20 @@ const NavigationBar: React.FC<TypeProps> = ({ host }) => {
               <a><RiSettings5Fill className={`${ pathname === '/settings' ? 'text-pantone-white' : 'text-[#848484]' } w-7 h-6 transition ease-linear duration-200 hover:text-pantone-white`} /></a>
             </Link>
           </div>
-          <div className="flex items-center justify-center w-full max-w-xs px-3">
+          <div className="flex items-center justify-center w-full max-w-xs px-3 space-x-3">
             <div className="flex flex-row items-center w-full px-3 space-x-3 bg-pantone-gray rounded-lg border border-pantone-black focus-within:border-pantone-white focus-within:border-opacity-30">
               <RiSearchLine className="text-white text-opacity-60" />
               <input type="text" className="w-full py-3 text-xs bg-transparent outline-none" placeholder="Search author" />
             </div>
+            <Link href={`/${host.username}`}>
+              <a className="flex w-full max-w-[3rem]">
+                <img
+                  className="w-10 h-10 rounded-full bg-[#1D1F21]"
+                  src={`${ host.profile ? host.profile : `https://ui-avatars.com/api/?name=${ host.name }&background=1D1F21&color=FF3C3C` }`}
+                  alt=""
+                />
+              </a>
+            </Link>
           </div>
         </div>
       )}
