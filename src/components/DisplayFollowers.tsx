@@ -75,9 +75,16 @@ const DisplayFollowers: React.FC<TypeProps> = ({ host, profile, followers }) => 
         </div>
         <div className="flex flex-col w-full h-full overflow-y-auto">
           {currentFollowers.length === 0 && (
-            <div className="flex flex-col items-center w-full p-5 space-y-2 uppercase text-pantone-white text-opacity-30 border-t border-pantone-white border-opacity-5">
-              <RiTeamFill className="w-12 h-12" />
-              <div>No followers</div>
+            <div className="flex flex-row items-center justify-center w-full border-t border-pantone-white border-opacity-5">
+              <div className="flex flex-col justify-center w-full max-w-sm p-3 space-y-3">
+                <div className="font-black text-3xl text-left">
+                  { host.username === profile.username ? 'You' : profile.name }
+                  {` doesn't have any followers`}
+                </div>
+                <span className="font-normal text-sm text-pantone-white text-opacity-50">
+                  When someone follows { host.username === profile.username ? 'you' : 'them' }, {`they'll be listed here.`}
+                </span>
+              </div>
             </div>
           )}
           {currentFollowers.map((follower: any, i: number) => {

@@ -6,7 +6,6 @@ import ProfileLayout from '~/layouts/profile'
 import FollowButton from './Interactions/Follows/FollowButton'
 import UnfollowButton from './Interactions/Follows/UnfollowButton'
 import PaginationButton from './Interactions/Follows/PaginationButton'
-import { RiTeamFill } from 'react-icons/ri'
 
 const fetcher = async (
   input: RequestInfo,
@@ -48,7 +47,7 @@ const DisplayFollowing: React.FC<TypeProps> = ({ host, profile, following }) => 
   // get current posts
   const indexOfLastPost = currentPage * followingPerPage
   const indexOfFirstPost = indexOfLastPost - followingPerPage
-  const currentFollowers = get_following.following.slice(indexOfFirstPost, indexOfLastPost)
+  const currentFollowing = get_following.following.slice(indexOfFirstPost, indexOfLastPost)
 
   // change page
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
@@ -74,13 +73,20 @@ const DisplayFollowing: React.FC<TypeProps> = ({ host, profile, following }) => 
           </div>
         </div>
         <div className="flex flex-col w-full h-full overflow-y-auto">
-          {currentFollowers.length === 0 && (
-            <div className="flex flex-col items-center w-full p-5 space-y-2 uppercase text-pantone-white text-opacity-30 border-t border-pantone-white border-opacity-5">
-              <RiTeamFill className="w-12 h-12" />
-              <div>No following</div>
+          {currentFollowing.length === 0 && (
+            <div className="flex flex-row items-center justify-center w-full border-t border-pantone-white border-opacity-5">
+              <div className="flex flex-col justify-center w-full max-w-sm p-3 space-y-3">
+                <div className="font-black text-3xl text-left">
+                  { host.username === profile.username ? 'You' : profile.name }
+                  {` isn't following anyone`}
+                </div>
+                <span className="font-normal text-sm text-pantone-white text-opacity-50">
+                  When { host.username === profile.username ? 'you' : 'they' } do, {`they'll be listed here.`}
+                </span>
+              </div>
             </div>
           )}
-          {currentFollowers.map((following: any, i: number) => {
+          {currentFollowing.map((following: any, i: number) => {
             const check_follow = following.follower.followedBy.some((follow: { followingId: any }) => follow.followingId === host.uuid)
             return (
               <React.Fragment key={i}>

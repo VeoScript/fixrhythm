@@ -5,7 +5,6 @@ import PostCard from './Card/PostCard'
 import ComposeCard from './Compose/ComposeCard'
 import useSWR from 'swr'
 import { Tab } from '@headlessui/react'
-import { RiMusic2Fill } from 'react-icons/ri'
 
 const fetcher = async (
   input: RequestInfo,
@@ -44,13 +43,19 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
       host={host}
       profile={profile}
     >
-      <div className="flex flex-col w-full max-w-full space-y-2">
+      <div className="flex flex-col items-center w-full max-w-full space-y-2">
         {get_published_posts.composition.length === 0 && (
-          <div className="flex flex-col items-center justify-center w-full h-32 space-y-2 uppercase text-pantone-white text-opacity-30">
-            <RiMusic2Fill className="w-12 h-12" />
-            <div>{ host.username === profile.username ? 'You' : profile.name } has no composition yet.</div>
+          <div className="flex flex-col items-start justify-center w-full max-w-sm space-y-5 text-pantone-white text-opacity-80">
+            <div className="font-black text-3xl text-left">
+              { host.username === profile.username ? 'You' : profile.name }
+              {` hasn't Compose any poems or song lyrics`}
+            </div>
+            <span className="font-normal text-sm text-pantone-white text-opacity-50">
+              When { host.username === profile.username ? 'you' : 'they' } do, 
+              { host.username === profile.username ? ' your' : ' their' } compositions will show up here.
+            </span>
             {host.username === profile.username && (
-              <div className="flex w-full max-w-[16rem]">
+              <div className="flex w-full max-w-[8rem]">
                 <ComposeCard host={host} />
               </div>
             )}
