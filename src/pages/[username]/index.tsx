@@ -3,16 +3,17 @@ import React from 'react'
 import Head from 'next/head'
 import useUser from '~/lib/useUser'
 import Layout from '~/layouts/default'
-import Guard from '~/layouts/guard'
 import Profile from '~/components/Profile'
 import prisma from '~/lib/Prisma'
 
 interface TypeProps {
   profile: any
   artists: any
+  published_posts: any
+  draft_posts: any
 }
 
-const Home: NextPage<TypeProps> = ({ profile, artists }) => {
+const Home: NextPage<TypeProps> = ({ profile, artists, published_posts, draft_posts }) => {
 
   const { user } = useUser()
 
@@ -30,6 +31,8 @@ const Home: NextPage<TypeProps> = ({ profile, artists }) => {
         <Profile
           host={host}
           profile={profile}
+          published_posts={published_posts}
+          draft_posts={draft_posts}
         />
       </Layout>
     </React.Fragment>
@@ -87,10 +90,102 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
     }
   })
 
+  const published_posts = await prisma.users.findFirst({
+    where: {
+      username: String(params?.username)
+    },
+    select: {
+      id: true,
+      uuid: true,
+      username: true,
+      composition: {
+        where: {
+          status: 'Published'
+        },
+        orderBy: [
+          {
+            id: 'desc'
+          }
+        ],
+        select: {
+          id: true,
+          uuid: true,
+          title: true,
+          description: true,
+          content: true,
+          category: true,
+          status: true,
+          datePublished: true,
+          dateEdited: true,
+          likes: true,
+          comments: true,
+          bookmarks: true,
+          user: {
+            select: {
+              id: true,
+              uuid: true,
+              account_type: true,
+              profile: true,
+              name: true,
+              username: true
+            }
+          }
+        }
+      }
+    }
+  })
+
+  const draft_posts = await prisma.users.findFirst({
+    where: {
+      username: String(params?.username)
+    },
+    select: {
+      id: true,
+      uuid: true,
+      username: true,
+      composition: {
+        where: {
+          status: 'Draft'
+        },
+        orderBy: [
+          {
+            id: 'desc'
+          }
+        ],
+        select: {
+          id: true,
+          uuid: true,
+          title: true,
+          description: true,
+          content: true,
+          category: true,
+          status: true,
+          datePublished: true,
+          dateEdited: true,
+          likes: true,
+          comments: true,
+          bookmarks: true,
+          user: {
+            select: {
+              id: true,
+              uuid: true,
+              account_type: true,
+              profile: true,
+              name: true,
+              username: true
+            }
+          }
+        }
+      }
+    }
+  })
+
   return {
     props: {
       profile,
-      artists
+      artists,
+      published_posts,
+      draft_posts
     }
   }
 }

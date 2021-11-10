@@ -5,16 +5,18 @@ import Moment from 'react-moment'
 import MenuDropdown from './MenuDropdown'
 import BookmarkButton from '../Interactions/BookmarkButton'
 import ReactionButton from '../Interactions/ReactionButton'
-import { RiEye2Fill, RiMusic2Fill, RiBookOpenFill } from 'react-icons/ri'
+import { RiHeart2Fill, RiBookmarkFill, RiEye2Fill, RiMusic2Fill, RiBookOpenFill } from 'react-icons/ri'
 
 interface TypeProps {
   host: any
   composition: any
+  border: string
+  backgroundColor: string
 }
 
-const PostCard: React.FC<TypeProps> = ({ host, composition }) => {
+const PostCard: React.FC<TypeProps> = ({ host, composition, border, backgroundColor }) => {
   return (
-    <div className="flex flex-row items-center justify-between w-full max-w-full p-3 space-x-5 rounded-lg border border-white border-opacity-10">
+    <div className={`flex flex-row items-center justify-between w-full max-w-full p-3 space-x-5 rounded-xl ${ backgroundColor } ${ border }`}>
       <div className="flex flex-col w-full space-y-5">
         <div className="flex">
           <Link href={`/${composition.user.username}`}>
@@ -76,19 +78,29 @@ const PostCard: React.FC<TypeProps> = ({ host, composition }) => {
           </button>
         </div>
         <div className="flex flex-row items-center space-x-1">
-          <BookmarkButton
-            host={host}
-            composition={composition}
-          />
+          {!host || host.isLoggedIn === true && (
+            <BookmarkButton
+              host={host}
+              composition={composition}
+            />
+          )}
+          {!host || host.isLoggedIn === false && (
+            <RiBookmarkFill className="w-5 h-5 text-pantone-white" />
+          )}
           <p className="font-light text-[10px] text-pantone-white text-opacity-40">
             { composition.bookmarks.length > 0 ? composition.bookmarks.length : '' }
           </p>
         </div>
         <div className="flex flex-row items-center space-x-1">
-          <ReactionButton
-            host={host}
-            composition={composition}
-          />
+          {!host || host.isLoggedIn === true && (
+            <ReactionButton
+              host={host}
+              composition={composition}
+            />
+          )}
+          {!host || host.isLoggedIn === false && (
+            <RiHeart2Fill className="w-5 h-5 text-pantone-white" />
+          )}
           <p className="font-light text-[10px] text-pantone-white text-opacity-40">
             { composition.likes.length > 0 ? composition.likes.length : '' }
           </p>

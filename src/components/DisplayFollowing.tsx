@@ -6,6 +6,7 @@ import ProfileLayout from '~/layouts/profile'
 import FollowButton from './Interactions/Follows/FollowButton'
 import UnfollowButton from './Interactions/Follows/UnfollowButton'
 import PaginationButton from './Interactions/Follows/PaginationButton'
+import { RiTeamFill } from 'react-icons/ri'
 
 const fetcher = async (
   input: RequestInfo,
@@ -57,7 +58,7 @@ const DisplayFollowing: React.FC<TypeProps> = ({ host, profile, following }) => 
       host={host}
       profile={profile}
     >
-      <div className="flex flex-col w-full h-full">
+      <div className="flex flex-col w-full h-full rounded-xl bg-pantone-darkblack">
         <div className="flex flex-row items-center justify-between w-full max-w-full p-3 px-5">
           <div className="flex w-full max-w-[10rem]">
             <span className="font-bold text-sm text-pantone-white text-opacity-80">Following</span>
@@ -73,11 +74,17 @@ const DisplayFollowing: React.FC<TypeProps> = ({ host, profile, following }) => 
           </div>
         </div>
         <div className="flex flex-col w-full h-full overflow-y-auto">
+          {currentFollowers.length === 0 && (
+            <div className="flex flex-col items-center w-full p-5 space-y-2 uppercase text-pantone-white text-opacity-30 border-t border-pantone-white border-opacity-5">
+              <RiTeamFill className="w-12 h-12" />
+              <div>No following</div>
+            </div>
+          )}
           {currentFollowers.map((following: any, i: number) => {
             const check_follow = following.follower.followedBy.some((follow: { followingId: any }) => follow.followingId === host.uuid)
             return (
               <React.Fragment key={i}>
-                <div className="flex flex-row items-center justify-between w-full p-5 border-t border-pantone-white border-opacity-10">
+                <div className="flex flex-row items-center justify-between w-full p-5 border-t border-pantone-white border-opacity-5">
                   <div className="flex flex-row items-center">
                     <Link href={`${`/${ following.follower.username }`}`}>
                       <a className="flex flex-row items-center space-x-3">
@@ -119,7 +126,7 @@ const DisplayFollowing: React.FC<TypeProps> = ({ host, profile, following }) => 
             )
           })}
         </div>
-        <div className="flex flex-row items-center justify-center w-full max-w-full px-5 py-2 border-t border-pantone-white border-opacity-10">
+        <div className="flex flex-row items-center justify-center w-full max-w-full px-5 py-2 border-t border-pantone-white border-opacity-5">
           <PaginationButton
             followers_followingPerPage={followingPerPage}
             totalFollowersFollowing={get_following.following.length}
