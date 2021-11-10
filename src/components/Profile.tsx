@@ -49,6 +49,11 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
           <div className="flex flex-col items-center justify-center w-full h-32 space-y-2 uppercase text-pantone-white text-opacity-30">
             <RiMusic2Fill className="w-12 h-12" />
             <div>{ host.username === profile.username ? 'You' : profile.name } has no composition yet.</div>
+            {host.username === profile.username && (
+              <div className="flex">
+                <ComposeCard host={host} />
+              </div>
+            )}
           </div>
         )}
         <Tab.Group>
