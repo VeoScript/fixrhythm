@@ -50,7 +50,7 @@ const LeftSideBar: React.FC<TypeProps> = ({ host }) => {
         </div>
         <div className="flex items-center w-full space-x-1 font-light text-[11px]">
           <span className="font-bold text-pantone-white text-sm">{ host.composition.length }</span>
-          <Link href="/">
+          <Link href={`${`/${ host.username }`}`}>
             <a className="transition ease-linear duration-200 hover:text-red-500">compositions</a>
           </Link>
         </div>
