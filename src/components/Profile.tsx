@@ -50,7 +50,7 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
             <RiMusic2Fill className="w-12 h-12" />
             <div>{ host.username === profile.username ? 'You' : profile.name } has no composition yet.</div>
             {host.username === profile.username && (
-              <div className="flex">
+              <div className="flex w-full max-w-[16rem]">
                 <ComposeCard host={host} />
               </div>
             )}
@@ -91,7 +91,7 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
                 )}
               </div>
               {host.username === profile.username && (
-                <div className="flex">
+                <div className="flex w-full max-w-[5rem]">
                   <ComposeCard host={host} />
                 </div>
               )}
