@@ -13,7 +13,7 @@ interface TypeProps {
   draft_posts: any
 }
 
-const Home: NextPage<TypeProps> = ({ profile, artists, published_posts, draft_posts }) => {
+const ProfilePage: NextPage<TypeProps> = ({ profile, artists, published_posts, draft_posts }) => {
 
   const { user } = useUser()
 
@@ -190,4 +190,4 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   }
 }
 
-export default Home
+export default ProfilePage

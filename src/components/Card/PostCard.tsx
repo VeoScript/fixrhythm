@@ -17,8 +17,8 @@ interface TypeProps {
 const PostCard: React.FC<TypeProps> = ({ host, composition, border, backgroundColor }) => {
   return (
     <div className={`flex flex-row items-center justify-between w-full max-w-full p-3 space-x-5 rounded-xl ${ backgroundColor } ${ border }`}>
-      <div className="flex flex-col w-full space-y-5">
-        <div className="flex">
+      <div className="flex flex-col w-full max-w-full space-y-5">
+        <div className="flex w-full">
           <Link href={`/${composition.user.username}`}>
             <a className="flex flex-row items-center space-x-2">
               <img
@@ -33,18 +33,18 @@ const PostCard: React.FC<TypeProps> = ({ host, composition, border, backgroundCo
             </a>
           </Link>
         </div>
-        <div className="flex flex-row px-10">
-          <div className="flex flex-col px-2 space-y-2">
-            <div className="flex">
+        <div className="flex flex-row px-10 w-full">
+          <div className="flex flex-col px-2 w-full space-y-2">
+            <div className="flex w-full">
               <Link href="/">
-                <a className="flex items-center space-x-1 uppercase font-bold text-base text-pantone-white">
+                <a className="flex w-full items-center space-x-1 uppercase font-bold text-base text-pantone-white">
                   {composition.category === 'Song' && <RiMusic2Fill className="w-3.5 h-3.5 text-red-500" />}
                   {composition.category === 'Poem' && <RiBookOpenFill className="w-3.5 h-3.5 text-red-500" />}
                   <span>{ composition.title }</span>
                 </a>
               </Link>
             </div>
-            <span className="font-normal text-[12px] text-pantone-white text-opacity-50 h-full">{ composition.description }</span>
+            <div className="font-normal text-[12px] text-pantone-white text-opacity-50">{ composition.description }</div>
             <div className="flex flex-row items-center w-full space-x-1 pt-3 font-light text-[10px] text-pantone-white text-opacity-40">
               <div className="flex space-x-1">
                 <span>Published</span>
