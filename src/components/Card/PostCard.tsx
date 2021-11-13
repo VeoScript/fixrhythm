@@ -36,7 +36,7 @@ const PostCard: React.FC<TypeProps> = ({ host, composition, border, backgroundCo
         <div className="flex flex-row px-10 w-full">
           <div className="flex flex-col px-2 w-full space-y-2">
             <div className="flex w-full">
-              <Link href="/">
+              <Link href={`/${composition.user.username}/posts/${composition.slug}`}>
                 <a className="flex w-full items-center space-x-1 uppercase font-bold text-base text-pantone-white">
                   {composition.category === 'Song' && <RiMusic2Fill className="w-3.5 h-3.5 text-red-500" />}
                   {composition.category === 'Poem' && <RiBookOpenFill className="w-3.5 h-3.5 text-red-500" />}
@@ -73,9 +73,11 @@ const PostCard: React.FC<TypeProps> = ({ host, composition, border, backgroundCo
           )}
         </div>
         <div className="flex">
-          <button>
-            <RiEye2Fill className="w-5 h-5 transition ease-linear duration-100 hover:scale-90" />
-          </button>
+          <Link href={`/${composition.user.username}/posts/${composition.slug}`}>
+            <a>
+              <RiEye2Fill className="w-5 h-5 transition ease-linear duration-100 hover:scale-90" />
+            </a>
+          </Link>
         </div>
         <div className="flex flex-row items-center space-x-1">
           {!host || host.isLoggedIn === true && (

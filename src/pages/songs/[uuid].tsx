@@ -40,16 +40,16 @@ const ProfilePage: NextPage<TypeProps> = ({ profile, artists, published_posts, d
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const artists = await prisma.users.findMany({
+  const songs = await prisma.compositions.findMany({
     select: {
-      username: true,
+      uuid: true,
     }
   })
 
   return {
-    paths: artists.map((artist: any) => ({
+    paths: songs.map((song: any) => ({
       params: {
-        username: artist.username
+        uuid: song.uuid
       }
     })),
     fallback: false
@@ -115,7 +115,6 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
           content: true,
           category: true,
           status: true,
-          slug: true,
           datePublished: true,
           dateEdited: true,
           likes: true,
@@ -161,7 +160,6 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
           content: true,
           category: true,
           status: true,
-          slug: true,
           datePublished: true,
           dateEdited: true,
           likes: true,

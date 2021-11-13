@@ -31,6 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             content: true,
             category: true,
             status: true,
+            slug: true,
             datePublished: true,
             dateEdited: true,
             likes: true,

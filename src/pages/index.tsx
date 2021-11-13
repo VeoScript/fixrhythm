@@ -76,6 +76,8 @@ export const getStaticProps: GetStaticProps = async () => {
       description: true,
       content: true,
       category: true,
+      status: true,
+      slug: true,
       datePublished: true,
       dateEdited: true,
       likes: true,

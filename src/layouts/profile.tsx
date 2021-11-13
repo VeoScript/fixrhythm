@@ -35,7 +35,7 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
   }, [host.uuid, get_profile])
 
   return (
-    <div className={`flex flex-col items-center w-full h-full overflow-x-hidden overflow-y-auto`}>
+    <div className={`font-poppins flex flex-col items-center w-full h-full overflow-x-hidden overflow-y-auto`}>
       <div className={`${!host || host.isLoggedIn === false ? 'max-w-5xl rounded-b-xl' : 'max-w-full'} flex w-full h-full max-h-[12rem] bg-pantone-gray`} />
       <div className={`${!host || host.isLoggedIn === false ? 'max-w-5xl' : 'max-w-full'} relative w-full`}>
         <div className="absolute -top-20 flex flex-col w-full px-20 space-y-5">

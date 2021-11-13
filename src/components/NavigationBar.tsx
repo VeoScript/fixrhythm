@@ -5,16 +5,17 @@ import { useRouter } from 'next/router'
 import { RiHome5Fill, RiMusic2Fill, RiBookOpenFill, RiBellFill, RiSettings5Fill, RiSearchLine } from 'react-icons/ri'
 
 interface TypeProps {
+  user?: any
   host: any
 }
 
-const NavigationBar: React.FC<TypeProps> = ({ host }) => {
+const NavigationBar: React.FC<TypeProps> = ({ user, host }) => {
 
   const { pathname } = useRouter()
 
   return (
     <React.Fragment>
-      {!host || host.isLoggedIn === true && (
+      {(user || !host || host.isLoggedIn === true) && (
         <div className="flex flex-row items-center justify-between w-full py-3 shadow-xl border-b border-pantone-white border-opacity-10">
           <div className="flex items-center justify-center w-full max-w-xs">
             <Link href="/">
@@ -55,7 +56,7 @@ const NavigationBar: React.FC<TypeProps> = ({ host }) => {
           </div>
         </div>
       )}
-      {!host || host.isLoggedIn === false && (
+      {(user === '' || !host || host.isLoggedIn === false) && (
         <div className="flex flex-row items-center justify-between w-full py-3 shadow-xl border-b border-pantone-white border-opacity-10">
           <div className="flex items-center justify-center w-full max-w-xs">
             <Link href="/">
