@@ -44,7 +44,7 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
       profile={profile}
     >
       <div className="flex flex-col w-full max-w-full space-y-2">
-        {get_published_posts.composition.length === 0 && (
+        {(get_published_posts.composition.length === 0 && get_draft_posts.composition.length === 0) && (
           <div className="flex flex-col items-center w-full max-w-full">
             <div className="flex flex-col items-start justify-center w-full max-w-sm space-y-5 text-pantone-white text-opacity-80">
               <div className="font-black text-3xl text-left">
@@ -64,7 +64,7 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
           </div>
         )}
         <Tab.Group>
-          {get_published_posts.composition.length > 0 && (
+          {(get_published_posts.composition.length > 0 || get_draft_posts.composition.length > 0) && (
             <Tab.List className="flex flex-row items-center justify-between w-full max-w-full h-full p-3 px-5 rounded-xl bg-pantone-darkblack">
               <div className="flex">
                 <h3 className="text-sm">Compositions</h3>

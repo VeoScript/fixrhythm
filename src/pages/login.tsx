@@ -1,5 +1,4 @@
-import type { NextPage } from 'next'
-import { GetServerSideProps } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import withSession from '~/lib/Session'
 import React from 'react'
 import Head from 'next/head'

@@ -38,6 +38,7 @@ model Compositions {
   content                         String
   category                        String
   status                          String
+  slug                            String
   datePublished                   String
   dateEdited                      String?
   likes                           Likes[]

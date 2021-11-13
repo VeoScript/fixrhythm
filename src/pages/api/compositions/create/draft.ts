@@ -13,6 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         content: req.body.content_editor,
         category: req.body.composition_category,
         status: String('Draft'),
+        slug: req.body.title.toLowerCase().replace(/ /g, '-'),
         datePublished: String(date),
         userId: req.body.userId
       }

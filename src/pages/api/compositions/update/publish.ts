@@ -17,6 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         content: req.body.content_editor,
         category: req.body.composition_category,
         status: String('Published'),
+        slug: req.body.title.toLowerCase().replace(/ /g, '-'),
         dateEdited: String(date),
         userId: req.body.userId
       }
