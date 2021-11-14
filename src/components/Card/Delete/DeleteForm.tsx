@@ -1,12 +1,14 @@
 import React from 'react'
+import Router from 'next/router'
 
 interface TypeProps {
   host: any
   composition: any
   closeModal: any
+  postUrl?: any
 }
 
-const DeleteForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
+const DeleteForm: React.FC<TypeProps> = ({ host, composition, closeModal, postUrl }) => {
 
   async function onDelete() {
     const compositionId = composition.uuid
@@ -22,7 +24,13 @@ const DeleteForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
         compositionId
       })
     })
+
     closeModal()
+
+    // check if the post will deleted the post display page will redirect to home page (kay deleted naman wala na syay madisplay sa DisplayPostAndComment na component)
+    if(postUrl === composition.slug) {
+      Router.replace('/')
+    }
   }
 
   return (

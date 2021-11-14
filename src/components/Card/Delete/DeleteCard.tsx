@@ -6,9 +6,10 @@ interface TypeProps {
   host: any
   composition: any
   setIsDropdown: any
+  postUrl?: any
 }
 
-const EditCard: React.FC<TypeProps> = ({ host, composition, setIsDropdown }) => {
+const EditCard: React.FC<TypeProps> = ({ host, composition, setIsDropdown, postUrl }) => {
   let [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
@@ -75,6 +76,7 @@ const EditCard: React.FC<TypeProps> = ({ host, composition, setIsDropdown }) => 
                     host={host}
                     composition={composition}
                     closeModal={closeModal}
+                    postUrl={postUrl}
                   />
                 </div>
               </div>
