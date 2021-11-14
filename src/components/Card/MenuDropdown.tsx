@@ -6,9 +6,10 @@ import { RiMoreFill } from 'react-icons/ri'
 interface TypeProps {
   host: any
   composition: any
+  postUrl?: any
 }
 
-const MenuDropdown: React.FC<TypeProps> = ({ host, composition }) => {
+const MenuDropdown: React.FC<TypeProps> = ({ host, composition, postUrl }) => {
   
   const [isDropdown, setIsDropdown] = React.useState(false)
 
@@ -43,6 +44,7 @@ const MenuDropdown: React.FC<TypeProps> = ({ host, composition }) => {
                   host={host}
                   composition={composition}
                   setIsDropdown={setIsDropdown}
+                  postUrl={postUrl}
                 />
               </div>
             </div>

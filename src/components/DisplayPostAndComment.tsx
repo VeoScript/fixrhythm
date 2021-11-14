@@ -89,6 +89,7 @@ const DisplayPostAndComment: React.FC<TypeProps> = ({ user, host, slug, composit
                     <MenuDropdown
                       host={host}
                       composition={composition}
+                      postUrl={slug}
                     />
                   )}
                 </div>
