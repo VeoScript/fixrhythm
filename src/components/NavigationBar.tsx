@@ -45,7 +45,7 @@ const NavigationBar: React.FC<TypeProps> = ({ user, host }) => {
               <input type="text" className="w-full py-3 text-xs bg-transparent outline-none" placeholder="Search author" />
             </div>
             <Link href={`/${host.username}`}>
-              <a className="flex w-full max-w-[3rem]">
+              <a className="flex w-full max-w-[3rem] transition ease-linear duration-100 hover:scale-95">
                 <img
                   className="w-10 h-10 rounded-full bg-[#1D1F21]"
                   src={`${ host.profile ? host.profile : `https://ui-avatars.com/api/?name=${ host.name }&background=1D1F21&color=FF3C3C` }`}
