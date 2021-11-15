@@ -61,6 +61,7 @@ model Comments {
   id                              Int                         @unique                   @default(autoincrement())
   uuid                            String                      @id                       @default(uuid())
   content                         String
+  date                            String
   user                            Users                                                 @relation(fields: [userId], references: [uuid], onDelete: Cascade)
   userId                          String
   composition                     Compositions                                          @relation(fields: [compositionId], references: [uuid], onDelete: Cascade)

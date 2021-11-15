@@ -4,8 +4,9 @@ import Link from 'next/link'
 import MenuDropdown from '~/components/Card/MenuDropdown'
 import BookmarkButton from '~/components/Interactions/BookmarkButton'
 import ReactionButton from '~/components/Interactions/ReactionButton'
+import DisplayComment from './Comments/DisplayComment'
 import useSWR from 'swr'
-import { RiBookmarkFill, RiHeart2Fill } from 'react-icons/ri'
+import { RiHeart2Fill, RiBookmarkFill, RiDiscussFill, RiAppleFill, RiSpotifyFill, RiYoutubeFill } from 'react-icons/ri'
 
 const fetcher = async (
   input: RequestInfo,
@@ -32,8 +33,8 @@ const DisplayPostAndComment: React.FC<TypeProps> = ({ user, host, slug, composit
 
   return (
     <div className="flex items-start justify-center w-full pt-5 pb-20">
-      <div className="flex flex-row items-start w-full max-w-6xl space-x-5">
-        <div className="flex flex-col w-full max-w-full rounded-2xl bg-pantone-darkblack">
+      <div className="flex flex-row items-start justify-center w-full max-w-6xl space-x-3">
+        <div className="flex flex-col w-full max-w-3xl rounded-2xl bg-pantone-darkblack">
           <div className="flex flex-row items-center justify-between w-full px-5 py-3 border-b border-pantone-white border-opacity-5">
             <div className="flex justify-start w-full max-w-xs">
               <Link href={`/${get_composition.user.username}`}>
@@ -50,7 +51,7 @@ const DisplayPostAndComment: React.FC<TypeProps> = ({ user, host, slug, composit
                 </a>
               </Link>
             </div>
-            <div className="flex flex-col items-center w-full max-w-full -space-y-1">
+            <div className="flex flex-col items-center text-center w-full max-w-full -space-y-1">
               <h3 className="font-bold text-lg text-pantone-red uppercase">{ get_composition.title }</h3>
               <h6 className="font-light text-xs text-pantone-white text-opacity-50">{ get_composition.category }</h6>
             </div>
@@ -67,6 +68,12 @@ const DisplayPostAndComment: React.FC<TypeProps> = ({ user, host, slug, composit
                 )}
                 <p className="font-light text-[10px] text-pantone-white text-opacity-40">
                   { get_composition.likes.length > 0 ? get_composition.likes.length : '' }
+                </p>
+              </div>
+              <div className="flex flex-row items-center space-x-1">
+                <RiDiscussFill className="w-5 h-5 text-pantone-white" />
+                <p className="font-light text-[10px] text-pantone-white text-opacity-40">
+                  { get_composition.comments.length > 0 ? get_composition.comments.length : '' }
                 </p>
               </div>
               <div className="flex flex-row items-center space-x-1">
@@ -96,15 +103,26 @@ const DisplayPostAndComment: React.FC<TypeProps> = ({ user, host, slug, composit
               )}
             </div>
           </div>
-          <div className="flex flex-col w-full px-5 py-3">
+          <div className="flex flex-col w-full px-3 py-5">
             <div className="flex flex-col items-center font-normal text-sm text-center whitespace-pre-wrap">
               <p>{get_composition.content}</p>
             </div>
           </div>
+          <div className="flex flex-row items-center justify-center w-full p-5 border-t border-pantone-white border-opacity-5">
+            <span className="font-light text-xs">Play this on &nbsp;</span>
+            <div className="flex flex-row items-center space-x-1">
+              <RiSpotifyFill className="w-5 h-5 text-[#1ED760]" />
+              <RiAppleFill className="w-5 h-5 text-[#FFFFFF]" />
+              <RiYoutubeFill className="w-5 h-5 text-[#D31D1E]" />
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col w-full max-w-sm rounded-2xl bg-pantone-black">
-          Right
-        </div>
+        {(user || !host || host.isLoggedIn === true) && (
+          <DisplayComment
+            host={host}
+            get_composition={get_composition}
+          />
+        )}
       </div>
     </div>
   )

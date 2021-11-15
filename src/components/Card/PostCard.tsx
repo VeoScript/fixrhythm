@@ -5,7 +5,7 @@ import Moment from 'react-moment'
 import MenuDropdown from './MenuDropdown'
 import BookmarkButton from '../Interactions/BookmarkButton'
 import ReactionButton from '../Interactions/ReactionButton'
-import { RiHeart2Fill, RiBookmarkFill, RiEye2Fill, RiMusic2Fill, RiBookOpenFill } from 'react-icons/ri'
+import { RiHeart2Fill, RiBookmarkFill, RiDiscussFill, RiMusic2Fill, RiBookOpenFill } from 'react-icons/ri'
 
 interface TypeProps {
   host: any
@@ -72,13 +72,6 @@ const PostCard: React.FC<TypeProps> = ({ host, composition, border, backgroundCo
             />
           )}
         </div>
-        <div className="flex">
-          <Link href={`/${composition.user.username}/posts/${composition.slug}`}>
-            <a>
-              <RiEye2Fill className="w-5 h-5 transition ease-linear duration-100 hover:scale-90" />
-            </a>
-          </Link>
-        </div>
         <div className="flex flex-row items-center space-x-1">
           {!host || host.isLoggedIn === true && (
             <BookmarkButton
@@ -91,6 +84,21 @@ const PostCard: React.FC<TypeProps> = ({ host, composition, border, backgroundCo
           )}
           <p className="font-light text-[10px] text-pantone-white text-opacity-40">
             { composition.bookmarks.length > 0 ? composition.bookmarks.length : '' }
+          </p>
+        </div>
+        <div className="flex flex-row items-center space-x-1">
+          {!host || host.isLoggedIn === true && (
+            <Link href={`/${composition.user.username}/posts/${composition.slug}`}>
+              <a>
+                <RiDiscussFill className="w-5 h-5 transition ease-linear duration-100 hover:scale-90" />
+              </a>
+            </Link>
+          )}
+          {!host || host.isLoggedIn === false && (
+            <RiDiscussFill className="w-5 h-5 text-pantone-white" />
+          )}
+          <p className="font-light text-[10px] text-pantone-white text-opacity-40">
+            { composition.comments.length > 0 ? composition.comments.length : '' }
           </p>
         </div>
         <div className="flex flex-row items-center space-x-1">

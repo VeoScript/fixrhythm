@@ -1,35 +1,48 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
-import DeleteForm from './DeleteForm'
+import { RiChatDeleteLine } from 'react-icons/ri'
 
 interface TypeProps {
   host: any
-  composition: any
-  setIsDropdown: any
-  postUrl?: any
+  comment: any
 }
 
-const DeleteCard: React.FC<TypeProps> = ({ host, composition, setIsDropdown, postUrl }) => {
+const DeleteComment: React.FC<TypeProps> = ({ host, comment }) => {
   let [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
     setIsOpen(false)
-    setIsDropdown(false)
   }
 
   function openModal() {
     setIsOpen(true)
   }
 
+  async function onDeleteComment() {
+    const commentId = comment.uuid
+    const userId = host.uuid
+
+    await fetch('/api/comments/delete', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userId,
+        commentId
+      })
+    })
+
+    closeModal()
+  }
+
   return (
     <>
-      <button
-        className="w-full px-3 py-2 border-t border-pantone-white border-opacity-10 font-light text-xs text-left transition ease-linear duration-200 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-10"
-        type="button"
-        onClick={openModal}
-      >
-        Delete
-      </button>
+      <div className="flex">
+        <button onClick={openModal}>
+          <RiChatDeleteLine className="w-4 h-4 ml-5 text-pantone-white text-opacity-30" />
+        </button>
+      </div>
 
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
@@ -70,14 +83,31 @@ const DeleteCard: React.FC<TypeProps> = ({ host, composition, setIsDropdown, pos
                 <div className="flex flex-col w-full">
                   <div className="flex flex-row items-center justify-between w-full px-5 py-3 bg-pantone-darkblack">
                     <h3 className="font-black text-xl text-pantone-red">FIXRHYTHM</h3>
-                    <h3 className="font-light text-sm">Delete Composition</h3>
+                    <h3 className="font-light text-sm">Delete Comment</h3>
                   </div>
-                  <DeleteForm
-                    host={host}
-                    composition={composition}
-                    closeModal={closeModal}
-                    postUrl={postUrl}
-                  />
+                  <div className="flex flex-col w-full">
+                    <div className="flex flex-col items-center w-full p-3">
+                      <p className="font-light text-sm text-pantone-white">
+                        Delete your comment permanently?
+                      </p>
+                    </div>
+                    <div className="flex flex-row items-center justify-center w-full px-3 py-2 bg-pantone-darkblack">
+                      <button
+                        className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-sm text-pantone-white bg-pantone-gray rounded-l-lg transition ease-linear duration-200 hover:bg-opacity-50"
+                        type="button"
+                        onClick={onDeleteComment}
+                      >
+                        Delete
+                      </button>
+                      <button
+                        className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-sm text-pantone-white bg-pantone-gray rounded-r-lg border-l border-pantone-white border-opacity-10 transition ease-linear duration-200 hover:bg-opacity-50"
+                        type="button"
+                        onClick={() => closeModal()}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Transition.Child>
@@ -88,4 +118,4 @@ const DeleteCard: React.FC<TypeProps> = ({ host, composition, setIsDropdown, pos
   )
 }
 
-export default DeleteCard
+export default DeleteComment
