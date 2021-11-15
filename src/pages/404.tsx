@@ -11,7 +11,7 @@ const Custom404: NextPage = () => {
       </Head>
       <div className="font-poppins flex flex-row items-center justify-center w-full h-screen text-pantone-white bg-pantone-darkblack">
         <div className="flex items-center justify-center w-full space-x-5">
-          <h1 className="font-bold text-xl text-pantone-red">404</h1>
+          <h1 className="font-bold text-xl text-red-600">404</h1>
           <hr className="border-l border-pantone-white border-opacity-10 h-16" />
           <h2 className="font-normal text-sm text-pantone-white text-opacity-50">This page could not be found.</h2>
         </div>
