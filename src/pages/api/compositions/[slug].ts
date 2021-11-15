@@ -25,7 +25,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         },
         bookmarks: true,
         likes: true,
-        comments: true
+        comments: {
+          select: {
+            id: true,
+            uuid: true,
+            content: true,
+            date: true,
+            user: {
+              select: {
+                uuid: true,
+                profile: true,
+                name: true,
+                username: true,
+                account_type: true
+              }
+            }
+          }
+        }
       }
     })
     res.status(200).json(composition)

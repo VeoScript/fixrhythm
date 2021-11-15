@@ -1,8 +1,6 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import React from 'react'
 import Head from 'next/head'
-import Router from 'next/router'
-import DefaultErrorPage from 'next/error'
 import Layout from '~/layouts/default'
 import withSession from '~/lib/Session'
 import prisma from '~/lib/Prisma'
@@ -93,7 +91,23 @@ export const getServerSideProps: GetServerSideProps = withSession(async function
       },
       bookmarks: true,
       likes: true,
-      comments: true
+      comments: {
+        select: {
+          id: true,
+          uuid: true,
+          content: true,
+          date: true,
+          user: {
+            select: {
+              uuid: true,
+              profile: true,
+              name: true,
+              username: true,
+              account_type: true
+            }
+          }
+        }
+      }
     }
   })
 
