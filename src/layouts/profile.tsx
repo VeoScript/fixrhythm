@@ -36,7 +36,10 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
 
   return (
     <div className={`font-poppins flex flex-col items-center w-full h-full overflow-x-hidden overflow-y-auto`}>
-      <div className={`${!host || host.isLoggedIn === false ? 'max-w-5xl rounded-b-xl' : 'max-w-full'} flex w-full h-full max-h-[12rem] bg-pantone-gray`} />
+      <div
+        className={`${!host || host.isLoggedIn === false ? 'max-w-5xl rounded-b-xl' : 'max-w-full'} flex w-full h-full max-h-[12rem] bg-center bg-pantone-gray`}
+        style={{ backgroundImage: `url(https://i.ytimg.com/vi/xSsT7esne-I/maxresdefault.jpg)` }}
+      />
       <div className={`${!host || host.isLoggedIn === false ? 'max-w-5xl' : 'max-w-full'} relative w-full`}>
         <div className="absolute -top-20 flex flex-col w-full px-20 space-y-5">
           <div className="flex items-center w-full">
@@ -112,8 +115,8 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
               </div>
             </div>
           </div>
-          <div className="sticky flex flex-row items-start w-full space-x-2 pb-5">
-            <div className="flex flex-col w-full max-w-xs p-5 space-y-3 rounded-xl bg-pantone-darkblack">
+          <div className="relative flex flex-row items-start w-full space-x-2 pb-5">
+            <div className="sticky top-5 flex flex-col w-full max-w-xs p-5 space-y-3 rounded-xl bg-pantone-darkblack">
               <div className="flex w-full">
                 <h1>Intro</h1>
               </div>
