@@ -65,7 +65,7 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
         )}
         <Tab.Group>
           {(get_published_posts.composition.length > 0 || get_draft_posts.composition.length > 0) && (
-            <Tab.List className="flex flex-row items-center justify-between w-full max-w-full h-full p-3 px-5 rounded-xl bg-pantone-darkblack">
+            <Tab.List className="flex flex-row items-center justify-between w-full max-w-full h-full px-5 py-3 rounded-xl bg-pantone-darkblack">
               <div className="flex">
                 <h3 className="text-sm">Compositions</h3>
               </div>
@@ -106,7 +106,19 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
           )}
           <Tab.Panels>
             <Tab.Panel>
-              <div className="flex flex-col w-full space-y-2">
+              <div className="flex flex-col items-center w-full space-y-2">
+                {get_published_posts.composition.length === 0 && get_draft_posts.composition.length > 0 && (
+                  <div className="flex flex-col items-start justify-center w-full max-w-sm space-y-5 py-5 text-pantone-white text-opacity-80">
+                    <div className="font-black text-3xl text-left">
+                      { host.username === profile.username ? 'You' : profile.name }
+                      {` hasn't Published any composition`}
+                    </div>
+                    <span className="font-normal text-sm text-pantone-white text-opacity-50">
+                      When { host.username === profile.username ? 'you' : 'they' } do, 
+                      { host.username === profile.username ? ' your' : ' their' } published compositions will show up here.
+                    </span>
+                  </div>
+                )}
                 {get_published_posts.composition.map((composition: any, i: number) => (
                   <PostCard
                     key={i}
@@ -119,7 +131,17 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
               </div>
             </Tab.Panel>
             <Tab.Panel>
-              <div className="flex flex-col w-full space-y-2">
+              <div className="flex flex-col items-center w-full space-y-2">
+                {get_draft_posts.composition.length === 0 && get_published_posts.composition.length > 0 && (
+                  <div className="flex flex-col items-start justify-center w-full max-w-sm space-y-5 py-5 text-pantone-white text-opacity-80">
+                    <div className="font-black text-3xl text-left">
+                      {`You hasn't Draft composition`}
+                    </div>
+                    <span className="font-normal text-sm text-pantone-white text-opacity-50">
+                      When you do, your draft compositions will show up here.
+                    </span>
+                  </div>
+                )}
                 {get_draft_posts.composition.map((composition: any, i: number) => (
                   <PostCard
                     key={i}
