@@ -111,6 +111,16 @@ export const getServerSideProps: GetServerSideProps = withSession(async function
     }
   })
 
+  // check if the post is equal to url query username and the owner of the particular post; if not then it will redirect to profile page...
+  if (username !== composition?.user.username) {
+    return {
+      redirect: {
+        destination: `/${username}`,
+        permanent: false
+      }
+    }
+  }
+
   // this code will hide the draft posts to visited post page display and other users loggedin...
   if ((user === '' && composition?.status === 'Draft') || (!host || host.username !== composition?.user.username && composition?.status === 'Draft')) {
     return {
