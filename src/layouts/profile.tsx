@@ -98,14 +98,14 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
                           <FollowButton
                             host={host}
                             profile={get_profile}
-                            className="follow_button flex justify-center font-normal w-[10rem] text-sm px-5 py-1.5 rounded-lg bg-pantone-darkblack text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10"
+                            className="follow_button flex justify-center font-normal w-[10rem] text-sm text-center px-5 py-1.5 rounded-lg bg-pantone-darkblack text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10"
                           />
                         )}
                         {isFollow && (
                           <UnfollowButton
                             host={host}
                             profile={get_profile}
-                            className="unfollow_button flex justify-center font-normal w-[10rem] text-sm px-5 py-1.5 rounded-lg bg-pantone-darkblack text-pantone-white transition ease-linear duration-200 hover:bg-pantone-red"
+                            className="unfollow_button flex justify-center font-normal w-[10rem] text-sm text-center px-5 py-1.5 rounded-lg bg-pantone-darkblack text-pantone-white transition ease-linear duration-200 hover:bg-pantone-red"
                           />
                         )}
                       </React.Fragment>
