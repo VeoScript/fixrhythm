@@ -18,7 +18,33 @@ async function handler(
       include: {
         likes: true,
         comments: true,
-        bookmarks: true,
+        bookmarks: {
+          orderBy: [
+            {
+              id: 'desc'
+            }
+          ],
+          include: {
+            composition: {
+              select: {
+                uuid: true,
+                title: true,
+                category: true,
+                description: true,
+                slug: true,
+                likes: true,
+                bookmarks: true,
+                user: {
+                  select: {
+                    name: true,
+                    username: true,
+                    account_type: true
+                  }
+                }
+              }
+            }
+          }
+        },
         composition: true,
         followedBy: true,
         following: true
