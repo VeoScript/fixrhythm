@@ -74,7 +74,7 @@ const DisplayFollowing: React.FC<TypeProps> = ({ host, profile, following }) => 
         </div>
         <div className="flex flex-col w-full h-full overflow-y-auto">
           {currentFollowing.length === 0 && (
-            <div className="flex flex-row items-center justify-center w-full border-t border-pantone-white border-opacity-5">
+            <div className="flex flex-row items-center justify-center w-full py-5 border-t border-pantone-white border-opacity-5">
               <div className="flex flex-col justify-center w-full max-w-sm p-3 space-y-3">
                 <div className="font-black text-3xl text-left">
                   { host.username === profile.username ? 'You' : profile.name }

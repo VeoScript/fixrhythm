@@ -3,7 +3,6 @@ import Link from 'next/link'
 import Router from 'next/router'
 import FormLoader from '~/utils/FormLoader'
 import { useForm } from 'react-hook-form'
-import toast, { Toaster } from 'react-hot-toast'
 import { RiShieldUserLine, RiShieldKeyholeLine } from 'react-icons/ri'
 
 interface FormData {
@@ -12,6 +11,8 @@ interface FormData {
 }
 
 const LoginForm: React.FC = () => {
+
+  const [signupError, setSignupError] = React.useState('')
 
   const { register, handleSubmit, reset, formState: { isSubmitting } } = useForm()
 
@@ -29,17 +30,7 @@ const LoginForm: React.FC = () => {
 
     if(!res.ok) {
       const json = await res.json()
-      toast(json.message,
-        {
-          icon: '🤫',
-          style: {
-            borderRadius: '10px',
-            fontSize: '14px',
-            background: '#24282B',
-            color: '#fff',
-          }
-        }
-      )
+      setSignupError(json.message)
       return
     }
 
@@ -49,13 +40,10 @@ const LoginForm: React.FC = () => {
 
   return (
     <div className="flex flex-col w-full max-w-md space-y-10">
-      <Toaster
-        position="bottom-right"
-        reverseOrder={false}
-      />
       <form onSubmit={handleSubmit(onSignIn)} className="flex flex-col w-full space-y-2">
-        <div className="flex w-full ml-3">
+        <div className="flex items-center justify-between w-full px-3">
           <h5 className="font-extralight text-xs"><span className="font-bold text-sm">Welcome.</span> Please login.</h5>
+          <span className="font-light text-[10px] text-red-500">{ signupError }</span>
         </div>
         <div className="flex items-center w-full px-1 rounded-md text-pantone-white bg-transparent border border-pantone-gray transition ease-linear duration-200 hover:border-pantone-white focus-within:border-pantone-white">
           <div className="px-3 border-r border-pantone-white border-opacity-30">
