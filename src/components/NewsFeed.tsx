@@ -26,7 +26,7 @@ const NewsFeed: React.FC<TypeProps> = ({ host, published_compositions }) => {
   })
 
   return (
-    <div className="flex flex-col items-center w-full max-w-full h-full overflow-hidden">
+    <div className="flex flex-col items-center w-full max-w-full h-full pb-16 overflow-hidden">
       <div className="flex flex-row items-center justify-between w-full max-w-full px-5 py-3 border-b border-pantone-white border-opacity-10">
         <div className="flex w-full max-w-[10rem]">
           <span className="font-bold text-base text-pantone-white text-opacity-80">News Feed</span>
@@ -41,7 +41,7 @@ const NewsFeed: React.FC<TypeProps> = ({ host, published_compositions }) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col w-full h-full overflow-y-auto p-3 pb-20 space-y-3">
+      <div className="flex flex-col w-full h-full overflow-y-auto p-3 space-y-3">
         {fetchPublishedCompositions.map((composition: any, i: number) => (
           <PostCard
             key={i}
