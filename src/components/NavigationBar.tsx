@@ -59,14 +59,14 @@ const NavigationBar: React.FC<TypeProps> = ({ user, host }) => {
                   <div className="fixed top-14 z-10 w-full">
                     <div className="flex w-full max-w-[10rem] shadow-sm rounded-md overflow-auto bg-pantone-black border border-black-matt border-opacity-10">
                       <div className="flex flex-col w-full">
-                        <Link href="/">
-                          <a className="flex flex-row items-center w-full p-3 space-x-2 font-light text-xs text-pantone-white text-opacity-60 transition ease-linear duration-200 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-5">
+                        <Link href="/settings">
+                          <a className="flex flex-row items-center w-full p-3 space-x-2 font-light text-xs text-pantone-white text-opacity-80 transition ease-linear duration-200 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-5">
                             <RiUserSettingsLine className="w-4 h-4" />
-                            <span>Account Settings</span>
+                            <span>Settings</span>
                           </a>
                         </Link>
                         <button
-                          className="flex flex-row items-center w-full p-3 space-x-2 border-t border-pantone-white border-opacity-5 font-light text-xs text-pantone-white text-opacity-60 transition ease-linear duration-200 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-5"
+                          className="flex flex-row items-center w-full p-3 space-x-2 border-t border-pantone-white border-opacity-5 font-light text-xs text-pantone-white text-opacity-80 transition ease-linear duration-200 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-5"
                           type="button"
                           onClick={async () => {
                             await fetch('/api/auth/signout', {
@@ -91,7 +91,7 @@ const NavigationBar: React.FC<TypeProps> = ({ user, host }) => {
           <div className="flex items-center justify-center w-full max-w-xs px-3 space-x-3">
             <div className="flex flex-row items-center w-full px-3 space-x-3 bg-pantone-gray rounded-lg border border-pantone-black focus-within:border-pantone-white focus-within:border-opacity-30">
               <RiSearchLine className="text-white text-opacity-60" />
-              <input type="text" className="w-full py-3 text-xs bg-transparent outline-none" placeholder="Search author" />
+              <input type="text" className="w-full py-2.5 text-xs bg-transparent outline-none" placeholder="Search author" />
             </div>
             <Link href={`/${host.username}`}>
               <a className="flex w-full max-w-[3rem] transition ease-linear duration-100 hover:scale-95">

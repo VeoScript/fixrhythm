@@ -10,7 +10,7 @@ interface TypeProps {
 
 const DisplayBookmarks: React.FC<TypeProps> = ({ host }) => {
   return (
-    <div className="flex flex-col w-full pb-16">
+    <div className="flex flex-col w-full h-screen overflow-y-auto pb-28">
       {host.bookmarks.map((bookmark: any, i: number) => (
         <div className="flex flex-row items-center justify-between w-full space-x-2 border-b border-pantone-white border-opacity-5" key={i}>
           <div className="flex flex-col w-full p-3 space-y-2">

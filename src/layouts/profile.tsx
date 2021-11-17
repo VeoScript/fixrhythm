@@ -85,11 +85,13 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
                   <React.Fragment>
                     {/* if you are logged in Edit Profile button will display instead for Follow and Unfollow button */}
                     {host.username === get_profile.username && (
-                      <button
-                        className="font-normal text-sm w-[10rem] px-5 py-1.5 rounded-lg bg-pantone-darkblack text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10"
-                      >
-                        Edit Profile
-                      </button>
+                      <Link href="/settings">
+                        <a
+                          className="font-normal text-sm w-[10rem] px-5 py-1.5 rounded-lg bg-pantone-darkblack text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10"
+                        >
+                          Edit Profile
+                        </a>
+                      </Link>
                     )}
                     {/* if you visit users/artist profile Follow and Unfollow button will display instead of Edit Profile button */}
                     {host.username !== get_profile.username && (
@@ -115,7 +117,7 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
               </div>
             </div>
           </div>
-          <div className="relative flex flex-row items-start w-full space-x-2 pb-5">
+          <div className="relative flex flex-row items-start w-full space-x-2">
             <div className="sticky top-5 flex flex-col w-full max-w-xs p-5 space-y-3 rounded-xl bg-pantone-darkblack">
               <div className="flex w-full">
                 <h1>Intro</h1>

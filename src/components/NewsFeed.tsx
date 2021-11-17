@@ -33,7 +33,7 @@ const NewsFeed: React.FC<TypeProps> = ({ host, published_compositions }) => {
         </div>
         <div className="flex flex-row items-center w-full max-w-[20rem] px-3 space-x-3 bg-pantone-gray rounded-lg border border-pantone-black focus-within:border-pantone-white focus-within:border-opacity-30">
           <RiSearchLine className="text-white text-opacity-60" />
-          <input type="text" className="w-full py-3 text-xs bg-transparent outline-none" placeholder="Search title" />
+          <input type="text" className="w-full py-2.5 text-xs bg-transparent outline-none" placeholder="Search title" />
         </div>
         <div className="flex justify-end w-full max-w-[10rem]">
           <div className="flex justify-end w-full max-w-[5rem]">
