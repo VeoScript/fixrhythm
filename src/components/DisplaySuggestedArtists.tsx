@@ -10,7 +10,7 @@ interface TypeProps {
 
 const DisplaySuggestedArtists: React.FC<TypeProps> = ({ host, fetchArtists }) => {
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full h-screen overflow-y-auto pb-28">
       {fetchArtists.map((artist: any, i: number) => {
         const check_follow = artist.followedBy.some((follow: { followingId: any }) => follow.followingId === host.uuid)
         return (

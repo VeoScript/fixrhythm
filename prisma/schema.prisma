@@ -15,6 +15,7 @@ model Users {
   uuid                            String                      @id                       @default(uuid())
   verify_email                    Boolean                                               @default(false)
   profile                         String?
+  coverphoto                      String?
   shortbio                        String?
   account_type                    String
   name                            String
@@ -22,6 +23,11 @@ model Users {
   username                        String
   email                           String
   password                        String
+  facebook                        String?
+  instagram                       String?
+  twitter                         String?
+  tiktok                          String?
+  youtube                         String?
   composition                     Compositions[]
   likes                           Likes[]
   comments                        Comments[]
@@ -41,6 +47,9 @@ model Compositions {
   slug                            String
   datePublished                   String
   dateEdited                      String?
+  spotify                         String?
+  applemusic                      String?
+  youtube                         String?
   likes                           Likes[]
   comments                        Comments[]
   bookmarks                       Bookmarks[]

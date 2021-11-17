@@ -30,7 +30,7 @@ const RightSideBar: React.FC<TypeProps> = ({ host, artists }) => {
   })
 
   return (
-    <div className="flex flex-col w-full max-w-xs h-full overflow-x-hidden overflow-y-auto bg-pantone-gray border-l border-pantone-white border-opacity-10">
+    <div className="flex flex-col w-full max-w-xs h-full overflow-hidden bg-pantone-gray border-l border-pantone-white border-opacity-10">
       <div className="flex flex-col items-center w-full max-w-full">
         <Tab.Group>
           <Tab.List>
@@ -38,7 +38,7 @@ const RightSideBar: React.FC<TypeProps> = ({ host, artists }) => {
               <Tab
                 className={({ selected }) => 
                   classNames(
-                    'w-[10rem] text-sm transition ease-linear duration-200',
+                    'w-[10rem] transition ease-linear duration-200',
                     selected
                       ? 'font-normal text-xs p-2 bg-pantone-white bg-opacity-10 text-pantone-white transition ease-linear duration-200 hover:bg-pantone-gray'
                       : 'font-normal text-xs p-2 bg-pantone-black text-pantone-white transition ease-linear duration-200 hover:bg-pantone-gray'
@@ -50,7 +50,7 @@ const RightSideBar: React.FC<TypeProps> = ({ host, artists }) => {
               <Tab
                 className={({ selected }) => 
                   classNames(
-                    'w-[10rem] text-sm transition ease-linear duration-200',
+                    'w-[10rem] transition ease-linear duration-200',
                     selected
                       ? 'font-normal text-xs p-2 bg-pantone-white bg-opacity-10 text-pantone-white transition ease-linear duration-200 hover:bg-pantone-gray'
                       : 'font-normal text-xs p-2 bg-pantone-black text-pantone-white transition ease-linear duration-200 hover:bg-pantone-gray'

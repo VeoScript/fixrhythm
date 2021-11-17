@@ -43,7 +43,7 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
       host={host}
       profile={profile}
     >
-      <div className="flex flex-col w-full max-w-full space-y-2">
+      <div className="flex flex-col w-full max-w-full pb-20 space-y-2">
         {(get_published_posts.composition.length === 0 && get_draft_posts.composition.length === 0) && (
           <div className="flex flex-col items-center w-full max-w-full">
             <div className="flex flex-col items-start justify-center w-full max-w-sm space-y-5 text-pantone-white text-opacity-80">
@@ -73,7 +73,7 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
                 <Tab
                   className={({ selected }) => 
                     classNames(
-                      'w-[5rem] text-sm px-3 py-2 transition ease-linear duration-200',
+                      'w-[5rem] px-3 py-2 transition ease-linear duration-200',
                       selected
                         ? 'font-normal text-xs p-2 bg-pantone-white bg-opacity-10 text-pantone-white transition ease-linear duration-200 hover:bg-pantone-gray'
                         : 'font-normal text-xs p-2 bg-pantone-black text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10'
@@ -86,7 +86,7 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
                   <Tab
                     className={({ selected }) => 
                       classNames(
-                        'w-[5rem] text-sm px-3 py-2 transition ease-linear duration-200',
+                        'w-[5rem] px-3 py-2 transition ease-linear duration-200',
                         selected
                           ? 'font-normal text-xs p-2 bg-pantone-white bg-opacity-10 text-pantone-white transition ease-linear duration-200 hover:bg-pantone-gray'
                           : 'font-normal text-xs p-2 bg-pantone-black text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10'
