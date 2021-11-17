@@ -37,7 +37,7 @@ const PostCard: React.FC<TypeProps> = ({ host, composition, border, backgroundCo
           <div className="flex flex-col px-2 w-full space-y-2">
             <div className="flex w-full">
               <Link href={`/${composition.user.username}/posts/${composition.slug}`}>
-                <a className="flex w-full items-center space-x-1 uppercase font-bold text-base text-pantone-white">
+                <a className="flex items-center space-x-1 uppercase font-bold text-base text-pantone-white">
                   {composition.category === 'Song' && <RiMusic2Fill className="w-3.5 h-3.5 text-red-500" />}
                   {composition.category === 'Poem' && <RiBookOpenFill className="w-3.5 h-3.5 text-red-500" />}
                   <span>{ composition.title }</span>
