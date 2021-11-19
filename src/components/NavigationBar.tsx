@@ -62,7 +62,7 @@ const NavigationBar: React.FC<TypeProps> = ({ user, host }) => {
                         <Link href="/settings">
                           <a className="flex flex-row items-center w-full p-3 space-x-2 font-light text-xs text-pantone-white text-opacity-80 transition ease-linear duration-200 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-5">
                             <RiUserSettingsLine className="w-4 h-4" />
-                            <span>Settings</span>
+                            <span>Account Settings</span>
                           </a>
                         </Link>
                         <button
@@ -96,7 +96,7 @@ const NavigationBar: React.FC<TypeProps> = ({ user, host }) => {
             <Link href={`/${host.username}`}>
               <a className="flex w-full max-w-[3rem] transition ease-linear duration-100 hover:scale-95">
                 <img
-                  className="w-10 h-10 rounded-full bg-[#1D1F21]"
+                  className="w-10 h-10 object-cover rounded-full bg-[#1D1F21]"
                   src={`${ host.profile ? host.profile : `https://ui-avatars.com/api/?name=${ host.name }&background=1D1F21&color=FF3C3C` }`}
                   alt=""
                 />

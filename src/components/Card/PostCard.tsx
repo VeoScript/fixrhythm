@@ -23,7 +23,7 @@ const PostCard: React.FC<TypeProps> = ({ host, composition, border, backgroundCo
             <a className="flex flex-row items-center space-x-2">
               <img
                 className="w-10 h-10 object-cover rounded-full bg-pantone-gray"
-                src={composition.profile ? composition.profile : `https://ui-avatars.com/api/?name=${composition.user.name}&background=343739&color=aaa`}
+                src={composition.user.profile ? composition.user.profile : `https://ui-avatars.com/api/?name=${composition.user.name}&background=343739&color=aaa`}
                 alt={composition.user.name}
               />
               <div className="flex flex-col">
