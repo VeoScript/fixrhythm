@@ -132,13 +132,11 @@ const DisplayFollowing: React.FC<TypeProps> = ({ host, profile, following }) => 
             )
           })}
         </div>
-        <div className="flex flex-row items-center justify-center w-full max-w-full px-5 py-2 border-t border-pantone-white border-opacity-5">
-          <PaginationButton
-            followers_followingPerPage={followingPerPage}
-            totalFollowersFollowing={get_following.following.length}
-            paginate={paginate}
-          />
-        </div>
+        <PaginationButton
+          followers_followingPerPage={followingPerPage}
+          totalFollowersFollowing={get_following.following.length}
+          paginate={paginate}
+        />
       </div>
     </ProfileLayout>
   )

@@ -65,6 +65,7 @@ export const getServerSideProps: GetServerSideProps = withSession(async function
     select: {
       id: true,
       uuid: true,
+      profile: true,
       account_type: true,
       name: true,
       username: true,

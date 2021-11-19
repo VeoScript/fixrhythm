@@ -4,7 +4,7 @@ import Head from 'next/head'
 import useUser from '~/lib/useUser'
 import Layout from '~/layouts/default'
 import Guard from '~/layouts/guard'
-import AccountSettings from '~/components/AccountSettings'
+import AccountSettings from '~/components/AccountSettings/Index'
 import prisma from '~/lib/Prisma'
 
 interface TypeProps {
@@ -21,7 +21,7 @@ const Settings: NextPage<TypeProps> = ({ artists }) => {
     return (
       <React.Fragment>
         <Head>
-          <title>Account Settings</title>
+          <title>Fixrhythm</title>
         </Head>
         <Guard />
       </React.Fragment>
@@ -31,7 +31,7 @@ const Settings: NextPage<TypeProps> = ({ artists }) => {
   return (
     <React.Fragment>
       <Head>
-        <title>Fixrhythm | Home</title>
+        <title>Account Settings</title>
       </Head>
       <Layout
         host={host}
@@ -49,6 +49,7 @@ export const getStaticProps: GetStaticProps = async () => {
     select: {
       id: true,
       uuid: true,
+      profile: true,
       account_type: true,
       name: true,
       username: true,

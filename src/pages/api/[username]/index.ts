@@ -15,6 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         uuid: true,
         account_type: true,
         profile: true,
+        coverphoto: true,
         name: true,
         username: true,
         email: true,
@@ -22,7 +23,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         shortbio: true,
         verify_email: true,
         followedBy: true,
-        following: true
+        following: true,
+        facebook: true,
+        instagram: true,
+        twitter: true,
+        tiktok: true,
+        youtube: true
       }
     })
     res.status(200).json(profile)

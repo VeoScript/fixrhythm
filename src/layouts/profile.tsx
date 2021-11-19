@@ -4,7 +4,8 @@ import Link from 'next/link'
 import FollowButton from '~/components/Interactions/Follows/FollowButton'
 import UnfollowButton from '~/components/Interactions/Follows/UnfollowButton'
 import useSWR from 'swr'
-import { RiBookOpenFill, RiMusicFill, RiMusic2Fill, RiPushpinFill, RiCloseFill } from 'react-icons/ri'
+import { Facebook, Instagram, Twitter, TikTok, Youtube } from '~/utils/SocialMediaIcons'
+import { RiBookOpenFill, RiMusicFill, RiMusic2Fill, RiCloseFill } from 'react-icons/ri'
 
 const fetcher = async (
   input: RequestInfo,
@@ -37,18 +38,18 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
   return (
     <div className={`font-poppins flex flex-col items-center w-full h-full overflow-x-hidden overflow-y-auto`}>
       <div
-        className={`${!host || host.isLoggedIn === false ? 'max-w-5xl rounded-b-xl' : 'max-w-full'} flex w-full h-full max-h-[12rem] bg-center bg-pantone-gray`}
-        style={{ backgroundImage: `url(https://i.ytimg.com/vi/xSsT7esne-I/maxresdefault.jpg)` }}
+        className={`${!host || host.isLoggedIn === false ? 'max-w-5xl rounded-b-xl' : 'max-w-full'} flex w-full h-full max-h-[18rem] bg-center bg-cover bg-no-repeat bg-pantone-gray`}
+        style={{ backgroundImage: `url(${get_profile.coverphoto})` }}
       />
       <div className={`${!host || host.isLoggedIn === false ? 'max-w-5xl' : 'max-w-full'} relative w-full`}>
-        <div className="absolute -top-20 flex flex-col w-full px-20 space-y-5">
+        <div className="absolute -top-24 flex flex-col w-full px-20 space-y-5">
           <div className="flex items-center w-full">
             <img
-              className="flex w-full max-w-[11rem] h-[11rem] rounded-full bg-[#1D1F21] border-4 border-[#000000]"
+              className="flex w-full max-w-[11rem] h-[11rem] object-cover rounded-full bg-[#1D1F21] border-4 border-[#000000]"
               src={`${ get_profile.profile ? get_profile.profile : `https://ui-avatars.com/api/?name=${ get_profile.name }&background=1D1F21&color=FF3C3C` }`}
               alt={get_profile.username}
             />
-            <div className="flex flex-row items-center justify-between w-full mt-20 ml-5">
+            <div className="flex flex-row items-center justify-between w-full mt-[7rem] ml-5">
               <div className="flex flex-col w-full">
                 <span className="font-bold text-2xl">{ get_profile.name }</span>
                 <div className="flex items-center space-x-2">
@@ -117,22 +118,75 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
               </div>
             </div>
           </div>
-          <div className="relative flex flex-row items-start w-full space-x-2">
-            <div className="sticky top-5 flex flex-col w-full max-w-xs p-5 space-y-3 rounded-xl bg-pantone-darkblack">
-              <div className="flex w-full">
-                <h1>Intro</h1>
+          <div className="relative flex flex-row items-start w-full pb-20 space-x-2">
+            <div className="sticky top-5 flex flex-col w-full max-w-xs p-5 space-y-5 rounded-xl bg-pantone-darkblack">
+              <div className="flex flex-col w-full space-y-2">
+                <h1 className="font-bold text-base text-pantone-white text-opacity-30">Intro</h1>
+                <div className="flex items-center w-full space-x-2">
+                  <h3 className="font-light text-sm text-pantone-white">
+                    {`${ get_profile.shortbio ? get_profile.shortbio : 'Welcome to Fixrhythm' }`}
+                  </h3>
+                </div>
               </div>
-              <div className="flex items-center w-full space-x-2">
-                <RiMusicFill className="w-5 h-5 text-pantone-white text-opacity-50" />
-                <h3 className="font-normal text-sm text-pantone-white">
-                  {`${ get_profile.shortbio ? get_profile.shortbio : 'Welcome to Fixrhythm' }`}
-                </h3>
-              </div>
+              {(get_profile.facebook || get_profile.instagram || get_profile.twitter || get_profile.tiktok || get_profile.youtube) && (
+                <div className="flex flex-col w-full space-y-2">
+                  <h1 className="font-bold text-base text-pantone-white text-opacity-30">Social Media</h1>
+                  <div className="flex flex-col w-full space-y-2">
+                    {get_profile.facebook && (
+                      <Link href={`https://www.facebook.com/${get_profile.facebook}`}>
+                        <a className="flex items-center space-x-2" target="_blank">
+                          <Facebook className="w-4 h-4 fill-current text-pantone-white text-opacity-30" />
+                          <span className="font-light text-sm text-pantone-white transition ease-linear duration-200 hover:text-pantone-red hover:text-opacity-100">
+                            @{get_profile.facebook}
+                          </span>
+                        </a>
+                      </Link>
+                    )}
+                    {get_profile.instagram && (
+                      <Link href={`https://www.instagram.com/${get_profile.instagram}`}>
+                        <a className="flex items-center w-full space-x-2" target="_blank">
+                          <Instagram className="w-4 h-4 fill-current text-pantone-white text-opacity-30" />
+                          <span className="font-light text-sm text-pantone-white transition ease-linear duration-200 hover:text-pantone-red hover:text-opacity-100">
+                            @{get_profile.instagram}
+                          </span>
+                        </a>
+                      </Link>
+                    )}
+                    {get_profile.twitter && (
+                      <Link href={`https://www.twitter.com/${get_profile.twitter}`}>
+                        <a className="flex items-center w-full space-x-2" target="_blank">
+                          <Twitter className="w-4 h-4 fill-current text-pantone-white text-opacity-30" />
+                          <span className="font-light text-sm text-pantone-white transition ease-linear duration-200 hover:text-pantone-red hover:text-opacity-100">
+                            @{get_profile.twitter}
+                          </span>
+                        </a>
+                      </Link>
+                    )}
+                    {get_profile.tiktok && (
+                      <Link href={`https://www.tiktok.com/@${get_profile.tiktok}`}>
+                        <a className="flex items-center w-full space-x-2" target="_blank">
+                          <TikTok className="w-4 h-4 fill-current text-pantone-white text-opacity-30" />
+                          <span className="font-light text-sm text-pantone-white transition ease-linear duration-200 hover:text-pantone-red hover:text-opacity-100">
+                            @{get_profile.tiktok}
+                          </span>
+                        </a>
+                      </Link>
+                    )}
+                    {get_profile.youtube && (
+                      <Link href={`${get_profile.youtube}`}>
+                        <a className="flex items-center w-full space-x-2" target="_blank">
+                          <Youtube className="w-4 h-4 fill-current text-pantone-white text-opacity-30" />
+                          <span className="font-light text-sm text-pantone-white transition ease-linear duration-200 hover:text-pantone-red hover:text-opacity-100">My Channel</span>
+                        </a>
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              )}
               <div className="flex flex-col items-center w-full space-y-3">
                 <div className="flex items-center w-full space-x-1">
                   <div className="flex items-center w-full space-x-2">
-                    <RiPushpinFill className="w-5 h-5 text-pantone-white text-opacity-50" />
-                    <span className="font-normal text-sm">Pinned Compositions</span>
+                    <span className="font-bold text-base text-pantone-white text-opacity-30">Pinned</span>
                   </div>
                 </div>
                 <div className="flex flex-col w-full py-3 space-y-2 border-t border-pantone-white border-opacity-10">

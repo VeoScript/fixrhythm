@@ -132,13 +132,13 @@ const DisplayFollowers: React.FC<TypeProps> = ({ host, profile, followers }) => 
             )
           })}
         </div>
-        <div className="flex flex-row items-center justify-center w-full max-w-full px-5 py-2 border-t border-pantone-white border-opacity-5">
+        {currentFollowers.length > 0 && (
           <PaginationButton
             followers_followingPerPage={followersPerPage}
             totalFollowersFollowing={get_followers.followedBy.length}
             paginate={paginate}
           />
-        </div>
+        )}
       </div>
     </ProfileLayout>
   )

@@ -13,7 +13,7 @@ const LeftSideBar: React.FC<TypeProps> = ({ host }) => {
     <div className="flex flex-col w-full max-w-xs h-full overflow-y-auto scrollbar-hide pb-20 bg-pantone-gray border-r border-pantone-white border-opacity-10">
       <div className="flex flex-col items-center w-full px-5 py-5 space-y-3">
         <img
-          className="w-40 h-40 rounded-full bg-[#1D1F21]"
+          className="w-40 h-40 object-cover rounded-full bg-[#1D1F21]"
           src={`${ host.profile ? host.profile : `https://ui-avatars.com/api/?name=${ host.name }&background=1D1F21&color=FF3C3C` }`}
           alt=""
         />
