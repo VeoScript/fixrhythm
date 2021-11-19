@@ -93,6 +93,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
     select: {
       id: true,
       uuid: true,
+      profile: true,
       account_type: true,
       name: true,
       username: true,
