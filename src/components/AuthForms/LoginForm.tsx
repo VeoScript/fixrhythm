@@ -53,6 +53,7 @@ const LoginForm: React.FC = () => {
             className="w-full px-3 py-5 text-sm bg-transparent outline-none"
             type="text"
             placeholder="Username"
+            onInput={() => setSignupError("")}
             {...register("username", { required: true })}
           />
         </div>
@@ -64,6 +65,7 @@ const LoginForm: React.FC = () => {
             className="w-full px-3 py-5 text-sm bg-transparent outline-none"
             type="password"
             placeholder="Password"
+            onInput={() => setSignupError("")}
             {...register("password", { required: true })}
           />
         </div>
