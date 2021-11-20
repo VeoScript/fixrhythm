@@ -132,11 +132,13 @@ const DisplayFollowing: React.FC<TypeProps> = ({ host, profile, following }) => 
             )
           })}
         </div>
-        <PaginationButton
-          followers_followingPerPage={followingPerPage}
-          totalFollowersFollowing={get_following.following.length}
-          paginate={paginate}
-        />
+        {currentFollowing.length > 0 && (
+          <PaginationButton
+            followers_followingPerPage={followingPerPage}
+            totalFollowersFollowing={get_following.following.length}
+            paginate={paginate}
+          />
+        )}
       </div>
     </ProfileLayout>
   )
