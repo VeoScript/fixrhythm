@@ -2,7 +2,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Router, { useRouter } from 'next/router'
-import { RiHome5Fill, RiMusic2Fill, RiBookOpenFill, RiBellFill, RiSettings5Fill, RiSearchLine, RiUserSettingsLine, RiLogoutCircleRLine } from 'react-icons/ri'
+import { RiHome5Fill, RiMusic2Fill, RiBookOpenFill, RiBellFill, RiSearchLine, RiUserSettingsLine, RiLogoutCircleRLine, RiMenu5Fill } from 'react-icons/ri'
 
 interface TypeProps {
   user?: any
@@ -45,7 +45,7 @@ const NavigationBar: React.FC<TypeProps> = ({ user, host }) => {
                   setIsDropdown(true)
                 }} 
               >
-                <RiSettings5Fill className="w-7 h-6 transition ease-linear duration-200 text-[#848484] hover:text-pantone-white" />
+                <RiMenu5Fill className="w-7 h-6 transition ease-linear duration-200 text-[#848484] hover:text-pantone-white" />
               </button>
               {isDropdown && (
                 <React.Fragment>
