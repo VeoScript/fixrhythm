@@ -65,11 +65,11 @@ const ChangePassword: React.FC<TypeProps> = ({ host }) => {
     toast("Changed password saved successfully!", {
       style: {
         borderRadius: '10px',
-        border: '2px solid #3A9CD1',
+        border: '2px solid #1ED760',
         padding: '5px',
         fontSize: '14px',
         background: '#1D1F21',
-        color: '#A9D3EB'
+        color: '#FFFFFF'
       }
     })
   }
