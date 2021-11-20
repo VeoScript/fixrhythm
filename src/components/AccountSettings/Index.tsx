@@ -82,10 +82,11 @@ const AccountSettings: React.FC<TypeProps> = ({ host }) => {
     toast("Saved Successfully!", {
       style: {
         borderRadius: '10px',
-        padding: '10px',
+        border: '2px solid #3A9CD1',
+        padding: '5px',
         fontSize: '14px',
-        background: '#0C0C0C',
-        color: '#FFFFFF'
+        background: '#1D1F21',
+        color: '#A9D3EB'
       }
     })
   }
