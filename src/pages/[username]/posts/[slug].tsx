@@ -90,6 +90,7 @@ export const getServerSideProps: GetServerSideProps = withSession(async function
           username: true
         }
       },
+      pinned: true,
       bookmarks: true,
       likes: true,
       comments: {

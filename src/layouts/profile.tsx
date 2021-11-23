@@ -5,7 +5,7 @@ import FollowButton from '~/components/Interactions/Follows/FollowButton'
 import UnfollowButton from '~/components/Interactions/Follows/UnfollowButton'
 import useSWR from 'swr'
 import { Facebook, Instagram, Twitter, TikTok, Youtube } from '~/utils/SocialMediaIcons'
-import { RiBookOpenFill, RiMusicFill, RiMusic2Fill, RiCloseFill } from 'react-icons/ri'
+import { RiBookOpenFill, RiMusic2Fill, RiCloseFill } from 'react-icons/ri'
 
 const fetcher = async (
   input: RequestInfo,
@@ -119,7 +119,7 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
             </div>
           </div>
           <div className="relative flex flex-row items-start w-full pb-20 space-x-2">
-            <div className="sticky top-5 flex flex-col w-full max-w-xs p-5 space-y-5 rounded-xl bg-pantone-darkblack">
+            <div className="sticky top-5 flex flex-col w-full max-w-xs h-full max-h-[30rem] p-5 space-y-5 rounded-xl overflow-hidden bg-pantone-darkblack">
               <div className="flex flex-col w-full space-y-2">
                 <h1 className="font-bold text-base text-pantone-white text-opacity-30">Intro</h1>
                 <div className="flex items-center w-full space-x-2">
@@ -183,25 +183,51 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
                   </div>
                 </div>
               )}
-              <div className="flex flex-col items-center w-full space-y-3">
-                <div className="flex items-center w-full space-x-1">
-                  <div className="flex items-center w-full space-x-2">
-                    <span className="font-bold text-base text-pantone-white text-opacity-30">Pinned</span>
-                  </div>
-                </div>
-                <div className="flex flex-col w-full py-3 space-y-2 border-t border-pantone-white border-opacity-10">
-                  <div className="flex flex-row items-center justify-between w-full">
-                    <div className="flex flex-row items-center w-full space-x-1">
-                      <RiMusic2Fill className="w-3 h-3 text-pantone-white text-opacity-50" />
-                      <span className="font-bold text-sm text-pantone-white text-opacity-80">Love of My Life</span>
+              <div className="flex flex-col items-center w-full overflow-y-hidden">
+                {get_profile.pinned.length > 0 && (
+                  <div className="flex items-center w-full space-x-1">
+                    <div className="flex items-center w-full py-2 space-x-2 border-b border-pantone-white border-opacity-10">
+                      <span className="font-bold text-base text-pantone-white text-opacity-30">Pinned</span>
                     </div>
-                    <button>
-                      <RiCloseFill />
-                    </button>
                   </div>
-                  <p className="font-normal text-xs text-pantone-white text-opacity-30">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ab animi hic velit exercitationem accusantium ut necessitatibus nulla iusto fugiat modi earum assumenda, placeat provident, saepe voluptates aliquid nam architecto!
-                  </p>
+                )}
+                <div className="flex flex-col items-center w-full space-y-3 overflow-y-auto scrollbar-hide">
+                  {get_profile.pinned.map((pin: any, i: number) => (
+                    <div className="flex flex-col w-full py-3 space-y-2 border-b border-pantone-white border-opacity-10" key={i}>
+                      <div className="flex flex-row items-center justify-between w-full">
+                        <div className="flex">
+                          <Link href={`/${get_profile.username}/posts/${pin.composition.slug}`}>
+                            <a className="flex flex-row items-center w-full space-x-1">
+                              {pin.composition.category === 'Song' ? <RiMusic2Fill className="w-3 h-3 text-pantone-white text-opacity-50" /> : <RiBookOpenFill className="w-3 h-3 text-pantone-white text-opacity-50" />}
+                              <span className="font-bold text-sm text-pantone-white text-opacity-80">{ pin.composition.title }</span>
+                            </a>
+                          </Link>
+                        </div>
+                        {host.username === get_profile.username && (
+                          <button
+                            className="outline-none"
+                            type="button"
+                            onClick={async () => {
+                              const userId = host.uuid
+                              const compositionId = pin.compositionId
+                              await fetch('/api/interactions/pinned/delete', {
+                                method: 'POST',
+                                headers: {
+                                  'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ userId, compositionId })
+                              })
+                            }}
+                          >
+                            <RiCloseFill />
+                          </button>
+                        )}
+                      </div>
+                      <p className="font-normal text-xs text-pantone-white text-opacity-30">
+                        { pin.composition.description }
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

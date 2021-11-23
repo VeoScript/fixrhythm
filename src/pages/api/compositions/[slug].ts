@@ -23,6 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             username: true
           }
         },
+        pinned: true,
         bookmarks: true,
         likes: true,
         comments: {
