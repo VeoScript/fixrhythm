@@ -34,6 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             slug: true,
             datePublished: true,
             dateEdited: true,
+            pinned: true,
             likes: true,
             comments: true,
             bookmarks: true,

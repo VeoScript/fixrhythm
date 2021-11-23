@@ -28,7 +28,35 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         instagram: true,
         twitter: true,
         tiktok: true,
-        youtube: true
+        youtube: true,
+        pinned: {
+          orderBy: [
+            {
+              id: 'desc'
+            }
+          ],
+          include: {
+            composition: {
+              select: {
+                uuid: true,
+                title: true,
+                category: true,
+                description: true,
+                slug: true,
+                pinned: true,
+                likes: true,
+                bookmarks: true,
+                user: {
+                  select: {
+                    name: true,
+                    username: true,
+                    account_type: true
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     })
     res.status(200).json(profile)

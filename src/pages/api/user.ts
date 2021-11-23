@@ -16,6 +16,34 @@ async function handler(
         username: user.username
       },
       include: {
+        pinned: {
+          orderBy: [
+            {
+              id: 'desc'
+            }
+          ],
+          include: {
+            composition: {
+              select: {
+                uuid: true,
+                title: true,
+                category: true,
+                description: true,
+                slug: true,
+                pinned: true,
+                likes: true,
+                bookmarks: true,
+                user: {
+                  select: {
+                    name: true,
+                    username: true,
+                    account_type: true
+                  }
+                }
+              }
+            }
+          }
+        },
         likes: true,
         comments: true,
         bookmarks: {
@@ -32,6 +60,7 @@ async function handler(
                 category: true,
                 description: true,
                 slug: true,
+                pinned: true,
                 likes: true,
                 bookmarks: true,
                 user: {
