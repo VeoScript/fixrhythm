@@ -104,7 +104,7 @@ const PostCard: React.FC<TypeProps> = ({ host, composition, border, backgroundCo
         <div className="flex flex-row items-center space-x-1">
           {!host || host.isLoggedIn === true && (
             <Link href={`/${composition.user.username}/posts/${composition.slug}`}>
-              <a>
+              <a title="Comments">
                 <RiDiscussFill className="w-5 h-5 transition ease-linear duration-100 hover:scale-90" />
               </a>
             </Link>

@@ -47,7 +47,7 @@ const ReactionButton: React.FC<TypeProps> = ({ host, composition }) => {
   }
 
   return (
-    <button className="outline-none" onClick={async () => {
+    <button title="Reaction" className="outline-none" onClick={async () => {
       like ? await onUnlike(compositionId) : await onLike(compositionId)
       setLike(!like)
     }}>
