@@ -29,6 +29,7 @@ model Users {
   tiktok                          String?
   youtube                         String?
   composition                     Compositions[]
+  pinned                          Pinned[]
   likes                           Likes[]
   comments                        Comments[]
   bookmarks                       Bookmarks[]
@@ -50,11 +51,21 @@ model Compositions {
   spotify                         String?
   applemusic                      String?
   youtube                         String?
+  pinned                          Pinned[]
   likes                           Likes[]
   comments                        Comments[]
   bookmarks                       Bookmarks[]
   user                            Users                                                 @relation(fields: [userId], references: [uuid], onDelete: Cascade)
   userId                          String
+}
+
+model Pinned {
+  id                              Int                         @unique                   @default(autoincrement())
+  uuid                            String                      @id                       @default(uuid())
+  user                            Users                                                 @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+  userId                          String
+  composition                     Compositions                                          @relation(fields: [compositionId], references: [uuid], onDelete: Cascade)
+  compositionId                   String
 }
 
 model Likes {
