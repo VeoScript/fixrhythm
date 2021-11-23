@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Moment from 'react-moment'
+import PinnedPostButton from '../Interactions/PinnedPostButton'
 import MenuDropdown from './MenuDropdown'
 import BookmarkButton from '../Interactions/BookmarkButton'
 import ReactionButton from '../Interactions/ReactionButton'
@@ -15,6 +17,9 @@ interface TypeProps {
 }
 
 const PostCard: React.FC<TypeProps> = ({ host, composition, border, backgroundColor }) => {
+
+  const { pathname } = useRouter()
+
   return (
     <div className={`flex flex-row items-center justify-between w-full max-w-full p-3 space-x-5 rounded-xl ${ backgroundColor } ${ border }`}>
       <div className="flex flex-col w-full max-w-full space-y-5">
@@ -72,6 +77,16 @@ const PostCard: React.FC<TypeProps> = ({ host, composition, border, backgroundCo
             />
           )}
         </div>
+        {!(pathname === '/' || pathname === '/songs' || pathname === '/poems') && (
+          <div className="relative flex">
+            {(host.username === composition.user.username && composition.status === 'Published') && (
+              <PinnedPostButton
+                host={host}
+                composition={composition}
+              />
+            )}
+          </div>
+        )}
         <div className="flex flex-row items-center space-x-1">
           {!host || host.isLoggedIn === true && (
             <BookmarkButton
