@@ -150,7 +150,7 @@ const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
             id="content_editor"
             className="w-full h-full max-h-[20rem] overflow-y-auto p-5 text-sm bg-transparent whitespace-pre-wrap outline-none"
             placeholder="Type your lyrics here, shift+enter for new line."
-            contentEditable
+            contentEditable="plaintext-only"
             spellCheck={false}
             onInput={(e: any) => setValue('content_editor', e.currentTarget.textContent, { shouldValidate: true })}
             onKeyPress={handleLineBreak}
