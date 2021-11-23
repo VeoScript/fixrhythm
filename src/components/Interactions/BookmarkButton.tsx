@@ -47,7 +47,7 @@ const BookmarkButton: React.FC<TypeProps> = ({ host, composition }) => {
   }
 
   return (
-    <button className="outline-none" onClick={async () => {
+    <button title="Bookmark" className="outline-none" onClick={async () => {
       bookmark ? await deleteBookmark(compositionId) : await addBookmark(compositionId)
       setBookmark(!bookmark)
     }}>

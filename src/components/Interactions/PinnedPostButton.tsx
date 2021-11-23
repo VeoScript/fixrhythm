@@ -47,7 +47,7 @@ const PinnedPostButton: React.FC<TypeProps> = ({ host, composition }) => {
   }
 
   return (
-    <button className="outline-none" onClick={async () => {
+    <button title="Pin this post" className="outline-none" onClick={async () => {
       pinnedpost ? await removePinned(compositionId) : await addPinned(compositionId)
       setPinnedPost(!pinnedpost)
     }}>

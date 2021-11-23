@@ -26,19 +26,20 @@ const NavigationBar: React.FC<TypeProps> = ({ user, host }) => {
           </div>
           <div className="flex items-center justify-center w-full max-w-full space-x-10">
             <Link href="/">
-              <a><RiHome5Fill className={`${ pathname === '/' ? 'text-pantone-white' : 'text-[#848484]' } w-7 h-6 transition ease-linear duration-200 hover:text-pantone-white`} /></a>
+              <a title="Home"><RiHome5Fill className={`${ pathname === '/' ? 'text-pantone-white' : 'text-[#848484]' } w-7 h-6 transition ease-linear duration-200 hover:text-pantone-white`} /></a>
+            </Link>
+            <Link href="/songs">
+              <a title="Songs"><RiMusic2Fill className={`${ pathname === '/songs' ? 'text-pantone-white' : 'text-[#848484]' } w-7 h-6 transition ease-linear duration-200 hover:text-pantone-white`} /></a>
+            </Link>
+            <Link href="/poems">
+              <a title="Poems"><RiBookOpenFill className={`${ pathname === '/poems' ? 'text-pantone-white' : 'text-[#848484]' } w-7 h-6 transition ease-linear duration-200 hover:text-pantone-white`} /></a>
             </Link>
             <Link href="/">
-              <a><RiMusic2Fill className={`${ pathname === '/lyrics' ? 'text-pantone-white' : 'text-[#848484]' } w-7 h-6 transition ease-linear duration-200 hover:text-pantone-white`} /></a>
-            </Link>
-            <Link href="/">
-              <a><RiBookOpenFill className={`${ pathname === '/poems' ? 'text-pantone-white' : 'text-[#848484]' } w-7 h-6 transition ease-linear duration-200 hover:text-pantone-white`} /></a>
-            </Link>
-            <Link href="/">
-              <a><RiBellFill className={`${ pathname === '/notification' ? 'text-pantone-white' : 'text-[#848484]' } w-7 h-6 transition ease-linear duration-200 hover:text-pantone-white`} /></a>
+              <a title="Notifications"><RiBellFill className={`${ pathname === '/notifications' ? 'text-pantone-white' : 'text-[#848484]' } w-7 h-6 transition ease-linear duration-200 hover:text-pantone-white`} /></a>
             </Link>
             <div className="relative flex">
               <button
+                title="Menu"
                 className="outline-none"
                 type="button"
                 onClick={() => {

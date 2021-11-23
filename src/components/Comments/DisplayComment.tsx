@@ -126,7 +126,7 @@ const DisplayComment: React.FC<TypeProps> = ({ host, get_composition }) => {
               </div>
             )}
             {!isSubmitting && (
-              <button type="submit">
+              <button title="Send Comment" type="submit">
                 <RiSendPlane2Line className="w-5 h-5 text-pantone-white text-opacity-50 transition ease-linear duration-200 hover:scale-95" />
               </button>
             )}
