@@ -20,13 +20,13 @@ const fetcher = async (
 interface TypeProps {
   user: any
   host: any
-  slug: any
+  uuid: any
   composition: any
 }
 
-const DisplayPostAndComment: React.FC<TypeProps> = ({ user, host, slug, composition }) => {
+const DisplayPostAndComment: React.FC<TypeProps> = ({ user, host, uuid, composition }) => {
 
-  const { data: get_composition } = useSWR(`/api/compositions/${ slug }`, fetcher, {
+  const { data: get_composition } = useSWR(`/api/compositions/${ uuid }`, fetcher, {
     refreshInterval: 1000,
     fallbackData: composition
   })
@@ -96,7 +96,7 @@ const DisplayPostAndComment: React.FC<TypeProps> = ({ user, host, slug, composit
                     <MenuDropdown
                       host={host}
                       composition={composition}
-                      postUrl={slug}
+                      postUrl={uuid}
                     />
                   )}
                 </div>
