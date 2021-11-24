@@ -65,7 +65,7 @@ const EditCard: React.FC<TypeProps> = ({ host, composition, setIsDropdown }) => 
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-3xl overflow-hidden text-left align-middle transition-all transform text-pantone-white bg-pantone-darkblack bg-opacity-10 backdrop-blur-sm shadow-xl rounded-xl border-2 border-pantone-white border-opacity-10">
+              <div className="inline-block w-full max-w-4xl overflow-hidden text-left align-middle transition-all transform text-pantone-white bg-pantone-darkblack bg-opacity-10 backdrop-blur-sm shadow-xl rounded-xl border-2 border-pantone-white border-opacity-10">
                 <div className="flex flex-col w-full">
                   <div className="flex flex-row items-center justify-between w-full px-5 py-3 bg-pantone-darkblack">
                     <h3 className="font-black text-xl text-pantone-red">FIXRHYTHM</h3>

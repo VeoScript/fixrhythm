@@ -1,7 +1,8 @@
 import React from 'react'
+import Router from 'next/router'
 import { useForm } from 'react-hook-form'
 import FormLoader from '~/utils/FormLoader'
-import { RiMeteorFill, RiMusic2Fill, RiBookOpenFill } from 'react-icons/ri'
+import { RiMeteorFill, RiMusic2Fill, RiBookOpenFill, RiAppleFill, RiSpotifyFill, RiYoutubeFill } from 'react-icons/ri'
 
 interface TypeProps {
   host: any
@@ -14,6 +15,9 @@ interface FormData {
   description: string
   composition_category: string
   content_editor: string
+  spotify?: string
+  applemusic?: string
+  youtube?: string
 }
 
 const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
@@ -24,10 +28,13 @@ const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
     title: composition.title,
     description: composition.description,
     composition_category: composition.category,
-    content_editor: composition.content
+    content_editor: composition.content,
+    spotify: composition.spotify,
+    applemusic: composition.applemusic,
+    youtube: composition.youtube
   }
 
-  const { register, handleSubmit, reset, setValue, formState: { isSubmitting } } = useForm({ defaultValues })
+  const { register, handleSubmit, reset, setValue, formState: { errors, isSubmitting } } = useForm({ defaultValues })
 
   React.useEffect(() => {
     register('content_editor', { required: true })
@@ -40,6 +47,9 @@ const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
     const description = formData.description
     const composition_category = formData.composition_category
     const content_editor = formData.content_editor
+    const spotify = formData.spotify
+    const applemusic = formData.applemusic
+    const youtube = formData.youtube
 
     if(document.getElementById('content_editor')!.innerText.trim().length === 0 || content_editor === '') return
 
@@ -53,13 +63,26 @@ const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
         description,
         composition_category,
         content_editor,
+        spotify,
+        applemusic,
+        youtube,
         userId,
         compositionId
       })
     })
+    
+    // if the user update the post to DRAFT, this function will automatically delete the post to pinned post...
+    await fetch('/api/interactions/pinned/delete', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ userId, compositionId })
+    })
 
     reset()
     closeModal()
+    Router.replace(Router.asPath)
   }
 
   async function onUpdatePublish(formData: FormData) {
@@ -69,6 +92,9 @@ const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
     const description = formData.description
     const composition_category = formData.composition_category
     const content_editor = formData.content_editor
+    const spotify = formData.spotify
+    const applemusic = formData.applemusic
+    const youtube = formData.youtube
 
     if(document.getElementById('content_editor')!.innerText.trim().length === 0 || content_editor === '') return
 
@@ -82,6 +108,9 @@ const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
         description,
         composition_category,
         content_editor,
+        spotify,
+        applemusic,
+        youtube,
         userId,
         compositionId
       })
@@ -89,6 +118,7 @@ const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
 
     reset()
     closeModal()
+    Router.replace(Router.asPath)
   }
 
   function handleLineBreak(e: any) {
@@ -153,14 +183,58 @@ const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
         <div className="flex items-center w-full px-1 whitespace-pre-wrap rounded-b-md text-pantone-white bg-transparent border-t border-b border-l border-r border-pantone-white border-opacity-10">
           <div
             id="content_editor"
-            className="w-full h-full max-h-[20rem] overflow-y-auto p-5 text-sm bg-transparent whitespace-pre-wrap outline-none"
+            className="w-full h-full max-h-[15rem] overflow-y-auto p-5 text-sm bg-transparent whitespace-pre-wrap outline-none"
             placeholder="Type your lyrics here, shift+enter for new line."
-            contentEditable="plaintext-only"
+            // contentEditable="plaintext-only"
+            contentEditable
             spellCheck={false}
             onInput={(e: any) => setValue('content_editor', e.currentTarget.textContent, { shouldValidate: true })}
             onKeyPress={handleLineBreak}
           >
             { composition.content }
+          </div>
+        </div>
+        <div className="flex flex-col w-full py-3 space-y-2">
+          <div className="flex flex-row items-center justify-between w-full">
+            <span className="font-bold text-sm text-pantone-white text-opacity-50 uppercase">Uploaded in</span>
+            <span className="font-bold text-sm text-pantone-red">
+              {(errors.spotify || errors.applemusic || errors.youtube) && 'Invalid URL'}
+            </span>
+          </div>
+          <div className="flex flex-row items-center justify-between w-full overflow-hidden rounded-md border border-pantone-white border-opacity-10">
+            <div className="flex w-full max-w-sm px-3">
+              <div className="flex items-center pr-3 border-r border-pantone-white border-opacity-10">
+                <RiSpotifyFill className={`${ errors.spotify ? 'text-pantone-red' : 'text-pantone-white text-opacity-50' } w-6 h-6`} />
+              </div>
+              <input
+                className="w-full px-3 py-5 text-sm bg-transparent outline-none"
+                type="text"
+                placeholder="Spotify Link"
+                {...register("spotify", { pattern: /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g })}
+              />
+            </div>
+            <div className="flex w-full max-w-sm px-3 border-l border-r border-pantone-white border-opacity-10">
+              <div className="flex items-center pr-3 border-r border-pantone-white border-opacity-10">
+                <RiAppleFill className={`${ errors.spotify ? 'text-pantone-red' : 'text-pantone-white text-opacity-50' } w-6 h-6`} />
+              </div>
+              <input
+                className="w-full px-3 py-5 text-sm bg-transparent outline-none"
+                type="text"
+                placeholder="Apple Music Link"
+                {...register("applemusic", { pattern: /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g })}
+              />
+            </div>
+            <div className="flex w-full max-w-sm px-3">
+              <div className="flex items-center pr-3 border-r border-pantone-white border-opacity-10">
+                <RiYoutubeFill className={`${ errors.spotify ? 'text-pantone-red' : 'text-pantone-white text-opacity-50' } w-6 h-6`} />
+              </div>
+              <input
+                className="w-full px-3 py-5 text-sm bg-transparent outline-none"
+                type="text"
+                placeholder="YouTube Link"
+                {...register("youtube", { pattern: /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g })}
+              />
+            </div>
           </div>
         </div>
       </div>
