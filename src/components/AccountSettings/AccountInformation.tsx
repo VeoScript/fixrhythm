@@ -11,14 +11,17 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
   return (
     <div className="flex flex-col w-full">
       <div className="flex flex-col w-full border-b border-pantone-white border-opacity-10">
-        <div className="flex flex-row items-center w-full px-5 py-3 border-b border-pantone-white border-opacity-5">
+        <div className="flex flex-row items-center justify-between w-full px-5 py-3 border-b border-pantone-white border-opacity-5">
           <span className="font-bold text-sm text-pantone-white text-opacity-50 uppercase">Account Information</span>
+          <span className="font-light text-xs text-pantone-red">
+            {(errors.profile_photo || errors.cover_photo) && 'Invalid Image URL'}
+          </span>
         </div>
         <div className="flex flex-col w-full px-5 py-3 space-y-2">
           <div className="flex flex-row items-center w-full space-x-2">
             <div className="flex flex-col justify-center w-full space-y-2">
               <span className="px-2 font-light text-xs text-pantone-white text-opacity-50">Profile Photo URL</span>
-              <div className="flex items-center w-full px-1 rounded-md text-pantone-white bg-transparent border border-pantone-gray transition ease-linear duration-200 hover:border-pantone-white focus-within:border-pantone-white">
+              <div className={`${ errors.profile_photo ? 'hover:border-pantone-red focus-within:border-pantone-red' : 'hover:border-pantone-white focus-within:border-pantone-white' } flex items-center w-full px-1 rounded-md text-pantone-white bg-transparent border border-pantone-gray transition ease-linear duration-200`}>
                 <div className="px-3 border-r border-pantone-white border-opacity-30">
                   <RiImageLine className="w-6 h-6 text-pantone-white text-opacity-50" />
                 </div>
@@ -26,7 +29,7 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
                   className="w-full px-3 py-5 text-sm bg-transparent outline-none"
                   type="text"
                   placeholder="Profile Photo URL"
-                  {...register("profile_photo")}
+                  {...register("profile_photo", { pattern: /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g })}
                 />
               </div>
             </div>
@@ -40,7 +43,7 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
                   className="w-full px-3 py-5 text-sm bg-transparent outline-none"
                   type="text"
                   placeholder="Cover Photo URL"
-                  {...register("cover_photo")}
+                  {...register("cover_photo", { pattern: /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g })}
                 />
               </div>
             </div>

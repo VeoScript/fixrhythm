@@ -8,10 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { uuid } = req.query
     const composition = await prisma.compositions.findFirst({
       where: {
-        uuid: {
-          contains: String(uuid),
-          mode: 'insensitive'
-        }
+        uuid: String(uuid)
       },
       include: {
         user: {

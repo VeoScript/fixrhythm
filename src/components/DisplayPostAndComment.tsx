@@ -108,14 +108,34 @@ const DisplayPostAndComment: React.FC<TypeProps> = ({ user, host, uuid, composit
               <p>{get_composition.content}</p>
             </div>
           </div>
-          <div className="flex flex-row items-center justify-center w-full p-5 border-t border-pantone-white border-opacity-5">
-            <span className="font-light text-xs">Play this on &nbsp;</span>
-            <div className="flex flex-row items-center space-x-1">
-              <RiSpotifyFill className="w-5 h-5 text-[#1ED760]" />
-              <RiAppleFill className="w-5 h-5 text-[#FFFFFF]" />
-              <RiYoutubeFill className="w-5 h-5 text-[#D31D1E]" />
+          {(get_composition.spotify || get_composition.applemusic || get_composition.youtube) && (
+            <div className="flex flex-row items-center justify-center w-full p-5 border-t border-pantone-white border-opacity-5">
+              <span className="font-light text-xs">Play this on &nbsp;</span>
+              <div className="flex flex-row items-center space-x-1">
+                {get_composition.spotify && (
+                  <Link href={`${get_composition.spotify}`}>
+                    <a target="_blank" className="transition ease-linear duration-200 transform hover:scale-95">
+                      <RiSpotifyFill className="w-5 h-5 text-[#1ED760]" />
+                    </a>
+                  </Link>
+                )}
+                {get_composition.applemusic && (
+                  <Link href={`${get_composition.applemusic}`}>
+                    <a target="_blank" className="transition ease-linear duration-200 transform hover:scale-95">
+                      <RiAppleFill className="w-5 h-5 -mt-1 text-[#FFFFFF]" />
+                    </a>
+                  </Link>
+                )}
+                {get_composition.youtube && (
+                  <Link href={`${get_composition.youtube}`}>
+                    <a target="_blank" className="transition ease-linear duration-200 transform hover:scale-95">
+                      <RiYoutubeFill className="w-5 h-5 text-[#D31D1E]" />
+                    </a>
+                  </Link>
+                )}
+              </div>
             </div>
-          </div>
+          )}
         </div>
         {(user || !host || host.isLoggedIn === true) && (
           <DisplayComment

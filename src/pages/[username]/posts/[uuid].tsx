@@ -75,10 +75,7 @@ export const getServerSideProps: GetServerSideProps = withSession(async function
 
   const composition = await prisma.compositions.findFirst({
     where: {
-      uuid: {
-        contains: uuid,
-        mode: 'insensitive'
-      }
+      uuid: uuid
     },
     include: {
       user: {
