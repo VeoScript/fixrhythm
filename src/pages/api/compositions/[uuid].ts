@@ -5,11 +5,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method !== 'GET') {
     res.status(500).json('GET Method Only')
   } else {
-    const { slug } = req.query
+    const { uuid } = req.query
     const composition = await prisma.compositions.findFirst({
       where: {
-        slug: {
-          contains: String(slug),
+        uuid: {
+          contains: String(uuid),
           mode: 'insensitive'
         }
       },

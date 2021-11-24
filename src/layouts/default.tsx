@@ -20,7 +20,7 @@ const Layout: React.FC<TypeProps> = ({ user, host, artists, children }) => {
       <div className="relative flex flex-col w-full max-w-[2400px] h-full text-pantone-white bg-pantone-darkblack bg-opacity-50">
         <NavigationBar host={host} user={user} />
         <div className="flex flex-row items-start w-full max-w-full h-full">
-          {!(pathname === '/[username]' || pathname === '/[username]/posts/[slug]' || pathname === '/[username]/followers' || pathname === '/[username]/following') && (
+          {!(pathname === '/[username]' || pathname === '/[username]/posts/[uuid]' || pathname === '/[username]/followers' || pathname === '/[username]/following') && (
             <LeftSideBar host={host} />
           )}
           <div className="flex flex-col w-full max-w-full h-full overflow-y-auto">

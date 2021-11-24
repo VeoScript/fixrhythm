@@ -9,12 +9,12 @@ import DisplayPostAndComment from '~/components/DisplayPostAndComment'
 interface TypeProps {
   user: any
   host: any
-  slug: any
+  uuid: any
   artists: any
   composition: any
 }
 
-const PublishedPostDisplay: NextPage<TypeProps> = ({ user, host, slug, artists, composition }) => {
+const PublishedPostDisplay: NextPage<TypeProps> = ({ user, host, uuid, artists, composition }) => {
   return (
     <React.Fragment>
       <Head>
@@ -28,7 +28,7 @@ const PublishedPostDisplay: NextPage<TypeProps> = ({ user, host, slug, artists, 
         <DisplayPostAndComment
           user={user}
           host={host}
-          slug={slug}
+          uuid={uuid}
           composition={composition}
         />
       </Layout>
@@ -38,7 +38,7 @@ const PublishedPostDisplay: NextPage<TypeProps> = ({ user, host, slug, artists, 
 
 export const getServerSideProps: GetServerSideProps = withSession(async function (context: any) {
   const user_session = context.req.session.get('user')
-  const { username, slug } = context.query
+  const { username, uuid } = context.query
   let user
 
   if(user_session) {
@@ -75,8 +75,8 @@ export const getServerSideProps: GetServerSideProps = withSession(async function
 
   const composition = await prisma.compositions.findFirst({
     where: {
-      slug: {
-        contains: slug,
+      uuid: {
+        contains: uuid,
         mode: 'insensitive'
       }
     },
@@ -137,7 +137,7 @@ export const getServerSideProps: GetServerSideProps = withSession(async function
     props: {
       user,
       host,
-      slug,
+      uuid,
       artists,
       composition
     }
