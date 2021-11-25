@@ -17,7 +17,7 @@ const DisplayBookmarks: React.FC<TypeProps> = ({ host }) => {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-1">
                 {bookmark.composition.category === 'Song' ? <RiMusic2Fill className="w-4 h-4 text-pantone-white text-opacity-30" /> : <RiBookOpenFill className="w-4 h-4 text-pantone-white text-opacity-30" />}
-                <Link href={`/${bookmark.composition.user.username}/posts/${bookmark.composition.slug}`}>
+                <Link href={`/${bookmark.composition.user.username}/posts/${bookmark.composition.uuid}`}>
                   <a className="font-bold text-sm hover:underline">{ bookmark.composition.title }</a>
                 </Link>
               </div>
