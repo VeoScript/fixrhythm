@@ -108,11 +108,11 @@ const SearchTitle: React.FC<TypeProps> = ({ fetchPublishedCompositions, fetchSon
             }}
           />
           <div className="absolute top-11 z-10 flex justify-center w-full max-w-[20rem]">
-            <div className="flex flex-col w-full h-full max-h-[15rem] bg-pantone-gray rounded-md overflow-y-auto">
+            <div className="flex flex-col w-full h-full max-h-[15rem] bg-pantone-darkblack rounded-md overflow-y-auto">
               {search_results.map((composition: any, i: number) => (
                 <Link href={`/${ composition.username }/posts/${ composition.uuid }`} key={i}>
                   <a 
-                    className="flex flex-row items-center justify-between w-full px-5 py-3 bg-pantone-gray hover:bg-pantone-white hover:bg-opacity-10"
+                    className="flex flex-row items-center justify-between w-full px-5 py-3 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-5"
                     onClick={(e: any) => {
                       setIsDisplay(false)
                       setSearchTerm(e.target.value="")
@@ -126,7 +126,7 @@ const SearchTitle: React.FC<TypeProps> = ({ fetchPublishedCompositions, fetchSon
                     </div>
                     <div className="flex items-center justify-start w-7">
                       <div className="flex items-center space-x-0.5">
-                        <RiHeart2Fill className="w-5 h-5 text-pantone-darkblack" />
+                        <RiHeart2Fill className="w-5 h-5 text-pantone-white text-opacity-30" />
                         <span className="font-light text-[10px] text-pantone-white text-opacity-50">{ composition.likes.length }</span>
                       </div>
                     </div>
