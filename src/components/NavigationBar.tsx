@@ -2,14 +2,16 @@
 import React from 'react'
 import Link from 'next/link'
 import Router, { useRouter } from 'next/router'
-import { RiHome5Fill, RiMusic2Fill, RiBookOpenFill, RiBellFill, RiSearchLine, RiUserSettingsLine, RiLogoutCircleRLine, RiMenu5Fill } from 'react-icons/ri'
+import SearchArtist from './Search/SearchArtist'
+import { RiHome5Fill, RiMusic2Fill, RiBookOpenFill, RiBellFill, RiUserSettingsLine, RiLogoutCircleRLine, RiMenu5Fill } from 'react-icons/ri'
 
 interface TypeProps {
   user?: any
   host: any
+  artists: any
 }
 
-const NavigationBar: React.FC<TypeProps> = ({ user, host }) => {
+const NavigationBar: React.FC<TypeProps> = ({ user, host, artists }) => {
 
   const { pathname } = useRouter()
 
@@ -90,10 +92,7 @@ const NavigationBar: React.FC<TypeProps> = ({ user, host }) => {
             </div>
           </div>
           <div className="flex items-center justify-center w-full max-w-xs px-3 space-x-3">
-            <div className="flex flex-row items-center w-full px-3 space-x-3 bg-pantone-gray rounded-lg border border-pantone-black focus-within:border-pantone-white focus-within:border-opacity-30">
-              <RiSearchLine className="text-white text-opacity-60" />
-              <input type="text" className="w-full py-2.5 text-xs bg-transparent outline-none" placeholder="Search author" />
-            </div>
+            <SearchArtist artists={artists} />
             <Link href={`/${host.username}`}>
               <a className="flex w-full max-w-[3rem] transition ease-linear duration-100 hover:scale-95">
                 <img

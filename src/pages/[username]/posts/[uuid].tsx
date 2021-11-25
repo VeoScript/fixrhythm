@@ -69,7 +69,8 @@ export const getServerSideProps: GetServerSideProps = withSession(async function
       account_type: true,
       name: true,
       username: true,
-      followedBy: true
+      followedBy: true,
+      composition: true
     }
   })
 

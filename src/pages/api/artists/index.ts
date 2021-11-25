@@ -13,7 +13,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         account_type: true,
         name: true,
         username: true,
-        followedBy: true
+        followedBy: true,
+        composition: true
       }
     })
     res.status(200).json(artists)

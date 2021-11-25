@@ -54,6 +54,7 @@ export const getStaticProps: GetStaticProps = async () => {
       name: true,
       username: true,
       followedBy: true,
+      composition: true
     }
   })
 

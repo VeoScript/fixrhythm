@@ -1,9 +1,9 @@
 import React from 'react'
 import { useRouter } from 'next/router'
+import SearchTitle from './Search/SearchTitle'
 import ComposeCard from './Compose/ComposeCard'
 import PostCard from './Card/PostCard'
 import useSWR from 'swr'
-import { RiSearchLine } from 'react-icons/ri'
 
 const fetcher = async (
   input: RequestInfo,
@@ -53,10 +53,11 @@ const NewsFeed: React.FC<TypeProps> = ({ host, published_compositions, song_publ
             {pathname === '/poems' && 'Poems'}
           </span>
         </div>
-        <div className="flex flex-row items-center w-full max-w-[20rem] px-3 space-x-3 bg-pantone-gray rounded-lg border border-pantone-black focus-within:border-pantone-white focus-within:border-opacity-30">
-          <RiSearchLine className="text-white text-opacity-60" />
-          <input type="text" className="w-full py-2.5 text-xs bg-transparent outline-none" placeholder="Search title" />
-        </div>
+        <SearchTitle
+          fetchPublishedCompositions={fetchPublishedCompositions}
+          fetchSongPublishedCompositions={fetchSongPublishedCompositions}
+          fetchPoemsPublishedCompositions={fetchPoemsPublishedCompositions}
+        />
         <div className="flex justify-end w-full max-w-[10rem]">
           <div className="flex justify-end w-full max-w-[5rem]">
             <ComposeCard host={host} />
