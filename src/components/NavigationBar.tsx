@@ -53,13 +53,13 @@ const NavigationBar: React.FC<TypeProps> = ({ user, host, artists }) => {
               {isDropdown && (
                 <React.Fragment>
                   <button 
-                    className={`${isDropdown ? 'z-10 block fixed inset-0 w-full h-full cursor-default outline-none' : 'hidden'}`}
+                    className={`${isDropdown ? 'z-50 block fixed inset-0 w-full h-full cursor-default outline-none' : 'hidden'}`}
                     type="button"
                     onClick={() => {
                       setIsDropdown(false)
                     }} 
                   />
-                  <div className="fixed top-14 z-10 w-full">
+                  <div className="fixed top-14 z-50 w-full">
                     <div className="flex w-full max-w-[10rem] shadow-sm rounded-md overflow-auto bg-pantone-black border border-black-matt border-opacity-10">
                       <div className="flex flex-col w-full">
                         <Link href="/settings">
