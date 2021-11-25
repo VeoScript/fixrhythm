@@ -121,7 +121,7 @@ const DisplayComment: React.FC<TypeProps> = ({ host, get_composition }) => {
               onKeyPress={handleKeyPress}
             />
             {isSubmitting && (
-              <div className="w-full h-full cursor-wait text-[10px] text-pantone-white text-opacity-40 bg-transparent whitespace-pre-wrap outline-none">
+              <div className="w-full h-full cursor-wait text-[12px] text-pantone-white text-opacity-40 bg-transparent whitespace-pre-wrap outline-none">
                 Sending...
               </div>
             )}
@@ -132,8 +132,8 @@ const DisplayComment: React.FC<TypeProps> = ({ host, get_composition }) => {
             )}
             {isSubmitting && (
               <FormLoader
-                width="24px"
-                height="24px"
+                width="20px"
+                height="20px"
                 color="#C71F2D"
               />
             )}
