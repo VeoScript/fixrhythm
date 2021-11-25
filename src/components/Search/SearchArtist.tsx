@@ -77,7 +77,13 @@ const SearchArtist: React.FC<TypeProps> = ({ artists }) => {
             <div className="flex flex-col w-full h-full max-h-[15rem] bg-pantone-darkblack rounded-md overflow-y-auto">
               {search_results.map((artist: any, i: number) => (
                 <Link href={`/${ artist.username }`} key={i}>
-                  <a className="flex flex-row items-center w-full space-x-2 px-3 py-3 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-10">
+                  <a
+                    className="flex flex-row items-center w-full space-x-2 px-3 py-3 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-5"
+                    onClick={(e: any) => {
+                      setIsDisplay(false)
+                      setSearchTerm(e.target.value="")
+                    }}
+                  >
                     <div className="flex">
                       <img
                         className="w-8 h-8 object-cover rounded-full bg-[#1D1F21]"
@@ -86,7 +92,7 @@ const SearchArtist: React.FC<TypeProps> = ({ artists }) => {
                       />
                     </div>
                     <div className="flex flex-col">
-                      <div className="font-bold text-sm">{ artist.name }</div>
+                      <div className="font-bold text-xs">{ artist.name }</div>
                       <div className="font-light text-[10px]">
                         { artist.composition.length } composition
                       </div>
