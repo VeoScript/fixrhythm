@@ -108,7 +108,12 @@ const SearchTitle: React.FC<TypeProps> = ({ fetchPublishedCompositions, fetchSon
             }}
           />
           <div className="absolute top-11 z-10 flex justify-center w-full max-w-[20rem]">
-            <div className="flex flex-col w-full h-full max-h-[15rem] bg-pantone-darkblack rounded-md overflow-y-auto">
+            <div className="flex flex-col w-full h-full max-h-[15rem] bg-pantone-darkblack rounded-md overflow-y-auto border border-pantone-white border-opacity-30">
+              {search_results.length === 0 && (
+                <div className="flex px-5 py-3">
+                  <span className="font-light text-xs">No results found.</span>
+                </div>
+              )}
               {search_results.map((composition: any, i: number) => (
                 <Link href={`/${ composition.username }/posts/${ composition.uuid }`} key={i}>
                   <a 
