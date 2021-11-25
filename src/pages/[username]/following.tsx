@@ -85,7 +85,40 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
       shortbio: true,
       verify_email: true,
       followedBy: true,
-      following: true
+      following: true,
+      facebook: true,
+      instagram: true,
+      twitter: true,
+      tiktok: true,
+      youtube: true,
+      pinned: {
+        orderBy: [
+          {
+            id: 'desc'
+          }
+        ],
+        select: {
+          composition: {
+            select: {
+              uuid: true,
+              title: true,
+              category: true,
+              description: true,
+              slug: true,
+              pinned: true,
+              likes: true,
+              bookmarks: true,
+              user: {
+                select: {
+                  name: true,
+                  username: true,
+                  account_type: true
+                }
+              }
+            }
+          }
+        }
+      }
     }
   })
 
@@ -97,7 +130,8 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
       account_type: true,
       name: true,
       username: true,
-      followedBy: true
+      followedBy: true,
+      composition: true
     }
   })
 

@@ -120,7 +120,8 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
       account_type: true,
       name: true,
       username: true,
-      followedBy: true
+      followedBy: true,
+      composition: true
     }
   })
 
