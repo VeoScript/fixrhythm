@@ -111,7 +111,13 @@ const SearchTitle: React.FC<TypeProps> = ({ fetchPublishedCompositions, fetchSon
             <div className="flex flex-col w-full h-full max-h-[15rem] bg-pantone-gray rounded-md overflow-y-auto">
               {search_results.map((composition: any, i: number) => (
                 <Link href={`/${ composition.username }/posts/${ composition.uuid }`} key={i}>
-                  <a className="flex flex-row items-center justify-between w-full px-5 py-3 bg-pantone-gray hover:bg-pantone-white hover:bg-opacity-10">
+                  <a 
+                    className="flex flex-row items-center justify-between w-full px-5 py-3 bg-pantone-gray hover:bg-pantone-white hover:bg-opacity-10"
+                    onClick={(e: any) => {
+                      setIsDisplay(false)
+                      setSearchTerm(e.target.value="")
+                    }}
+                  >
                     <div className="flex flex-col">
                       <div className="font-bold text-sm">{ composition.title }</div>
                       <div className="font-light text-[10px]">
