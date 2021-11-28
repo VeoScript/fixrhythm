@@ -14,8 +14,8 @@ model Users {
   id                              Int                         @unique                   @default(autoincrement())
   uuid                            String                      @id                       @default(uuid())
   verify_email                    Boolean                                               @default(false)
-  profile                         String?
-  coverphoto                      String?
+  profile                         Profile[]
+  coverphoto                      CoverPhoto[]
   shortbio                        String?
   account_type                    String
   name                            String
@@ -35,6 +35,24 @@ model Users {
   bookmarks                       Bookmarks[]
   followedBy                      Follows[]                                             @relation("follower")
   following                       Follows[]                                             @relation("following")
+}
+
+model Profile {
+  id                              String                      @id                       @default(uuid())
+  publicId                        String                      @unique
+  format                          String
+  version                         String
+  user                            Users                                                 @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+  userId                          String
+}
+
+model CoverPhoto {
+  id                              String                      @id                       @default(uuid())
+  publicId                        String                      @unique
+  format                          String
+  version                         String
+  user                            Users                                                 @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+  userId                          String
 }
 
 model Compositions {
