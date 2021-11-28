@@ -10,8 +10,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         uuid: req.body.userId
       },
       data: {
-        profile: req.body.profile_photo,
-        coverphoto: req.body.cover_photo,
+        // profile: req.body.profile_photo,
+        // coverphoto: req.body.cover_photo,
         shortbio: req.body.short_bio,
         account_type: req.body.account_type,
         name: req.body.name,

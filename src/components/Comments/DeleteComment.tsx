@@ -47,7 +47,7 @@ const DeleteComment: React.FC<TypeProps> = ({ host, comment }) => {
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-10 overflow-y-auto bg-black bg-opacity-50"
+          className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-50"
           onClose={closeModal}
         >
           <div className="min-h-screen px-4 text-center">

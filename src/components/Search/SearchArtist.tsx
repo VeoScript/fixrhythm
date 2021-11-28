@@ -92,7 +92,7 @@ const SearchArtist: React.FC<TypeProps> = ({ artists }) => {
                     <div className="flex">
                       <img
                         className="w-8 h-8 object-cover rounded-full bg-[#1D1F21]"
-                        src={`${ artist.profile ? artist.profile : `https://ui-avatars.com/api/?name=${ artist.name }&background=1D1F21&color=FF3C3C` }`}
+                        src={`${ artist.profile[0] ? `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${artist.profile[0].version}/${artist.profile[0].publicId}.${artist.profile[0].format}` : `https://ui-avatars.com/api/?name=${artist.name}&background=1D1F21&color=FF3C3C` }`}
                         alt={`${ artist.username }`}
                       />
                     </div>

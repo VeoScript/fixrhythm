@@ -166,7 +166,7 @@ const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
         <div className="flex items-center w-full px-1 whitespace-pre-wrap rounded-b-md text-pantone-white bg-transparent border-t border-b border-l border-r border-pantone-white border-opacity-10">
           <div
             id="content_editor"
-            className="w-full h-full max-h-[15rem] overflow-y-auto p-5 text-sm bg-transparent whitespace-pre-wrap outline-none"
+            className="w-full h-full max-h-[15rem] overflow-y-auto p-5 text-sm bg-transparent cursor-text whitespace-pre-wrap outline-none"
             placeholder="Type your lyrics here, shift+enter for new line."
             // contentEditable="plaintext-only"
             contentEditable

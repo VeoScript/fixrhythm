@@ -78,7 +78,7 @@ const DisplayComment: React.FC<TypeProps> = ({ host, get_composition }) => {
                 <a className="flex items-start space-x-2">
                   <img
                     className="w-7 h-7 object-cover rounded-full bg-pantone-gray"
-                    src={comment.user.profile ? comment.user.profile : `https://ui-avatars.com/api/?name=${comment.user.name}&background=343739&color=aaa`}
+                    src={`${ comment.user.profile[0] ? `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${comment.user.profile[0].version}/${comment.user.profile[0].publicId}.${comment.user.profile[0].format}` : `https://ui-avatars.com/api/?name=${comment.user.name}&background=343739&color=aaa` }`}
                     alt=""
                   />
                   <div className="flex flex-col">
