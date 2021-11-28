@@ -97,7 +97,7 @@ const NavigationBar: React.FC<TypeProps> = ({ user, host, artists }) => {
               <a className="flex w-full max-w-[3rem] transition ease-linear duration-100 hover:scale-95">
                 <img
                   className="w-8 h-8 object-cover rounded-full bg-[#1D1F21]"
-                  src={`${ host.profile ? host.profile : `https://ui-avatars.com/api/?name=${ host.name }&background=1D1F21&color=FF3C3C` }`}
+                  src={`${ host.profile && host.profile[0] ? `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${host.profile[0].version}/${host.profile[0].publicId}.${host.profile[0].format}` : `https://ui-avatars.com/api/?name=${host.name}&background=1D1F21&color=FF3C3C` }`}
                   alt=""
                 />
               </a>

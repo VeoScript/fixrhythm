@@ -25,7 +25,8 @@ const DisplaySuggestedArtists: React.FC<TypeProps> = ({ host, fetchArtists }) =>
                       <a className="flex flex-row items-center space-x-2">
                         <img
                           className="w-10 h-10 rounded-full object-cover bg-pantone-darkblack"
-                          src={`${ !artist.profile ? `https://ui-avatars.com/api/?name=${ artist.name }&background=1D1F21&color=aaa` : artist.profile }`}
+                          // src={`${ !artist.profile ? `https://ui-avatars.com/api/?name=${ artist.name }&background=1D1F21&color=aaa` : artist.profile }`}
+                          src={`${ artist.profile[0] ? `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${artist.profile[0].version}/${artist.profile[0].publicId}.${artist.profile[0].format}` : `https://ui-avatars.com/api/?name=${artist.name}&background=1D1F21&color=FF3C3C` }`}
                           alt=""
                         />
                         <div className="flex flex-col">

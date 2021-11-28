@@ -96,7 +96,7 @@ const DisplayFollowing: React.FC<TypeProps> = ({ host, profile, following }) => 
                       <a className="flex flex-row items-center space-x-3">
                         <img
                           className="w-12 h-12 rounded-full object-cover bg-pantone-gray"
-                          src={`${ !following.follower.profile ? `https://ui-avatars.com/api/?name=${ following.follower.name }&background=2B2F31&color=aaa` : following.follower.profile }`}
+                          src={`${ following.follower.profile[0] ? `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${following.follower.profile[0].version}/${following.follower.profile[0].publicId}.${following.follower.profile[0].format}` : `https://ui-avatars.com/api/?name=${following.follower.name}&background=1D1F21&color=FF3C3C` }`}
                           alt={ following.follower.username }
                         />
                         <div className="flex flex-col space-y-1">

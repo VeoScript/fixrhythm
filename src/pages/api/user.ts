@@ -16,6 +16,36 @@ async function handler(
         username: user.username
       },
       include: {
+        profile: {
+          select: {
+            id: true,
+            publicId: true,
+            version: true,
+            format: true,
+            user: {
+              select: {
+                uuid: true,
+                name: true,
+                username: true
+              }
+            }
+          }
+        },
+        coverphoto: {
+          select: {
+            id: true,
+            publicId: true,
+            version: true,
+            format: true,
+            user: {
+              select: {
+                uuid: true,
+                name: true,
+                username: true
+              }
+            }
+          }
+        },
         pinned: {
           orderBy: [
             {

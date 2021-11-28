@@ -41,7 +41,7 @@ const DisplayPostAndComment: React.FC<TypeProps> = ({ user, host, uuid, composit
                 <a className="flex flex-row items-center space-x-2">
                   <img
                     className="w-10 h-10 object-cover rounded-full bg-pantone-gray"
-                    src={get_composition.user.profile ? get_composition.user.profile : `https://ui-avatars.com/api/?name=${get_composition.user.name}&background=343739&color=aaa`}
+                    src={`${ get_composition.user.profile[0] ? `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${get_composition.user.profile[0].version}/${get_composition.user.profile[0].publicId}.${get_composition.user.profile[0].format}` : `https://ui-avatars.com/api/?name=${get_composition.user.name}&background=343739&color=aaa` }`}
                     alt={get_composition.user.name}
                   />
                   <div className="flex flex-col">

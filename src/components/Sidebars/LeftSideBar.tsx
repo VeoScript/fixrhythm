@@ -9,12 +9,13 @@ interface TypeProps {
 }
 
 const LeftSideBar: React.FC<TypeProps> = ({ host }) => {
+  console.log(host)
   return (
     <div className="flex flex-col w-full max-w-xs h-full overflow-y-auto scrollbar-hide pb-20 bg-pantone-gray border-r border-pantone-white border-opacity-10">
       <div className="flex flex-col items-center w-full px-5 py-5 space-y-3">
         <img
           className="w-40 h-40 object-cover rounded-full bg-[#1D1F21]"
-          src={`${ host.profile ? host.profile : `https://ui-avatars.com/api/?name=${ host.name }&background=1D1F21&color=FF3C3C` }`}
+          src={`${ host.profile[0] ? `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${host.profile[0].version}/${host.profile[0].publicId}.${host.profile[0].format}` : `https://ui-avatars.com/api/?name=${host.name}&background=1D1F21&color=FF3C3C` }`}
           alt=""
         />
         <div className="flex flex-col items-center w-full space-y-2">

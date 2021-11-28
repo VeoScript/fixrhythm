@@ -68,6 +68,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
       uuid: true,
       account_type: true,
       profile: true,
+      coverphoto: true,
       name: true,
       username: true,
       email: true,
