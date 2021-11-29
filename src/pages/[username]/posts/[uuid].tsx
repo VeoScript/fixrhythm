@@ -52,6 +52,7 @@ export const getServerSideProps: GetServerSideProps = withSession(async function
       username:  user_session ? user_session.username : username
     },
     include: {
+      profile: true,
       likes: true,
       comments: true,
       bookmarks: true,
