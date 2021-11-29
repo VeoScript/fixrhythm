@@ -134,12 +134,12 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
                 </div>
               </div>
             </div>
-            <div className="relative flex flex-row items-start w-full pt-7 pb-20 space-x-2">
+            <div className="relative flex flex-row items-start w-full pt-3 pb-20 space-x-2">
               <div className="sticky top-5 flex flex-col w-full max-w-xs h-full max-h-[30rem] p-5 space-y-5 rounded-xl overflow-hidden bg-pantone-darkblack">
                 <div className="flex flex-col w-full space-y-2">
                   <h1 className="font-bold text-base text-pantone-white text-opacity-30">Intro</h1>
                   <div className="flex items-center w-full space-x-2">
-                    <h3 className="font-light text-sm text-pantone-white">
+                    <h3 className="font-light text-xs text-pantone-white">
                       {`${ get_profile.shortbio ? get_profile.shortbio : 'Welcome to Fixrhythm' }`}
                     </h3>
                   </div>
