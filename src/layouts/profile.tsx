@@ -152,7 +152,7 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
                         <Link href={`https://www.facebook.com/${get_profile.facebook}`}>
                           <a className="flex items-center space-x-2" target="_blank">
                             <Facebook className="w-4 h-4 fill-current text-pantone-white text-opacity-30" />
-                            <span className="font-light text-sm text-pantone-white transition ease-linear duration-200 hover:text-pantone-red hover:text-opacity-100">
+                            <span className="font-light text-xs text-pantone-white transition ease-linear duration-200 hover:text-pantone-red hover:text-opacity-100">
                               @{get_profile.facebook}
                             </span>
                           </a>
@@ -162,7 +162,7 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
                         <Link href={`https://www.instagram.com/${get_profile.instagram}`}>
                           <a className="flex items-center w-full space-x-2" target="_blank">
                             <Instagram className="w-4 h-4 fill-current text-pantone-white text-opacity-30" />
-                            <span className="font-light text-sm text-pantone-white transition ease-linear duration-200 hover:text-pantone-red hover:text-opacity-100">
+                            <span className="font-light text-xs text-pantone-white transition ease-linear duration-200 hover:text-pantone-red hover:text-opacity-100">
                               @{get_profile.instagram}
                             </span>
                           </a>
@@ -172,7 +172,7 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
                         <Link href={`https://www.twitter.com/${get_profile.twitter}`}>
                           <a className="flex items-center w-full space-x-2" target="_blank">
                             <Twitter className="w-4 h-4 fill-current text-pantone-white text-opacity-30" />
-                            <span className="font-light text-sm text-pantone-white transition ease-linear duration-200 hover:text-pantone-red hover:text-opacity-100">
+                            <span className="font-light text-xs text-pantone-white transition ease-linear duration-200 hover:text-pantone-red hover:text-opacity-100">
                               @{get_profile.twitter}
                             </span>
                           </a>
@@ -182,7 +182,7 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
                         <Link href={`https://www.tiktok.com/@${get_profile.tiktok}`}>
                           <a className="flex items-center w-full space-x-2" target="_blank">
                             <TikTok className="w-4 h-4 fill-current text-pantone-white text-opacity-30" />
-                            <span className="font-light text-sm text-pantone-white transition ease-linear duration-200 hover:text-pantone-red hover:text-opacity-100">
+                            <span className="font-light text-xs text-pantone-white transition ease-linear duration-200 hover:text-pantone-red hover:text-opacity-100">
                               @{get_profile.tiktok}
                             </span>
                           </a>
@@ -192,7 +192,7 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
                         <Link href={`${get_profile.youtube}`}>
                           <a className="flex items-center w-full space-x-2" target="_blank">
                             <Youtube className="w-4 h-4 fill-current text-pantone-white text-opacity-30" />
-                            <span className="font-light text-sm text-pantone-white transition ease-linear duration-200 hover:text-pantone-red hover:text-opacity-100">My Channel</span>
+                            <span className="font-light text-xs text-pantone-white transition ease-linear duration-200 hover:text-pantone-red hover:text-opacity-100">My Channel</span>
                           </a>
                         </Link>
                       )}
