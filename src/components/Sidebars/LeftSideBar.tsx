@@ -21,7 +21,7 @@ const LeftSideBar: React.FC<TypeProps> = ({ host }) => {
         <div className="flex flex-col items-center w-full space-y-2">
           <span className="font-bold text-xl text-pantone-white">{ host.name }</span>
           <span className="font-light text-sm text-pantone-white">{ host.account_type }</span>
-          <span className="font-light text-xs text-pantone-white text-opacity-30 text-center">
+          <span className="font-light text-xs text-[#a7a7a7] text-center">
             {`${ host.shortbio ? host.shortbio : 'Welcome to Fixrhythm' }`}
           </span>
         </div>
