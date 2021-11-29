@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
+import toast, { Toaster } from 'react-hot-toast'
 import { useForm } from 'react-hook-form'
 import { RiCameraFill } from 'react-icons/ri'
 
@@ -16,35 +17,66 @@ const UploadCoverPhoto: React.FC<TypeProps> = ({ host, get_profile }) => {
   const {handleSubmit, formState: { isSubmitting }} = useForm()
 
   async function handleCoverPhotoChange(e: any) {
-    // check if the file is image or not
-    if(e.target.files[0].accept) {
-      setImageUploaded("")
-      alert("Profile photo size exceeds 2 MB. Select another one.")
-      return
-    }
+    try {
+      // check if the file is image or not
+      if(e.target.files[0].accept) {
+        setImageUploaded("")
+        alert("Profile photo size exceeds 2 MB. Select another one.")
+        return
+      }
 
-    // get the selected image from local machine
-    setImageUploaded(e.target.files[0])
+      // get the selected image from local machine
+      setImageUploaded(e.target.files[0])
 
-    // code for previewing selected image
-    var file    = e.target.files[0]
-    var reader  = new FileReader()
+      var file    = e.target.files[0]
+      var reader  = new FileReader()
+      var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i
 
-    reader.onloadend = function () {
-      setPreviewCoverPhoto(reader.result)
-    }
+      // check if the selected file is not an image
+      if(e.target.value !== '' && !allowedExtensions.exec(e.target.value)) {
+        e.target.value = ''
+        setImageUploaded("")
+        toast("Please select jpg, jpeg or png only!", {
+          style: {
+            borderRadius: '10px',
+            border: '2px solid #C71F2D',
+            padding: '10px',
+            fontSize: '14px',
+            background: '#1D1F21',
+            color: '#FFFFFF'
+          }
+        })
+        return
+      }
 
-    if (file) {
-      reader.readAsDataURL(file)
-    } else {
-      setPreviewCoverPhoto("")
-    }
+      // code for previewing selected image
+      reader.onloadend = function () {
+        setPreviewCoverPhoto(reader.result)
+      }
 
-    // check if the profile picture is larger than 2MB
-    if(e.target.files[0].size > 2097152) {
-      setImageUploaded("")
-      alert("Profile photo size exceeds 2 MB. Select another one.")
-      return
+      if (file) {
+        reader.readAsDataURL(file)
+      } else {
+        setPreviewCoverPhoto("")
+      }
+
+      // check if the profile picture is larger than 2MB
+      if(e.target.files[0].size > 2097152) {
+        setImageUploaded("")
+        toast("Cover photo size exceeds 2 MB. Select another one.", {
+          style: {
+            borderRadius: '10px',
+            border: '2px solid #C71F2D',
+            padding: '10px',
+            fontSize: '14px',
+            background: '#1D1F21',
+            color: '#FFFFFF'
+          }
+        })
+        return
+      }
+    } catch (error) {
+      console.error(error)
     }
   }
 
@@ -55,7 +87,7 @@ const UploadCoverPhoto: React.FC<TypeProps> = ({ host, get_profile }) => {
       const formData = new FormData()
       formData.append('image', imageUploaded)
 
-      // if there is existing cover photo and it will be delete to database to update a something new
+      // if there is existing cover photo it will be delete to database to update a something new
       if(get_profile.profile[0]) {
         await fetch('/api/account-settings/upload_cover/delete', {
           method: 'DELETE',
