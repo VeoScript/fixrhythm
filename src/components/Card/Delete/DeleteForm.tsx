@@ -28,7 +28,7 @@ const DeleteForm: React.FC<TypeProps> = ({ host, composition, closeModal, postUr
     closeModal()
 
     // check if the post will deleted the post display page will redirect to home page (kay deleted naman wala na syay madisplay sa DisplayPostAndComment na component)
-    if(postUrl === composition.slug) {
+    if(postUrl === composition.uuid) {
       Router.replace('/')
     }
   }

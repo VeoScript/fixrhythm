@@ -212,7 +212,7 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
                       <div className="flex flex-col w-full py-3 space-y-2 border-b border-pantone-white border-opacity-10" key={i}>
                         <div className="flex flex-row items-center justify-between w-full">
                           <div className="flex">
-                            <Link href={`/${get_profile.username}/posts/${pin.composition.slug}`}>
+                            <Link href={`/${get_profile.username}/posts/${pin.composition.uuid}`}>
                               <a className="flex flex-row items-center w-full space-x-1">
                                 {pin.composition.category === 'Song' ? <RiMusic2Fill className="w-3 h-3 text-pantone-white text-opacity-50" /> : <RiBookOpenFill className="w-3 h-3 text-pantone-white text-opacity-50" />}
                                 <span className="font-bold text-sm text-pantone-white text-opacity-80">{ pin.composition.title }</span>
