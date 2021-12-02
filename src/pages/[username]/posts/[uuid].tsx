@@ -12,9 +12,10 @@ interface TypeProps {
   uuid: any
   artists: any
   composition: any
+  get_notification: any
 }
 
-const PublishedPostDisplay: NextPage<TypeProps> = ({ user, host, uuid, artists, composition }) => {
+const PublishedPostDisplay: NextPage<TypeProps> = ({ user, host, uuid, artists, composition, get_notification }) => {
   return (
     <React.Fragment>
       <Head>
@@ -24,6 +25,7 @@ const PublishedPostDisplay: NextPage<TypeProps> = ({ user, host, uuid, artists, 
         user={user}
         host={host}
         artists={artists}
+        get_notification={get_notification}
       >
         <DisplayPostAndComment
           user={user}
@@ -58,7 +60,44 @@ export const getServerSideProps: GetServerSideProps = withSession(async function
       bookmarks: true,
       composition: true,
       followedBy: true,
-      following: true
+      following: true,
+      notificationTo: {
+        orderBy: [
+          {
+            id: 'desc'
+          }
+        ],
+        select: {
+          id: true,
+          date: true,
+          read: true,
+          type: true,
+          message: true,
+          follows: true,
+          composition: {
+            select: {
+              uuid: true,
+              title: true
+            }
+          },
+          notificationFrom: {
+            select: {
+              uuid: true,
+              profile: true,
+              username: true,
+              name: true
+            }
+          },
+          notificationTo: {
+            select: {
+              uuid: true,
+              profile: true,
+              username: true,
+              name: true
+            }
+          }
+        }
+      }
     }
   })
 
@@ -72,6 +111,42 @@ export const getServerSideProps: GetServerSideProps = withSession(async function
       username: true,
       followedBy: true,
       composition: true
+    }
+  })
+
+  const get_notification = await prisma.notifications.findMany({
+    where: {
+      read: false
+    },
+    select: {
+      id: true,
+      date: true,
+      read: true,
+      type: true,
+      message: true,
+      follows: true,
+      composition: {
+        select: {
+          uuid: true,
+          title: true
+        }
+      },
+      notificationFrom: {
+        select: {
+          uuid: true,
+          profile: true,
+          username: true,
+          name: true
+        }
+      },
+      notificationTo: {
+        select: {
+          uuid: true,
+          profile: true,
+          username: true,
+          name: true
+        }
+      }
     }
   })
 
@@ -92,6 +167,11 @@ export const getServerSideProps: GetServerSideProps = withSession(async function
       pinned: true,
       bookmarks: true,
       likes: true,
+      notifications: {
+        select: {
+          id: true
+        }
+      },
       comments: {
         select: {
           id: true,
@@ -138,7 +218,8 @@ export const getServerSideProps: GetServerSideProps = withSession(async function
       host,
       uuid,
       artists,
-      composition
+      composition,
+      get_notification
     }
   }
 })

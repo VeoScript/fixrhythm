@@ -9,7 +9,6 @@ interface TypeProps {
 }
 
 const LeftSideBar: React.FC<TypeProps> = ({ host }) => {
-  console.log(host)
   return (
     <div className="flex flex-col w-full max-w-xs h-full overflow-y-auto scrollbar-hide pb-20 bg-pantone-gray border-r border-pantone-white border-opacity-10">
       <div className="flex flex-col items-center w-full px-5 py-5 space-y-3">

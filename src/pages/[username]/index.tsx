@@ -9,11 +9,12 @@ import prisma from '~/lib/Prisma'
 interface TypeProps {
   profile: any
   artists: any
+  get_notification: any
   published_posts: any
   draft_posts: any
 }
 
-const ProfilePage: NextPage<TypeProps> = ({ profile, artists, published_posts, draft_posts }) => {
+const ProfilePage: NextPage<TypeProps> = ({ profile, artists, get_notification, published_posts, draft_posts }) => {
 
   const { user } = useUser()
 
@@ -26,6 +27,7 @@ const ProfilePage: NextPage<TypeProps> = ({ profile, artists, published_posts, d
       </Head>
       <Layout
         host={host}
+        get_notification={get_notification}
         artists={artists}
       >
         <Profile
@@ -99,6 +101,11 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
               pinned: true,
               likes: true,
               bookmarks: true,
+              notifications: {
+                select: {
+                  id: true
+                }
+              },
               user: {
                 select: {
                   name: true,
@@ -123,6 +130,42 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
       username: true,
       followedBy: true,
       composition: true
+    }
+  })
+
+  const get_notification = await prisma.notifications.findMany({
+    where: {
+      read: false
+    },
+    select: {
+      id: true,
+      date: true,
+      read: true,
+      type: true,
+      message: true,
+      follows: true,
+      composition: {
+        select: {
+          uuid: true,
+          title: true
+        }
+      },
+      notificationFrom: {
+        select: {
+          uuid: true,
+          profile: true,
+          username: true,
+          name: true
+        }
+      },
+      notificationTo: {
+        select: {
+          uuid: true,
+          profile: true,
+          username: true,
+          name: true
+        }
+      }
     }
   })
 
@@ -161,6 +204,11 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
           likes: true,
           comments: true,
           bookmarks: true,
+          notifications: {
+            select: {
+              id: true
+            }
+          },
           user: {
             select: {
               id: true,
@@ -210,6 +258,11 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
           likes: true,
           comments: true,
           bookmarks: true,
+          notifications: {
+            select: {
+              id: true
+            }
+          },
           user: {
             select: {
               id: true,
@@ -229,6 +282,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
     props: {
       profile,
       artists,
+      get_notification,
       published_posts,
       draft_posts
     }

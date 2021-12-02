@@ -23,6 +23,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         pinned: true,
         bookmarks: true,
         likes: true,
+        notifications: {
+          select: {
+            id: true
+          }
+        },
         comments: {
           select: {
             id: true,

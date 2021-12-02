@@ -9,9 +9,10 @@ import prisma from '~/lib/Prisma'
 
 interface TypeProps {
   artists: any
+  get_notification: any
 }
 
-const Settings: NextPage<TypeProps> = ({ artists }) => {
+const Settings: NextPage<TypeProps> = ({ artists, get_notification }) => {
 
   const { user: host } = useUser({
     redirectTo: "/login",
@@ -36,6 +37,7 @@ const Settings: NextPage<TypeProps> = ({ artists }) => {
       <Layout
         host={host}
         artists={artists}
+        get_notification={get_notification}
       >
         <AccountSettings host={host} />
       </Layout>
@@ -58,9 +60,46 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   })
 
+  const get_notification = await prisma.notifications.findMany({
+    where: {
+      read: false
+    },
+    select: {
+      id: true,
+      date: true,
+      read: true,
+      type: true,
+      message: true,
+      follows: true,
+      composition: {
+        select: {
+          uuid: true,
+          title: true
+        }
+      },
+      notificationFrom: {
+        select: {
+          uuid: true,
+          profile: true,
+          username: true,
+          name: true
+        }
+      },
+      notificationTo: {
+        select: {
+          uuid: true,
+          profile: true,
+          username: true,
+          name: true
+        }
+      }
+    }
+  })
+
   return {
     props: {
-      artists
+      artists,
+      get_notification
     }
   }
 }

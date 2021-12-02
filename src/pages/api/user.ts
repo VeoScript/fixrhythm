@@ -93,6 +93,11 @@ async function handler(
                 pinned: true,
                 likes: true,
                 bookmarks: true,
+                notifications: {
+                  select: {
+                    id: true
+                  }
+                },
                 user: {
                   select: {
                     name: true,
@@ -100,6 +105,44 @@ async function handler(
                     account_type: true
                   }
                 }
+              }
+            }
+          }
+        },
+        notificationTo: {
+          orderBy: [
+            {
+              id: 'desc'
+            }
+          ],
+          
+          select: {
+            id: true,
+            date: true,
+            read: true,
+            type: true,
+            message: true,
+            follows: true,
+            composition: {
+              select: {
+                uuid: true,
+                title: true
+              }
+            },
+            notificationFrom: {
+              select: {
+                uuid: true,
+                profile: true,
+                username: true,
+                name: true
+              }
+            },
+            notificationTo: {
+              select: {
+                uuid: true,
+                profile: true,
+                username: true,
+                name: true
               }
             }
           }

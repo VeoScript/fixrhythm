@@ -9,16 +9,22 @@ interface TypeProps {
   host: any
   artists: any
   children: any
+  get_notification: any
 }
 
-const Layout: React.FC<TypeProps> = ({ user, host, artists, children }) => {
+const Layout: React.FC<TypeProps> = ({ user, host, artists, children, get_notification }) => {
 
   const { pathname } = useRouter()
 
   return (
     <div className="preventcopy font-poppins flex justify-center w-full h-screen bg-pantone-black overflow-hidden">
       <div className="relative flex flex-col w-full max-w-[2400px] h-full text-pantone-white bg-pantone-darkblack bg-opacity-50">
-        <NavigationBar host={host} user={user} artists={artists} />
+        <NavigationBar
+          host={host}
+          user={user}
+          artists={artists}
+          get_notification={get_notification}
+        />
         <div className="flex flex-row items-start w-full max-w-full h-full">
           {!(pathname === '/[username]' || pathname === '/[username]/posts/[uuid]' || pathname === '/[username]/followers' || pathname === '/[username]/following') && (
             <LeftSideBar host={host} />

@@ -41,6 +41,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             likes: true,
             comments: true,
             bookmarks: true,
+            notifications: {
+              select: {
+                id: true
+              }
+            },
             user: {
               select: {
                 id: true,

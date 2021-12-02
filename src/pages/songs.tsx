@@ -9,10 +9,11 @@ import prisma from '~/lib/Prisma'
 
 interface TypeProps {
   artists: any
+  get_notification: any
   song_published_compositions: any
 }
 
-const Songs: NextPage<TypeProps> = ({ artists, song_published_compositions }) => {
+const Songs: NextPage<TypeProps> = ({ artists, get_notification, song_published_compositions }) => {
 
   const { user: host } = useUser({
     redirectTo: "/login",
@@ -37,6 +38,7 @@ const Songs: NextPage<TypeProps> = ({ artists, song_published_compositions }) =>
       <Layout
         host={host}
         artists={artists}
+        get_notification={get_notification}
       >
         <NewsFeed
           host={host}
@@ -59,6 +61,42 @@ export const getStaticProps: GetStaticProps = async () => {
       username: true,
       followedBy: true,
       composition: true
+    }
+  })
+
+  const get_notification = await prisma.notifications.findMany({
+    where: {
+      read: false
+    },
+    select: {
+      id: true,
+      date: true,
+      read: true,
+      type: true,
+      message: true,
+      follows: true,
+      composition: {
+        select: {
+          uuid: true,
+          title: true
+        }
+      },
+      notificationFrom: {
+        select: {
+          uuid: true,
+          profile: true,
+          username: true,
+          name: true
+        }
+      },
+      notificationTo: {
+        select: {
+          uuid: true,
+          profile: true,
+          username: true,
+          name: true
+        }
+      }
     }
   })
 
@@ -90,6 +128,11 @@ export const getStaticProps: GetStaticProps = async () => {
       likes: true,
       comments: true,
       bookmarks: true,
+      notifications: {
+        select: {
+          id: true
+        }
+      },
       user: {
         select: {
           id: true,
@@ -106,6 +149,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       artists,
+      get_notification,
       song_published_compositions
     }
   }
