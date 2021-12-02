@@ -35,6 +35,9 @@ model Users {
   bookmarks                       Bookmarks[]
   followedBy                      Follows[]                                             @relation("follower")
   following                       Follows[]                                             @relation("following")
+  notificationFollows             Notifications[]                                       @relation("notificationFollows")
+  notificationFrom                Notifications[]                                       @relation("notificationFrom")
+  notificationTo                  Notifications[]                                       @relation("notificationTo")
 }
 
 model Profile {
@@ -73,6 +76,7 @@ model Compositions {
   likes                           Likes[]
   comments                        Comments[]
   bookmarks                       Bookmarks[]
+  notifications                   Notifications[]                                       @relation("notificationComposition")
   user                            Users                                                 @relation(fields: [userId], references: [uuid], onDelete: Cascade)
   userId                          String
 }
@@ -123,4 +127,22 @@ model Follows {
   followingId                     String
 
   @@id([followerId, followingId])
+}
+
+model Notifications {
+  id                              Int                         @id                       @default(autoincrement())
+  type                            String
+  read                            Boolean                                               @default(false)
+  message                         String
+  date                            String
+  follows                         Users?                                                @relation("notificationFollows", fields: [followsId], references: [uuid], onDelete: Cascade)
+  followsId                       String?
+  composition                     Compositions?                                         @relation("notificationComposition", fields: [compositionId], references: [uuid], onDelete: Cascade)
+  compositionId                   String?
+  notificationFrom                Users?                                                @relation("notificationFrom", fields: [notificationFromId], references: [uuid], onDelete: Cascade)
+  notificationFromId              String
+  notificationTo                  Users?                                                @relation("notificationTo", fields: [notificationToId], references: [uuid], onDelete: Cascade)
+  notificationToId                String
+
+  @@index([followsId, compositionId, notificationFromId, notificationToId])
 }

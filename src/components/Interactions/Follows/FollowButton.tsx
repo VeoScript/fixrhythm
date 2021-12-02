@@ -23,6 +23,31 @@ const FollowButton: React.FC<TypeProps> = ({ host, profile, className }) => {
       },
       body: JSON.stringify({ userId, profileId })
     })
+
+    sendOnNotification()
+  }
+
+  // send this request to notification as type of Follows Notification
+  async function sendOnNotification() {
+    const fromUserId = host.uuid
+    const toUserId = profile.uuid
+    const followsId = profile.uuid
+    const notification_type = "Follows"
+    const notification_message = `started following you.`
+
+    await fetch('/api/notifications/follows/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        notification_type,
+        notification_message,
+        followsId,
+        fromUserId,
+        toUserId
+      })
+    })
   }
 
   return (

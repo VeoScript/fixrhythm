@@ -10,6 +10,8 @@ const ReactionButton: React.FC<TypeProps> = ({ host, composition }) => {
 
   const likes = composition.likes
   const compositionId = composition.uuid
+  const compositionUserId = composition.user.uuid
+  const notificationId = composition.notifications.id
 
   // useState check if the post is liked
   const [like, setLike] = React.useState(false)
@@ -31,6 +33,8 @@ const ReactionButton: React.FC<TypeProps> = ({ host, composition }) => {
       },
       body: JSON.stringify({ userId, compositionId })
     })
+
+    sendOnNotification()
   }
 
   // function for unliking the post
@@ -43,6 +47,55 @@ const ReactionButton: React.FC<TypeProps> = ({ host, composition }) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ userId, compositionId })
+    })
+
+    sendRemoveNotification()
+  }
+
+  // send this request to notification as type of Likes Notification
+  async function sendOnNotification() {
+    const fromUserId = host.uuid
+    const toUserId = compositionUserId
+    const notification_type = "Likes"
+    const notification_message = `liked your composition`
+
+    // if the user liked her own post, function will be return
+    //(para di agad mapuno yung database ko eh, yung notification is para nalang sa mga other users na naglike sa post mo)
+    if(host.uuid === composition.user.uuid) return
+
+    await fetch('/api/notifications/likes_and_comments/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        notification_type,
+        notification_message,
+        compositionId,
+        fromUserId,
+        toUserId
+      })
+    })
+  }
+
+  // send this request to remove like notification
+  async function sendRemoveNotification() {
+    const notificationFromId = host.uuid
+    const notificationType = "Likes"
+
+    if(host.uuid === composition.user.uuid) return
+
+    await fetch('/api/notifications/likes_and_comments/delete', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        notificationId,
+        compositionId,
+        notificationFromId,
+        notificationType
+      })
     })
   }
 

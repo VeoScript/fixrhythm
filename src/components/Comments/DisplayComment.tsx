@@ -49,6 +49,35 @@ const DisplayComment: React.FC<TypeProps> = ({ host, get_composition }) => {
     })
     document.getElementById('comment_content')!.innerText = ''
     reset()
+    sendOnNotification(formData)
+  }
+
+  // send this request to notification as type of Comments Notification
+  async function sendOnNotification(formData: FormData) {
+    const fromUserId = host.uuid
+    const toUserId = get_composition.user.uuid
+    const compositionId = get_composition.uuid
+    const content = formData.comment_content
+    const notification_type = "Comments"
+    const notification_message = `commented: ${ content } on your composition`
+
+    // if the user commented on her own post, function will be return
+    //(para di agad mapuno yung database ko eh, yung notification is para nalang sa mga other users na nagcomment sa post mo)
+    if(host.uuid === get_composition.user.uuid) return
+
+    await fetch('/api/notifications/likes_and_comments/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        notification_type,
+        notification_message,
+        compositionId,
+        fromUserId,
+        toUserId
+      })
+    })
   }
 
   function handleKeyPress(e: any) {
@@ -90,7 +119,7 @@ const DisplayComment: React.FC<TypeProps> = ({ host, get_composition }) => {
               <div className="flex flex-col space-y-3">
                 <div className="flex flex-col pl-3 space-y-3">
                   <div className="flex items-start whitespace-pre-wrap text-xs space-x-1">
-                    <span className="font-bold text-green-400">&bull;</span>
+                    <span className="font-bold text-[#BDF705]">&bull;</span>
                     <span>{ comment.content }</span>
                   </div>
                   <div className="flex font-light text-[8px] text-pantone-white text-opacity-30">

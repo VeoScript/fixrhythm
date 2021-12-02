@@ -2,16 +2,18 @@
 import React from 'react'
 import Link from 'next/link'
 import Router, { useRouter } from 'next/router'
+import DisplayNotifications from './DisplayNotifications'
 import SearchArtist from './Search/SearchArtist'
-import { RiHome5Fill, RiMusic2Fill, RiBookOpenFill, RiBellFill, RiUserSettingsLine, RiLogoutCircleRLine, RiMenu5Fill } from 'react-icons/ri'
+import { RiHome5Fill, RiMusic2Fill, RiBookOpenFill, RiUserSettingsLine, RiLogoutCircleRLine, RiMenu5Fill } from 'react-icons/ri'
 
 interface TypeProps {
   user?: any
   host: any
   artists: any
+  get_notification: any
 }
 
-const NavigationBar: React.FC<TypeProps> = ({ user, host, artists }) => {
+const NavigationBar: React.FC<TypeProps> = ({ user, host, artists, get_notification }) => {
 
   const { pathname } = useRouter()
 
@@ -36,9 +38,10 @@ const NavigationBar: React.FC<TypeProps> = ({ user, host, artists }) => {
             <Link href="/poems">
               <a title="Poems"><RiBookOpenFill className={`${ pathname === '/poems' ? 'text-pantone-white' : 'text-[#848484]' } w-7 h-6 transition ease-linear duration-200 hover:text-pantone-white`} /></a>
             </Link>
-            <Link href="/">
-              <a title="Notifications"><RiBellFill className={`${ pathname === '/notifications' ? 'text-pantone-white' : 'text-[#848484]' } w-7 h-6 transition ease-linear duration-200 hover:text-pantone-white`} /></a>
-            </Link>
+            <DisplayNotifications
+              host={host}
+              get_notification={get_notification}
+            />
             <div className="relative flex">
               <button
                 title="Menu"
