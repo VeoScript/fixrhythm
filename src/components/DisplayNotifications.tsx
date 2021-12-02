@@ -23,11 +23,24 @@ interface TypeProps {
 const DisplayNotifications: React.FC<TypeProps> = ({ host, get_notification }) => {
   
   const [isDropdown, setIsDropdown] = React.useState(false)
+
+  // fetch unread notifications by logged in user
+  const { data: fetchUnreadNotification } = useSWR('/api/user', fetcher, {
+    refreshInterval: 1000,
+    fallbackData: host
+  })
   
+  // count unread notifications
   const { data: countUnreadNotifications } = useSWR('/api/notifications/get_notification', fetcher, {
     refreshInterval: 1000,
     fallbackData: get_notification
   })
+
+  React.useEffect(() => {
+    if(fetchUnreadNotification.isLoggedIn === false) {
+      Router.reload()
+    }
+  }, [fetchUnreadNotification])
 
   const countNotifications = new Array
 
@@ -73,12 +86,12 @@ const DisplayNotifications: React.FC<TypeProps> = ({ host, get_notification }) =
           />
           <div className="absolute top-14 z-50 flex w-full max-w-[23rem]">
             <div className="flex flex-col w-full h-full max-h-[20rem] bg-pantone-darkblack rounded-md overflow-y-auto border border-pantone-white border-opacity-30">
-              {host.notificationTo.length === 0 && (
+              {fetchUnreadNotification.notificationTo.length === 0 && (
                 <div className="flex px-5 py-3">
                   <span className="font-light text-xs">No notification as of now.</span>
                 </div>
               )}
-              {host.notificationTo.map((notification: any, i: number) => (
+              {fetchUnreadNotification.notificationTo.map((notification: any, i: number) => (
                 <button
                   key={i}
                   className="flex flex-row items-center justify-between w-full space-x-2 px-3 py-3 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-5"
