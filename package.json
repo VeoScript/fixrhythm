@@ -11,7 +11,7 @@
   "dependencies": {
     "@brianmcallister/react-auto-scroll": "^1.1.0",
     "@headlessui/react": "^1.4.1",
-    "@prisma/client": "^3.4.1",
+    "@prisma/client": "^3.6.0",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.27.1",
     "formidable": "^1.2.6",
@@ -35,7 +35,7 @@
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.0",
     "postcss": "^8.3.6",
-    "prisma": "^3.4.1",
+    "prisma": "^3.6.0",
     "tailwindcss": "^2.2.7",
     "typescript": "4.3.5"
   }
