@@ -1,9 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
+import Menu from './Menu'
 import SearchTitle from './Search/SearchTitle'
 import ComposeCard from './Compose/ComposeCard'
 import PostCard from './Card/PostCard'
 import useSWR from 'swr'
+import { RiSearchLine, RiUserSearchLine } from 'react-icons/ri'
 
 const fetcher = async (
   input: RequestInfo,
@@ -44,10 +48,10 @@ const NewsFeed: React.FC<TypeProps> = ({ host, published_compositions, song_publ
   })
 
   return (
-    <div className="flex flex-col items-center w-full max-w-full h-full pb-16 overflow-hidden">
-      <div className="flex flex-row items-center justify-between w-full max-w-full px-5 py-3 border-b border-pantone-white border-opacity-10">
-        <div className="flex w-full max-w-[10rem]">
-          <span className="font-bold text-base text-pantone-white text-opacity-80">
+    <div className="flex flex-col items-center w-full max-w-full h-full pb-12 md:pb-16 overflow-hidden">
+      <div className="hidden md:flex flex-row items-center justify-between w-full max-w-full px-5 py-3 space-x-3 md:space-x-0 border-b border-pantone-white border-opacity-10 bg-pantone-darkblack md:bg-transparent">
+        <div className="flex w-full max-w-[2rem] md:max-w-[10rem]">
+          <span className="flex font-bold text-base text-pantone-white text-opacity-80">
             {pathname === '/' && 'News Feed'}
             {pathname === '/songs' && 'Songs'}
             {pathname === '/poems' && 'Poems'}
@@ -62,6 +66,37 @@ const NewsFeed: React.FC<TypeProps> = ({ host, published_compositions, song_publ
           <div className="flex justify-end w-full max-w-[5rem]">
             <ComposeCard host={host} />
           </div>
+        </div>
+      </div>
+      <div className="flex md:hidden flex-row items-center justify-between w-full p-3 border-b border-pantone-white border-opacity-10 bg-pantone-darkblack">
+        <div className="flex justify-start w-full max-w-xs">
+          <span className="flex font-bold text-sm text-pantone-white text-opacity-80">
+            {pathname === '/' && 'News Feed'}
+            {pathname === '/songs' && 'Songs'}
+            {pathname === '/poems' && 'Poems'}
+          </span>
+        </div>
+        <div className="flex justify-center w-full max-w-full">
+          <Link href="/">
+            <a title="Fixrhythm">
+              <img className="md:hidden w-6 h-6" src="fixrhythm.png" alt="fixrhythm" />
+            </a>
+          </Link>
+        </div>
+        <div className="relative flex items-center justify-end w-full max-w-xs space-x-3">
+          <button
+            title="Search Compositions"
+            type="button"
+          >
+            <RiSearchLine className="w-5 h-5 transition ease-linear duration-200 text-[#848484] hover:text-pantone-white" />
+          </button>
+          <button
+            title="Search Artists"
+            type="button"
+          >
+            <RiUserSearchLine className="w-5 h-5 transition ease-linear duration-200 text-[#848484] hover:text-pantone-white" />
+          </button>
+          <Menu host={host} />
         </div>
       </div>
       <div className="flex flex-col w-full h-full overflow-y-auto p-3 space-y-3">

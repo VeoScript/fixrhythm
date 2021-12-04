@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import Link from 'next/link'
-import Router from 'next/router'
+import Router, { useRouter } from 'next/router'
 import Moment from 'react-moment'
 import useSWR from 'swr'
 import { RiBellFill } from 'react-icons/ri'
@@ -20,7 +20,9 @@ interface TypeProps {
   get_notification: any
 }
 
-const DisplayNotifications: React.FC<TypeProps> = ({ host, get_notification }) => {
+const DisplayNotificationsDropdown: React.FC<TypeProps> = ({ host, get_notification }) => {
+
+  const { pathname } = useRouter()
   
   const [isDropdown, setIsDropdown] = React.useState(false)
 
@@ -53,7 +55,29 @@ const DisplayNotifications: React.FC<TypeProps> = ({ host, get_notification }) =
 
   return (
     <div className="flex">
-      <div className="relative flex">
+      {/* notification button for bottom navigation bar */}
+      <div className="relative flex md:hidden">
+        {finalCountUnreadNotification > 0 && (
+          <div className="absolute top-1 -right-4">
+            <span className="flex items-center justify-center font-normal text-[10px] bg-red-600 w-5 h-5 rounded-full">
+              {finalCountUnreadNotification}
+            </span>
+          </div>
+        )}
+        <button
+          title="Notifications"
+          className="outline-none py-3 md:py-0"
+          type="button"
+          onClick={() => {
+            setIsDropdown(true)
+            Router.push('/notifications')
+          }} 
+        >
+          <RiBellFill className={`${ pathname === '/notifications' || isDropdown ? 'text-pantone-white' : 'text-[#848484]' } w-7 h-6 transition ease-linear duration-200 hover:text-pantone-white`} />
+        </button>
+      </div>
+      {/* notification button for top navigation bar */}
+      <div className="relative hidden md:flex">
         {finalCountUnreadNotification > 0 && (
           <div className="absolute -top-2 -right-4">
             <span className="flex items-center justify-center font-normal text-[10px] bg-red-600 w-5 h-5 rounded-full">
@@ -63,13 +87,13 @@ const DisplayNotifications: React.FC<TypeProps> = ({ host, get_notification }) =
         )}
         <button
           title="Notifications"
-          className="outline-none"
+          className="outline-none py-3 md:py-0"
           type="button"
           onClick={() => {
             setIsDropdown(true)
           }} 
         >
-          <RiBellFill className="w-7 h-6 transition ease-linear duration-200 text-[#848484] hover:text-pantone-white" />
+          <RiBellFill className={`${ pathname === '/notifications' || isDropdown ? 'text-pantone-white' : 'text-[#848484]' } w-7 h-6 transition ease-linear duration-200 hover:text-pantone-white`} />
         </button>
       </div>
       {isDropdown && (
@@ -86,7 +110,7 @@ const DisplayNotifications: React.FC<TypeProps> = ({ host, get_notification }) =
               <div className="flex flex-row items-center justify-between px-3 py-3 border-b border-pantone-white border-opacity-5">
                 <span className="font-bold text-sm text-pantone-white">Notifications</span>
                 {(fetchUnreadNotification.notificationTo && fetchUnreadNotification.notificationTo.length > 0) && (
-                  <React.Fragment>
+                  <div className="flex flex-row items-center space-x-1">
                     {finalCountUnreadNotification > 0 && (
                       <button
                         className="flex justify-center font-normal text-[10px] text-center px-2 py-1 rounded-lg bg-pantone-black text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10"
@@ -102,10 +126,15 @@ const DisplayNotifications: React.FC<TypeProps> = ({ host, get_notification }) =
                           })
                         }}
                       >
-                        Mark all as Read
+                        Mark all as read
                       </button>
                     )}
-                  </React.Fragment>
+                    <Link href="/notifications">
+                      <a className="flex justify-center font-normal text-[10px] text-center px-2 py-1 rounded-lg bg-pantone-black text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10">
+                        See all
+                      </a>
+                    </Link>
+                  </div>
                 )}
               </div>
               {(fetchUnreadNotification.notificationTo && fetchUnreadNotification.notificationTo.length === 0) && (
@@ -168,4 +197,4 @@ const DisplayNotifications: React.FC<TypeProps> = ({ host, get_notification }) =
   )
 }
 
-export default DisplayNotifications
+export default DisplayNotificationsDropdown
