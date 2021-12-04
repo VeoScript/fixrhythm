@@ -34,8 +34,8 @@ const DeleteForm: React.FC<TypeProps> = ({ host, composition, closeModal, postUr
   }
 
   return (
-    <div className="flex flex-col w-full">
-      <div className="flex flex-col items-center w-full p-3">
+    <div className="flex flex-col w-full bg-black bg-opacity-50">
+      <div className="flex flex-col items-center w-full p-8">
         <p className="font-light text-sm text-pantone-white">
           Delete <span className="font-bold">{ composition.title }</span> permanently?
         </p>

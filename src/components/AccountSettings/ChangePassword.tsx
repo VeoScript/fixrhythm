@@ -78,7 +78,7 @@ const ChangePassword: React.FC<TypeProps> = ({ host }) => {
     <React.Fragment>
       <form onSubmit={handleSubmit(onChangePassword)} className="flex flex-col w-full border-b border-pantone-white border-opacity-10">
         <div className="flex flex-row items-center justify-between w-full px-5 py-3 border-b border-pantone-white border-opacity-5">
-          <span className="font-bold text-sm text-pantone-white text-opacity-50 uppercase">Change Your Password</span>
+          <span className="font-bold text-xs md:text-sm text-pantone-white text-opacity-50 uppercase">Change Your Password</span>
           <span className="font-light text-xs text-pantone-red">{ changePasswordError }</span>
         </div>
         <div className="flex flex-col w-full px-5 py-3 space-y-2">
@@ -89,7 +89,7 @@ const ChangePassword: React.FC<TypeProps> = ({ host }) => {
                 <RiShieldKeyholeLine className="w-5 h-5 fill-current text-pantone-white text-opacity-50" />
               </div>
               <input
-                className="w-full px-3 py-5 text-sm bg-transparent outline-none"
+                className="w-full px-3 py-5 text-xs md:text-sm bg-transparent outline-none"
                 type="password"
                 placeholder="Old Password"
                 onInput={() => setChangePasswordError("")}
@@ -104,7 +104,7 @@ const ChangePassword: React.FC<TypeProps> = ({ host }) => {
                 <RiShieldKeyholeLine className="w-5 h-5 fill-current text-pantone-white text-opacity-50" />
               </div>
               <input
-                className="w-full px-3 py-5 text-sm bg-transparent outline-none"
+                className="w-full px-3 py-5 text-xs md:text-sm bg-transparent outline-none"
                 type="password"
                 placeholder="New Password"
                 {...register("newpassword", { required: true, pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&^_-]{8,}$/ })}
@@ -118,7 +118,7 @@ const ChangePassword: React.FC<TypeProps> = ({ host }) => {
                 <RiShieldKeyholeLine className="w-5 h-5 fill-current text-pantone-white text-opacity-50" />
               </div>
               <input
-                className="w-full px-3 py-5 text-sm bg-transparent outline-none"
+                className="w-full px-3 py-5 text-xs md:text-sm bg-transparent outline-none"
                 type="password"
                 placeholder="Re-enter Password"
                 {...register("repassword", { required: true })}

@@ -30,7 +30,7 @@ const RightSideBar: React.FC<TypeProps> = ({ host, artists }) => {
   })
 
   return (
-    <div className="flex flex-col w-full max-w-xs h-full overflow-hidden bg-pantone-gray border-l border-pantone-white border-opacity-10">
+    <div className="hidden md:flex flex-col w-full max-w-xs h-full overflow-hidden bg-pantone-gray border-l border-pantone-white border-opacity-10">
       <div className="flex flex-col items-center w-full max-w-full">
         <Tab.Group>
           <Tab.List>

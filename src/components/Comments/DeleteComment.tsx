@@ -82,11 +82,11 @@ const DeleteComment: React.FC<TypeProps> = ({ host, comment }) => {
               <div className="inline-block w-full max-w-md overflow-hidden text-left align-middle transition-all transform text-pantone-white bg-pantone-darkblack bg-opacity-10 backdrop-blur-sm shadow-xl rounded-xl border-2 border-pantone-white border-opacity-10">
                 <div className="flex flex-col w-full">
                   <div className="flex flex-row items-center justify-between w-full px-5 py-3 bg-pantone-darkblack">
-                    <h3 className="font-black text-xl text-pantone-red">FIXRHYTHM</h3>
-                    <h3 className="font-light text-sm">Delete Comment</h3>
+                    <h3 className="font-black text-sm md:text-xl text-pantone-red">FIXRHYTHM</h3>
+                    <h3 className="font-light text-[12px] md:text-sm">Delete Comment</h3>
                   </div>
-                  <div className="flex flex-col w-full">
-                    <div className="flex flex-col items-center w-full p-3">
+                  <div className="flex flex-col w-full bg-black bg-opacity-50">
+                    <div className="flex flex-col items-center w-full p-8">
                       <p className="font-light text-sm text-pantone-white">
                         Delete your comment permanently?
                       </p>

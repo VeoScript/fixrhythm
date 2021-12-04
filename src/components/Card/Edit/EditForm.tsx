@@ -128,10 +128,10 @@ const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
   }
 
   return (
-    <div className="flex flex-col w-full">
-      <div className="flex flex-col w-full p-3">
-        <div className="flex flex-row items-center w-full">
-          <div className="flex items-center w-full px-1 rounded-tl-md text-pantone-white bg-transparent border-t border-l border-r border-pantone-white border-opacity-10">
+    <div className="relative flex flex-col w-full h-screen md:h-full mb-12 overflow-y-auto bg-black bg-opacity-50">
+      <div className="flex flex-col w-full h-full p-3">
+        <div className="flex flex-col md:flex-row items-center w-full">
+          <div className="flex items-center w-full px-1 rounded-tl-md rounded-tr-md md:rounded-tr-none text-pantone-white bg-transparent border-t border-l border-r border-pantone-white border-opacity-10">
             <div className="px-3 border-r border-pantone-white border-opacity-30">
               {!changeStatus && (
                 <RiMeteorFill className="w-6 h-6 text-pantone-white text-opacity-50" />
@@ -149,7 +149,7 @@ const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
               {...register("title", { required: true })}
             />
           </div>
-          <div className="flex items-center w-full px-1 text-pantone-white bg-transparent rounded-tr-md border-t border-r border-pantone-white border-opacity-10">
+          <div className="flex items-center w-full px-1 text-pantone-white bg-transparent rounded-tr-none md:rounded-tr-md border-t border-r border-l md:border-l-0 border-pantone-white border-opacity-10">
             <select
               className="w-full px-3 py-[1.2rem] font-bold text-sm text-pantone-white bg-transparent outline-none cursor-pointer"
               {...register("composition_category", { required: true })}
@@ -185,8 +185,7 @@ const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
             id="content_editor"
             className="w-full h-full max-h-[15rem] overflow-y-auto p-5 text-sm bg-transparent cursor-text whitespace-pre-wrap outline-none"
             placeholder="Type your lyrics here, shift+enter for new line."
-            // contentEditable="plaintext-only"
-            contentEditable
+            contentEditable="plaintext-only"
             spellCheck={false}
             onInput={(e: any) => setValue('content_editor', e.currentTarget.textContent, { shouldValidate: true })}
             onKeyPress={handleLineBreak}
@@ -196,14 +195,14 @@ const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
         </div>
         <div className="flex flex-col w-full py-3 space-y-2">
           <div className="flex flex-row items-center justify-between w-full">
-            <span className="font-bold text-sm text-pantone-white text-opacity-50 uppercase">Uploaded in</span>
+            <span className="font-bold text-[10px] md:text-sm text-pantone-white text-opacity-50 uppercase">Uploaded in</span>
             <span className="font-bold text-sm text-pantone-red">
               {(errors.spotify || errors.applemusic || errors.youtube) && 'Invalid URL'}
             </span>
           </div>
-          <div className="flex flex-row items-center justify-between w-full overflow-hidden rounded-md border border-pantone-white border-opacity-10">
-            <div className="flex w-full max-w-sm px-3">
-              <div className="flex items-center pr-3 border-r border-pantone-white border-opacity-10">
+          <div className="flex flex-col md:flex-row items-center justify-between w-full overflow-hidden rounded-md border border-pantone-white border-opacity-10">
+            <div className="flex w-full max-w-full md:max-w-sm px-0 md:px-3">
+              <div className="flex items-center pl-3 md:pl-0 pr-3 border-r border-pantone-white border-opacity-10">
                 <RiSpotifyFill className={`${ errors.spotify ? 'text-pantone-red' : 'text-pantone-white text-opacity-50' } w-6 h-6`} />
               </div>
               <input
@@ -213,8 +212,8 @@ const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
                 {...register("spotify", { pattern: /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g })}
               />
             </div>
-            <div className="flex w-full max-w-sm px-3 border-l border-r border-pantone-white border-opacity-10">
-              <div className="flex items-center pr-3 border-r border-pantone-white border-opacity-10">
+            <div className="flex w-full max-w-full md:max-w-sm px-0 md:px-3 border-t border-b md:border-t-0 md:border-b-0 border-l-0 border-r-0 md:border-l md:border-r border-pantone-white border-opacity-10">
+              <div className="flex items-center pl-3 md:pl-0 pr-3 border-r border-pantone-white border-opacity-10">
                 <RiAppleFill className={`${ errors.spotify ? 'text-pantone-red' : 'text-pantone-white text-opacity-50' } w-6 h-6`} />
               </div>
               <input
@@ -224,8 +223,8 @@ const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
                 {...register("applemusic", { pattern: /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g })}
               />
             </div>
-            <div className="flex w-full max-w-sm px-3">
-              <div className="flex items-center pr-3 border-r border-pantone-white border-opacity-10">
+            <div className="flex w-full max-w-full md:max-w-sm px-0 md:px-3">
+              <div className="flex items-center pl-3 md:pl-0 pr-3 border-r border-pantone-white border-opacity-10">
                 <RiYoutubeFill className={`${ errors.spotify ? 'text-pantone-red' : 'text-pantone-white text-opacity-50' } w-6 h-6`} />
               </div>
               <input
@@ -238,18 +237,18 @@ const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-row items-center justify-center w-full px-3 py-2 bg-pantone-darkblack">
+      <div className="fixed bottom-0 flex flex-row items-center justify-center w-full mt-20 px-3 py-2 bg-pantone-darkblack border-t-2 border-pantone-white border-opacity-5">
         {!isSubmitting && (
           <React.Fragment>
             <button
-              className="flex justify-center w-full max-w-[10rem] px-3 py-2 outline-none text-sm text-pantone-white bg-pantone-gray rounded-l-lg border-r border-pantone-white border-opacity-10 transition ease-linear duration-200 hover:bg-opacity-50"
+              className="flex justify-center w-full max-w-[10rem] px-3 py-2 outline-none text-[10px] md:text-sm text-pantone-white bg-pantone-gray rounded-l-lg border-r border-pantone-white border-opacity-10 transition ease-linear duration-200 hover:bg-opacity-50"
               type="button"
               onClick={handleSubmit(onUpdateDraft)}
             >
               Update as Draft
             </button>
             <button
-              className="flex justify-center w-full max-w-[10rem] px-3 py-2 outline-none text-sm text-pantone-white bg-pantone-gray transition ease-linear duration-200 hover:bg-opacity-50"
+              className="flex justify-center w-full max-w-[10rem] px-3 py-2 outline-none text-[10px] md:text-sm text-pantone-white bg-pantone-gray transition ease-linear duration-200 hover:bg-opacity-50"
               type="button"
               onClick={handleSubmit(onUpdatePublish)}
             >
@@ -258,7 +257,7 @@ const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
           </React.Fragment>
         )}
         {isSubmitting && (
-          <div className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-sm text-pantone-white bg-pantone-gray rounded-l-lg border-r border-pantone-white border-opacity-10">
+          <div className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-[10px] md:text-sm text-pantone-white bg-pantone-gray rounded-l-lg border-r border-pantone-white border-opacity-10">
             <FormLoader
               width="20px"
               height="20px"
@@ -267,7 +266,7 @@ const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
           </div>
         )}
         <button
-          className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-sm text-pantone-white bg-pantone-gray rounded-r-lg border-l border-pantone-white border-opacity-10 transition ease-linear duration-200 hover:bg-opacity-50"
+          className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-[10px] md:text-sm text-pantone-white bg-pantone-gray rounded-r-lg border-l border-pantone-white border-opacity-10 transition ease-linear duration-200 hover:bg-opacity-50"
           type="button"
           onClick={() => closeModal()}
         >

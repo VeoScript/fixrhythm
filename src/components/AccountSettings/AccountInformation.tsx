@@ -12,7 +12,7 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
     <div className="flex flex-col w-full">
       <div className="flex flex-col w-full border-b border-pantone-white border-opacity-10">
         <div className="flex flex-row items-center justify-between w-full px-5 py-3 border-b border-pantone-white border-opacity-5">
-          <span className="font-bold text-sm text-pantone-white text-opacity-50 uppercase">Account Information</span>
+          <span className="font-bold text-xs md:text-sm text-pantone-white text-opacity-50 uppercase">Account Information</span>
         </div>
         <div className="flex flex-col w-full px-5 py-3 space-y-2">
           <div className="flex flex-col justify-center w-full space-y-2">
@@ -22,7 +22,7 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
                 <RiStarSFill className="w-6 h-6 text-pantone-white text-opacity-50" />
               </div>
               <input
-                className="w-full px-3 py-5 text-sm bg-transparent outline-none"
+                className="w-full px-3 py-5 text-xs md:text-sm bg-transparent outline-none"
                 type="text"
                 placeholder="Short Bio"
                 {...register("short_bio")}
@@ -38,7 +38,7 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
                     <RiUser3Line className="w-6 h-6 text-pantone-white text-opacity-50" />
                   </div>
                   <input
-                    className="w-full px-3 py-5 text-sm bg-transparent outline-none"
+                    className="w-full px-3 py-5 text-xs md:text-sm bg-transparent outline-none"
                     type="text"
                     placeholder="Name"
                     {...register("name", { required: true })}
@@ -53,7 +53,7 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
                   </div>
                   <input
                     readOnly
-                    className="w-full px-3 py-5 text-sm bg-transparent outline-none"
+                    className="w-full px-3 py-5 text-xs md:text-sm bg-transparent outline-none"
                     type="text"
                     placeholder="Username"
                     {...register("username")}
@@ -69,7 +69,7 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
                     <RiMusicLine className="w-6 h-6 text-pantone-white text-opacity-50" />
                   </div>
                   <select
-                    className="w-full px-3 py-5 text-sm bg-transparent outline-none"
+                    className="w-full px-3 py-5 text-xs md:text-sm bg-transparent outline-none"
                     {...register("account_type", { required: true })}
                   >
                     <option value="" className="hidden"></option>
@@ -86,7 +86,7 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
                     <RiSmartphoneLine className="w-6 h-6 text-pantone-white text-opacity-50" />
                   </div>
                   <input
-                    className="w-full px-3 py-5 text-sm bg-transparent outline-none"
+                    className="w-full px-3 py-5 text-xs md:text-sm bg-transparent outline-none"
                     type="text"
                     placeholder="Phone"
                     {...register("phone", { required: true, pattern: /^(09|\+639)\d{9}$/ })}
@@ -102,7 +102,7 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
                 <RiMailLine className="w-6 h-6 text-pantone-white text-opacity-50" />
               </div>
               <input
-                className="w-full px-3 py-5 text-sm bg-transparent outline-none"
+                className="w-full px-3 py-5 text-xs md:text-sm bg-transparent outline-none"
                 type="text"
                 placeholder="Email"
                 {...register("email", { required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i })}
@@ -113,7 +113,7 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
       </div>
       <div className="flex flex-col w-full border-b border-pantone-white border-opacity-10">
         <div className="flex flex-row items-center w-full px-5 py-3 border-b border-pantone-white border-opacity-5">
-          <span className="font-bold text-sm text-pantone-white text-opacity-50 uppercase">Social Media Links</span>
+          <span className="font-bold text-xs md:text-sm text-pantone-white text-opacity-50 uppercase">Social Media Links</span>
         </div>
         <div className="flex flex-col w-full px-5 py-3 space-y-2">
           <div className="flex flex-col justify-center w-full space-y-2">
@@ -123,7 +123,7 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
                 <Facebook className="w-5 h-5 fill-current text-pantone-white text-opacity-50" />
               </div>
               <input
-                className="w-full px-3 py-5 text-sm bg-transparent outline-none"
+                className="w-full px-3 py-5 text-xs md:text-sm bg-transparent outline-none"
                 type="text"
                 placeholder="Facebook Username"
                 {...register("facebook")}
@@ -137,7 +137,7 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
                 <Instagram className="w-5 h-5 fill-current text-pantone-white text-opacity-50" />
               </div>
               <input
-                className="w-full px-3 py-5 text-sm bg-transparent outline-none"
+                className="w-full px-3 py-5 text-xs md:text-sm bg-transparent outline-none"
                 type="text"
                 placeholder="Instagram Username"
                 {...register("instagram")}
@@ -151,7 +151,7 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
                 <Twitter className="w-5 h-5 fill-current text-pantone-white text-opacity-50" />
               </div>
               <input
-                className="w-full px-3 py-5 text-sm bg-transparent outline-none"
+                className="w-full px-3 py-5 text-xs md:text-sm bg-transparent outline-none"
                 type="text"
                 placeholder="Twitter Username"
                 {...register("twitter")}
@@ -165,7 +165,7 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
                 <TikTok className="w-5 h-5 fill-current text-pantone-white text-opacity-50" />
               </div>
               <input
-                className="w-full px-3 py-5 text-sm bg-transparent outline-none"
+                className="w-full px-3 py-5 text-xs md:text-sm bg-transparent outline-none"
                 type="text"
                 placeholder="TikTok Username"
                 {...register("tiktok")}
@@ -179,7 +179,7 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
                 <Youtube className="w-5 h-5 fill-current text-pantone-white text-opacity-50" />
               </div>
               <input
-                className="w-full px-3 py-5 text-sm bg-transparent outline-none"
+                className="w-full px-3 py-5 text-xs md:text-sm bg-transparent outline-none"
                 type="text"
                 placeholder="Youtube Channel Link"
                 {...register("youtube")}

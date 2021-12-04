@@ -36,7 +36,7 @@ const EditCard: React.FC<TypeProps> = ({ host, composition, setIsDropdown }) => 
           className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-50"
           onClose={closeModal}
         >
-          <div className="min-h-screen px-4 text-center">
+          <div className="min-h-screen px-0 md:px-4 text-center">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -65,11 +65,11 @@ const EditCard: React.FC<TypeProps> = ({ host, composition, setIsDropdown }) => 
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-4xl overflow-hidden text-left align-middle transition-all transform text-pantone-white bg-pantone-darkblack bg-opacity-10 backdrop-blur-sm shadow-xl rounded-xl border-2 border-pantone-white border-opacity-10">
-                <div className="flex flex-col w-full">
-                  <div className="flex flex-row items-center justify-between w-full px-5 py-3 bg-pantone-darkblack">
-                    <h3 className="font-black text-xl text-pantone-red">FIXRHYTHM</h3>
-                    <h3 className="font-light text-sm">Edit Composition</h3>
+              <div className="inline-block w-full max-w-full md:max-w-4xl h-screen md:h-full overflow-hidden text-left align-middle transition-all transform text-pantone-white bg-pantone-darkblack bg-opacity-10 backdrop-blur-sm shadow-xl rounded-none md:rounded-xl border-0 md:border-2 border-pantone-white border-opacity-10">
+                <div className="flex flex-col w-full h-full overflow-y-auto">
+                  <div className="flex flex-row items-center justify-between w-full px-5 py-3 bg-pantone-darkblack border-b-2 border-pantone-white border-opacity-5">
+                    <h3 className="font-black text-sm md:text-xl text-pantone-red">FIXRHYTHM</h3>
+                    <h3 className="font-light text-[12px] md:text-sm">Edit Composition</h3>
                   </div>
                   <EditForm
                     host={host}

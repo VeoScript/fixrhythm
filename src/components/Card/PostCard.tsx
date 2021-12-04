@@ -21,7 +21,7 @@ const PostCard: React.FC<TypeProps> = ({ host, composition, border, backgroundCo
   const { pathname } = useRouter()
 
   return (
-    <div className={`flex flex-row items-center justify-between w-full max-w-full p-3 space-x-5 rounded-xl ${ backgroundColor } ${ border }`}>
+    <div className={`flex flex-col md:flex-row items-start md:items-center justify-start md:justify-between w-full max-w-full p-3 space-x-0 md:space-x-5 space-y-5 md:space-y-0 rounded-xl ${ backgroundColor } ${ border }`}>
       <div className="flex flex-col w-full max-w-full space-y-5">
         <div className="flex w-full">
           <Link href={`/${composition.user.username}`}>
@@ -49,7 +49,7 @@ const PostCard: React.FC<TypeProps> = ({ host, composition, border, backgroundCo
                 </a>
               </Link>
             </div>
-            <div className="font-normal text-[12px] text-pantone-white text-opacity-50">{ composition.description }</div>
+            <div className="font-normal text-[12px] text-left text-pantone-white text-opacity-50">{ composition.description }</div>
             <div className="flex flex-row items-center w-full space-x-1 pt-3 font-light text-[10px] text-pantone-white text-opacity-40">
               <div className="flex space-x-1">
                 <span>Published</span>
@@ -68,8 +68,8 @@ const PostCard: React.FC<TypeProps> = ({ host, composition, border, backgroundCo
           </div>
         </div>
       </div>
-      <div className="flex flex-col w-full max-w-[3rem] space-y-2">
-        <div className="relative flex">
+      <div className="flex flex-row-reverse md:flex-col items-start justify-end w-full max-w-full md:max-w-[3rem] px-10 space-x-2 md:space-x-0 space-y-0 md:space-y-2">
+        <div className="relative flex ml-2 md:ml-0">
           {host.username === composition.user.username && (
             <MenuDropdown
               host={host}

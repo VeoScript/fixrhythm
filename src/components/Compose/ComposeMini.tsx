@@ -1,20 +1,17 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
-import DeleteForm from './DeleteForm'
+import { RiAddBoxLine } from 'react-icons/ri'
+import ComposeForm from './ComposeForm'
 
 interface TypeProps {
   host: any
-  composition: any
-  setIsDropdown: any
-  postUrl?: any
 }
 
-const DeleteCard: React.FC<TypeProps> = ({ host, composition, setIsDropdown, postUrl }) => {
+const ComposeMini: React.FC<TypeProps> = ({ host }) => {
   let [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
     setIsOpen(false)
-    setIsDropdown(false)
   }
 
   function openModal() {
@@ -24,11 +21,11 @@ const DeleteCard: React.FC<TypeProps> = ({ host, composition, setIsDropdown, pos
   return (
     <>
       <button
-        className="w-full px-3 py-2 border-t border-pantone-white border-opacity-10 font-light text-xs text-left transition ease-linear duration-200 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-10"
+        className="outline-none py-3"
         type="button"
         onClick={openModal}
       >
-        Delete
+        <RiAddBoxLine className="text-[#848484] w-7 h-7 transition ease-linear duration-200 hover:text-pantone-white" />
       </button>
 
       <Transition appear show={isOpen} as={Fragment}>
@@ -37,7 +34,7 @@ const DeleteCard: React.FC<TypeProps> = ({ host, composition, setIsDropdown, pos
           className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-50"
           onClose={closeModal}
         >
-          <div className="min-h-screen px-4 text-center">
+          <div className="min-h-screen px-0 md:px-4 text-center">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -66,17 +63,15 @@ const DeleteCard: React.FC<TypeProps> = ({ host, composition, setIsDropdown, pos
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-md overflow-hidden text-left align-middle transition-all transform text-pantone-white bg-pantone-darkblack bg-opacity-10 backdrop-blur-sm shadow-xl rounded-xl border-2 border-pantone-white border-opacity-10">
-                <div className="flex flex-col w-full">
-                  <div className="flex flex-row items-center justify-between w-full px-5 py-3 bg-pantone-darkblack">
+              <div className="inline-block w-full max-w-full md:max-w-4xl h-screen md:h-full overflow-hidden text-left align-middle transition-all transform text-pantone-white bg-pantone-darkblack bg-opacity-10 backdrop-blur-sm shadow-xl rounded-none md:rounded-xl border-0 md:border-2 border-pantone-white border-opacity-10">
+                <div className="flex flex-col w-full h-full overflow-y-auto">
+                  <div className="flex flex-row items-center justify-between w-full px-5 py-3 bg-pantone-darkblack border-b-2 border-pantone-white border-opacity-5">
                     <h3 className="font-black text-sm md:text-xl text-pantone-red">FIXRHYTHM</h3>
-                    <h3 className="font-light text-[12px] md:text-sm">Delete Composition</h3>
+                    <h3 className="font-light text-[12px] md:text-sm">Create Composition</h3>
                   </div>
-                  <DeleteForm
+                  <ComposeForm
                     host={host}
-                    composition={composition}
                     closeModal={closeModal}
-                    postUrl={postUrl}
                   />
                 </div>
               </div>
@@ -88,4 +83,4 @@ const DeleteCard: React.FC<TypeProps> = ({ host, composition, setIsDropdown, pos
   )
 }
 
-export default DeleteCard
+export default ComposeMini
