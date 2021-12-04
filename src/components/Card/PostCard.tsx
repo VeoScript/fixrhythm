@@ -50,19 +50,18 @@ const PostCard: React.FC<TypeProps> = ({ host, composition, border, backgroundCo
               </Link>
             </div>
             <div className="font-normal text-[12px] text-left text-pantone-white text-opacity-50">{ composition.description }</div>
-            <div className="flex flex-row items-center w-full space-x-1 pt-3 font-light text-[10px] text-pantone-white text-opacity-40">
-              <div className="flex space-x-1">
-                <span>Published</span>
-                <Moment date={ composition.datePublished } fromNow />
-              </div>
+            <div className="flex flex-col md:flex-row items-start md:items-center w-full space-x-0 md:space-x-1 pt-3 font-light text-[10px] text-pantone-white text-opacity-40">
+              {!composition.dateEdited && (
+                <div className="flex space-x-1">
+                  <span>Published</span>
+                  <Moment date={ composition.datePublished } fromNow />
+                </div>
+              )}
               {composition.dateEdited && (
-                <React.Fragment>
-                  <span className="font-light text-xs text-pantone-white text-opacity-30">&bull;</span>
-                  <div className="flex space-x-1">
-                    <span>Edited</span>
-                    <Moment date={ composition.dateEdited } fromNow />
-                  </div>
-                </React.Fragment>
+                <div className="flex space-x-1">
+                  <span>Edited</span>
+                  <Moment date={ composition.dateEdited } fromNow />
+                </div>
               )}
             </div>
           </div>

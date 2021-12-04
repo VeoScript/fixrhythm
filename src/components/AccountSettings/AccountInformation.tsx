@@ -29,7 +29,7 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
               />
             </div>
           </div>
-          <div className="flex flex-row w-full space-x-2">
+          <div className="flex flex-col md:flex-row w-full space-x-0 md:space-x-2 space-y-2 md:space-y-0">
             <div className="flex flex-col items-center w-full space-y-2">
               <div className="flex flex-col justify-center w-full space-y-2">
                 <span className="px-2 font-light text-xs text-pantone-white text-opacity-50">Name</span>
@@ -61,7 +61,7 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col items-center w-full space-y-2">
+            <div className="flex flex-col items-center w-full space-x-0 md:space-x-2 space-y-2">
               <div className="flex flex-col justify-center w-full space-y-2">
                 <span className="px-2 font-light text-xs text-pantone-white text-opacity-50">Account Type</span>
                 <div className="flex items-center w-full px-1 rounded-md text-pantone-white bg-transparent border border-pantone-gray transition ease-linear duration-200 hover:border-pantone-white focus-within:border-pantone-white">
