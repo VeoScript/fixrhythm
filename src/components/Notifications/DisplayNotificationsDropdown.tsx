@@ -142,50 +142,55 @@ const DisplayNotificationsDropdown: React.FC<TypeProps> = ({ host, get_notificat
                   <span className="font-light text-xs">No notification as of now.</span>
                 </div>
               )}
-              <div className="flex flex-col w-full h-full overflow-y-auto">
+              <div className="relative flex flex-col w-full h-full overflow-y-auto">
                 {fetchUnreadNotification.notificationTo && fetchUnreadNotification.notificationTo.map((notification: any, i: number) => (
                   <React.Fragment key={i}>
-                    <button
-                      className="flex flex-row items-center justify-between w-full space-x-2 px-3 py-3 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-5"
-                      onClick={async () => {
-                        // function for reading a notification and read in notification column will be turn to true.
-                        await fetch('/api/notifications/read_notification', {
-                          method: 'PUT',
-                          headers: {
-                            'Content-Type': 'application/json'
-                          },
-                          body: JSON.stringify({ notificationId: notification.id })
-                        })
-                        // if the type of notification is Likes or Comments it will be redirect to post, but if the notification type is Follows then it will be redirect to user page who follows you.
-                        Router.push(`${notification.type === 'Likes' || notification.type === 'Comments' ? `/${notification.notificationTo.username}/posts/${notification.composition.uuid}` : `/${notification.notificationFrom.username}`}`)
-                        setIsDropdown(false)
-                      }}
-                    >
-                      <div className="flex flex-row items-start w-full">
-                        <div className="flex w-full max-w-[3rem]">
-                          <img
-                            className="w-9 h-9 object-cover rounded-full bg-[#1D1F21]"
-                            src={`${ notification.notificationFrom.profile[0] ? `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${notification.notificationFrom.profile[0].version}/${notification.notificationFrom.profile[0].publicId}.${notification.notificationFrom.profile[0].format}` : `https://ui-avatars.com/api/?name=${notification.notificationFrom.name}&background=2B2F31&color=FF3C3C` }`}
-                            alt={`${notification.notificationTo.username}`}
-                          />
-                        </div>
-                        <div className="flex flex-col items-start w-full space-y-0.5">
-                          <p className="font-light text-xs text-left space-x-1">
-                            <Link href={`/${notification.notificationFrom.username}`}>
-                              <a className="font-bold">{ notification.notificationFrom.username }</a>
-                            </Link>
-                            <span>{ notification.message }</span>
-                            <span className="font-bold">{ notification.type === 'Likes' || notification.type === 'Comments' ? notification.composition.title : '' }</span>
-                          </p>
-                          <div className="font-light text-[10px] text-pantone-white text-opacity-50"><Moment date={ notification.date } fromNow /></div>
-                        </div>
+                    <div className="notification_container flex flex-row items-center w-full space-x-1 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-5">
+                      <div className="flex w-full max-w-[2.5rem]">
+                        <img
+                          className="inline z-[3] w-9 h-9 object-cover rounded-full bg-[#1D1F21]"
+                          src={`${ notification.notificationFrom.profile[0] ? `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${notification.notificationFrom.profile[0].version}/${notification.notificationFrom.profile[0].publicId}.${notification.notificationFrom.profile[0].format}` : `https://ui-avatars.com/api/?name=${notification.notificationFrom.name}&background=2B2F31&color=FF3C3C` }`}
+                          alt={`${notification.notificationTo.username}`}
+                        />
                       </div>
+                      <p className="inline space-x-1">
+                        <Link href={`/${notification.notificationFrom.username}`}>
+                          <a
+                            className="notification_link"
+                            onClick={async () => {
+                              // function for reading a notification and read in notification column will be turn to true.
+                              await fetch('/api/notifications/read_notification', {
+                                method: 'PUT',
+                                headers: {
+                                  'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ notificationId: notification.id })
+                              })
+                              setIsDropdown(false)
+                            }}
+                          >
+                            <div className="notification_text inline">
+                              <span className="inline font-bold text-xs text-pantone-white hover:underline">{ notification.notificationFrom.username }</span>
+                            </div>
+                          </a>
+                        </Link>
+                        <Link href={`${notification.type === 'Likes' || notification.type === 'Comments' ? `/${notification.notificationTo.username}/posts/${notification.composition.uuid}` : `/${notification.notificationFrom.username}`}`}>
+                          <a className="notification_link inline">
+                            <span className="notification_text">
+                              <p className="font-light text-xs inline text-pantone-white leading-none">
+                                { notification.message }
+                                <span className="font-bold">&nbsp;{ notification.type === 'Likes' || notification.type === 'Comments' ? notification.composition.title : '' }</span>
+                              </p>
+                            </span>
+                          </a>
+                        </Link>
+                      </p>
                       {!notification.read && (
-                        <div className="flex">
+                        <div className="flex absolute right-2 z-[3]">
                           <span className="font-bold text-3xl text-[#BDF705]">&bull;</span>
                         </div>
                       )}
-                    </button>
+                    </div>
                   </React.Fragment>
                 ))}
               </div>
