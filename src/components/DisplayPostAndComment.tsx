@@ -32,28 +32,32 @@ const DisplayPostAndComment: React.FC<TypeProps> = ({ user, host, uuid, composit
   })
 
   return (
-    <div className="flex items-start justify-center w-full pt-5 pb-20">
-      <div className="flex flex-row items-start justify-center w-full max-w-6xl space-x-3">
-        <div className="flex flex-col w-full max-w-3xl rounded-2xl bg-pantone-darkblack">
-          <div className="flex flex-row items-center justify-between w-full px-5 py-3 border-b border-pantone-white border-opacity-5">
+    <div className="flex items-start justify-center w-full pt-0 md:pt-5 pb-20 md:pb-20">
+      <div className="flex flex-col md:flex-row items-start justify-center w-full max-w-6xl space-x-0 md:space-x-3">
+        <div className="flex flex-col w-full max-w-3xl rounded-none md:rounded-2xl bg-pantone-darkblack">
+          <div className="flex flex-col items-center text-center w-full max-w-full py-3 -space-y-1 md:hidden border-b border-pantone-white border-opacity-5">
+            <h3 className="block md:hidden font-bold text-base md:text-lg text-pantone-red uppercase">{ get_composition.title }</h3>
+            <h6 className="block md:hidden font-light text-[11px] md:text-xs text-pantone-white text-opacity-50">{ get_composition.category }</h6>
+          </div>
+          <div className="flex flex-row items-center justify-between w-full px-3 md:px-5 py-3 border-b border-pantone-white border-opacity-5">
             <div className="flex justify-start w-full max-w-xs">
               <Link href={`/${get_composition.user.username}`}>
                 <a className="flex flex-row items-center space-x-2">
                   <img
-                    className="w-10 h-10 object-cover rounded-full bg-pantone-gray"
+                    className="w-8 h-8 md:w-10 md:h-10 object-cover rounded-full bg-pantone-gray"
                     src={`${ get_composition.user.profile[0] ? `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${get_composition.user.profile[0].version}/${get_composition.user.profile[0].publicId}.${get_composition.user.profile[0].format}` : `https://ui-avatars.com/api/?name=${get_composition.user.name}&background=343739&color=aaa` }`}
                     alt={get_composition.user.name}
                   />
-                  <div className="flex flex-col">
-                    <span className="font-bold text-sm text-pantone-white text-opacity-80 hover:underline">{ get_composition.user.name }</span>
-                    <span className="font-light text-xs text-pantone-white text-opacity-50">{ get_composition.user.account_type }</span>
+                  <div className="flex flex-col -space-y-1">
+                    <span className="font-bold text-[11px] md:text-sm text-pantone-white text-opacity-80 hover:underline">{ get_composition.user.name }</span>
+                    <span className="font-light text-[10px] md:text-xs text-pantone-white text-opacity-50">{ get_composition.user.account_type }</span>
                   </div>
                 </a>
               </Link>
             </div>
-            <div className="flex flex-col items-center text-center w-full max-w-full -space-y-1">
-              <h3 className="font-bold text-lg text-pantone-red uppercase">{ get_composition.title }</h3>
-              <h6 className="font-light text-xs text-pantone-white text-opacity-50">{ get_composition.category }</h6>
+            <div className="md:flex flex-col items-center text-center w-full max-w-full -space-y-1 hidden">
+              <h3 className="hidden md:block font-bold text-[14px] md:text-lg text-pantone-red uppercase">{ get_composition.title }</h3>
+              <h6 className="hidden md:block font-light text-[11px] md:text-xs text-pantone-white text-opacity-50">{ get_composition.category }</h6>
             </div>
             <div className="flex flex-row items-center justify-end w-full max-w-xs space-x-3">
               <div className="flex flex-row items-center space-x-1">
@@ -64,14 +68,14 @@ const DisplayPostAndComment: React.FC<TypeProps> = ({ user, host, uuid, composit
                   />
                 )}
                 {(user === '' || !host || host.isLoggedIn === false) && (
-                  <RiHeart2Fill className="w-5 h-5 text-pantone-white" />
+                  <RiHeart2Fill className="w-4 md:w-5 h-4 md:h-5 text-pantone-white" />
                 )}
                 <p className="font-light text-[10px] text-pantone-white text-opacity-40">
                   { get_composition.likes.length > 0 ? get_composition.likes.length : '' }
                 </p>
               </div>
               <div className="flex flex-row items-center space-x-1">
-                <RiDiscussFill className="w-5 h-5 text-pantone-white" />
+                <RiDiscussFill className="w-4 md:w-5 h-4 md:h-5 text-pantone-white" />
                 <p className="font-light text-[10px] text-pantone-white text-opacity-40">
                   { get_composition.comments.length > 0 ? get_composition.comments.length : '' }
                 </p>
@@ -84,7 +88,7 @@ const DisplayPostAndComment: React.FC<TypeProps> = ({ user, host, uuid, composit
                   />
                 )}
                 {(user === '' || !host || host.isLoggedIn === false) && (
-                  <RiBookmarkFill className="w-5 h-5 text-pantone-white" />
+                  <RiBookmarkFill className="w-4 md:w-5 h-4 md:h-5 text-pantone-white" />
                 )}
                 <p className="font-light text-[10px] text-pantone-white text-opacity-40">
                   { get_composition.bookmarks.length > 0 ? get_composition.bookmarks.length : '' }
@@ -104,13 +108,13 @@ const DisplayPostAndComment: React.FC<TypeProps> = ({ user, host, uuid, composit
             </div>
           </div>
           <div className="flex flex-col w-full px-3 py-5">
-            <div className="flex flex-col items-center font-normal text-sm text-center whitespace-pre-wrap">
+            <div className="flex flex-col items-center font-normal text-xs md:text-sm text-center whitespace-pre-wrap">
               <p>{get_composition.content}</p>
             </div>
           </div>
           {(get_composition.spotify || get_composition.applemusic || get_composition.youtube) && (
             <div className="flex flex-row items-center justify-center w-full p-5 border-t border-pantone-white border-opacity-5">
-              <span className="font-light text-xs">Play this on &nbsp;</span>
+              <span className="font-light text-[10px] md:text-xs">Play this on &nbsp;</span>
               <div className="flex flex-row items-center space-x-1">
                 {get_composition.spotify && (
                   <Link href={`${get_composition.spotify}`}>
