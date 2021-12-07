@@ -87,9 +87,9 @@ const DisplayComment: React.FC<TypeProps> = ({ host, get_composition }) => {
   }
 
   return (
-    <div className="sticky top-5 flex flex-col w-full max-w-sm rounded-2xl bg-pantone-darkblack">
+    <div className="sticky top-5 flex flex-col w-full max-w-full md:max-w-sm rounded-none md:rounded-2xl bg-pantone-darkblack md:border-0 border-t border-pantone-white border-opacity-5">
       <div className="flex flex-row items-center justify-between w-full px-5 py-5">
-        <h3 className="text-sm text-pantone white">Live Comments</h3>
+        <h3 className="text-xs md:text-sm text-pantone white">Live Comments</h3>
         <h3 className="text-[10px] text-pantone-white">
           { get_composition.comments.length }&nbsp;
           {get_composition.comments.length > 1 ? 'Comments' : 'Comment'}
@@ -142,7 +142,7 @@ const DisplayComment: React.FC<TypeProps> = ({ host, get_composition }) => {
           <div className="flex flex-row items-end w-full py-5">
             <div
               id="comment_content"
-              className={`${isSubmitting ? 'hidden' : 'block'} w-full h-full max-h-[5rem] cursor-text overflow-y-auto text-[12px] bg-transparent whitespace-pre-wrap outline-none`}
+              className={`${isSubmitting ? 'hidden' : 'block'} w-full h-full max-h-[5rem] cursor-text overflow-y-auto text-[11px] md:text-[12px] bg-transparent whitespace-pre-wrap outline-none`}
               placeholder="Type your comment here..."
               contentEditable
               spellCheck={false}
@@ -150,7 +150,7 @@ const DisplayComment: React.FC<TypeProps> = ({ host, get_composition }) => {
               onKeyPress={handleKeyPress}
             />
             {isSubmitting && (
-              <div className="w-full h-full cursor-wait text-[12px] text-pantone-white text-opacity-40 bg-transparent whitespace-pre-wrap outline-none">
+              <div className="w-full h-full cursor-wait text-[11px] md:text-[12px] text-pantone-white text-opacity-40 bg-transparent whitespace-pre-wrap outline-none">
                 Sending...
               </div>
             )}
