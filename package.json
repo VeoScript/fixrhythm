@@ -12,6 +12,7 @@
     "@brianmcallister/react-auto-scroll": "^1.1.0",
     "@headlessui/react": "^1.4.1",
     "@prisma/client": "^3.6.0",
+    "@tailwindcss/line-clamp": "^0.2.2",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.27.1",
     "formidable": "^1.2.6",

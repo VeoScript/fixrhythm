@@ -20,6 +20,12 @@ const NavigationBar: React.FC<TypeProps> = ({ user, host, artists, get_notificat
 
   const [isDropdown, setIsDropdown] = React.useState(false)
 
+  React.useEffect(() => {
+    window.addEventListener('resize', function ResizeScreen() {
+      setIsDropdown(false)
+    })
+  }, [])
+
   return (
     <React.Fragment>
       {/* top navigation bar */}

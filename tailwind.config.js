@@ -24,6 +24,7 @@ module.exports = {
     opacity: ['disabled']
   },
   plugins: [
+    require('@tailwindcss/line-clamp'),
     require('tailwind-scrollbar-hide')
   ],
 }

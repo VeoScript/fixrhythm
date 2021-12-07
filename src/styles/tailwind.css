@@ -40,31 +40,3 @@
   content: attr(placeholder);
   color: #9CA3AF;
 }
-
-.notification_container {
-  padding: 5px;
-  position: relative;
-}
-
-.notification_text {
-  position: relative;
-  z-index: 3;
-}
-
-.notification_link:first-child::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
-}
-
-.notification_link:last-child::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 2;
-}

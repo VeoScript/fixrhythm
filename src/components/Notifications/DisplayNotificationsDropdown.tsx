@@ -26,6 +26,12 @@ const DisplayNotificationsDropdown: React.FC<TypeProps> = ({ host, get_notificat
   
   const [isDropdown, setIsDropdown] = React.useState(false)
 
+  React.useEffect(() => {
+    window.addEventListener('resize', function ResizeScreen() {
+      setIsDropdown(false)
+    })
+  }, [])
+
   // fetch unread notifications by logged in user
   const { data: fetchUnreadNotification } = useSWR('/api/user', fetcher, {
     refreshInterval: 1000
@@ -142,54 +148,66 @@ const DisplayNotificationsDropdown: React.FC<TypeProps> = ({ host, get_notificat
                   <span className="font-light text-xs">No notification as of now.</span>
                 </div>
               )}
-              <div className="relative flex flex-col w-full h-full overflow-y-auto">
+              <div className="relative flex flex-col w-full h-full overflow-x-hidden overflow-y-auto">
                 {fetchUnreadNotification.notificationTo && fetchUnreadNotification.notificationTo.map((notification: any, i: number) => (
                   <React.Fragment key={i}>
-                    <div className="notification_container flex flex-row items-center w-full space-x-1 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-5">
-                      <div className="flex w-full max-w-[2.5rem]">
-                        <img
-                          className="inline z-[3] w-9 h-9 object-cover rounded-full bg-[#1D1F21]"
-                          src={`${ notification.notificationFrom.profile[0] ? `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${notification.notificationFrom.profile[0].version}/${notification.notificationFrom.profile[0].publicId}.${notification.notificationFrom.profile[0].format}` : `https://ui-avatars.com/api/?name=${notification.notificationFrom.name}&background=2B2F31&color=FF3C3C` }`}
-                          alt={`${notification.notificationTo.username}`}
-                        />
-                      </div>
-                      <p className="inline space-x-1">
+                    <div className="outer relative border border-b border-pantone-white border-opacity-5 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-5">
+                      <Link href={`${notification.type === 'Likes' || notification.type === 'Comments' ? `/${notification.notificationTo.username}/posts/${notification.composition.uuid}` : `/${notification.notificationFrom.username}`}`}>
+                        <a 
+                          className="absolute left-0 top-0 bottom-0 right-0"
+                          onClick={async () => {
+                            // function for reading a notification and read in notification column will be turn to true.
+                            await fetch('/api/notifications/read_notification', {
+                              method: 'PUT',
+                              headers: {
+                                'Content-Type': 'application/json'
+                              },
+                              body: JSON.stringify({ notificationId: notification.id })
+                            })
+                            setIsDropdown(false)
+                          }}
+                        ></a>
+                      </Link>
+                      <div className="inner relative z-[1] pointer-events-none text-xs flex flex-row items-start justify-between w-full p-3 space-x-2">
                         <Link href={`/${notification.notificationFrom.username}`}>
-                          <a
-                            className="notification_link"
-                            onClick={async () => {
-                              // function for reading a notification and read in notification column will be turn to true.
-                              await fetch('/api/notifications/read_notification', {
-                                method: 'PUT',
-                                headers: {
-                                  'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify({ notificationId: notification.id })
-                              })
+                          <a 
+                            className="flex w-full max-w-[2.5rem] pointer-events-auto"
+                            onClick={() => {
                               setIsDropdown(false)
                             }}
                           >
-                            <div className="notification_text inline">
-                              <span className="inline font-bold text-xs text-pantone-white hover:underline">{ notification.notificationFrom.username }</span>
-                            </div>
+                            <img
+                              className="inline z-[3] w-9 h-9 object-cover rounded-full bg-[#1D1F21]"
+                              src={`${ notification.notificationFrom.profile[0] ? `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${notification.notificationFrom.profile[0].version}/${notification.notificationFrom.profile[0].publicId}.${notification.notificationFrom.profile[0].format}` : `https://ui-avatars.com/api/?name=${notification.notificationFrom.name}&background=2B2F31&color=FF3C3C` }`}
+                              alt={`${notification.notificationTo.username}`}
+                            />
                           </a>
                         </Link>
-                        <Link href={`${notification.type === 'Likes' || notification.type === 'Comments' ? `/${notification.notificationTo.username}/posts/${notification.composition.uuid}` : `/${notification.notificationFrom.username}`}`}>
-                          <a className="notification_link inline">
-                            <span className="notification_text">
-                              <p className="font-light text-xs inline text-pantone-white leading-none">
-                                { notification.message }
-                                <span className="font-bold">&nbsp;{ notification.type === 'Likes' || notification.type === 'Comments' ? notification.composition.title : '' }</span>
-                              </p>
+                        <div className="flex flex-col w-full">
+                          <div className="space-x-1 w-full">
+                            <Link href={`/${notification.notificationFrom.username}`}>
+                              <a 
+                                className="inline pointer-events-auto font-bold hover:underline"
+                                onClick={() => {
+                                  setIsDropdown(false)
+                                }}
+                              >
+                                { notification.notificationFrom.username }
+                              </a>
+                            </Link>
+                            <span className="inline">
+                              { notification.message }
+                              <span className="font-bold text-red-500">&nbsp;{ notification.type === 'Likes' || notification.type === 'Comments' ? notification.composition.title : '' }</span>
                             </span>
-                          </a>
-                        </Link>
-                      </p>
-                      {!notification.read && (
-                        <div className="flex absolute right-2 z-[3]">
-                          <span className="font-bold text-3xl text-[#BDF705]">&bull;</span>
+                          </div>
+                          <div className="font-light text-[10px] text-pantone-white text-opacity-50"><Moment date={ notification.date } fromNow /></div>
                         </div>
-                      )}
+                        {!notification.read && (
+                          <div className="flex">
+                            <span className="font-bold text-3xl text-[#BDF705]">&bull;</span>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </React.Fragment>
                 ))}

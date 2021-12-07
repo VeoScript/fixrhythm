@@ -13,6 +13,12 @@ const MenuDropdown: React.FC<TypeProps> = ({ host, composition, postUrl }) => {
   
   const [isDropdown, setIsDropdown] = React.useState(false)
 
+  React.useEffect(() => {
+    window.addEventListener('resize', function ResizeScreen() {
+      setIsDropdown(false)
+    })
+  }, [])
+
   return (
     <React.Fragment>
       <button
