@@ -139,20 +139,20 @@ const NavigationBar: React.FC<TypeProps> = ({ user, host, artists, get_notificat
           </React.Fragment>
         )}
         {(user === '' || !host || host.isLoggedIn === false) && (
-          <div className="flex flex-row items-center justify-between w-full py-3 shadow-xl border-b border-pantone-white border-opacity-10">
-            <div className="flex items-center justify-center w-full max-w-xs">
+          <div className="flex flex-row items-center justify-between w-full px-3 md:px-0 py-3 shadow-xl border-b border-pantone-white border-opacity-10">
+            <div className="flex items-center justify-start md:justify-center w-full max-w-xs">
               <Link href="/">
-                <a className="font-black text-xl text-pantone-red">FIXRHYTHM</a>
+                <a className="font-black text-md md:text-xl text-pantone-red">FIXRHYTHM</a>
               </Link>
             </div>
-            <div className="flex items-center justify-center w-full max-w-xs px-3 space-x-2">
+            <div className="flex items-center justify-end md:justify-center w-full max-w-xs space-x-2">
               <Link href="/login">
-                <a className="font-normal text-xs px-5 py-3 rounded-lg bg-pantone-gray text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10">
+                <a className="font-normal text-[10px] md:text-xs px-2 md:px-5 py-2 md:py-3 rounded-lg bg-pantone-gray text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10">
                   Sign In
                 </a>
               </Link>
               <Link href="/signup">
-                <a className="font-normal text-xs px-5 py-3 rounded-lg bg-pantone-red text-pantone-white transition ease-linear duration-200 hover:bg-opacity-80">
+                <a className="font-normal text-[10px] md:text-xs px-2 md:px-5 py-2 md:py-3 rounded-lg bg-pantone-red text-pantone-white transition ease-linear duration-200 hover:bg-opacity-80">
                   Create Account
                 </a>
               </Link>
