@@ -42,6 +42,7 @@ const Poems: NextPage<TypeProps> = ({ artists, get_notification, poems_published
       >
         <NewsFeed
           host={host}
+          artists={artists}
           poems_published_compositions={poems_published_compositions}
         />
       </Layout>

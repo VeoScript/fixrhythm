@@ -12,9 +12,11 @@ const Menu: React.FC<TypeProps> = ({ host }) => {
 
   const [isDropdown, setIsDropdown] = React.useState(false)
 
-  window.addEventListener('resize', function ResizeScreen() {
-    setIsDropdown(false)
-  })
+  React.useEffect(() => {
+    window.addEventListener('resize', function ResizeScreen() {
+      setIsDropdown(false)
+    })
+  }, [])
 
   return (
     <div className="flex">
@@ -40,7 +42,7 @@ const Menu: React.FC<TypeProps> = ({ host }) => {
           <div className="fixed block md:hidden inset-0 z-50">
             <div className="flex w-full max-w-full h-full overflow-auto bg-pantone-black">
               <div className="flex flex-col w-full">
-                <div className="flex flex-row items-center justify-between w-full px-3 py-2 border-b border-pantone-white border-opacity-10">
+                <div className="flex flex-row items-center justify-between w-full px-3 py-2 border-b border-pantone-white border-opacity-10 bg-pantone-darkblack">
                   <span className="font-bold text-sm text-pantone-white text-opacity-50">Menu</span>
                   <button 
                     title="Close"
@@ -90,8 +92,11 @@ const Menu: React.FC<TypeProps> = ({ host }) => {
                   </div>
                 </div>
                 <div className="flex flex-col w-full">
-                  <Link href={`/${host.username}`}>
-                    <a className="flex px-3 py-3 font-normal text-xs text-pantone-white bg-pantone-black hover:bg-pantone-darkblack border-b border-pantone-white border-opacity-10">
+                  <Link href="/">
+                    <a
+                      className="flex px-3 py-3 font-normal text-xs text-pantone-white bg-pantone-black hover:bg-pantone-darkblack border-b border-pantone-white border-opacity-10"
+                      onClick={() => setIsDropdown(false)}
+                    >
                       Home
                     </a>
                   </Link>

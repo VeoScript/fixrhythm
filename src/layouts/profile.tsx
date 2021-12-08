@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import UploadProfilePhoto from '~/components/UploadComponents/UploadProfilePhoto'
 import UploadCoverPhoto from '~/components/UploadComponents/UploadCoverPhoto'
 import FollowButton from '~/components/Interactions/Follows/FollowButton'
@@ -25,6 +26,8 @@ interface TypeProps {
 }
 
 const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
+
+  const { pathname } = useRouter()
 
   const [isFollow, setIsFollow] = React.useState(false)
 
@@ -51,8 +54,8 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
           />
         </div>
         <div className={`${!host || host.isLoggedIn === false ? 'max-w-5xl' : 'max-w-full'} relative w-full`}>
-          <div className="absolute -top-24 flex flex-col w-full px-20 space-y-5">
-            <div className="flex items-center w-full">
+          <div className="absolute -top-24 flex flex-col w-full px-3 lg:px-20 space-y-5">
+            <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-start w-full">
               <div className="relative flex w-full max-w-[11rem]">
                 <img
                   className="flex w-full h-[11rem] object-cover rounded-full bg-[#1D1F21] border-4 border-[#000000]"
@@ -65,16 +68,16 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
                   get_profile={get_profile}
                 />
               </div>
-              <div className="flex flex-row items-center justify-between w-full mt-[7rem] ml-5">
-                <div className="flex flex-col w-full">
+              <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between w-full mt-5 lg:mt-[7rem] ml-0 lg:ml-5">
+                <div className="flex flex-col items-center lg:items-start w-full">
                   <span className="font-bold text-2xl">{ get_profile.name }</span>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex flex-col lg:flex-row items-center space-x-0 lg:space-x-2">
                     <span className="font-medium text-base text-pantone-white text-opacity-50">{ get_profile.account_type }</span>
                     <span className="font-thin text-sm text-pantone-white text-opacity-50">@{ get_profile.username }</span>
                   </div>
                 </div>
-                <div className="flex flex-row items-center w-full space-x-5">
-                  <div className="flex items-center justify-end w-full space-x-3">
+                <div className="flex flex-col lg:flex-row items-center w-full mt-5 lg:mt-0 space-x-0 lg:space-x-5 space-y-3 lg:space-y-0">
+                  <div className="flex items-center justify-center lg:justify-end w-full space-x-3">
                     <div className="flex items-center space-x-1 font-light text-[14px]">
                       <span className="font-bold text-pantone-white text-[16px]">{ get_profile.followedBy.length }</span>
                       {!host || host.isLoggedIn === true && (
@@ -104,7 +107,7 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
                       {host.username === get_profile.username && (
                         <Link href="/settings">
                           <a
-                            className="font-normal text-sm w-[10rem] px-5 py-1.5 rounded-lg bg-pantone-darkblack text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10"
+                            className="font-normal text-center text-sm w-[10rem] px-5 py-1.5 rounded-lg bg-pantone-darkblack text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10"
                           >
                             Edit Profile
                           </a>
@@ -134,8 +137,8 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
                 </div>
               </div>
             </div>
-            <div className="relative flex flex-row items-start w-full pt-3 pb-20 space-x-2">
-              <div className="sticky top-5 flex flex-col w-full max-w-xs h-full max-h-[30rem] p-5 space-y-5 rounded-xl overflow-hidden bg-pantone-darkblack">
+            <div className="relative flex flex-col lg:flex-row items-start w-full pt-0 lg:pt-3 pb-20 space-x-0 lg:space-x-2 space-y-2 lg:space-y-0">
+              <div className={`${pathname === '/[username]/followers' ? 'hidden lg:flex' : 'static lg:sticky flex'}  top-5 flex-col w-full max-w-full lg:max-w-xs h-full max-h-[30rem] p-5 space-y-5 rounded-xl overflow-hidden bg-pantone-darkblack`}>
                 <div className="flex flex-col w-full space-y-2">
                   <h1 className="font-bold text-base text-pantone-white text-opacity-30">Intro</h1>
                   <div className="flex items-center w-full space-x-2">

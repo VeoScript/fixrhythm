@@ -42,6 +42,7 @@ const Home: NextPage<TypeProps> = ({ artists, get_notification, published_compos
       >
         <NewsFeed
           host={host}
+          artists={artists}
           published_compositions={published_compositions}
         />
       </Layout>

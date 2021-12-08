@@ -27,7 +27,7 @@ const MenuDropdown: React.FC<TypeProps> = ({ host, composition, postUrl }) => {
           setIsDropdown(true)
         }}
       >
-        <RiMoreFill className="flex w-5 h-5 transition ease-linear duration-100 hover:scale-90" />
+        <RiMoreFill className="flex w-4 md:w-5 h-4 md:h-5 transition ease-linear duration-100 hover:scale-90" />
       </button>
       {isDropdown && (
         <React.Fragment>

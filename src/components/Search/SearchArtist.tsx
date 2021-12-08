@@ -99,7 +99,7 @@ const SearchArtist: React.FC<TypeProps> = ({ artists }) => {
                     <div className="flex flex-col">
                       <div className="font-bold text-xs">{ artist.name }</div>
                       <div className="font-light text-[10px]">
-                        { artist.composition.length } composition
+                        { artist.account_type }
                       </div>
                     </div>
                   </a>
