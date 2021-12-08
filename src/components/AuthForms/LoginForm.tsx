@@ -88,7 +88,7 @@ const LoginForm: React.FC = () => {
         )}
       </form>
       <div className="flex flex-row items-center justify-center w-full space-x-2 font-light text-xs text-pantone-white text-opacity-50">
-        <Link href="/login">
+        <Link href="/forgot-password">
           <a className="hover:underline">Forgot Password?</a>
         </Link>
         <span className="text-pantone-white text-opacity-20">|</span>
