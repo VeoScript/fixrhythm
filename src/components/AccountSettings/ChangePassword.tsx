@@ -2,7 +2,7 @@ import React from 'react'
 import bcrypt from 'bcryptjs'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
-import { RiShieldKeyholeLine } from 'react-icons/ri'
+import { RiShieldKeyholeLine, RiShieldCheckLine } from 'react-icons/ri'
 
 interface TypeProps {
   host: any
@@ -86,7 +86,7 @@ const ChangePassword: React.FC<TypeProps> = ({ host }) => {
             <span className="px-2 font-light text-xs text-pantone-white text-opacity-50">Old Password</span>
             <div className={`${ errors.oldpassword ? 'hover:border-pantone-red border-pantone-red' : 'hover:border-pantone-white focus-within:border-pantone-white' } flex items-center w-full px-1 rounded-md text-pantone-white bg-transparent border border-pantone-gray transition ease-linear duration-200`}>
               <div className="px-3 border-r border-pantone-white border-opacity-30">
-                <RiShieldKeyholeLine className="w-5 h-5 fill-current text-pantone-white text-opacity-50" />
+                <RiShieldCheckLine className="w-5 h-5 fill-current text-pantone-white text-opacity-50" />
               </div>
               <input
                 className="w-full px-3 py-5 text-xs md:text-sm bg-transparent outline-none"
@@ -115,7 +115,7 @@ const ChangePassword: React.FC<TypeProps> = ({ host }) => {
             <span className="px-2 font-light text-xs text-pantone-white text-opacity-50">Re-enter Password</span>
             <div className={`${ errors.repassword ? 'hover:border-pantone-red border-pantone-red' : 'hover:border-pantone-white focus-within:border-pantone-white' } flex items-center w-full px-1 rounded-md text-pantone-white bg-transparent border border-pantone-gray transition ease-linear duration-200`}>
               <div className="px-3 border-r border-pantone-white border-opacity-30">
-                <RiShieldKeyholeLine className="w-5 h-5 fill-current text-pantone-white text-opacity-50" />
+                <RiShieldCheckLine className="w-5 h-5 fill-current text-pantone-white text-opacity-50" />
               </div>
               <input
                 className="w-full px-3 py-5 text-xs md:text-sm bg-transparent outline-none"
