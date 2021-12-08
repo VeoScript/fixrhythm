@@ -185,7 +185,7 @@ const EditForm: React.FC<TypeProps> = ({ host, composition, closeModal }) => {
             id="content_editor"
             className="w-full h-full max-h-[15rem] overflow-y-auto p-5 text-sm bg-transparent cursor-text whitespace-pre-wrap outline-none"
             placeholder="Type your lyrics here, shift+enter for new line."
-            contentEditable="plaintext-only"
+            contentEditable
             spellCheck={false}
             onInput={(e: any) => setValue('content_editor', e.currentTarget.textContent, { shouldValidate: true })}
             onKeyPress={handleLineBreak}
