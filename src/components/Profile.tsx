@@ -65,24 +65,17 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
         )}
         <Tab.Group>
           {(get_published_posts.composition.length > 0 || get_draft_posts.composition.length > 0) && (
-            <Tab.List className="flex flex-row items-center justify-between w-full max-w-full h-full px-5 py-3 rounded-xl bg-pantone-darkblack">
-              <div className="flex">
-                <h3 className="font-bold text-sm text-pantone-white text-opacity-50">Compositions</h3>
-              </div>
-              <div className="flex flex-row items-center rounded-md space-x-0.5 overflow-auto">
-                <Tab
-                  className={({ selected }) => 
-                    classNames(
-                      'w-[5rem] px-3 py-2 transition ease-linear duration-200',
-                      selected
-                        ? 'font-normal text-xs p-2 bg-pantone-white bg-opacity-10 text-pantone-white transition ease-linear duration-200 hover:bg-pantone-gray'
-                        : 'font-normal text-xs p-2 bg-pantone-black text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10'
-                    )
-                  }
-                >
-                  Published
-                </Tab>
-                {host.username === profile.username && (
+            <Tab.List className="flex flex-col lg:flex-row w-full space-y-2 lg:space-y-0 px-5 py-3 rounded-xl bg-pantone-darkblack">
+              {host.username === profile.username && (
+                <div className="lg:hidden flex items-center w-full">
+                  <h3 className="font-bold text-sm text-pantone-white text-opacity-50">Compositions</h3>
+                </div>
+              )}
+              <div className="flex flex-row items-center justify-between w-full max-w-full h-full">
+                <div className={`${host.username === profile.username ? 'hidden lg:flex' : 'flex' }`}>
+                  <h3 className="font-bold text-sm text-pantone-white text-opacity-50">Compositions</h3>
+                </div>
+                <div className="flex flex-row items-center rounded-md space-x-0.5 overflow-auto">
                   <Tab
                     className={({ selected }) => 
                       classNames(
@@ -93,15 +86,29 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
                       )
                     }
                   >
-                    Drafts
+                    Published
                   </Tab>
+                  {host.username === profile.username && (
+                    <Tab
+                      className={({ selected }) => 
+                        classNames(
+                          'w-[5rem] px-3 py-2 transition ease-linear duration-200',
+                          selected
+                            ? 'font-normal text-xs p-2 bg-pantone-white bg-opacity-10 text-pantone-white transition ease-linear duration-200 hover:bg-pantone-gray'
+                            : 'font-normal text-xs p-2 bg-pantone-black text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10'
+                        )
+                      }
+                    >
+                      Drafts
+                    </Tab>
+                  )}
+                </div>
+                {host.username === profile.username && (
+                  <div className="flex w-full max-w-[5rem]">
+                    <ComposeCard host={host} />
+                  </div>
                 )}
               </div>
-              {host.username === profile.username && (
-                <div className="flex w-full max-w-[5rem]">
-                  <ComposeCard host={host} />
-                </div>
-              )}
             </Tab.List>
           )}
           <Tab.Panels>
