@@ -12,7 +12,7 @@ const DisplayNotifications: React.FC<TypeProps> = ({ host }) => {
   return (
     <React.Fragment>
       <div className="flex flex-row items-center justify-between px-3 py-3 border-b border-pantone-white border-opacity-5">
-        <span className="font-bold text-sm text-pantone-white">Notifications</span>
+        <span className="font-bold text-base text-pantone-white">Notifications</span>
         {(host.notificationTo && host.notificationTo.length > 0) && (
           <React.Fragment>
             <button

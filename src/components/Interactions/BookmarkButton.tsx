@@ -52,9 +52,9 @@ const BookmarkButton: React.FC<TypeProps> = ({ host, composition }) => {
       setBookmark(!bookmark)
     }}>
       {bookmark ? (
-          <RiBookmarkFill className="w-5 h-5 text-[#1C99E6] transition ease-linear duration-100 hover:scale-90" />
+          <RiBookmarkFill className="w-4 md:w-5 h-4 md:h-5 text-[#1C99E6] transition ease-linear duration-100 hover:scale-90" />
         ) : (
-          <RiBookmarkFill className="w-5 h-5 text-pantone-white transition ease-linear duration-100 hover:scale-90" />
+          <RiBookmarkFill className="w-4 md:w-5 h-4 md:h-5 text-pantone-white transition ease-linear duration-100 hover:scale-90" />
         )
       }
     </button>

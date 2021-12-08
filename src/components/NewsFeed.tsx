@@ -4,10 +4,11 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Menu from './Menu'
 import SearchTitle from './Search/SearchTitle'
+import SearchTitleMenu from './Search/SearchMenu/SearchTitleMenu'
+import SearchArtistMenu from './Search/SearchMenu/SearchArtistMenu'
 import ComposeCard from './Compose/ComposeCard'
 import PostCard from './Card/PostCard'
 import useSWR from 'swr'
-import { RiSearchLine, RiUserSearchLine } from 'react-icons/ri'
 
 const fetcher = async (
   input: RequestInfo,
@@ -20,12 +21,13 @@ const fetcher = async (
 
 interface TypeProps {
   host: any
+  artists: any
   published_compositions?: any
   song_published_compositions?: any
   poems_published_compositions?: any
 }
 
-const NewsFeed: React.FC<TypeProps> = ({ host, published_compositions, song_published_compositions, poems_published_compositions }) => {
+const NewsFeed: React.FC<TypeProps> = ({ host, artists, published_compositions, song_published_compositions, poems_published_compositions }) => {
 
   const { pathname } = useRouter()
 
@@ -84,18 +86,15 @@ const NewsFeed: React.FC<TypeProps> = ({ host, published_compositions, song_publ
           </Link>
         </div>
         <div className="relative flex items-center justify-end w-full max-w-xs space-x-3">
-          <button
-            title="Search Compositions"
-            type="button"
-          >
-            <RiSearchLine className="w-5 h-5 transition ease-linear duration-200 text-[#848484] hover:text-pantone-white" />
-          </button>
-          <button
-            title="Search Artists"
-            type="button"
-          >
-            <RiUserSearchLine className="w-5 h-5 transition ease-linear duration-200 text-[#848484] hover:text-pantone-white" />
-          </button>
+          <SearchTitleMenu
+            fetchPublishedCompositions={fetchPublishedCompositions}
+            fetchSongPublishedCompositions={fetchSongPublishedCompositions}
+            fetchPoemsPublishedCompositions={fetchPoemsPublishedCompositions}
+          />
+          <SearchArtistMenu
+            host={host}
+            artists={artists}
+          />
           <Menu host={host} />
         </div>
       </div>

@@ -94,7 +94,7 @@ const PostCard: React.FC<TypeProps> = ({ host, composition, border, backgroundCo
             />
           )}
           {!host || host.isLoggedIn === false && (
-            <RiBookmarkFill className="w-5 h-5 text-pantone-white" />
+            <RiBookmarkFill className="w-4 md:w-5 h-4 md:h-5 text-pantone-white" />
           )}
           <p className="font-light text-[10px] text-pantone-white text-opacity-40">
             { composition.bookmarks.length > 0 ? composition.bookmarks.length : '' }
@@ -104,12 +104,12 @@ const PostCard: React.FC<TypeProps> = ({ host, composition, border, backgroundCo
           {!host || host.isLoggedIn === true && (
             <Link href={`/${composition.user.username}/posts/${composition.uuid}`}>
               <a title="Comments">
-                <RiDiscussFill className="w-5 h-5 transition ease-linear duration-100 hover:scale-90" />
+                <RiDiscussFill className="w-4 md:w-5 h-4 md:h-5 transition ease-linear duration-100 hover:scale-90" />
               </a>
             </Link>
           )}
           {!host || host.isLoggedIn === false && (
-            <RiDiscussFill className="w-5 h-5 text-pantone-white" />
+            <RiDiscussFill className="w-4 md:w-5 h-4 md:h-5 text-pantone-white" />
           )}
           <p className="font-light text-[10px] text-pantone-white text-opacity-40">
             { composition.comments.length > 0 ? composition.comments.length : '' }
@@ -123,7 +123,7 @@ const PostCard: React.FC<TypeProps> = ({ host, composition, border, backgroundCo
             />
           )}
           {!host || host.isLoggedIn === false && (
-            <RiHeart2Fill className="w-5 h-5 text-pantone-white" />
+            <RiHeart2Fill className="w-4 md:w-5 h-4 md:h-5 text-pantone-white" />
           )}
           <p className="font-light text-[10px] text-pantone-white text-opacity-40">
             { composition.likes.length > 0 ? composition.likes.length : '' }

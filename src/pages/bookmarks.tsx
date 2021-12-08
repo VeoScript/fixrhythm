@@ -4,16 +4,24 @@ import Head from 'next/head'
 import useUser from '~/lib/useUser'
 import Layout from '~/layouts/default'
 import Guard from '~/layouts/guard'
-import NewsFeed from '~/components/NewsFeed'
+import DisplayBookmarks from '~/components/DisplayBookmarks'
 import prisma from '~/lib/Prisma'
+
+const fetcher = async (
+  input: RequestInfo,
+  init: RequestInit,
+  ...args: any[]
+) => {
+  const res = await fetch(input, init)
+  return res.json()
+}
 
 interface TypeProps {
   artists: any
   get_notification: any
-  song_published_compositions: any
 }
 
-const Songs: NextPage<TypeProps> = ({ artists, get_notification, song_published_compositions }) => {
+const Bookmarks: NextPage<TypeProps> = ({ artists, get_notification }) => {
 
   const { user: host } = useUser({
     redirectTo: "/login",
@@ -33,18 +41,18 @@ const Songs: NextPage<TypeProps> = ({ artists, get_notification, song_published_
   return (
     <React.Fragment>
       <Head>
-        <title>Fixrhythm | Songs</title>
+        <title>Fixrhythm | Bookmarks</title>
       </Head>
       <Layout
         host={host}
-        artists={artists}
         get_notification={get_notification}
+        artists={artists}
       >
-        <NewsFeed
-          host={host}
-          artists={artists}
-          song_published_compositions={song_published_compositions}
-        />
+        <div className="flex flex-row items-center justify-between px-3 py-3 border-b border-pantone-white border-opacity-5">
+          <span className="font-bold text-base text-pantone-white">Bookmarks</span>
+          <span className="font-light text-xs">{host.bookmarks.length} Bookmarks</span>
+        </div>
+        <DisplayBookmarks host={host} />
       </Layout>
     </React.Fragment>
   )
@@ -101,59 +109,12 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   })
 
-  const song_published_compositions = await prisma.compositions.findMany({
-    where: {
-      status: 'Published',
-      category: 'Song'
-    },
-    orderBy: [
-      {
-        id: 'desc'
-      }
-    ],
-    select: {
-      id: true,
-      uuid: true,
-      title: true,
-      description: true,
-      content: true,
-      category: true,
-      status: true,
-      slug: true,
-      spotify: true,
-      applemusic: true,
-      youtube: true,
-      datePublished: true,
-      dateEdited: true,
-      pinned: true,
-      likes: true,
-      comments: true,
-      bookmarks: true,
-      notifications: {
-        select: {
-          id: true
-        }
-      },
-      user: {
-        select: {
-          id: true,
-          uuid: true,
-          profile: true,
-          account_type: true,
-          name: true,
-          username: true
-        }
-      }
-    }
-  })
-
   return {
     props: {
       artists,
-      get_notification,
-      song_published_compositions
+      get_notification
     }
   }
 }
 
-export default Songs
+export default Bookmarks
