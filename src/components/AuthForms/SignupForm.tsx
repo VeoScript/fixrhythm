@@ -58,13 +58,13 @@ const SignupForm: React.FC = () => {
 
   return (
     <div className="flex flex-col w-full max-w-xl space-y-5">
-      <form onSubmit={handleSubmit(onSignUp)} className="flex flex-col w-full space-y-2">
+      <form onSubmit={handleSubmit(onSignUp)} className="flex flex-col w-full px-3 md:px-0 space-y-2">
         <div className="flex items-center justify-between w-full px-3">
           <h5 className="font-extralight text-xs"><span className="font-bold text-sm">Welcome.</span> Create your account.</h5>
           <span className="font-light text-[10px] text-red-500">{ signupError }</span>
         </div>
         <div className="flex flex-col w-full space-y-2">
-          <div className="flex flex-row items-center w-full space-x-2">
+          <div className="flex flex-col md:flex-row items-center w-full space-x-0 md:space-x-2 space-y-2 md:space-y-0">
             <div className="flex items-center w-full px-1 rounded-md text-pantone-white bg-transparent border border-pantone-gray transition ease-linear duration-200 hover:border-pantone-white focus-within:border-pantone-white">
               <div className="px-3 border-r border-pantone-white border-opacity-30">
                 <RiUser3Line className="w-6 h-6 text-pantone-white text-opacity-50" />
@@ -91,7 +91,7 @@ const SignupForm: React.FC = () => {
               </select>
             </div>
           </div>
-          <div className="flex flex-row items-center w-full space-x-2">
+          <div className="flex flex-col md:flex-row items-center w-full space-x-0 md:space-x-2 space-y-2 md:space-y-0">
             <div className={`${ errors.phone ? 'hover:border-pantone-red focus-within:border-pantone-red' : 'hover:border-pantone-white focus-within:border-pantone-white' } flex items-center w-full px-1 rounded-md text-pantone-white bg-transparent border border-pantone-gray transition ease-linear duration-200`}>
               <div className="px-3 border-r border-pantone-white border-opacity-30">
                 <RiSmartphoneLine className="w-6 h-6 text-pantone-white text-opacity-50" />
@@ -103,6 +103,7 @@ const SignupForm: React.FC = () => {
                 {...register("phone", { required: true, pattern: /^(09|\+639)\d{9}$/ })}
               />
             </div>
+            {errors.phone && <span className="md:hidden flex justify-start w-full font-light text-[10px] text-red-500">Contains of 11 digits number & start with (+63) or (09)</span>}
             <div className={`${ errors.username ? 'hover:border-pantone-red focus-within:border-pantone-red' : 'hover:border-pantone-white focus-within:border-pantone-white' } flex items-center w-full px-1 rounded-md text-pantone-white bg-transparent border border-pantone-gray transition ease-linear duration-200`}>
               <div className="px-3 border-r border-pantone-white border-opacity-30">
                 <RiShieldUserLine className="w-6 h-6 text-pantone-white text-opacity-50" />
@@ -114,10 +115,11 @@ const SignupForm: React.FC = () => {
                 {...register("username", { required: true, pattern: /^\S*$/ })}
               />
             </div>
+            {errors.username && <span className="md:hidden flex justify-start w-full font-light text-[10px] text-red-500">Username no space required</span>}
           </div>
-          <div className="flex items-center justify-between w-full">
-            {errors.phone && <span className="flex justify-start w-full font-light text-[10px] text-red-500">Contains of 11 digits number & start with (+63) or (09)</span>}
-            {errors.username && <span className="flex justify-end w-full font-light text-[10px] text-red-500">Username no space required</span>}
+          <div className="hidden md:flex items-center justify-between w-full">
+            {errors.phone && <span className="hidden md:flex justify-start w-full font-light text-[10px] text-red-500">Contains of 11 digits number & start with (+63) or (09)</span>}
+            {errors.username && <span className="hidden md:flex justify-end w-full font-light text-[10px] text-red-500">Username no space required</span>}
           </div>
           <div className={`${ errors.email ? 'hover:border-pantone-red focus-within:border-pantone-red' : 'hover:border-pantone-white focus-within:border-pantone-white' } flex items-center w-full px-1 rounded-md text-pantone-white bg-transparent border border-pantone-gray transition ease-linear duration-200`}>
             <div className="px-3 border-r border-pantone-white border-opacity-30">
@@ -131,7 +133,7 @@ const SignupForm: React.FC = () => {
             />
           </div>
           {errors.email && <span className="flex justify-start w-full font-light text-[10px] text-red-500">Invalid email</span>}
-          <div className="flex flex-row items-center w-full space-x-2">
+          <div className="flex flex-col md:flex-row items-center w-full space-x-0 md:space-x-2 space-y-2 md:space-y-0">
             <div className={`${ errors.password ? 'hover:border-pantone-red focus-within:border-pantone-red' : 'hover:border-pantone-white focus-within:border-pantone-white' } flex items-center w-full px-1 rounded-md text-pantone-white bg-transparent border border-pantone-gray transition ease-linear duration-200`}>
               <div className="px-3 border-r border-pantone-white border-opacity-30">
                 <RiShieldKeyholeLine className="w-6 h-6 text-pantone-white text-opacity-50" />
@@ -143,6 +145,7 @@ const SignupForm: React.FC = () => {
                 {...register("password", { required: true, pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&^_-]{8,}$/ })}
               />
             </div>
+            {errors.password && <span className="md:hidden flex justify-start w-full font-light text-[10px] text-red-500">Invalid password, contains at least 8 alphanumeric values</span>}
             <div className="flex items-center w-full px-1 rounded-md text-pantone-white bg-transparent border border-pantone-gray transition ease-linear duration-200 hover:border-pantone-white focus-within:border-pantone-white">
               <div className="px-3 border-r border-pantone-white border-opacity-30">
                 <RiShieldCheckLine className="w-6 h-6 text-pantone-white text-opacity-50" />
@@ -155,7 +158,7 @@ const SignupForm: React.FC = () => {
               />
             </div>
           </div>
-          {errors.password && <span className="flex justify-start w-full font-light text-[10px] text-red-500">Invalid password, contains at least 8 alphanumeric values</span>}
+          {errors.password && <span className="hidden md:flex justify-start w-full font-light text-[10px] text-red-500">Invalid password, contains at least 8 alphanumeric values</span>}
         </div>
         {!isSubmitting && (
           <button

@@ -40,7 +40,7 @@ const LoginForm: React.FC = () => {
 
   return (
     <div className="flex flex-col w-full max-w-md space-y-10">
-      <form onSubmit={handleSubmit(onSignIn)} className="flex flex-col w-full space-y-2">
+      <form onSubmit={handleSubmit(onSignIn)} className="flex flex-col w-full px-3 md:px-0 space-y-2">
         <div className="flex items-center justify-between w-full px-3">
           <h5 className="font-extralight text-xs"><span className="font-bold text-sm">Welcome.</span> Please login.</h5>
           <span className="font-light text-[10px] text-red-500">{ signupError }</span>
