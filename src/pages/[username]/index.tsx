@@ -3,6 +3,7 @@ import React from 'react'
 import Head from 'next/head'
 import useUser from '~/lib/useUser'
 import Layout from '~/layouts/default'
+import Guard from '~/layouts/guard'
 import Profile from '~/components/Profile'
 import prisma from '~/lib/Prisma'
 
@@ -277,6 +278,15 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
       }
     }
   })
+
+  if (!profile) {
+    return {
+      redirect: {
+        destination: '/404',
+        permanent: false,
+      },
+    }
+  }
 
   return {
     props: {
