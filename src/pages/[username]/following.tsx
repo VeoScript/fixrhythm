@@ -64,7 +64,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         username: artist.username
       }
     })),
-    fallback: false
+    fallback: 'blocking'
   }
 }
 
@@ -212,8 +212,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
       artists,
       following,
       get_notification
-    },
-    revalidate: 10
+    }
   }
 }
 
