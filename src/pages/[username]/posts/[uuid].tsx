@@ -20,6 +20,11 @@ const PublishedPostDisplay: NextPage<TypeProps> = ({ user, host, uuid, artists, 
     <React.Fragment>
       <Head>
         <title>{ composition.title }</title>
+        <meta name="description" content={`${composition.title}`} />
+        <meta name="og:title" content={`Fixrhythm | ${composition.title}`} />
+        <meta name="og:description" content={`${composition.title}`} />
+        <meta name="og:url" content={`https://www.fixrhythm.tk/${composition.user.username}/posts/${composition.title}`} />
+        <meta name="og:type" content="website" />
       </Head>
       <Layout
         user={user}

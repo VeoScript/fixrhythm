@@ -10,6 +10,11 @@ const Login: NextPage = () => {
     <React.Fragment>
       <Head>
         <title>Login | Fixrhythm</title>
+        <meta name="description" content="Fixrhythm Login" />
+        <meta name="og:title" content="Fixrhythm" />
+        <meta name="og:description" content="Fixrhythm Lyricist and Poet Social Media" />
+        <meta name="og:url" content="https://www.fixrhythm.tk/login" />
+        <meta name="og:type" content="website" />
       </Head>
       <Auth>
         <LoginForm />
