@@ -1,6 +1,7 @@
 import type { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next'
 import React from 'react'
 import Head from 'next/head'
+import Router from 'next/router'
 import useUser from '~/lib/useUser'
 import Layout from '~/layouts/default'
 import Profile from '~/components/Profile'
@@ -19,6 +20,8 @@ const ProfilePage: NextPage<TypeProps> = ({ profile, artists, get_notification, 
   const { user } = useUser()
 
   const host = user ? user : ''
+
+  console.log(profile)
 
   return (
     <React.Fragment>
@@ -277,6 +280,15 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
       }
     }
   })
+
+  if (!profile) {
+    return {
+      redirect: {
+        destination: '/404',
+        permanent: false,
+      },
+    }
+  }
 
   return {
     props: {
