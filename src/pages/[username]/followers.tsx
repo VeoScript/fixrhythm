@@ -212,7 +212,8 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
       artists,
       followers,
       get_notification
-    }
+    },
+    revalidate: 10
   }
 }
 
