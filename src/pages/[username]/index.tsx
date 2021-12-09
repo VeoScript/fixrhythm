@@ -54,7 +54,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         username: artist.username
       }
     })),
-    fallback: 'blocking'
+    fallback: false
   }
 }
 
