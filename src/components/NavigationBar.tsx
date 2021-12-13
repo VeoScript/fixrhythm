@@ -5,7 +5,7 @@ import Router, { useRouter } from 'next/router'
 import DisplayNotifications from './Notifications/DisplayNotificationsDropdown'
 import SearchArtist from './Search/SearchArtist'
 import ComposeMini from './Compose/ComposeMini'
-import { RiHome5Fill, RiMusic2Fill, RiBookOpenFill, RiUserSettingsLine, RiLogoutCircleRLine, RiMenu5Fill } from 'react-icons/ri'
+import { RiHome5Fill, RiMusic2Fill, RiBookOpenFill, RiUserSettingsLine, RiLogoutCircleRLine, RiMenu5Fill, RiCheckDoubleLine, RiInformationLine } from 'react-icons/ri'
 
 interface TypeProps {
   user?: any
@@ -79,6 +79,18 @@ const NavigationBar: React.FC<TypeProps> = ({ user, host, artists, get_notificat
                               <a className="flex flex-row items-center w-full p-3 space-x-2 font-light text-xs text-pantone-white text-opacity-80 transition ease-linear duration-200 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-5">
                                 <RiUserSettingsLine className="w-4 h-4" />
                                 <span>Account Settings</span>
+                              </a>
+                            </Link>
+                            <Link href="/privacy-policy">
+                              <a className="flex flex-row items-center w-full p-3 space-x-2 font-light text-xs text-pantone-white text-opacity-80 transition ease-linear duration-200 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-5">
+                                <RiCheckDoubleLine className="w-4 h-4" />
+                                <span>Privacy Policy</span>
+                              </a>
+                            </Link>
+                            <Link href="/about">
+                              <a className="flex flex-row items-center w-full p-3 space-x-2 font-light text-xs text-pantone-white text-opacity-80 transition ease-linear duration-200 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-5">
+                                <RiInformationLine className="w-4 h-4" />
+                                <span>About</span>
                               </a>
                             </Link>
                             <button
