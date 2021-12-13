@@ -30,7 +30,7 @@ const UploadCoverPhoto: React.FC<TypeProps> = ({ host, get_profile }) => {
 
       var file    = e.target.files[0]
       var reader  = new FileReader()
-      var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i
+      var allowedExtensions = /(\.jpg|\.jpeg|\.jfif|\.png)$/i
 
       // check if the selected file is not an image
       if(e.target.value !== '' && !allowedExtensions.exec(e.target.value)) {
@@ -132,7 +132,7 @@ const UploadCoverPhoto: React.FC<TypeProps> = ({ host, get_profile }) => {
               id="upload_coverphoto"
               className="hidden"
               onChange={handleCoverPhotoChange}
-              accept=".jpg, .png, .jpeg"
+              accept=".jpg, .png, .jpeg, .jfif"
             />
             <div className="flex w-full max-w-full">
               {imageUploaded && (
