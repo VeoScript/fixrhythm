@@ -7,8 +7,8 @@ interface TypeProps {
 
 const Auth: React.FC<TypeProps> = ({ children }) => {
   return (
-    <div className="preventcopy font-poppins flex flex-col items-center justify-start md:justify-center w-full h-screen bg-pantone-black overflow-hidden">
-      <div className="flex flex-col items-center justify-start md:justify-center w-full max-w-[2400px] h-full overflow-y-auto md:overflow-y-hidden py-10 md:py-0 text-pantone-white bg-pantone-darkblack bg-opacity-50">
+    <div className="preventcopy font-poppins flex flex-col items-center justify-start md:justify-center w-full h-screen bg-pantone-white dark:bg-pantone-black overflow-hidden">
+      <div className="flex flex-col items-center justify-start md:justify-center w-full max-w-[2400px] h-full overflow-y-auto md:overflow-y-hidden py-10 md:py-0 text-pantone-darkblack dark:text-pantone-white bg-pantone-white dark:bg-pantone-darkblack">
         <div className="flex flex-col items-center w-full space-y-5">
           <div className="flex flex-col items-center w-full">
             <h3 className="font-black text-3xl text-pantone-red">FIXRHYTHM</h3>

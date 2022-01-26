@@ -84,7 +84,7 @@ const ChangePassword: React.FC<TypeProps> = ({ host }) => {
         <div className="flex flex-col w-full px-5 py-3 space-y-2">
           <div className="flex flex-col justify-center w-full space-y-2">
             <span className="px-2 font-light text-xs text-pantone-darkblack dark:text-pantone-white text-opacity-100 dark:text-opacity-50">Old Password</span>
-            <div className={`${ errors.oldpassword ? 'hover:border-pantone-red border-pantone-red' : 'hover:border-pantone-white focus-within:border-pantone-white' } flex items-center w-full px-1 rounded-md text-pantone-darkblack dark:text-pantone-white bg-transparent border border-gray-300 dark:border-pantone-gray transition ease-linear duration-200 hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white`}>
+            <div className={`${ errors.oldpassword ? 'hover:border-pantone-red border-pantone-red' : 'hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white' } flex items-center w-full px-1 rounded-md text-pantone-darkblack dark:text-pantone-white bg-transparent border border-gray-300 dark:border-pantone-gray transition ease-linear duration-200 hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white`}>
               <div className="px-3 border-r border-pantone-black dark:border-pantone-white border-opacity-20 dark:border-opacity-30">
                 <RiShieldCheckLine className="w-6 h-6 text-pantone-gray dark:text-pantone-white text-opacity-50 dark:text-opacity-50" />
               </div>
@@ -99,7 +99,7 @@ const ChangePassword: React.FC<TypeProps> = ({ host }) => {
           </div>
           <div className="flex flex-col justify-center w-full space-y-2">
             <span className="px-2 font-light text-xs text-pantone-darkblack dark:text-pantone-white text-opacity-100 dark:text-opacity-50">New Password</span>
-            <div className={`${ errors.newpassword ? 'hover:border-pantone-red border-pantone-red' : 'hover:border-pantone-white focus-within:border-pantone-white' } flex items-center w-full px-1 rounded-md text-pantone-darkblack dark:text-pantone-white bg-transparent border border-gray-300 dark:border-pantone-gray transition ease-linear duration-200 hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white`}>
+            <div className={`${ errors.newpassword ? 'hover:border-pantone-red border-pantone-red' : 'hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white' } flex items-center w-full px-1 rounded-md text-pantone-darkblack dark:text-pantone-white bg-transparent border border-gray-300 dark:border-pantone-gray transition ease-linear duration-200 hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white`}>
               <div className="px-3 border-r border-pantone-black dark:border-pantone-white border-opacity-20 dark:border-opacity-30">
                 <RiShieldKeyholeLine className="w-6 h-6 text-pantone-gray dark:text-pantone-white text-opacity-50 dark:text-opacity-50" />
               </div>
@@ -113,7 +113,7 @@ const ChangePassword: React.FC<TypeProps> = ({ host }) => {
           </div>
           <div className="flex flex-col justify-center w-full space-y-2">
             <span className="px-2 font-light text-xs text-pantone-darkblack dark:text-pantone-white text-opacity-100 dark:text-opacity-50">Re-enter Password</span>
-            <div className={`${ errors.repassword ? 'hover:border-pantone-red border-pantone-red' : 'hover:border-pantone-white focus-within:border-pantone-white' } flex items-center w-full px-1 rounded-md text-pantone-darkblack dark:text-pantone-white bg-transparent border border-gray-300 dark:border-pantone-gray transition ease-linear duration-200 hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white`}>
+            <div className={`${ errors.repassword ? 'hover:border-pantone-red border-pantone-red' : 'hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white' } flex items-center w-full px-1 rounded-md text-pantone-darkblack dark:text-pantone-white bg-transparent border border-gray-300 dark:border-pantone-gray transition ease-linear duration-200 hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white`}>
               <div className="px-3 border-r border-pantone-black dark:border-pantone-white border-opacity-20 dark:border-opacity-30">
                 <RiShieldCheckLine className="w-6 h-6 text-pantone-gray dark:text-pantone-white text-opacity-50 dark:text-opacity-50" />
               </div>

@@ -11,7 +11,7 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
   return (
     <div className="flex flex-col w-full">
       <div className="flex flex-col w-full border-b border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-10">
-        <div className="flex flex-row items-center justify-between w-full px-5 py-3 border-b border-pantone-gray dark:border-pantone-white border-opacity-5 dark:border-opacity-5">
+        <div className="flex flex-row items-center justify-between w-full px-5 py-3 border-b border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-5">
           <span className="font-bold text-xs md:text-sm text-pantone-darkblack dark:text-pantone-white text-opacity-50 dark:text-opacity-50 uppercase">Account Information</span>
         </div>
         <div className="flex flex-col w-full px-5 py-3 space-y-2">
@@ -73,9 +73,9 @@ const AccountInformation: React.FC<TypeProps> = ({ register, errors }) => {
                     {...register("account_type", { required: true })}
                   >
                     <option value="" className="hidden"></option>
-                    <option value="Typical" className="bg-pantone-darkblack">Typical</option>
-                    <option value="Lyricist" className="bg-pantone-darkblack">Lyricist</option>
-                    <option value="Poet" className="bg-pantone-darkblack">Poet</option>
+                    <option value="Typical" className="bg-pantone-white dark:bg-pantone-darkblack">Typical</option>
+                    <option value="Lyricist" className="bg-pantone-white dark:bg-pantone-darkblack">Lyricist</option>
+                    <option value="Poet" className="bg-pantone-white dark:bg-pantone-darkblack">Poet</option>
                   </select>
                 </div>
               </div>
