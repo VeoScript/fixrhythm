@@ -86,7 +86,7 @@ const SearchArtist: React.FC<TypeProps> = ({ artists }) => {
               {search_results.map((artist: any, i: number) => (
                 <Link href={`/${ artist.username }`} key={i}>
                   <a
-                    className="flex flex-row items-center w-full space-x-2 px-3 py-3 bg-pantone-white dark:bg-pantone-darkblack hover:bg-pantone-gray dark:hover:bg-pantone-white hover:bg-opacity-5 dark:hover:bg-opacity-5"
+                    className="flex flex-row items-center w-full space-x-2 px-3 py-3 border-b border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-10 bg-pantone-white dark:bg-pantone-darkblack hover:bg-pantone-gray dark:hover:bg-pantone-white hover:bg-opacity-5 dark:hover:bg-opacity-5"
                     onClick={(e: any) => {
                       setIsDisplay(false)
                       setSearchTerm(e.target.value="")
@@ -94,8 +94,8 @@ const SearchArtist: React.FC<TypeProps> = ({ artists }) => {
                   >
                     <div className="flex">
                       <img
-                        className="w-10 h-10 object-cover rounded-full bg-[#CBD0E2] dark:bg-[#1D1F21]"
-                        src={`${ artist.profile[0] ? `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${artist.profile[0].version}/${artist.profile[0].publicId}.${artist.profile[0].format}` : `https://ui-avatars.com/api/?name=${artist.name}&background=${theme === 'dark' ? '1D1F21' : 'CBD0E2'}&color=${theme === 'dark' ? 'FF3C3C' : '333333'}` }`}
+                        className="w-10 h-10 object-cover rounded-full bg-[#CBD0E2] dark:bg-[#2B2F31]"
+                        src={`${ artist.profile[0] ? `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${artist.profile[0].version}/${artist.profile[0].publicId}.${artist.profile[0].format}` : `https://ui-avatars.com/api/?name=${artist.name}&background=${theme === 'dark' ? '2B2F31' : 'CBD0E2'}&color=${theme === 'dark' ? 'FF3C3C' : '333333'}` }`}
                         alt={`${ artist.username }`}
                       />
                     </div>

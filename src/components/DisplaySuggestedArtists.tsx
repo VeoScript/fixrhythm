@@ -37,7 +37,7 @@ const DisplaySuggestedArtists: React.FC<TypeProps> = ({ host, fetchArtists }) =>
                           <span className="font-bold text-sm text-pantone-darkblack dark:text-pantone-white hover:underline">{ artist.name }</span>
                           <div className="flex items-end space-x-2">
                             <span className="font-light text-xs text-pantone-darkblack dark:text-pantone-white text-opacity-80">{ artist.account_type }</span>
-                            <span className="font-light text-[10px] text-pantone-darkblack dark:text-pantone-white text-opacity-30">{ artist.followedBy.length } Followers</span>
+                            <span className="font-normal dark:text-light text-[10px] text-pantone-darkblack dark:text-pantone-white text-opacity-50 dark:text-opacity-50">{ artist.followedBy.length } Followers</span>
                           </div>
                         </div>
                       </a>
