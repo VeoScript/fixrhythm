@@ -17,8 +17,8 @@ const Layout: React.FC<TypeProps> = ({ user, host, artists, children, get_notifi
   const { pathname } = useRouter()
 
   return (
-    <div className="preventcopy font-poppins flex justify-center w-full h-screen bg-pantone-black overflow-hidden">
-      <div className="relative flex flex-col w-full max-w-[2400px] h-full text-pantone-white bg-pantone-darkblack bg-opacity-50">
+    <div className="preventcopy font-poppins flex justify-center w-full h-screen bg-[#FFFFFF] dark:bg-pantone-black overflow-hidden">
+      <div className="relative flex flex-col w-full max-w-[2400px] h-full text-pantone-white bg-pantone-white dark:bg-pantone-darkblack bg-opacity-100 dark:bg-opacity-50">
         <NavigationBar
           host={host}
           user={user}

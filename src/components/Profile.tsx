@@ -46,12 +46,12 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
       <div className="flex flex-col w-full max-w-full space-y-2">
         {(get_published_posts.composition.length === 0 && get_draft_posts.composition.length === 0) && (
           <div className="flex flex-col items-center w-full max-w-full">
-            <div className="flex flex-col items-start justify-center w-full max-w-sm space-y-5 text-pantone-white text-opacity-80">
+            <div className="flex flex-col items-start justify-center w-full max-w-sm space-y-5 text-pantone-darkblack dark:text-pantone-white text-opacity-80 dark:text-opacity-80">
               <div className="font-black text-3xl text-left">
                 { host.username === profile.username ? 'You' : profile.name }
                 {` hasn't Compose any poems or song lyrics`}
               </div>
-              <span className="font-normal text-sm text-pantone-white text-opacity-50">
+              <span className="font-normal text-sm text-pantone-darkblack dark:text-pantone-white text-opacity-70 dark:text-opacity-50">
                 When { host.username === profile.username ? 'you' : 'they' } do, 
                 { host.username === profile.username ? ' your' : ' their' } compositions will show up here.
               </span>
@@ -65,15 +65,15 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
         )}
         <Tab.Group>
           {(get_published_posts.composition.length > 0 || get_draft_posts.composition.length > 0) && (
-            <Tab.List className="flex flex-col lg:flex-row w-full space-y-2 lg:space-y-0 px-5 py-3 rounded-xl bg-pantone-darkblack">
+            <Tab.List className="flex flex-col lg:flex-row w-full space-y-2 lg:space-y-0 px-5 py-3 rounded-xl bg-pantone-gray dark:bg-pantone-darkblack bg-opacity-5 dark:bg-opacity-100">
               {host.username === profile.username && (
                 <div className="lg:hidden flex items-center w-full">
-                  <h3 className="font-bold text-sm text-pantone-white text-opacity-50">Compositions</h3>
+                  <h3 className="font-bold text-sm text-pantone-darkblack dark:text-pantone-white text-opacity-100 dark:text-opacity-50">Compositions</h3>
                 </div>
               )}
               <div className="flex flex-row items-center justify-between w-full max-w-full h-full">
                 <div className={`${host.username === profile.username ? 'hidden lg:flex' : 'flex' }`}>
-                  <h3 className="font-bold text-sm text-pantone-white text-opacity-50">Compositions</h3>
+                  <h3 className="font-bold text-sm text-pantone-darkblack dark:text-pantone-white text-opacity-100 dark:text-opacity-50">Compositions</h3>
                 </div>
                 <div className="flex flex-row items-center rounded-md space-x-0.5 overflow-auto">
                   <Tab
@@ -81,8 +81,8 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
                       classNames(
                         'w-[5rem] px-3 py-2 transition ease-linear duration-200',
                         selected
-                          ? 'font-normal text-xs p-2 bg-pantone-white bg-opacity-10 text-pantone-white transition ease-linear duration-200 hover:bg-pantone-gray'
-                          : 'font-normal text-xs p-2 bg-pantone-black text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10'
+                          ? 'font-normal text-xs p-2 bg-pantone-darkblack dark:bg-pantone-white bg-opacity-20 dark:bg-opacity-10 text-pantone-darkblack dark:text-pantone-white transition ease-linear duration-200 hover:bg-[#c5c7ce] dark:hover:bg-pantone-gray'
+                          : 'font-normal text-xs p-2 bg-pantone-gray dark:bg-pantone-gray bg-opacity-10 dark:bg-opacity-50 text-pantone-black dark:text-pantone-white transition ease-linear duration-200 hover:bg-[#c5c7ce] dark:hover:bg-pantone-gray'
                       )
                     }
                   >
@@ -94,8 +94,8 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
                         classNames(
                           'w-[5rem] px-3 py-2 transition ease-linear duration-200',
                           selected
-                            ? 'font-normal text-xs p-2 bg-pantone-white bg-opacity-10 text-pantone-white transition ease-linear duration-200 hover:bg-pantone-gray'
-                            : 'font-normal text-xs p-2 bg-pantone-black text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10'
+                            ? 'font-normal text-xs p-2 bg-pantone-darkblack dark:bg-pantone-white bg-opacity-20 dark:bg-opacity-10 text-pantone-darkblack dark:text-pantone-white transition ease-linear duration-200 hover:bg-[#c5c7ce] dark:hover:bg-pantone-gray'
+                            : 'font-normal text-xs p-2 bg-pantone-gray dark:bg-pantone-gray bg-opacity-10 dark:bg-opacity-50 text-pantone-black dark:text-pantone-white transition ease-linear duration-200 hover:bg-[#c5c7ce] dark:hover:bg-pantone-gray'
                         )
                       }
                     >
@@ -132,7 +132,7 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
                     host={host}
                     composition={composition}
                     border="border-none"
-                    backgroundColor="bg-pantone-darkblack"
+                    backgroundColor="bg-pantone-gray dark:bg-pantone-darkblack bg-opacity-5 dark:bg-opacity-100"
                   />
                 ))}
               </div>
@@ -155,7 +155,7 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
                     host={host}
                     composition={composition}
                     border="border-none"
-                    backgroundColor="bg-pantone-darkblack"
+                    backgroundColor="bg-pantone-gray dark:bg-pantone-darkblack bg-opacity-5 dark:bg-opacity-100"
                   />
                 ))}
               </div>

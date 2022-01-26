@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTheme } from 'next-themes'
 import { useForm } from 'react-hook-form'
 import FormLoader from '~/utils/FormLoader'
 import { RiMeteorFill, RiMusic2Fill, RiBookOpenFill, RiAppleFill, RiSpotifyFill, RiYoutubeFill } from 'react-icons/ri'
@@ -19,6 +20,8 @@ interface FormData {
 }
 
 const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
+
+  const { theme } = useTheme()
 
   const [changeStatus, setChangeStatus] = React.useState("")
 
@@ -111,17 +114,17 @@ const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
   }
 
   return (
-    <div className="relative flex flex-col w-full h-screen md:h-full overflow-y-auto bg-black bg-opacity-50">
+    <div className="relative flex flex-col w-full h-screen md:h-full overflow-y-auto text-white bg-gray-700 dark:bg-black bg-opacity-50 dark:bg-opacity-50">
       <div className="flex flex-col w-full h-full p-3 pb-14">
         <div className="flex flex-col md:flex-row items-center w-full">
-          <div className="flex items-center w-full px-1 rounded-tl-md rounded-tr-md md:rounded-tr-none text-pantone-white bg-transparent border-t border-l border-r border-pantone-white border-opacity-10">
-            <div className="px-3 border-r border-pantone-white border-opacity-30">
+          <div className="flex items-center w-full px-1 rounded-tl-md rounded-tr-md md:rounded-tr-none text-white bg-transparent border-t border-l border-r border-pantone-gray dark:border-pantone-white border-opacity-50 dark:border-opacity-10">
+            <div className="px-3 border-r border-pantone-black dark:border-pantone-white border-opacity-30 dark:border-opacity-30">
               {!changeStatus && (
-                <RiMeteorFill className="w-6 h-6 text-pantone-white text-opacity-50" />
+                <RiMeteorFill className="w-6 h-6 text-white text-opacity-50" />
               )}
               {changeStatus && (
                 <React.Fragment>
-                  {changeStatus === 'Song' ? <RiMusic2Fill className="w-6 h-6 text-pantone-white text-opacity-50" /> : <RiBookOpenFill className="w-6 h-6 text-pantone-white text-opacity-50" />}
+                  {changeStatus === 'Song' ? <RiMusic2Fill className="w-6 h-6 text-white text-opacity-50" /> : <RiBookOpenFill className="w-6 h-6 text-white text-opacity-50" />}
                 </React.Fragment>
               )}
             </div>
@@ -132,9 +135,9 @@ const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
               {...register("title", { required: true })}
             />
           </div>
-          <div className="flex items-center w-full px-1 text-pantone-white bg-transparent rounded-tr-none md:rounded-tr-md border-t border-r border-l md:border-l-0 border-pantone-white border-opacity-10">
+          <div className="flex items-center w-full px-1 text-white bg-transparent rounded-tr-none md:rounded-tr-md border-t border-r border-l md:border-l-0 border-pantone-gray dark:border-pantone-white border-opacity-50 dark:border-opacity-10">
             <select
-              className="w-full px-4 py-[1.2rem] text-sm text-pantone-white text-opacity-50 bg-transparent outline-none cursor-pointer"
+              className="w-full px-4 py-[1.2rem] text-sm text-white text-opacity-50 bg-transparent outline-none cursor-pointer"
               {...register("composition_category", { required: true })}
               onInput={(e: any) => {
                 switch(e.currentTarget.value) {
@@ -155,7 +158,7 @@ const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
             </select>
           </div>
         </div>
-        <div className="px-3 border-t border-l border-r border-pantone-white border-opacity-10">
+        <div className="px-3 border-t border-l border-r border-pantone-gray dark:border-pantone-white border-opacity-50 dark:border-opacity-10">
           <input
             className="w-full px-3 py-5 text-sm bg-transparent outline-none"
             type="text"
@@ -163,7 +166,7 @@ const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
             {...register("description", { required: true })}
           />
         </div>
-        <div className="flex items-center w-full px-1 whitespace-pre-wrap rounded-b-md text-pantone-white bg-transparent border-t border-b border-l border-r border-pantone-white border-opacity-10">
+        <div className="flex items-center w-full px-1 whitespace-pre-wrap rounded-b-md text-white bg-transparent border-t border-b border-l border-r border-pantone-gray dark:border-pantone-white border-opacity-50 dark:border-opacity-10">
           <div
             id="content_editor"
             className="w-full h-full max-h-[15rem] overflow-y-auto p-5 text-sm bg-transparent cursor-text whitespace-pre-wrap outline-none"
@@ -176,15 +179,15 @@ const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
         </div>
         <div className="flex flex-col w-full py-3 space-y-2">
           <div className="flex flex-row items-center justify-between w-full">
-            <span className="font-bold text-[10px] md:text-sm text-pantone-white text-opacity-50 uppercase">Uploaded in</span>
+            <span className="font-bold text-[10px] md:text-sm text-white text-opacity-50 uppercase">Uploaded in</span>
             <span className="font-bold text-sm text-pantone-red">
               {(errors.spotify || errors.applemusic || errors.youtube) && 'Invalid URL'}
             </span>
           </div>
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-start md:justify-between w-full overflow-hidden rounded-md border border-pantone-white border-opacity-10">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-start md:justify-between w-full overflow-hidden rounded-md border border-pantone-gray dark:border-pantone-white border-opacity-50 dark:border-opacity-10">
             <div className="flex w-full max-w-full md:max-w-sm px-0 md:px-3">
-              <div className="flex items-center pl-3 md:pl-0 pr-3 border-r border-pantone-white border-opacity-10">
-                <RiSpotifyFill className={`${ errors.spotify ? 'text-pantone-red' : 'text-pantone-white text-opacity-50' } w-6 h-6`} />
+              <div className="flex items-center pl-3 md:pl-0 pr-3 border-r border-pantone-gray dark:border-pantone-white border-opacity-50 dark:border-opacity-10">
+                <RiSpotifyFill className={`${ errors.spotify ? 'text-pantone-red' : 'text-white text-opacity-50' } w-6 h-6`} />
               </div>
               <input
                 className="w-full px-3 py-5 text-sm bg-transparent outline-none"
@@ -193,9 +196,9 @@ const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
                 {...register("spotify", { pattern: /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g })}
               />
             </div>
-            <div className="flex w-full max-w-full md:max-w-sm px-0 md:px-3 border-t border-b md:border-t-0 md:border-b-0 border-l-0 border-r-0 md:border-l md:border-r border-pantone-white border-opacity-10">
-              <div className="flex items-center pl-3 md:pl-0 pr-3 border-r border-pantone-white border-opacity-10">
-                <RiAppleFill className={`${ errors.applemusic ? 'text-pantone-red' : 'text-pantone-white text-opacity-50' } w-6 h-6`} />
+            <div className="flex w-full max-w-full md:max-w-sm px-0 md:px-3 border-t border-b md:border-t-0 md:border-b-0 border-l-0 border-r-0 md:border-l md:border-r border-pantone-gray dark:border-pantone-white border-opacity-50 dark:border-opacity-10">
+              <div className="flex items-center pl-3 md:pl-0 pr-3 border-r border-pantone-gray dark:border-pantone-white border-opacity-50 dark:border-opacity-10">
+                <RiAppleFill className={`${ errors.applemusic ? 'text-pantone-red' : 'text-white text-opacity-50' } w-6 h-6`} />
               </div>
               <input
                 className="w-full px-3 py-5 text-sm bg-transparent outline-none"
@@ -205,8 +208,8 @@ const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
               />
             </div>
             <div className="flex w-full max-w-full md:max-w-sm px-0 md:px-3">
-              <div className="flex items-center pl-3 md:pl-0 pr-3 border-r border-pantone-white border-opacity-10">
-                <RiYoutubeFill className={`${ errors.youtube ? 'text-pantone-red' : 'text-pantone-white text-opacity-50' } w-6 h-6`} />
+              <div className="flex items-center pl-3 md:pl-0 pr-3 border-r border-pantone-gray dark:border-pantone-white border-opacity-50 dark:border-opacity-10">
+                <RiYoutubeFill className={`${ errors.youtube ? 'text-pantone-red' : 'text-white text-opacity-50' } w-6 h-6`} />
               </div>
               <input
                 className="w-full px-3 py-5 text-sm bg-transparent outline-none"
@@ -218,18 +221,18 @@ const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
           </div>
         </div>
       </div>
-      <div className="static md:fixed bottom-0 flex flex-row items-start justify-center w-full mt-10 px-3 py-2 bg-pantone-darkblack border-t-2 border-pantone-white border-opacity-5">
+      <div className="static md:fixed bottom-0 flex flex-row items-start justify-center w-full mt-10 px-3 py-2 bg-pantone-white dark:bg-pantone-darkblack border-t-2 border-pantone-white border-opacity-5">
         {!isSubmitting && (
           <React.Fragment>
             <button
-              className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-[11px] md:text-sm text-pantone-white bg-pantone-gray rounded-l-lg border-r border-pantone-white border-opacity-10 transition ease-linear duration-200 hover:bg-opacity-50"
+              className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-[11px] md:text-sm rounded-l-lg bg-pantone-black bg-opacity-80 dark:bg-opacity-100 text-white transition ease-linear duration-200 hover:bg-pantone-darkblack hover:bg-opacity-60 dark:hover:bg-pantone-white dark:hover:bg-opacity-10"
               type="button"
               onClick={handleSubmit(onDraft)}
             >
               Draft
             </button>
             <button
-              className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-[11px] md:text-sm text-pantone-white bg-pantone-gray transition ease-linear duration-200 hover:bg-opacity-50"
+              className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-[11px] md:text-sm border-l border-pantone-white dark:border-pantone-white border-opacity-50 dark:border-opacity-10 bg-pantone-black bg-opacity-80 dark:bg-opacity-100 text-white transition ease-linear duration-200 hover:bg-pantone-darkblack hover:bg-opacity-60 dark:hover:bg-pantone-white dark:hover:bg-opacity-10"
               type="button"
               onClick={handleSubmit(onPublish)}
             >
@@ -238,16 +241,16 @@ const ComposeForm: React.FC<TypeProps> = ({ host, closeModal }) => {
           </React.Fragment>
         )}
         {isSubmitting && (
-          <div className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-[11px] md:text-sm text-pantone-white bg-pantone-gray rounded-l-lg border-r border-pantone-white border-opacity-10">
+          <div className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-[11px] md:text-sm text-white bg-pantone-black bg-opacity-80 dark:bg-opacity-100 rounded-l-lg border-r border-pantone-gray dark:border-pantone-white border-opacity-50 dark:border-opacity-10">
             <FormLoader
               width="20px"
               height="20px"
-              color="#C71F2D"
+              color={`${ theme === 'dark' ? '#C71F2D' : '#FFFFFF' }`}
             />
           </div>
         )}
         <button
-          className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-[11px] md:text-sm text-pantone-white bg-pantone-gray rounded-r-lg border-l border-pantone-white border-opacity-10 transition ease-linear duration-200 hover:bg-opacity-50"
+          className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-[11px] md:text-sm rounded-r-lg border-l border-pantone-white dark:border-pantone-white border-opacity-50 dark:border-opacity-10 bg-pantone-black bg-opacity-80 dark:bg-opacity-100 text-white transition ease-linear duration-200 hover:bg-pantone-darkblack hover:bg-opacity-60 dark:hover:bg-pantone-white dark:hover:bg-opacity-10"
           type="button"
           onClick={() => closeModal()}
         >

@@ -24,7 +24,7 @@ const DeleteCard: React.FC<TypeProps> = ({ host, composition, setIsDropdown, pos
   return (
     <>
       <button
-        className="w-full px-3 py-2 border-t border-pantone-white border-opacity-10 font-light text-xs text-left transition ease-linear duration-200 bg-pantone-darkblack hover:bg-pantone-white hover:bg-opacity-10"
+        className="w-full px-3 py-2 border-t border-pantone-white border-opacity-10 font-light text-xs text-left transition ease-linear duration-200 text-pantone-black dark:text-pantone-white bg-pantone-white dark:bg-pantone-darkblack hover:bg-pantone-gray hover:bg-opacity-5 dark:hover:bg-pantone-white dark:hover:bg-opacity-10"
         type="button"
         onClick={openModal}
       >
@@ -66,11 +66,11 @@ const DeleteCard: React.FC<TypeProps> = ({ host, composition, setIsDropdown, pos
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-md overflow-hidden text-left align-middle transition-all transform text-pantone-white bg-pantone-darkblack bg-opacity-10 backdrop-blur-sm shadow-xl rounded-xl border-2 border-pantone-white border-opacity-10">
+              <div className="inline-block w-full max-w-md overflow-hidden text-left align-middle transition-all transform text-pantone-darkblack dark:text-pantone-white bg-pantone-white dark:bg-pantone-black bg-opacity-10 dark:bg-opacity-10 backdrop-blur-sm shadow-xl rounded-xl border-2 border-pantone-white border-opacity-10">
                 <div className="flex flex-col w-full">
-                  <div className="flex flex-row items-center justify-between w-full px-5 py-3 bg-pantone-darkblack">
+                  <div className="flex flex-row items-center justify-between w-full px-5 py-3 bg-pantone-white dark:bg-pantone-darkblack">
                     <h3 className="font-black text-sm md:text-xl text-pantone-red">FIXRHYTHM</h3>
-                    <h3 className="font-light text-[12px] md:text-sm">Delete Composition</h3>
+                    <h3 className="font-normal dark:font-light text-[12px] md:text-sm">Delete Composition</h3>
                   </div>
                   <DeleteForm
                     host={host}

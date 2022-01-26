@@ -30,7 +30,7 @@ const PaginationButton: React.FC<TypeProps> = ({ followers_followingPerPage, tot
         {pageNumbers.includes(currentPage - 1) && (
           <button
             type="button"
-            className="cursor-pointer w-[5rem] px-1 py-2 text-xs text-center bg-pantone-black text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10"
+            className="cursor-pointer w-[5rem] px-1 py-2 text-xs text-center bg-pantone-black bg-opacity-80 dark:bg-opacity-100 text-pantone-white transition ease-linear duration-200 hover:bg-pantone-darkblack hover:bg-opacity-60 dark:hover:bg-pantone-white dark:hover:bg-opacity-10"
             onClick={() => {
               setCurrentPage(currentPage - 1)
               paginate(currentPage - 1)
@@ -42,7 +42,7 @@ const PaginationButton: React.FC<TypeProps> = ({ followers_followingPerPage, tot
         {pageNumbers.includes(currentPage + 1) && (
           <button
             type="button"
-            className="cursor-pointer w-[5rem] px-1 py-2 text-xs text-center bg-pantone-black text-pantone-white transition ease-linear duration-200 hover:bg-pantone-white hover:bg-opacity-10"
+            className="cursor-pointer w-[5rem] px-1 py-2 text-xs text-center bg-pantone-black bg-opacity-80 dark:bg-opacity-100 text-pantone-white transition ease-linear duration-200 hover:bg-pantone-darkblack hover:bg-opacity-60 dark:hover:bg-pantone-white dark:hover:bg-opacity-10"
             onClick={() => {
               setCurrentPage(currentPage + 1)
               paginate(currentPage + 1)

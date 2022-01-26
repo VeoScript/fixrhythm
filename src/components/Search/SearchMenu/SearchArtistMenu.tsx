@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { useTheme } from 'next-themes'
 import useSWR from 'swr'
 import DisplaySuggestedArtists from '~/components/DisplaySuggestedArtists'
 import { RiCloseFill, RiSearchLine, RiUserSearchLine } from 'react-icons/ri'
@@ -21,6 +21,8 @@ interface TypeProps {
 }
 
 const SearchArtistMenu: React.FC<TypeProps> = ({ host, artists }) => {
+
+  const { theme } = useTheme()
 
   const { data: fetchArtists } = useSWR('/api/artists', fetcher, {
     refreshInterval: 1000,
@@ -64,7 +66,7 @@ const SearchArtistMenu: React.FC<TypeProps> = ({ host, artists }) => {
           setIsDropdown(true)
         }} 
       >
-        <RiUserSearchLine className="w-5 h-5 transition ease-linear duration-200 text-[#848484] hover:text-pantone-white" />
+        <RiUserSearchLine className="w-5 h-5 transition ease-linear duration-200 text-[#848484] hover:text-pantone-gray dark:hover:text-pantone-white" />
       </button>
       {isDropdown && (
         <React.Fragment>
@@ -76,10 +78,10 @@ const SearchArtistMenu: React.FC<TypeProps> = ({ host, artists }) => {
             }} 
           />
           <div className="fixed block md:hidden inset-0 z-50">
-            <div className="flex w-full max-w-full h-full overflow-auto bg-pantone-black">
+            <div className="flex w-full max-w-full h-full overflow-auto bg-pantone-white dark:bg-pantone-black">
               <div className="flex flex-col w-full">
-                <div className="flex flex-row items-center justify-between w-full px-3 py-2 border-b border-pantone-white border-opacity-10 bg-pantone-darkblack">
-                  <span className="font-bold text-sm text-pantone-white text-opacity-50">Search Artists</span>
+                <div className="flex flex-row items-center justify-between w-full px-3 py-2 border-b border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-10 bg-pantone-white dark:bg-pantone-darkblack">
+                  <span className="font-bold text-sm text-pantone-darkblack dark:text-pantone-white text-opacity-50 dark:text-opacity-50">Search Artists</span>
                   <button 
                     title="Close"
                     className="outline-none"
@@ -88,15 +90,15 @@ const SearchArtistMenu: React.FC<TypeProps> = ({ host, artists }) => {
                       setIsDropdown(false)
                     }} 
                   >
-                    <RiCloseFill className="w-5 h-5 transition ease-linear duration-200 text-[#848484] hover:text-pantone-white" />
+                    <RiCloseFill className="w-5 h-5 transition ease-linear duration-200 text-[#848484] hover:text-pantone-gray dark:hover:text-pantone-white" />
                   </button>
                 </div>
-                <div className="flex flex-col items-center w-full px-3 py-2 border-b border-pantone-white border-opacity-10">
-                  <form className="z-20 flex flex-row items-center w-full max-w-full px-3 space-x-3 bg-pantone-gray rounded-lg border border-pantone-black focus-within:border-pantone-white focus-within:border-opacity-30">
-                    <RiSearchLine className="text-white text-opacity-60" />
+                <div className="flex flex-col items-center w-full px-3 py-2 border-b border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-10">
+                  <form className="z-20 flex flex-row items-center w-full max-w-full px-3 space-x-3 bg-pantone-white dark:bg-pantone-gray rounded-lg border border-pantone-gray border-opacity-20 dark:border-pantone-black focus-within:border-pantone-gray dark:focus-within:border-pantone-white focus-within:border-opacity-30 dark:focus-within:border-opacity-30">
+                    <RiSearchLine className="text-pantone-black dark:text-white text-opacity-60" />
                     <input
                       type="text"
-                      className="w-full py-2.5 text-xs bg-transparent outline-none"
+                      className="w-full py-2.5 text-xs text-pantone-black dark:text-pantone-white bg-transparent outline-none"
                       placeholder="Search artist"
                       value={searchTerm}
                       onChange={handleChange}
@@ -107,14 +109,14 @@ const SearchArtistMenu: React.FC<TypeProps> = ({ host, artists }) => {
                 {isDisplay && (
                   <div className="flex flex-col w-full">
                     {search_results.length === 0 && (
-                      <div className="flex px-5 py-3">
-                        <span className="font-light text-xs">No results found.</span>
+                      <div className="flex px-5 py-3 bg-pantone-white dark:bg-pantone-black">
+                        <span className="font-light text-xs text-pantone-darkblack dark:text-pantone-white">No results found.</span>
                       </div>
                     )}
                     {search_results.map((artist: any, i: number) => (
                       <Link href={`/${ artist.username }`} key={i}>
                         <a
-                          className="flex flex-row items-center w-full space-x-2 px-3 py-3 border-b border-pantone-white border-opacity-10 bg-pantone-black hover:bg-pantone-white hover:bg-opacity-5"
+                          className="flex flex-row items-center w-full space-x-2 px-3 py-3 border-b border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-10 bg-pantone-white dark:bg-pantone-darkblack hover:bg-pantone-gray dark:hover:bg-pantone-white hover:bg-opacity-5 dark:hover:bg-opacity-5"
                           onClick={(e: any) => {
                             setIsDisplay(false)
                             setSearchTerm(e.target.value="")
@@ -122,14 +124,14 @@ const SearchArtistMenu: React.FC<TypeProps> = ({ host, artists }) => {
                         >
                           <div className="flex">
                             <img
-                              className="w-10 h-10 object-cover rounded-full bg-[#1D1F21]"
-                              src={`${ artist.profile[0] ? `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${artist.profile[0].version}/${artist.profile[0].publicId}.${artist.profile[0].format}` : `https://ui-avatars.com/api/?name=${artist.name}&background=2B2F31&color=FF3C3C` }`}
+                              className="w-10 h-10 object-cover rounded-full bg-[#CBD0E2] dark:bg-[#1D1F21]"
+                              src={`${ artist.profile[0] ? `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${artist.profile[0].version}/${artist.profile[0].publicId}.${artist.profile[0].format}` : `https://ui-avatars.com/api/?name=${artist.name}&background=${theme === 'dark' ? '1D1F21' : 'CBD0E2'}&color=${theme === 'dark' ? 'FF3C3C' : '333333'}` }`}
                               alt={`${ artist.username }`}
                             />
                           </div>
-                          <div className="flex flex-col">
-                            <div className="font-bold text-xs">{ artist.name }</div>
-                            <div className="font-light text-[10px]">
+                          <div className="flex flex-col text-pantone-darkblack dark:text-pantone-white">
+                            <div className="font-bold text-sm">{ artist.name }</div>
+                            <div className="font-light text-xs">
                               { artist.account_type }
                             </div>
                           </div>
@@ -139,8 +141,8 @@ const SearchArtistMenu: React.FC<TypeProps> = ({ host, artists }) => {
                   </div>
                 )}
                 <div className="flex flex-col w-full">
-                  <div className="flex flex-row items-center w-full px-3 py-2 border-b border-pantone-white border-opacity-10 bg-pantone-darkblack">
-                    <span className="font-bold text-sm text-pantone-white text-opacity-50">Suggested Accounts</span>
+                  <div className="flex flex-row items-center w-full px-3 py-2 border-b border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-10 bg-pantone-white dark:bg-pantone-darkblack">
+                    <span className="font-bold text-sm text-pantone-darkblack dark:text-pantone-white text-opacity-50 dark:text-opacity-50">Suggested Accounts</span>
                   </div>
                   <DisplaySuggestedArtists
                     host={host}
