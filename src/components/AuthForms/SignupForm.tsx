@@ -27,7 +27,7 @@ const SignupForm: React.FC = () => {
 
   const [signupError, setSignupError] = React.useState('')
 
-  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm()
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<FormData>()
 
   async function onSignUp(formData: FormData) {
     const password = formData.password

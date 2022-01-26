@@ -18,7 +18,7 @@ const ChangePassword: React.FC<TypeProps> = ({ host }) => {
 
   const [changePasswordError, setChangePasswordError] = React.useState('')
 
-  const { register, handleSubmit, setError, reset, formState: { errors, isSubmitting } } = useForm()
+  const { register, handleSubmit, setError, reset, formState: { errors, isSubmitting } } = useForm<FormData>()
 
   async function onChangePassword(formData: FormData) {
     const userId = host.uuid

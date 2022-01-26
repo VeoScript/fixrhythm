@@ -27,7 +27,7 @@ const ResetPassword: React.FC<TypeProps> = ({ token }) => {
 
   const [signupError, setSignupError] = React.useState('')
 
-  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm()
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<FormData>()
 
   async function onForgotPassword(formData: FormData) {
     const newpassword = formData.newpassword
