@@ -51,9 +51,9 @@ const NewsFeed: React.FC<TypeProps> = ({ host, artists, published_compositions, 
 
   return (
     <div className="flex flex-col items-center w-full max-w-full h-full pb-12 md:pb-16 overflow-hidden">
-      <div className="hidden md:flex flex-row items-center justify-between w-full max-w-full px-5 py-3 space-x-3 md:space-x-0 border-b border-pantone-white border-opacity-10 bg-pantone-darkblack md:bg-transparent">
+      <div className="hidden md:flex flex-row items-center justify-between w-full max-w-full px-5 py-3 space-x-3 md:space-x-0 border-b border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-10 bg-pantone-white dark:bg-pantone-darkblack md:bg-transparent">
         <div className="flex w-full max-w-[2rem] md:max-w-[10rem]">
-          <span className="flex font-bold text-base text-pantone-white text-opacity-80">
+          <span className="flex font-bold text-base text-pantone-darkblack dark:text-pantone-white text-opacity-80">
             {pathname === '/' && 'News Feed'}
             {pathname === '/songs' && 'Songs'}
             {pathname === '/poems' && 'Poems'}
@@ -70,9 +70,9 @@ const NewsFeed: React.FC<TypeProps> = ({ host, artists, published_compositions, 
           </div>
         </div>
       </div>
-      <div className="flex md:hidden flex-row items-center justify-between w-full p-3 border-b border-pantone-white border-opacity-10 bg-pantone-darkblack">
+      <div className="flex md:hidden flex-row items-center justify-between w-full p-3 border-b border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-10 bg-pantone-white dark:bg-pantone-darkblack">
         <div className="flex justify-start w-full max-w-xs">
-          <span className="flex font-bold text-sm text-pantone-white text-opacity-80">
+          <span className="flex font-bold text-sm text-pantone-darkblack dark:text-pantone-white text-opacity-80 dark:text-opacity-80">
             {pathname === '/' && 'News Feed'}
             {pathname === '/songs' && 'Songs'}
             {pathname === '/poems' && 'Poems'}
@@ -107,7 +107,7 @@ const NewsFeed: React.FC<TypeProps> = ({ host, artists, published_compositions, 
                 key={i}
                 host={host}
                 composition={composition}
-                border="border border-white border-opacity-10"
+                border="border border-pantone-gray dark:border-white border-opacity-10 dark:border-opacity-10"
                 backgroundColor="bg-transparent"
               />
             ))}
@@ -120,7 +120,7 @@ const NewsFeed: React.FC<TypeProps> = ({ host, artists, published_compositions, 
                 key={i}
                 host={host}
                 composition={composition}
-                border="border border-white border-opacity-10"
+                border="border border-pantone-gray dark:border-white border-opacity-10 dark:border-opacity-10"
                 backgroundColor="bg-transparent"
               />
             ))}
@@ -133,7 +133,7 @@ const NewsFeed: React.FC<TypeProps> = ({ host, artists, published_compositions, 
                 key={i}
                 host={host}
                 composition={composition}
-                border="border border-white border-opacity-10"
+                border="border border-pantone-gray dark:border-white border-opacity-10 dark:border-opacity-10"
                 backgroundColor="bg-transparent"
               />
             ))}

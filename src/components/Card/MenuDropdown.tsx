@@ -27,7 +27,7 @@ const MenuDropdown: React.FC<TypeProps> = ({ host, composition, postUrl }) => {
           setIsDropdown(true)
         }}
       >
-        <RiMoreFill className="flex w-4 md:w-5 h-4 md:h-5 transition ease-linear duration-100 hover:scale-90" />
+        <RiMoreFill className="flex w-4 md:w-5 h-4 md:h-5 transition ease-linear duration-100 hover:scale-90 text-pantone-gray dark:text-pantone-white text-opacity-20 dark:text-opacity-100" />
       </button>
       {isDropdown && (
         <React.Fragment>
@@ -39,7 +39,7 @@ const MenuDropdown: React.FC<TypeProps> = ({ host, composition, postUrl }) => {
             }} 
           />
           <div className="absolute w-[5rem] -left-14 top-7 z-10">
-            <div className="flex w-full overflow-hidden shadow-sm rounded-md bg-pantone-black border border-pantone-white border-opacity-10">
+            <div className="flex w-full overflow-hidden shadow-sm rounded-md bg-pantone-white dark:bg-pantone-darkblack border border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-10">
               <div className="flex flex-col w-full">
                 <EditCard
                   host={host}

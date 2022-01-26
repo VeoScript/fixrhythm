@@ -25,7 +25,7 @@ const ComposeMini: React.FC<TypeProps> = ({ host }) => {
         type="button"
         onClick={openModal}
       >
-        <RiAddBoxLine className="text-[#848484] w-7 h-7 transition ease-linear duration-200 hover:text-pantone-white" />
+        <RiAddBoxLine className="text-[#848484] w-7 h-7 transition ease-linear duration-200 hover:text-pantone-gray dark:hover:text-pantone-white" />
       </button>
 
       <Transition appear show={isOpen} as={Fragment}>
@@ -63,11 +63,11 @@ const ComposeMini: React.FC<TypeProps> = ({ host }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-full md:max-w-4xl h-screen md:h-full overflow-hidden text-left align-middle transition-all transform text-pantone-white bg-pantone-darkblack bg-opacity-10 backdrop-blur-sm shadow-xl rounded-none md:rounded-xl border-0 md:border-2 border-pantone-white border-opacity-10">
+              <div className="inline-block w-full max-w-full md:max-w-4xl h-screen md:h-full overflow-hidden text-left align-middle transition-all transform text-pantone-darkblack dark:text-pantone-white bg-pantone-white dark:bg-pantone-black bg-opacity-10 dark:bg-opacity-10 backdrop-blur-sm shadow-xl rounded-none md:rounded-xl border-0 md:border-2 border-pantone-white border-opacity-10">
                 <div className="flex flex-col w-full h-full overflow-y-auto">
-                  <div className="flex flex-row items-center justify-between w-full px-5 py-3 bg-pantone-darkblack border-b-2 border-pantone-white border-opacity-5">
+                  <div className="flex flex-row items-center justify-between w-full px-5 py-3 bg-pantone-white dark:bg-pantone-darkblack border-b-2 border-pantone-white border-opacity-5">
                     <h3 className="font-black text-sm md:text-xl text-pantone-red">FIXRHYTHM</h3>
-                    <h3 className="font-light text-[12px] md:text-sm">Create Composition</h3>
+                    <h3 className="font-normal dark:font-light text-[12px] md:text-sm">Create Composition</h3>
                   </div>
                   <ComposeForm
                     host={host}

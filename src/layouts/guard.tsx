@@ -3,7 +3,7 @@ import DefaultLoader from '~/utils/DefaultLoader'
 
 const Guard: React.FC = () => {
   return (
-    <div className="font-poppins flex flex-row items-center justify-center w-full h-screen text-pantone-white bg-pantone-darkblack">
+    <div className="font-poppins flex flex-row items-center justify-center w-full h-screen text-pantone-darkblack dark:text-pantone-white bg-pantone-white dark:bg-pantone-darkblack">
       <div className="flex flex-col items-center w-full">
         <div className="flex justify-center w-full mb-2">
           <DefaultLoader

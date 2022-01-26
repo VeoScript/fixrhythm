@@ -107,7 +107,7 @@ const ReactionButton: React.FC<TypeProps> = ({ host, composition }) => {
       {like ? (
           <RiHeart2Fill className="w-4 md:w-5 h-4 md:h-5 text-pantone-red transition ease-linear duration-100 hover:scale-90" />
         ) : (
-          <RiHeart2Fill className="w-4 md:w-5 h-4 md:h-5 text-pantone-white transition ease-linear duration-100 hover:scale-90" />
+          <RiHeart2Fill className="w-4 md:w-5 h-4 md:h-5 text-pantone-gray dark:text-pantone-white text-opacity-20 dark:text-opacity-100 transition ease-linear duration-100 hover:scale-90" />
         )
       }
     </button>

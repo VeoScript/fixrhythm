@@ -115,8 +115,8 @@ const UploadProfilePhoto: React.FC<TypeProps> = ({ host, get_profile }) => {
       {host.username === get_profile.username && (
         <form onSubmit={handleSubmit(uploadProfilePhoto)} className="absolute bottom-3 right-3">
           <label htmlFor="upload_profile">
-            <div title="Change Profile" className="cursor-pointer p-2 rounded-full bg-pantone-white bg-opacity-80 transition ease-linear duration-200 transform hover:scale-95">
-              <RiCameraFill className="w-5 h-5 text-pantone-darkblack" />
+            <div title="Change Profile" className="cursor-pointer p-2 rounded-full bg-pantone-gray dark:bg-pantone-white bg-opacity-80 dark:bg-opacity-80 transition ease-linear duration-200 transform hover:scale-95">
+              <RiCameraFill className="w-5 h-5 text-pantone-white dark:text-pantone-darkblack" />
             </div>
           </label>
           <input
@@ -142,37 +142,37 @@ const UploadProfilePhoto: React.FC<TypeProps> = ({ host, get_profile }) => {
                     disabled
                   />
                 )}
-                <div className="flex flex-col items-center w-full max-w-md z-20 overflow-hidden text-pantone-white bg-pantone-darkblack bg-opacity-10 backdrop-blur-sm shadow-xl rounded-xl border-2 border-pantone-white border-opacity-10">
-                  <div className="flex flex-row items-center justify-between w-full px-5 py-3 bg-pantone-darkblack">
+                <div className="flex flex-col items-center w-full max-w-md z-20 overflow-hidden text-pantone-darkblack dark:text-pantone-white bg-pantone-white dark:bg-pantone-black bg-opacity-10 dark:bg-opacity-10 backdrop-blur-sm shadow-xl rounded-xl border-2 border-pantone-white border-opacity-10">
+                  <div className="flex flex-row items-center justify-between w-full px-5 py-3 bg-pantone-white dark:bg-pantone-darkblack">
                     <h3 className="font-black text-xl text-pantone-red">FIXRHYTHM</h3>
-                    <h3 className="font-light text-sm">Change Profile</h3>
+                    <h3 className="font-normal dark:font-light text-sm">Change Profile</h3>
                   </div>
                   <div className="flex flex-col w-full">
                     <div className="flex flex-col items-center w-full p-3 space-y-2">
                       <img
-                        className="flex w-full max-w-[11rem] h-[11rem] object-cover rounded-full bg-[#1D1F21]"
+                        className="flex w-full max-w-[11rem] h-[11rem] object-cover rounded-full bg-pantone-white dark:bg-[#1D1F21]"
                         src={previewProfile}
                         alt=""
                       />
-                      <p className="font-light text-[11px] text-pantone white">This will be the actual layout of your profile photo.</p>
+                      <p className="font-normal dark:font-light text-[11px] text-pantone-white">This will be the actual layout of your profile photo.</p>
                     </div>
-                    <div className="flex flex-row items-center justify-center w-full px-3 py-2 bg-pantone-darkblack">
+                    <div className="flex flex-row items-center justify-center w-full px-3 py-2 bg-pantone-white dark:bg-pantone-darkblack">
                       {!isSubmitting && (
                         <button
-                          className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-sm text-pantone-white bg-pantone-gray rounded-l-lg transition ease-linear duration-200 hover:bg-opacity-50"
+                          className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-sm rounded-l-lg bg-pantone-black bg-opacity-80 dark:bg-opacity-100 text-pantone-white transition ease-linear duration-200 hover:bg-pantone-darkblack hover:bg-opacity-60 dark:hover:bg-pantone-white dark:hover:bg-opacity-10"
                           type="submit"
                         >
                           Upload
                         </button>
                       )}
                       {isSubmitting && (
-                        <div className="flex justify-center w-full max-w-[8rem] px-3 py-2 cursor-wait outline-none text-sm text-pantone-white bg-pantone-gray rounded-lg">
+                        <div className="flex justify-center w-full max-w-[8rem] px-3 py-2 cursor-wait outline-none text-sm rounded-lg text-pantone-white bg-pantone-black bg-opacity-80">
                           Uploading...
                         </div>
                       )}
                       {!isSubmitting && (
                         <button
-                          className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-sm text-pantone-white bg-pantone-gray rounded-r-lg border-l border-pantone-white border-opacity-10 transition ease-linear duration-200 hover:bg-opacity-50"
+                          className="flex justify-center w-full max-w-[5rem] px-3 py-2 outline-none text-sm rounded-r-lg border-l border-pantone-white border-opacity-10 bg-pantone-black bg-opacity-80 dark:bg-opacity-100 text-pantone-white transition ease-linear duration-200 hover:bg-pantone-darkblack hover:bg-opacity-60 dark:hover:bg-pantone-white dark:hover:bg-opacity-10"
                           type="button"
                           onClick={() => setImageUploaded("")}
                         >

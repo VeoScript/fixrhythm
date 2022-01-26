@@ -30,18 +30,18 @@ const RightSideBar: React.FC<TypeProps> = ({ host, artists }) => {
   })
 
   return (
-    <div className="hidden md:flex flex-col w-full max-w-xs h-full overflow-hidden bg-pantone-gray border-l border-pantone-white border-opacity-10">
+    <div className="hidden md:flex flex-col w-full max-w-xs h-full overflow-hidden bg-pantone-white dark:bg-pantone-gray border-l border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-10">
       <div className="flex flex-col items-center w-full max-w-full">
         <Tab.Group>
           <Tab.List>
-            <div className="flex flex-row items-center w-full space-x-0.5 border-b border-pantone-white border-opacity-5">
+            <div className="flex flex-row items-center w-full space-x-0.5 border-b border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-5">
               <Tab
                 className={({ selected }) => 
                   classNames(
                     'w-[10rem] transition ease-linear duration-200',
                     selected
-                      ? 'font-normal text-xs p-2 bg-pantone-white bg-opacity-10 text-pantone-white transition ease-linear duration-200 hover:bg-pantone-gray'
-                      : 'font-normal text-xs p-2 bg-pantone-black text-pantone-white transition ease-linear duration-200 hover:bg-pantone-gray'
+                      ? 'font-normal text-xs p-2 bg-pantone-darkblack dark:bg-pantone-white bg-opacity-20 dark:bg-opacity-10 text-pantone-darkblack dark:text-pantone-white transition ease-linear duration-200 hover:bg-[#c5c7ce] dark:hover:bg-pantone-gray'
+                      : 'font-normal text-xs p-2 bg-pantone-gray dark:bg-pantone-black bg-opacity-10 dark:bg-opacity-50 text-pantone-black dark:text-pantone-white transition ease-linear duration-200 hover:bg-[#c5c7ce] dark:hover:bg-pantone-gray'
                   )
                 }
               >
@@ -52,8 +52,8 @@ const RightSideBar: React.FC<TypeProps> = ({ host, artists }) => {
                   classNames(
                     'w-[10rem] transition ease-linear duration-200',
                     selected
-                      ? 'font-normal text-xs p-2 bg-pantone-white bg-opacity-10 text-pantone-white transition ease-linear duration-200 hover:bg-pantone-gray'
-                      : 'font-normal text-xs p-2 bg-pantone-black text-pantone-white transition ease-linear duration-200 hover:bg-pantone-gray'
+                      ? 'font-normal text-xs p-2 bg-pantone-darkblack dark:bg-pantone-white bg-opacity-20 dark:bg-opacity-10 text-pantone-darkblack dark:text-pantone-white transition ease-linear duration-200 hover:bg-[#c5c7ce] dark:hover:bg-pantone-gray'
+                      : 'font-normal text-xs p-2 bg-pantone-gray dark:bg-pantone-black bg-opacity-10 dark:bg-opacity-50 text-pantone-black dark:text-pantone-white transition ease-linear duration-200 hover:bg-[#c5c7ce] dark:hover:bg-pantone-gray'
                   )
                 }
               >

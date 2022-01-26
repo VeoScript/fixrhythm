@@ -6,6 +6,7 @@ import FormLoader from '~/utils/FormLoader'
 import AutoScroll from '@brianmcallister/react-auto-scroll'
 import DeleteComment from './DeleteComment'
 import { useForm } from 'react-hook-form'
+import { useTheme } from 'next-themes'
 import { RiSendPlane2Line } from 'react-icons/ri'
 
 interface TypeProps {
@@ -18,6 +19,8 @@ interface FormData {
 }
 
 const DisplayComment: React.FC<TypeProps> = ({ host, get_composition }) => {
+
+  const { theme } = useTheme()
 
   const defaultValues = {
     comment_content: "",
@@ -87,10 +90,10 @@ const DisplayComment: React.FC<TypeProps> = ({ host, get_composition }) => {
   }
 
   return (
-    <div className="sticky top-5 flex flex-col w-full max-w-full md:max-w-sm rounded-none md:rounded-2xl bg-pantone-darkblack md:border-0 border-t border-pantone-white border-opacity-5">
+    <div className="sticky top-5 flex flex-col w-full max-w-full md:max-w-sm rounded-none md:rounded-2xl bg-pantone-gray dark:bg-pantone-darkblack bg-opacity-5 dark:bg-opacity-100 md:border-0 border-t border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-5">
       <div className="flex flex-row items-center justify-between w-full px-5 py-5">
-        <h3 className="text-xs md:text-sm text-pantone white">Live Comments</h3>
-        <h3 className="text-[10px] text-pantone-white">
+        <h3 className="text-xs md:text-sm text-pantone-black dark:text-pantone-white">Live Comments</h3>
+        <h3 className="text-[10px] text-pantone-black dark:text-pantone-white">
           { get_composition.comments.length }&nbsp;
           {get_composition.comments.length > 1 ? 'Comments' : 'Comment'}
         </h3>
@@ -101,28 +104,28 @@ const DisplayComment: React.FC<TypeProps> = ({ host, get_composition }) => {
         className="flex flex-col w-full h-full max-h-[23rem] overflow-y-auto"
       >
         {get_composition.comments.map((comment: any, i: number) => (
-          <div className="flex flex-row items-center justify-between w-full px-5 py-5 border-t border-pantone-white border-opacity-5" key={i}>
+          <div className="flex flex-row items-center justify-between w-full px-5 py-5 border-t border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-5" key={i}>
             <div className="flex flex-col items-start space-y-5">
               <Link href={`/${comment.user.username}`}>
                 <a className="flex items-start space-x-2">
                   <img
-                    className="w-7 h-7 object-cover rounded-full bg-pantone-gray"
-                    src={`${ comment.user.profile[0] ? `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${comment.user.profile[0].version}/${comment.user.profile[0].publicId}.${comment.user.profile[0].format}` : `https://ui-avatars.com/api/?name=${comment.user.name}&background=343739&color=aaa` }`}
+                    className="w-7 h-7 object-cover rounded-full bg-[#CBD0E2] dark:bg-pantone-gray"
+                    src={`${ comment.user.profile[0] ? `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${comment.user.profile[0].version}/${comment.user.profile[0].publicId}.${comment.user.profile[0].format}` : `https://ui-avatars.com/api/?name=${comment.user.name}&background=${theme === 'dark' ? '2B2F31' : 'CBD0E2'}&color=${theme === 'dark' ? 'FF3C3C' : '333333'}` }`}
                     alt=""
                   />
                   <div className="flex flex-col">
-                    <span className="text-[12px] hover:underline">{ comment.user.username }</span>
-                    <span className="text-[10px] text-pantone-white text-opacity-30">{ comment.user.account_type }</span>
+                    <span className="text-[12px] hover:underline text-pantone-black dark:text-pantone-white">{ comment.user.username }</span>
+                    <span className="text-[10px] text-pantone-black dark:text-pantone-white text-opacity-90 dark:text-opacity-30">{ comment.user.account_type }</span>
                   </div>
                 </a>
               </Link>
               <div className="flex flex-col space-y-3">
                 <div className="flex flex-col pl-3 space-y-3">
-                  <div className="flex items-start whitespace-pre-wrap text-xs space-x-1">
+                  <div className="flex items-start whitespace-pre-wrap space-x-1 text-xs text-pantone-black dark:text-pantone-white text-opacity-90 dark:text-opacity-80">
                     <span className="font-bold text-[#BDF705]">&bull;</span>
                     <span>{ comment.content }</span>
                   </div>
-                  <div className="flex font-light text-[8px] text-pantone-white text-opacity-30">
+                  <div className="flex font-light text-[8px] text-pantone-black dark:text-pantone-white text-opacity-90 dark:text-opacity-30">
                     <Moment date={ comment.date } fromNow />
                   </div>
                 </div>
@@ -134,7 +137,7 @@ const DisplayComment: React.FC<TypeProps> = ({ host, get_composition }) => {
           </div>
         ))}
       </AutoScroll>
-      <div className="flex flex-row items-center w-full border-t border-pantone-white border-opacity-5">
+      <div className="flex flex-row items-center w-full border-t border-pantone-gray dark:border-pantone-white border-opacity-5 dark:border-opacity-5">
         <form
           className="flex flex-row items-start w-full px-5 space-x-2"
           onSubmit={handleSubmit(onComment)}
@@ -142,7 +145,7 @@ const DisplayComment: React.FC<TypeProps> = ({ host, get_composition }) => {
           <div className="flex flex-row items-end w-full py-5">
             <div
               id="comment_content"
-              className={`${isSubmitting ? 'hidden' : 'block'} w-full h-full max-h-[5rem] cursor-text overflow-y-auto text-[11px] md:text-[12px] bg-transparent whitespace-pre-wrap outline-none`}
+              className={`${isSubmitting ? 'hidden' : 'block'} w-full h-full max-h-[5rem] cursor-text overflow-y-auto text-[11px] md:text-[12px] bg-transparent whitespace-pre-wrap outline-none text-pantone-gray dark:text-pantone-white`}
               placeholder="Type your comment here..."
               contentEditable
               spellCheck={false}
@@ -150,13 +153,13 @@ const DisplayComment: React.FC<TypeProps> = ({ host, get_composition }) => {
               onKeyPress={handleKeyPress}
             />
             {isSubmitting && (
-              <div className="w-full h-full cursor-wait text-[11px] md:text-[12px] text-pantone-white text-opacity-40 bg-transparent whitespace-pre-wrap outline-none">
+              <div className="w-full h-full cursor-wait text-[11px] md:text-[12px] text-pantone-gray dark:text-pantone-white text-opacity-50 dark:text-opacity-40 bg-transparent whitespace-pre-wrap outline-none">
                 Sending...
               </div>
             )}
             {!isSubmitting && (
               <button title="Send Comment" type="submit">
-                <RiSendPlane2Line className="w-5 h-5 text-pantone-white text-opacity-50 transition ease-linear duration-200 hover:scale-95" />
+                <RiSendPlane2Line className="w-5 h-5 text-pantone-gray dark:text-pantone-white text-opacity-50 dark:text-opacity-50 transition ease-linear duration-200 hover:scale-95" />
               </button>
             )}
             {isSubmitting && (

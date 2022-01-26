@@ -98,9 +98,9 @@ const AccountSettings: React.FC<TypeProps> = ({ host }) => {
         reverseOrder={true}
       />
       <div className="flex flex-col w-full h-full overflow-hidden">
-        <div className="flex flex-row items-center justify-between w-full px-5 py-4 border-b border-pantone-white border-opacity-10">
+        <div className="flex flex-row items-center justify-between w-full px-5 py-4 border-b border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-10">
           <div className="flex">
-            <span className="font-bold text-base text-pantone-white text-opacity-80">Account Settings</span>
+            <span className="font-bold text-base text-pantone-darkblack dark:text-pantone-white text-opacity-80 dark:text-opacity-80">Account Settings</span>
           </div>
           <div className="flex">
             {!isSubmitting && (
