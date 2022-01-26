@@ -34,7 +34,7 @@ const ForgotPassword: React.FC<TypeProps> = ({ found_user }) => {
   const [signupError, setSignupError] = React.useState('')
   const [signupSuccess, setSignupSuccess] = React.useState('')
 
-  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm()
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<FormData>()
 
   async function onForgotPassword(formData: FormData) {
     try {
