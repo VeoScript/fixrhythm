@@ -67,7 +67,7 @@ const SignupForm: React.FC = () => {
           <div className="flex flex-col md:flex-row items-center w-full space-x-0 md:space-x-2 space-y-2 md:space-y-0">
             <div className="flex items-center w-full px-1 rounded-md text-pantone-darkblack dark:text-pantone-white bg-transparent border border-gray-300 dark:border-pantone-gray transition ease-linear duration-200 hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white">
               <div className="px-3 border-r border-pantone-gray dark:border-pantone-white border-opacity-30 dark:border-opacity-30">
-                <RiUser3Line className="w-6 h-6 text-pantone-black dark:text-white text-opacity-60" />
+                <RiUser3Line className="w-6 h-6 text-pantone-black dark:text-white text-opacity-60 dark:text-opacity-60" />
               </div>
               <input
                 className="w-full px-3 py-5 text-sm bg-transparent outline-none"
@@ -78,7 +78,7 @@ const SignupForm: React.FC = () => {
             </div>
             <div className="flex items-center w-full px-1 rounded-md text-pantone-darkblack dark:text-pantone-white text-opacity-60 dark:text-opacity-60 bg-transparent border border-gray-300 dark:border-pantone-gray transition ease-linear duration-200 hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white">
               <div className="px-3 border-r border-pantone-gray dark:border-pantone-white border-opacity-30 dark:border-opacity-30">
-                <RiMusicLine className="w-6 h-6 text-pantone-black dark:text-white text-opacity-60" />
+                <RiMusicLine className="w-6 h-6 text-pantone-black dark:text-white text-opacity-60 dark:text-opacity-60" />
               </div>
               <select
                 className="w-full px-3 py-5 text-sm bg-transparent outline-none"
@@ -94,7 +94,7 @@ const SignupForm: React.FC = () => {
           <div className="flex flex-col md:flex-row items-center w-full space-x-0 md:space-x-2 space-y-2 md:space-y-0">
             <div className={`${ errors.phone ? 'hover:border-pantone-red focus-within:border-pantone-red' : 'hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white' } flex items-center w-full px-1 rounded-md text-pantone-darkblack dark:text-pantone-white bg-transparent border border-gray-300 dark:border-pantone-gray transition ease-linear duration-200 hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white`}>
               <div className="px-3 border-r border-pantone-gray dark:border-pantone-white border-opacity-30 dark:border-opacity-30">
-                <RiSmartphoneLine className="w-6 h-6 text-pantone-black dark:text-white text-opacity-60" />
+                <RiSmartphoneLine className="w-6 h-6 text-pantone-black dark:text-white text-opacity-60 dark:text-opacity-60" />
               </div>
               <input
                 className="w-full px-3 py-5 text-sm bg-transparent outline-none"
@@ -106,7 +106,7 @@ const SignupForm: React.FC = () => {
             {errors.phone && <span className="md:hidden flex justify-start w-full font-light text-[10px] text-red-500">Contains of 11 digits number & start with (+63) or (09)</span>}
             <div className={`${ errors.phone ? 'hover:border-pantone-red focus-within:border-pantone-red' : 'hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white' } flex items-center w-full px-1 rounded-md text-pantone-darkblack dark:text-pantone-white bg-transparent border border-gray-300 dark:border-pantone-gray transition ease-linear duration-200 hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white`}>
               <div className="px-3 border-r border-pantone-gray dark:border-pantone-white border-opacity-30 dark:border-opacity-30">
-                <RiShieldUserLine className="w-6 h-6 text-pantone-black dark:text-white text-opacity-60" />
+                <RiShieldUserLine className="w-6 h-6 text-pantone-black dark:text-white text-opacity-60 dark:text-opacity-60" />
               </div>
               <input
                 className="w-full px-3 py-5 text-sm bg-transparent outline-none"
@@ -123,7 +123,7 @@ const SignupForm: React.FC = () => {
           </div>
           <div className={`${ errors.email ? 'hover:border-pantone-red focus-within:border-pantone-red' : 'hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white' } flex items-center w-full px-1 rounded-md text-pantone-darkblack dark:text-pantone-white bg-transparent border border-gray-300 dark:border-pantone-gray transition ease-linear duration-200 hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white`}>
             <div className="px-3 border-r border-pantone-gray dark:border-pantone-white border-opacity-30 dark:border-opacity-30">
-              <RiMailLine className="w-6 h-6 text-pantone-black dark:text-white text-opacity-60" />
+              <RiMailLine className="w-6 h-6 text-pantone-black dark:text-white text-opacity-60 dark:text-opacity-60" />
             </div>
             <input
               className="w-full px-3 py-5 text-sm bg-transparent outline-none"
@@ -136,7 +136,7 @@ const SignupForm: React.FC = () => {
           <div className="flex flex-col md:flex-row items-center w-full space-x-0 md:space-x-2 space-y-2 md:space-y-0">
             <div className={`${ errors.password ? 'hover:border-pantone-red focus-within:border-pantone-red' : 'hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white' } flex items-center w-full px-1 rounded-md text-pantone-darkblack dark:text-pantone-white bg-transparent border border-gray-300 dark:border-pantone-gray transition ease-linear duration-200 hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white`}>
               <div className="px-3 border-r border-pantone-gray dark:border-pantone-white border-opacity-30 dark:border-opacity-30">
-                <RiShieldKeyholeLine className="w-6 h-6 text-pantone-black dark:text-white text-opacity-60" />
+                <RiShieldKeyholeLine className="w-6 h-6 text-pantone-black dark:text-white text-opacity-60 dark:text-opacity-60" />
               </div>
               <input
                 className="w-full px-3 py-5 text-sm bg-transparent outline-none"
@@ -148,7 +148,7 @@ const SignupForm: React.FC = () => {
             {errors.password && <span className="md:hidden flex justify-start w-full font-light text-[10px] text-red-500">Invalid password, contains at least 8 alphanumeric values</span>}
             <div className="flex items-center w-full px-1 rounded-md text-pantone-darkblack dark:text-pantone-white bg-transparent border border-gray-300 dark:border-pantone-gray transition ease-linear duration-200 hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white">
               <div className="px-3 border-r border-pantone-gray dark:border-pantone-white border-opacity-30 dark:border-opacity-30">
-                <RiShieldCheckLine className="w-6 h-6 text-pantone-black dark:text-white text-opacity-60" />
+                <RiShieldCheckLine className="w-6 h-6 text-pantone-black dark:text-white text-opacity-60 dark:text-opacity-60" />
               </div>
               <input
                 className="w-full px-3 py-5 text-sm bg-transparent outline-none"

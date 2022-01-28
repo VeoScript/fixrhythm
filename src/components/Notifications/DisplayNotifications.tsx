@@ -68,11 +68,11 @@ const DisplayNotifications: React.FC<TypeProps> = ({ host }) => {
                   </a>
                 </Link>
                 <div className="flex flex-col w-full">
-                  <div className="space-x-1 w-full text-pantone-darkblack dark:text-pantone-white text-opacity-100 dark:text-opacity-50">
+                  <div className="space-x-1 w-full text-pantone-darkblack dark:text-pantone-white text-opacity-100 dark:text-opacity-90">
                     <Link href={`/${notification.notificationFrom.username}`}>
                       <a className="inline pointer-events-auto font-bold hover:underline">{ notification.notificationFrom.username }</a>
                     </Link>
-                    <span className="inline">
+                    <span className="inline text-pantone-darkblack dark:text-pantone-white text-opacity-100 dark:text-opacity-80">
                       { notification.message }
                       <span className="font-bold text-red-500">&nbsp;{ notification.type === 'Likes' || notification.type === 'Comments' ? notification.composition.title : '' }</span>
                     </span>

@@ -87,7 +87,7 @@ const ForgotPassword: React.FC<TypeProps> = ({ found_user }) => {
         </div>
         <div className={`${ errors.email ? 'hover:border-pantone-red focus-within:border-pantone-red' : 'hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white' } flex items-center w-full px-1 rounded-md text-pantone-darkblack dark:text-pantone-white bg-transparent border border-gray-300 dark:border-pantone-gray transition ease-linear duration-200 hover:border-gray-500 focus-within:border-gray-500 dark:hover:border-pantone-white dark:focus-within:border-pantone-white`}>
           <div className="px-3 border-r border-pantone-gray dark:border-pantone-white border-opacity-30 dark:border-opacity-30">
-            <RiMailLine className="w-6 h-6 text-pantone-black dark:text-white text-opacity-60" />
+            <RiMailLine className="w-6 h-6 text-pantone-black dark:text-white text-opacity-60 dark:text-opacity-60" />
           </div>
           <input
             className="w-full px-3 py-5 text-sm bg-transparent outline-none"
