@@ -122,7 +122,7 @@ const DisplayComment: React.FC<TypeProps> = ({ host, get_composition }) => {
               <div className="flex flex-col space-y-3">
                 <div className="flex flex-col pl-3 space-y-3">
                   <div className="flex items-start whitespace-pre-wrap space-x-1 text-xs text-pantone-black dark:text-pantone-white text-opacity-90 dark:text-opacity-80">
-                    <span className="font-bold text-[#BDF705]">&bull;</span>
+                    <span className="font-bold text-[#80a700] dark:text-[#BDF705]">&bull;</span>
                     <span>{ comment.content }</span>
                   </div>
                   <div className="flex font-light text-[8px] text-pantone-black dark:text-pantone-white text-opacity-90 dark:text-opacity-30">
