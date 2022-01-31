@@ -145,7 +145,7 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
                 <div className="flex flex-col w-full space-y-2">
                   <h1 className="font-bold text-base text-pantone-darkblack dark:text-pantone-white text-opacity-90 dark:text-opacity-30">Intro</h1>
                   <div className="flex items-center w-full space-x-2">
-                    <h3 className="font-light text-xs text-pantone-darkblack dark:text-pantone-white text-opacity-100 dark:text-opacity-30">
+                    <h3 className="font-light text-xs text-pantone-darkblack dark:text-pantone-white">
                       {`${ get_profile.shortbio ? get_profile.shortbio : 'Welcome to Fixrhythm' }`}
                     </h3>
                   </div>
