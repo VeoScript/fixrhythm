@@ -89,7 +89,7 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
                         </Link>
                       )}
                       {!host || host.isLoggedIn === false && (
-                        <span className="transition ease-linear duration-200 text-pantone-white text-opacity-40">followers</span>
+                        <span className="transition ease-linear duration-200 text-pantone-darkblack dark:text-pantone-white text-opacity-50 dark:text-opacity-40">followers</span>
                       )}
                     </div>
                     <div className="flex items-center space-x-1 font-light text-[14px]">
@@ -100,7 +100,7 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
                         </Link>
                       )}
                       {!host || host.isLoggedIn === false && (
-                        <span className="transition ease-linear duration-200 text-pantone-white text-opacity-40">following</span>
+                        <span className="transition ease-linear duration-200 text-pantone-darkblack dark:text-pantone-white text-opacity-50 dark:text-opacity-40">following</span>
                       )}
                     </div>
                   </div>
