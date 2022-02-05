@@ -38,7 +38,7 @@ const NavigationBar: React.FC<TypeProps> = ({ user, host, artists, get_notificat
             <a className="font-black text-xl text-pantone-red">FIXRHYTHM</a>
           </Link>
         </div>
-        {(user && !host || host.isLoggedIn === true) && (
+        {(user && host || host.isLoggedIn === true) && (
           <React.Fragment>
             <div className="flex items-center justify-center w-full max-w-full space-x-10">
               <Link href="/">
@@ -154,10 +154,10 @@ const NavigationBar: React.FC<TypeProps> = ({ user, host, artists, get_notificat
             </div>
           </React.Fragment>
         )}
-        {(user === '' && !host || host.isLoggedIn === false) && (
+        {(user === '' && host || host.isLoggedIn === false) && (
           <div className="flex items-center justify-end md:justify-center w-full max-w-xs space-x-2">
             <Link href="/login">
-              <a className="font-normal text-[10px] md:text-xs px-2 md:px-5 py-2 md:py-3 rounded-lg bg-pantone-darkblack bg-opacity-80 dark:bg-opacity-100 text-pantone-white transition ease-linear duration-200 hover:bg-pantone-darkblack hover:bg-opacity-60 dark:hover:bg-pantone-white dark:hover:bg-opacity-10">
+              <a className="font-normal text-[10px] md:text-xs px-2 md:px-5 py-2 md:py-3 rounded-lg bg-pantone-darkblack dark:bg-pantone-gray bg-opacity-80 dark:bg-opacity-100 text-pantone-white transition ease-linear duration-200 hover:bg-pantone-darkblack hover:bg-opacity-60 dark:hover:bg-pantone-white dark:hover:bg-opacity-10">
                 Sign In
               </a>
             </Link>
@@ -169,7 +169,7 @@ const NavigationBar: React.FC<TypeProps> = ({ user, host, artists, get_notificat
           </div>
         )}
       </div>
-      {(user || !host || host.isLoggedIn === true) && (
+      {(user && host || host.isLoggedIn === true) && (
         /* bottom navigation bar */
         <div className="fixed md:hidden bottom-0 z-50 w-full border-t border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-10">
           <div className="flex flex-row items-center justify-between w-full px-10 bg-pantone-white dark:bg-pantone-darkblack">
