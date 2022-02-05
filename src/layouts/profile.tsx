@@ -85,7 +85,7 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
                       <span className="font-bold text-pantone-gray dark:text-pantone-white text-[16px]">{ get_profile.followedBy.length }</span>
                       {!host || host.isLoggedIn === true && (
                         <Link href={`/${get_profile.username}/followers`}>
-                          <a className="transition ease-linear duration-200 text-pantone-gray dark:text-pantone-white text-opacity-90 dark:text-opacity-40 hover:text-pantone-red">followers</a>
+                          <a className="transition ease-linear duration-200 text-pantone-gray dark:text-pantone-white text-opacity-90 dark:text-opacity-40 hover:text-pantone-red dark:hover:text-pantone-red">followers</a>
                         </Link>
                       )}
                       {!host || host.isLoggedIn === false && (
@@ -96,7 +96,7 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
                       <span className="font-bold text-pantone-gray dark:text-pantone-white text-[16px]">{ get_profile.following.length }</span>
                       {!host || host.isLoggedIn === true && (
                         <Link href={`/${get_profile.username}/following`}>
-                          <a className="transition ease-linear duration-20 text-pantone-gray dark:text-pantone-white text-opacity-90 dark:text-opacity-40 hover:text-pantone-red">following</a>
+                          <a className="transition ease-linear duration-20 text-pantone-gray dark:text-pantone-white text-opacity-90 dark:text-opacity-40 hover:text-pantone-red dark:hover:text-pantone-red">following</a>
                         </Link>
                       )}
                       {!host || host.isLoggedIn === false && (
