@@ -31,7 +31,7 @@ const ComposeMini: React.FC<TypeProps> = ({ host }) => {
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-50"
+          className="fixed inset-0 z-50 overflow-y-auto my-scrollbar bg-black bg-opacity-50"
           onClose={closeModal}
         >
           <div className="min-h-screen px-0 md:px-4 text-center">
@@ -64,7 +64,7 @@ const ComposeMini: React.FC<TypeProps> = ({ host }) => {
               leaveTo="opacity-0 scale-95"
             >
               <div className="inline-block w-full max-w-full md:max-w-4xl h-screen md:h-full overflow-hidden text-left align-middle transition-all transform text-pantone-darkblack dark:text-pantone-white bg-pantone-white dark:bg-pantone-black bg-opacity-10 dark:bg-opacity-10 backdrop-blur-sm shadow-xl rounded-none md:rounded-xl border-0 md:border-2 border-pantone-white border-opacity-10">
-                <div className="flex flex-col w-full h-full overflow-y-auto">
+                <div className="flex flex-col w-full h-full overflow-y-auto my-scrollbar">
                   <div className="flex flex-row items-center justify-between w-full px-5 py-3 bg-pantone-white dark:bg-pantone-darkblack border-b-2 border-pantone-white border-opacity-5">
                     <h3 className="font-black text-sm md:text-xl text-pantone-red">FIXRHYTHM</h3>
                     <h3 className="font-normal dark:font-light text-[12px] md:text-sm">Create Composition</h3>

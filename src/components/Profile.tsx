@@ -75,7 +75,7 @@ const Profile: React.FC<TypeProps> = ({ host, profile, published_posts, draft_po
                 <div className={`${host.username === profile.username ? 'hidden lg:flex' : 'flex' }`}>
                   <h3 className="font-bold text-sm text-pantone-darkblack dark:text-pantone-white text-opacity-100 dark:text-opacity-50">Compositions</h3>
                 </div>
-                <div className="flex flex-row items-center rounded-md space-x-0.5 overflow-auto">
+                <div className="flex flex-row items-center rounded-md space-x-0.5 overflow-auto my-scrollbar">
                   <Tab
                     className={({ selected }) => 
                       classNames(

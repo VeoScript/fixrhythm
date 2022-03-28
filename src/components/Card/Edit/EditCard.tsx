@@ -23,7 +23,7 @@ const EditCard: React.FC<TypeProps> = ({ host, composition, setIsDropdown }) => 
   return (
     <>
       <button
-        className="w-full px-3 py-2 font-light text-xs text-left transition ease-linear duration-200 text-pantone-black dark:text-pantone-white bg-pantone-white dark:bg-pantone-darkblack hover:bg-pantone-gray hover:bg-opacity-5 dark:hover:bg-pantone-white dark:hover:bg-opacity-10"
+        className="w-full px-3 py-2 outline-none font-light text-xs text-left transition ease-linear duration-200 text-pantone-black dark:text-pantone-white bg-pantone-white dark:bg-pantone-darkblack hover:bg-pantone-gray hover:bg-opacity-5 dark:hover:bg-pantone-white dark:hover:bg-opacity-10"
         type="button"
         onClick={openModal}
       >

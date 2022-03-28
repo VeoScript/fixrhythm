@@ -11,7 +11,7 @@ const DisplayPrivacyPolicy = () => {
   var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
 
   return (
-    <div className="flex flex-col w-full h-full">
+    <div className="flex flex-col w-full h-full my-scrollbar">
       <div className="flex flex-col w-full pb-16 text-pantone-darkblack dark:text-pantone-white">
         <div className="flex flex-row items-center w-full px-5 py-4 border-b border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-10">
           <h1 className="font-bold text-sm md:text-base text-pantone-darkblack dark:text-pantone-white text-opacity-50 dark:text-opacity-50">Privacy Policy</h1>

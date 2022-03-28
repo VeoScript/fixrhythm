@@ -2,25 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-html[data-theme='dark'] {
-  --scrollbar-background: #f7f7f7;
-}
- 
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #353535;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #4f4f4f; 
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #767676; 
+.my-scrollbar {
+  @apply scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-thumb-color-scrollbar-light-thumb scrollbar-track-color-scrollbar-light-track dark:scrollbar-thin dark:scrollbar-thumb-color-scrollbar-dark-thumb dark:scrollbar-track-color-scrollbar-dark-track
 }
 
 .unfollow_button:hover span {

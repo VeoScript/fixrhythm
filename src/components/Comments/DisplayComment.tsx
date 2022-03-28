@@ -101,7 +101,7 @@ const DisplayComment: React.FC<TypeProps> = ({ host, get_composition }) => {
       <AutoScroll
         showOption={false}
         scrollBehavior="auto"
-        className="flex flex-col w-full h-full max-h-[23rem] overflow-y-auto"
+        className="flex flex-col w-full h-full max-h-[23rem] overflow-y-scroll my-scrollbar"
       >
         {get_composition.comments.map((comment: any, i: number) => (
           <div className="flex flex-row items-center justify-between w-full px-5 py-5 border-t border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-5" key={i}>
@@ -145,7 +145,7 @@ const DisplayComment: React.FC<TypeProps> = ({ host, get_composition }) => {
           <div className="flex flex-row items-end w-full py-5">
             <div
               id="comment_content"
-              className={`${isSubmitting ? 'hidden' : 'block'} w-full h-full max-h-[5rem] cursor-text overflow-y-auto text-[11px] md:text-[12px] bg-transparent whitespace-pre-wrap outline-none text-pantone-gray dark:text-pantone-white`}
+              className={`${isSubmitting ? 'hidden' : 'block'} w-full h-full max-h-[5rem] cursor-text overflow-y-scroll my-scrollbar text-[11px] md:text-[12px] bg-transparent whitespace-pre-wrap outline-none text-pantone-gray dark:text-pantone-white`}
               placeholder="Type your comment here..."
               contentEditable
               spellCheck={false}

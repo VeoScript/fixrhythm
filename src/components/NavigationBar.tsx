@@ -75,7 +75,7 @@ const NavigationBar: React.FC<TypeProps> = ({ user, host, artists, get_notificat
                       }} 
                     />
                     <div className="fixed top-14 z-50 w-full">
-                      <div className="flex w-full max-w-[10rem] shadow-sm rounded-md overflow-auto bg-pantone-white dark:bg-pantone-black border border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-10">
+                      <div className="flex w-full max-w-[10rem] shadow-sm rounded-md overflow-auto my-scrollbar bg-pantone-white dark:bg-pantone-black border border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-10">
                         <div className="flex flex-col w-full">
                           <Link href="/settings">
                             <a className="flex flex-row items-center w-full p-3 space-x-2 font-light text-xs text-pantone-darkblack dark:text-pantone-white text-opacity-80 transition ease-linear duration-200 bg-pantone-white dark:bg-pantone-darkblack hover:bg-pantone-gray dark:hover:bg-pantone-black hover:bg-opacity-5">

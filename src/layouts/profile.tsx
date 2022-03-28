@@ -45,7 +45,7 @@ const ProfileLayout: React.FC<TypeProps> = ({ host, profile, children }) => {
 
   return (
     <React.Fragment>
-      <div className={`font-poppins flex flex-col items-center w-full h-full overflow-x-hidden overflow-y-auto`}>
+      <div className={`font-poppins flex flex-col items-center w-full h-full overflow-x-hidden overflow-y-auto my-scrollbar`}>
         <div
           className={`${!host || host.isLoggedIn === false ? 'max-w-5xl rounded-b-xl' : 'max-w-full'} relative flex w-full h-full max-h-[18rem] bg-center bg-cover bg-no-repeat bg-pantone-gray dark:bg-pantone-gray bg-opacity-10 dark:bg-opacity-100`}
           style={{ backgroundImage: `url(${get_profile.coverphoto[0] && `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${get_profile.coverphoto[0].version}/${get_profile.coverphoto[0].publicId}.${get_profile.coverphoto[0].format}`})` }}

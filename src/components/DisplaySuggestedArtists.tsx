@@ -14,7 +14,7 @@ const DisplaySuggestedArtists: React.FC<TypeProps> = ({ host, fetchArtists }) =>
   const { theme } = useTheme()
 
   return (
-    <div className="flex flex-col w-full h-screen overflow-y-auto pb-28">
+    <div className="flex flex-col w-full h-screen overflow-y-auto pb-28 my-scrollbar">
       {fetchArtists.map((artist: any, i: number) => {
         const check_follow = artist.followedBy.some((follow: { followingId: any }) => follow.followingId === host.uuid)
         return (
