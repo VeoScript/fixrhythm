@@ -98,7 +98,7 @@ const NewsFeed: React.FC<TypeProps> = ({ host, artists, published_compositions, 
           <Menu host={host} />
         </div>
       </div>
-      <div className="flex flex-col w-full h-full overflow-y-auto p-3 space-y-3">
+      <div className="flex flex-col w-full h-full p-3 space-y-3 overflow-y-scroll my-scrollbar">
         {/* dynamic fetch of post compositions in each page (home, songs, and poems) */}
         {pathname === '/' && (
           <React.Fragment>

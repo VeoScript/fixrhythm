@@ -29,7 +29,7 @@ const Layout: React.FC<TypeProps> = ({ user, host, artists, children, get_notifi
           {!(pathname === '/[username]' || pathname === '/[username]/posts/[uuid]' || pathname === '/[username]/followers' || pathname === '/[username]/following') && (
             <LeftSideBar host={host} />
           )}
-          <div className="flex flex-col w-full max-w-full h-full overflow-y-auto">
+          <div className="flex flex-col w-full max-w-full h-full overflow-y-auto my-scrollbar">
             { children }
           </div>
           {!host || host.isLoggedIn === true && (

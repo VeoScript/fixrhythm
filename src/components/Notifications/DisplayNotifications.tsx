@@ -38,7 +38,7 @@ const DisplayNotifications: React.FC<TypeProps> = ({ host }) => {
           </React.Fragment>
         )}
       </div>
-      <div className="flex flex-col w-full h-full overflow-y-auto">
+      <div className="flex flex-col w-full h-full overflow-y-auto my-scrollbar">
         {host.notificationTo && host.notificationTo.map((notification: any, i: number) => (
           <React.Fragment key={i}>
             <div className="outer relative border border-b border-pantone-gray dark:border-pantone-white border-opacity-5 dark:border-opacity-5 bg-pantone-white dark:bg-pantone-darkblack  hover:bg-pantone-gray hover:bg-opacity-5 dark:hover:bg-pantone-white dark:hover:bg-opacity-5">

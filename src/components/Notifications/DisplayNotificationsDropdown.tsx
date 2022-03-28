@@ -151,7 +151,7 @@ const DisplayNotificationsDropdown: React.FC<TypeProps> = ({ host, get_notificat
                   <span className="font-light text-xs">No notification as of now.</span>
                 </div>
               )}
-              <div className="relative flex flex-col w-full h-full overflow-x-hidden overflow-y-auto">
+              <div className="relative flex flex-col w-full h-full overflow-x-hidden overflow-y-auto my-scrollbar">
                 {fetchUnreadNotification.notificationTo && fetchUnreadNotification.notificationTo.map((notification: any, i: number) => (
                   <React.Fragment key={i}>
                     <div className="outer relative border border-b border-pantone-gray dark:border-pantone-white border-opacity-5 dark:border-opacity-5 bg-pantone-white dark:bg-pantone-darkblack  hover:bg-pantone-gray hover:bg-opacity-5 dark:hover:bg-pantone-white dark:hover:bg-opacity-5">

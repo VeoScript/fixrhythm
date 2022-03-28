@@ -109,7 +109,7 @@ const SearchTitle: React.FC<TypeProps> = ({ fetchPublishedCompositions, fetchSon
           />
           <div className="fixed md:absolute top-14 md:top-11 md:inset-auto z-20 inline-block md:flex justify-center w-full max-w-[20rem]">
             <div className="flex justify-center w-full max-w-full md:max-w-[20rem]">
-              <div className="flex flex-col w-full max-w-[23rem] h-full max-h-[15rem] text-pantone-darkblack dark:text-pantone-white bg-pantone-white dark:bg-pantone-darkblack rounded-md overflow-y-auto border border-pantone-gray dark:border-pantone-white border-opacity-30 dark:border-opacity-30">
+              <div className="flex flex-col w-full max-w-[23rem] h-full max-h-[15rem] text-pantone-darkblack dark:text-pantone-white bg-pantone-white dark:bg-pantone-darkblack rounded-md overflow-y-auto my-scrollbar border border-pantone-gray dark:border-pantone-white border-opacity-30 dark:border-opacity-30">
                 {search_results.length === 0 && (
                   <div className="flex px-5 py-3">
                     <span className="font-light text-xs">No results found.</span>

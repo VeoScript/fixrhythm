@@ -119,7 +119,7 @@ const AccountSettings: React.FC<TypeProps> = ({ host }) => {
             )}
           </div>
         </div>
-        <div className="flex flex-col w-full h-full pb-16 overflow-y-auto">
+        <div className="flex flex-col w-full h-full pb-16 overflow-y-auto my-scrollbar">
           <AccountInformation register={register} errors={errors} />
           <ChangePassword host={host} />
         </div>

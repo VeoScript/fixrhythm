@@ -78,7 +78,7 @@ const SearchArtistMenu: React.FC<TypeProps> = ({ host, artists }) => {
             }} 
           />
           <div className="fixed block md:hidden inset-0 z-50">
-            <div className="flex w-full max-w-full h-full overflow-auto bg-pantone-white dark:bg-pantone-black">
+            <div className="flex w-full max-w-full h-full overflow-auto my-scrollbar bg-pantone-white dark:bg-pantone-black">
               <div className="flex flex-col w-full">
                 <div className="flex flex-row items-center justify-between w-full px-3 py-2 border-b border-pantone-gray dark:border-pantone-white border-opacity-10 dark:border-opacity-10 bg-pantone-white dark:bg-pantone-darkblack">
                   <span className="font-bold text-sm text-pantone-darkblack dark:text-pantone-white text-opacity-50 dark:text-opacity-50">Search Artists</span>

@@ -77,7 +77,7 @@ const SearchArtist: React.FC<TypeProps> = ({ artists }) => {
             }}
           />
           <div className="absolute top-11 z-10 flex justify-center w-full max-w-[20rem]">
-            <div className="flex flex-col w-full h-full max-h-[15rem] text-pantone-darkblack dark:text-pantone-white bg-pantone-white dark:bg-pantone-darkblack rounded-md overflow-y-auto border border-pantone-gray dark:border-pantone-white border-opacity-30 dark:border-opacity-30">
+            <div className="flex flex-col w-full h-full max-h-[15rem] text-pantone-darkblack dark:text-pantone-white bg-pantone-white dark:bg-pantone-darkblack rounded-md overflow-y-auto my-scrollbar border border-pantone-gray dark:border-pantone-white border-opacity-30 dark:border-opacity-30">
               {search_results.length === 0 && (
                 <div className="flex px-5 py-3">
                   <span className="font-light text-xs">No results found.</span>
