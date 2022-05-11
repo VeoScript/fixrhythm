@@ -49,7 +49,7 @@ const About: NextPage = () => {
           </Link>
         </div>
         <div className="flex flex-row items-center justify-center w-full space-x-3 font-bold text-xs text-[#434343] dark:text-[#919191]">
-          <span>&copy; 2021 FIXRHYTHM</span>
+          <span>&copy; {new Date().getFullYear()} FIXRHYTHM</span>
           <img className="w-6 h-6" src="/fixrhythm.png" alt="fixrhythm" />
           <span>by VEOSCRIPT.</span>
         </div>
